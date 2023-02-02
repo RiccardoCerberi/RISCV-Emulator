@@ -1,3 +1,4 @@
+TESTING GIT
 - Cmake kits options like which compiler to use
 - Set Cmake options in  settings.json file. Everything is well described
   at this link: https://github.com/microsoft/vscode-cmake-tools/blob/main/docs/cmake-settings.md#cmake-settings
