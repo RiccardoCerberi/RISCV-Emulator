@@ -1,0 +1,19 @@
+- Cmake kits options like which compiler to use
+- Set Cmake options in  settings.json file. Everything is well described
+  at this link: https://github.com/microsoft/vscode-cmake-tools/blob/main/docs/cmake-settings.md#cmake-settings
+ NOTE: to change the executable from debug to release there's an option: commandPallete > CMake: 
+ select variante (Release or debug). REMEMBER: the configuration works because of the CMakeLists.txt
+ file
+
+
+In generale the cmake steps are
+- Configuration: 
+    It prepares the folder where the files will be located (see below to possible changes); 
+    for example by conifguring the generator, creating a makefile.
+    configure cmake: json.settings file change cmake.<name> options
+    run -> CMake: Configure
+- Build:
+    Everything inside the folder prepared in the configuration process now runs; 
+    for example typing make. The executable will be stored in the folder location provided by CMakeLists.txt
+    Build in the palette at the bottom of vscode
+- Run or debug just by pressing the icons
