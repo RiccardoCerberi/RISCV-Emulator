@@ -1,1 +1,1 @@
-The project is a Risc-V development 
+The project is a RISC-V development 
