@@ -1,3 +1,2 @@
-see the medium advices to define the structure of the system. 
-URL:
-https://medium.com/swlh/c-project-structure-for-cmake-67d60135f6f5
+Follow the steps in the CMake guide. First lecture URL:
+https://cmake.org/cmake/help/latest/guide/tutorial/A%20Basic%20Starting%20Point.html
