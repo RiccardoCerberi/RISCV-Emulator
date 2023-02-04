@@ -3,7 +3,8 @@ project( riscV-emulator )
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-add_subdirectory( src ) 
+include_directories( include ) # for header files
+add_subdirectory( src ) # for the implementation files of the headers
 
 set_target_properties(riscV-emulator
     PROPERTIES
@@ -22,10 +23,6 @@ set(msvc_flags "-W3")
 target_compile_options(riscV-emulator PRIVATE
      "$<${gcc_like_cxx}:$<BUILD_INTERFACE:${gcc_flags}>>"
         "$<${msvc_cxx}: $<BUILD_INTERFACE:${msvc_flags}>>")
-
-
-
-
 
 
 

@@ -1,0 +1,13 @@
+The project structure is
+    - include
+        -> it contains headers to make static headers.
+    - src
+        -> it contains the implementation files for the header.
+    - build
+        -> it contains files releated to the generator, like make.
+    - bin
+        It has to be configurable by the CMakeLists
+        - release
+        - debug
+
+        

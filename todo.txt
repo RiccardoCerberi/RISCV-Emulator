@@ -1,6 +1,1 @@
-Install all the dependencies to create the executable from a c file.
-Finish the last command: make linux (tutorial added to my favorites)
-    - Change the directory permission in opt/riscv; 
-        usefull link:
-https://stackoverflow.com/questions/1070216/how-can-i-make-directory-writable
-    
+see the medium advices to define the structure of the system
