@@ -1,1 +1,3 @@
-see the medium advices to define the structure of the system
+see the medium advices to define the structure of the system. 
+URL:
+https://medium.com/swlh/c-project-structure-for-cmake-67d60135f6f5
