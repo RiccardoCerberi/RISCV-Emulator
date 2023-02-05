@@ -1,8 +1,7 @@
 The project structure is
     - include
-        -> it contains headers to make static headers.
-    - src
-        -> it contains the implementation files for the header.
+        -> it contains all the library, therefore every nested folder is 
+        a library that contains both the related header and the source. For example: foo/foo.h foo/foo.cpp 
     - build
         -> it contains files releated to the generator, like make.
     - bin
