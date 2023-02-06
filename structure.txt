@@ -1,0 +1,20 @@
+Address translation:
+
+
+Addresses are strings of bits. They can be divided in two parts: the PN that can be either physical (PPN) or virtual (VPN) and the pageoffset.
+TLB translates VPN to PPN and based on which one of them is provied by the cache two models are defined:
+Virtually-Addressed-Cache(VAC) VPN is provided,
+or Physically-Addressed Cache (PAC) the other way around.
+The VAP is faster than PAC because it doesn't have to wait for the TLB, 
+but, whenever a switch context occurs, the cache must be cleaned up and its data must be stored in main memory, 
+because virtual address are the same between processes, even if the information they're referring to are totally unreleated.
+
+The model can be speed up by dividing the process of checking for data in cache in two steps:
+at first by looking at the entry of the cache that matches the index, information stored in the offset bits untouched by TLB,
+then, once the TLB has translated VPN to PPN, check if the entry found earlier has the same PPA of 
+the one just translated.
+This is possible if and only if the cache index bits are a subset of page offset bits.
+
+
+Memory:
+The memory model adopted is memory mapped I/O therefore there's space saved for input and output respectively
