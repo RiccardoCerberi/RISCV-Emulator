@@ -1,2 +1,6 @@
+Finish the lecture: https://youtu.be/ReRj0Ww0TU4A
+    - point: 30:16
+
 Follow the steps in the CMake guide. First lecture URL:
 https://cmake.org/cmake/help/latest/guide/tutorial/A%20Basic%20Starting%20Point.html
+
