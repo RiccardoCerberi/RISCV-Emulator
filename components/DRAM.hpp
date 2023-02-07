@@ -8,6 +8,9 @@
 #define DRAM_BASE 0x80000000
 #define DRAM_SIZE 128 * 1024 * 1024  // 128 Mbit
 
+#define ZERO 0
+#define SP 2
+
 /*
     DRAM is implemented as an array of SIZE_DRAM bits.
     DRAM will contain data releated to the processes.
@@ -26,8 +29,12 @@ address need to be reduced by DRAM_BASE.
 
 class DRAM {
 public:
-    uint8_t store(uint64_t, size_t);
+    DRAM();
+
+    void store(uint64_t, size_t);
     uint64_t load(uint64_t, size_t);
+
+    void setInstructionMemory();
 
 private:
     uint8_t store_byte(uint64_t, size_t);
