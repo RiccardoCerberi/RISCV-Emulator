@@ -20,6 +20,10 @@ Our memory model will be formed by the cpu and within the cache, ROM, DRAM and I
     * Memory definition
     * RAM, ROM and I/O
     * Registers 
+
+## How to interact with the Unix operative system? ##
+Every operative system interacts with the hardware through the device tree.
+
 ## Implementation: ##
 # Big problems: #
     * How to read an executable file in cpp, is that a binary? 

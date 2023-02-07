@@ -1,6 +1,5 @@
 Address translation:
 
-
 Addresses are strings of bits. They can be divided in two parts: the PN that can be either physical (PPN) or virtual (VPN) and the pageoffset.
 TLB translates VPN to PPN and based on which one of them is provied by the cache two models are defined:
 Virtually-Addressed-Cache(VAC) VPN is provided,
@@ -18,3 +17,4 @@ This is possible if and only if the cache index bits are a subset of page offset
 
 Memory:
 The memory model adopted is memory mapped I/O therefore there's space saved for input and output respectively
+

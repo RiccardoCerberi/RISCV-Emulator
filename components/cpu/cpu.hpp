@@ -1,12 +1,9 @@
 #pragma once
 
-
 #include <array>
 #include <cstdint>
 
-
-
-int constexpr number_registers = 32;
+//int constexpr number_registers = 32;
 
 /*
  * TODO: configure the cache n-ways associative
@@ -24,8 +21,10 @@ struct CPU {
     // or chars; see the test/test.cpp file.
 
     // TODO: set "special" registers like register0
+    static constexpr int const number_registers;
     std::array<uint64_t, number_registers> m_registers; 
 
     uint64_t m_pc;
-    
+
+ //   std::array<uint8_t,  
 };
