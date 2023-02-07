@@ -48,6 +48,7 @@ private:
     uint64_t load_double_word(uint64_t, size_t);
 
 #ifdef DEBUG
+    // to print out data formatted it should be enough the << operator
     void printInstructionsMemory();
 #endif
 
