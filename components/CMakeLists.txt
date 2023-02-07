@@ -1,6 +1,8 @@
 project(components)
 
-add_library(components
-    *.hpp
-    *.cpp
+file(GLOB components_sources *.hpp *.cpp)
+
+add_library(
+    components
+    ${components_sources}
 )

@@ -1,7 +1,8 @@
 project(interface)
 
+file(GLOB interface_sources *.hpp *.cpp)
 
-add_library(interface
-    take-binary-file.hpp
-    take-binary-file.cpp
+add_library(
+    interface
+    interface_sources
 )
