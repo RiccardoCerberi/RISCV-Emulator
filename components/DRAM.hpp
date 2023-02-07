@@ -34,7 +34,7 @@ public:
     void store(uint64_t, size_t);
     uint64_t load(uint64_t, size_t);
 
-    void setInstructionMemory();
+    void setInstructionsMemory();
 
 private:
     uint8_t store_byte(uint64_t, size_t);
@@ -46,6 +46,10 @@ private:
     uint64_t load_half_word(uint64_t, size_t);
     uint64_t load_word(uint64_t, size_t);
     uint64_t load_double_word(uint64_t, size_t);
+
+#ifdef DEBUG
+    void printInstructionsMemory();
+#endif
 
     std::array<uint64_t, DRAM_SIZE> m_dram;
     uint64_t m_end_isntructions;
