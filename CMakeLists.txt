@@ -1,13 +1,16 @@
 #setup the cmake version
 cmake_minimum_required(VERSION 3.0.0 FATAL_ERROR)
 
-
 project( riscV-emulator )
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-include_directory( include ) # for header files
-add_subdirectory( src ) # for the implementation files of the headers
+add_subdirectory(components) # for the implementation files of the headers
+add_subdirectory(interface) # to take the binary file. 
+
+add_executable(riscV-emulator main.cpp)
+
+target_include_directories(riscV-emulator interface components)
 
 set_target_properties(riscV-emulator
     PROPERTIES

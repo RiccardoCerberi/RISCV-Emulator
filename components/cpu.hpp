@@ -1,4 +1,5 @@
-#pragma once
+#ifndef CPU_HPP
+#define CPU_HPP
 
 #include <array>
 #include <cstdint>
@@ -9,7 +10,8 @@
  * TODO: configure the cache n-ways associative
 */
 
-struct CPU {
+
+
     // Registers cannot be pointers because they have to support all the operations like addiction or subtraction
     // as well as deferencing; this will require casting, maybe I could define a function just
     // for custing, maybe it would require some changes.
@@ -21,10 +23,21 @@ struct CPU {
     // or chars; see the test/test.cpp file.
 
     // TODO: set "special" registers like register0
+
+class CPU {
+public:
+private:
     static constexpr int const number_registers;
     std::array<uint64_t, number_registers> m_registers; 
+    uint64_t m_pc; // it's the 32-th register
 
-    uint64_t m_pc;
+    // steps
+    void fetch();
+    void decode();
+    void execute();
+    void writeBack();
 
- //   std::array<uint8_t,  
+
 };
+
+#endif
