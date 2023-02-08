@@ -3,8 +3,9 @@
 
 #include <array>
 #include <cstdint>
+#include "costants.hpp"
 
-#define NUMBER_REGISTERS 32
+//#define NUMBER_REGISTERS 32
 
 //int constexpr number_registers = 32;
 
@@ -29,7 +30,7 @@
 class CPU {
 public:
 private:
-    std::array<uint64_t, NUMBER_REGISTERS> m_registers; 
+    std::array<uint64_t, register::number_of_registers> m_registers; 
     uint64_t m_pc; // it's the 32-th register
 
     // steps
@@ -37,8 +38,6 @@ private:
     void decode();
     void execute();
     void writeBack();
-
-
 };
 
 #endif

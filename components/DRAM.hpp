@@ -4,12 +4,10 @@
 #include <array>
 #include <cstdint>
 #include <cstdio>
+#include "constants.hpp"
 
-#define DRAM_BASE 0x80000000
-#define DRAM_SIZE 128 * 1024 * 1024  // 128 Mbit
 
-#define ZERO 0
-#define SP 2
+#define DEBUG
 
 /*
     DRAM is implemented as an array of SIZE_DRAM bits.
@@ -27,12 +25,21 @@ reduced by DRAM_BASE DRAM is defined as a vector that starts from 0, hence every
 address need to be reduced by DRAM_BASE.
 */
 
+
 class DRAM {
 public:
     DRAM();
 
     void store(uint64_t, uint64_t, size_t);
     uint64_t load(uint64_t, size_t);
+
+
+#ifdef DEBUG
+    // function to know till the instructions are stored in dram
+    void setLastInstructionAddress(uint64_t);
+    // to print out data formatted it should be enough the << operator
+    void printInstructionsMemory();
+#endif
 
 private:
     uint8_t store_byte(uint64_t,uint64_t, size_t);
@@ -45,13 +52,10 @@ private:
     uint64_t load_word(uint64_t, size_t);
     uint64_t load_double_word(uint64_t, size_t);
 
+    std::array<uint64_t, DRAM_SIZE> m_dram;
 #ifdef DEBUG
-    // to print out data formatted it should be enough the << operator
-    void printInstructionsMemory();
+    uint64_t m_last_instruction_address;
 #endif
-
-    std::array<uint64_t, DRAM_SIZE> m_memory;
-    uint64_t m_end_instructions;
 };
 
 #endif
