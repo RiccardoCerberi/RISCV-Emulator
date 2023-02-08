@@ -4,6 +4,7 @@
 #include <array>
 #include <cstdint>
 #include <cstdio>
+#include<cassert>
 #include "../constants.hpp"
 
 
@@ -42,6 +43,10 @@ public:
 #endif
 
 private:
+
+    // to optimize the code I could load(store) directly from the omonimum functions just by defining a for loop that iterates
+    // over the memory data_size times.
+
     uint8_t store_byte(uint64_t,uint64_t, data_size);
     uint8_t store_half_word(uint64_t, uint64_t, data_size);
     uint8_t store_word(uint64_t, uint64_t, data_size);

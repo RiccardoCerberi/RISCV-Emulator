@@ -14,8 +14,25 @@ DRAM::DRAM() {
         uint64_t instruction;
         uint64_t address = kdram_base;
         while (address != m_last_instruction_address) {
-            instruction = load_word(address, data_size::kword);
+            instruction = load(address, data_size::kword);
             address += data_size::kword;
         }
     }
 #endif
+
+
+uint64_t DRAM::load(uint64_t address, data_size data_sz) {
+    uint64_t data_to_take = 0x0;
+
+    assert(("invalid data_sz", data_sz == data_size::kbyte 
+            || data_sz == data_size::khalf_word 
+            || data_sz == data_size::kword 
+            || data_sz == data_size::kdouble_word));
+
+    assert(("invalid address", address >= kdram_base));
+
+    for (int i = 0; i < data_sz; ++i) {
+        data_to_take |= (uint64_t) (m_dram[address - kdram_base + i] << (8*i));
+    }
+    return data_to_take;
+}
