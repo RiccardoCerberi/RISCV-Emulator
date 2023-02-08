@@ -7,7 +7,9 @@
             "request": "launch",
             // Resolved by CMake Tools:
             "program": "${command:cmake.launchTargetPath}",
-            "args": ["test/testbinfile.bin"],
+            "args": [
+                "~/Project/RISCV-Emulator/test/testbinfile.bin"
+            ],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [
