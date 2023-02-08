@@ -8,4 +8,5 @@ add_subdirectory(components)
 add_library(
     emulator
     ${emulator_sources}
+    components
 )

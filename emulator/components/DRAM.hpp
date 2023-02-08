@@ -4,7 +4,7 @@
 #include <array>
 #include <cstdint>
 #include <cstdio>
-#include "constants.hpp"
+#include "../constants.hpp"
 
 
 #define DEBUG
