@@ -3,11 +3,7 @@
 
 #include <array>
 #include <cstdint>
-#include "costants.hpp"
-
-//#define NUMBER_REGISTERS 32
-
-//int constexpr number_registers = 32;
+#include "constants.hpp"
 
 /*
  * TODO: configure ecall to implement system calls.

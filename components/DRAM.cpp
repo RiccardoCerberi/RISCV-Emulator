@@ -1,8 +1,8 @@
 #include "DRAM.hpp"
 
 DRAM::DRAM() {
-    m_dram[registers_constants::zero_register] = 0x0;
-    m_dram[registers_constants::sp] = DRAM_BASE + DRAM_SIZE;
+    m_dram[register_index::kzero_register] = 0x0;
+    m_dram[register_index::ksp] = kdram_base + kdram_size;
 }
 
 #ifdef DEBUG
@@ -12,10 +12,10 @@ DRAM::DRAM() {
     // to print out data formatted it should be enough the << operator
     void DRAM::printInstructionsMemory() {
         uint64_t instruction;
-        uint64_t address = DRAM_BASE;
+        uint64_t address = kdram_base;
         while (address != m_last_instruction_address) {
-            instruction = load_word(address, sizeof(uint32_t));
-            addr
+            instruction = load_word(address, data_size::kword);
+            address += data_size::kword;
         }
     }
 #endif

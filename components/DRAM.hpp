@@ -30,8 +30,8 @@ class DRAM {
 public:
     DRAM();
 
-    void store(uint64_t, uint64_t, size_t);
-    uint64_t load(uint64_t, size_t);
+    void store(uint64_t, uint64_t, data_size);
+    uint64_t load(uint64_t, data_size);
 
 
 #ifdef DEBUG
@@ -42,17 +42,17 @@ public:
 #endif
 
 private:
-    uint8_t store_byte(uint64_t,uint64_t, size_t);
-    uint8_t store_half_word(uint64_t, uint64_t, size_t);
-    uint8_t store_word(uint64_t, uint64_t, size_t);
-    uint8_t store_double_word(uint64_t, uint64_t, size_t);
+    uint8_t store_byte(uint64_t,uint64_t, data_size);
+    uint8_t store_half_word(uint64_t, uint64_t, data_size);
+    uint8_t store_word(uint64_t, uint64_t, data_size);
+    uint8_t store_double_word(uint64_t, uint64_t, data_size);
 
-    uint64_t load_byte(uint64_t, size_t);
-    uint64_t load_half_word(uint64_t, size_t);
-    uint64_t load_word(uint64_t, size_t);
-    uint64_t load_double_word(uint64_t, size_t);
+    uint64_t load_byte(uint64_t, data_size);
+    uint64_t load_half_word(uint64_t, data_size);
+    uint64_t load_word(uint64_t, data_size);
+    uint64_t load_double_word(uint64_t, data_size);
 
-    std::array<uint64_t, dram_const::dram_size> m_dram;
+    std::array<uint64_t, kdram_base> m_dram;
 #ifdef DEBUG
     uint64_t m_last_instruction_address;
 #endif
