@@ -30,7 +30,7 @@
 class CPU {
 public:
 private:
-    std::array<uint64_t, register::number_of_registers> m_registers; 
+    std::array<uint64_t, static_cast<size_t>(registers_constants::number_of_registers)> m_registers; 
     uint64_t m_pc; // it's the 32-th register
 
     // steps

@@ -11,9 +11,9 @@ enum class dram_costants : uint64_t {
     dram_size = 128 * 1024 * 1024 
 };
 
-enum class registers : size_t {
+enum class registers_constants : size_t {
     number_of_registers = 32,
-    zero_register_value =  0,
+    zero_register =  0,
     sp = 2
 };
 

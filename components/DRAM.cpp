@@ -1,8 +1,8 @@
 #include "DRAM.hpp"
 
 DRAM::DRAM() {
-    m_dram[ZERO] = 0;
-    m_dram[SP] = DRAM_BASE + DRAM_SIZE;
+    m_dram[registers_constants::zero_register] = 0x0;
+    m_dram[registers_constants::sp] = DRAM_BASE + DRAM_SIZE;
 }
 
 #ifdef DEBUG

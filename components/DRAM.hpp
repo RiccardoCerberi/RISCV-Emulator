@@ -52,7 +52,7 @@ private:
     uint64_t load_word(uint64_t, size_t);
     uint64_t load_double_word(uint64_t, size_t);
 
-    std::array<uint64_t, DRAM_SIZE> m_dram;
+    std::array<uint64_t, dram_costants::dram_size> m_dram;
 #ifdef DEBUG
     uint64_t m_last_instruction_address;
 #endif
