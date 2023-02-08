@@ -10,7 +10,8 @@
 //int constexpr number_registers = 32;
 
 /*
- * TODO: configure the cache n-ways associative
+ * TODO: configure ecall to implement system calls.
+    L21 of the MIT from 6:57 there's the implemenetation
 */
 
 
