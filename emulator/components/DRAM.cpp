@@ -31,6 +31,7 @@ uint64_t DRAM::load(uint64_t address, data_size data_sz) {
 
     assert(("invalid address", address >= kdram_base));
 
+    // Note: no problem occures because unsigend integers are extended with zeros
     for (int i = 0; i < data_sz; ++i) {
         data_to_take |= (uint64_t) (m_dram[address - kdram_base + i] << (8*i));
     }
