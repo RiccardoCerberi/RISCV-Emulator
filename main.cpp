@@ -1,6 +1,8 @@
 #include<iostream>
 #include<cstring>
 
+#include"../interface/take-binary-file.hpp"
+
 
 int main(int argc, char** argv) {
     int index_file = 1;
@@ -12,5 +14,6 @@ int main(int argc, char** argv) {
     }
 
     std::cout << "Everything fine. File: " << argv[index_file] << std::endl;
+    
 
 }

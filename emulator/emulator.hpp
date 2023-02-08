@@ -5,12 +5,20 @@
 #include <iostream>
 #include <iterator>
 
-#include "DRAM.hpp"
+#include "../components/DRAM.hpp"
+#include "../components/cpu.hpp"
 
 /*
  *   It reads the binary file that contains the instructions for the riscv
  * emulator
  */
+
+class Emulator{
+public:
+    Emulator(std::string const&);
+    void runEmulator();
+private:
+};
 
 int openFile(std::string const&);
 

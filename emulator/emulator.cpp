@@ -1,12 +1,12 @@
-#include "take-binary-file.hpp"
+#include "emulator.hpp"
 
 int openFile(std::string const& file_name) {
     std::ifstream input_file(file_name, std::ios::binary);
 
-    if (input_file.open() == false) {
+    if (input_file.is_open() == false) {
         std::cerr << "Error in opening file: " << file_name << std::endl;
         // TODO:  change it to return an exception
-        return -1
+        return -1;
     }
 
     std::array<uint64_t, DRAM_SIZE> buffer;

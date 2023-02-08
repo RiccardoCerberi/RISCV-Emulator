@@ -4,6 +4,8 @@
 #include <array>
 #include <cstdint>
 
+#define NUMBER_REGISTERS 32
+
 //int constexpr number_registers = 32;
 
 /*
@@ -27,8 +29,7 @@
 class CPU {
 public:
 private:
-    static constexpr int const number_registers;
-    std::array<uint64_t, number_registers> m_registers; 
+    std::array<uint64_t, NUMBER_REGISTERS> m_registers; 
     uint64_t m_pc; // it's the 32-th register
 
     // steps

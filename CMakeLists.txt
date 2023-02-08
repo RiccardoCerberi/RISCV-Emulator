@@ -6,11 +6,11 @@ project( riscV-emulator )
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 add_subdirectory(components) # for the implementation files of the headers
-add_subdirectory(interface) # to take the binary file. 
+add_subdirectory(emulator) # to take the binary file. 
 
 add_executable(riscV-emulator main.cpp)
 
-target_include_directories(riscV-emulator interface components)
+target_include_directories(riscV-emulator emulator components)
 
 set_target_properties(riscV-emulator
     PROPERTIES
