@@ -34,7 +34,6 @@ public:
     void store(uint64_t, uint64_t, data_size);
     uint64_t load(uint64_t, data_size);
 
-
 #ifdef DEBUG
     // function to know till the instructions are stored in dram
     void setLastInstructionAddress(uint64_t);
