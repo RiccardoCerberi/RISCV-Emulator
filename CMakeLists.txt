@@ -10,7 +10,7 @@ add_subdirectory(emulator) # to take the binary file.
 
 add_executable(riscV-emulator main.cpp)
 
-link_directories(riscV-emulator emulator components)
+link_directories(riscV-emulator components emulator )
 
 set_target_properties(riscV-emulator
     PROPERTIES

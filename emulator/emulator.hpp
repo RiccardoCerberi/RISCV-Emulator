@@ -1,5 +1,5 @@
-#ifndef TAKE_BINARY_FILE_HPP
-#define TAKE_BINARY_FILE_HPP
+#ifndef EMULATOR_HPP
+#define EMULATOR_HPP
 
 #include <fstream>
 #include <iostream>
