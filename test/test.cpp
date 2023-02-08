@@ -27,6 +27,4 @@ enum class data_size : size_t
 int main() {
     data_size value = data_size::half_word;
     data_size value_ = data_size::half_word;
-
-    value_ + value;
 }

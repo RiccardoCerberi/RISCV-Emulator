@@ -11,7 +11,7 @@ Emulator::Emulator(std::string const &file_name)
 
     assert(("Error in opening the file", input_file.is_open() == true));
 
-    uint64_t address_tostore_instruction = DRAM_BASE;
+    uint64_t address_tostore_instruction = ;
     //size_t word = sizeof(uint32_t);
     uint64_t current_instruction;
     while (
