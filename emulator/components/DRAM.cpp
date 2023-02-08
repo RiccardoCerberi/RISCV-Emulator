@@ -21,6 +21,10 @@ DRAM::DRAM() {
 #endif
 
 
+void DRAM::store(uint64_t where_to_store, uint64_t what_to_store, data_size data_sz) {
+    
+}
+
 uint64_t DRAM::load(uint64_t address, data_size data_sz) {
     uint64_t data_to_take = 0x0;
 
@@ -37,3 +41,4 @@ uint64_t DRAM::load(uint64_t address, data_size data_sz) {
     }
     return data_to_take;
 }
+

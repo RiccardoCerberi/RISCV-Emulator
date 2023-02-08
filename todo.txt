@@ -1,6 +1,7 @@
-Finish the lecture: https://youtu.be/ReRj0Ww0TU4A
-    - point: 30:16
+1. define DRAM store function
 
 Follow the steps in the CMake guide. First lecture URL:
 https://cmake.org/cmake/help/latest/guide/tutorial/A%20Basic%20Starting%20Point.html
+
+2. TODO: correct the problem about executable and libraries linking
 
