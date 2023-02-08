@@ -43,20 +43,6 @@ public:
 #endif
 
 private:
-
-    // to optimize the code I could load(store) directly from the omonimum functions just by defining a for loop that iterates
-    // over the memory data_size times.
-
-    uint8_t store_byte(uint64_t,uint64_t, data_size);
-    uint8_t store_half_word(uint64_t, uint64_t, data_size);
-    uint8_t store_word(uint64_t, uint64_t, data_size);
-    uint8_t store_double_word(uint64_t, uint64_t, data_size);
-
-    uint64_t load_byte(uint64_t, data_size);
-    uint64_t load_half_word(uint64_t, data_size);
-    uint64_t load_word(uint64_t, data_size);
-    uint64_t load_double_word(uint64_t, data_size);
-
     std::array<uint64_t, kdram_base> m_dram;
 #ifdef DEBUG
     uint64_t m_last_instruction_address;
