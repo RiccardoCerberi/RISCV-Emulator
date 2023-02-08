@@ -33,4 +33,5 @@ https://superuser.com/questions/707873/do-emulators-parse-binary-code-within-fil
             - A natural solution consists in using the RAM and disk just provided by the laptop.
     3. Design the class.
 
-
+## How to debug the program passing command line argument using vscode cmake-tools extension ##
+https://github.com/microsoft/vscode-cmake-tools/blob/main/docs/debug-launch.md
