@@ -12,10 +12,10 @@ Emulator::Emulator(std::string const &file_name)
     assert(("Error in opening the file", input_file.is_open() == true));
 
     uint64_t address_tostore_instruction = DRAM_BASE;
-    size_t word = sizeof(uint32_t);
+    //size_t word = sizeof(uint32_t);
     uint64_t current_instruction;
     while (
-        input_file.read(reinterpret_cast<char *>(&current_instruction), word))
+        input_file.read(reinterpret_cast<char *>(&current_instruction), data_size::word))
     {
         m_dram.store(address_tostore_instruction, current_instruction, word);
         address_tostore_instruction += word;
