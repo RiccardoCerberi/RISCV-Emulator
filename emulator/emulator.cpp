@@ -1,19 +1,15 @@
 #include "emulator.hpp"
 
-int openFile(std::string const& file_name) {
+Emulator::Emulator(std::string const& file_name) {
     std::ifstream input_file(file_name, std::ios::binary);
 
-    if (input_file.is_open() == false) {
-        std::cerr << "Error in opening file: " << file_name << std::endl;
-        // TODO:  change it to return an exception
-        return -1;
-    }
+    assert(("Error in opening the file", input_file.is_open() == true));
 
-    std::array<uint64_t, DRAM_SIZE> buffer;
-    size_t i = 0;
+    uint64_t address_tostore_current_instruction = DRAM_BASE;
+    size_t word = sizeof(uint32_t);
+    uint64_t current_instruction;
     while (
-        input_file.read(reinterpret_cast<char*>(&buffer[i]), sizeof(uint8_t))) {
-        ++i;
+        input_file.read(reinterpret_cast<char*>(&current_instruction), word)) {
+        m_dram.store(address_tostore_current_instruction, current_instruction, word);
     }
-    setInstructionsMemory(buffer);
 }

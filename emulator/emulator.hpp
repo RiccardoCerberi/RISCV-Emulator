@@ -3,7 +3,7 @@
 
 #include <fstream>
 #include <iostream>
-#include <iterator>
+#include<cassert>
 
 #include "../components/DRAM.hpp"
 #include "../components/cpu.hpp"
@@ -18,8 +18,9 @@ public:
     Emulator(std::string const&);
     void runEmulator();
 private:
+    DRAM m_dram;
+    CPU m_cpu;
 };
 
-int openFile(std::string const&);
 
 #endif
