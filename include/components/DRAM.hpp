@@ -1,11 +1,12 @@
 #ifndef DRAM_HPP
 #define DRAM_HPP
 
+#include<iostream>
 #include <array>
 #include <cstdint>
 #include <cstdio>
 #include<cassert>
-#include "../constants.hpp"
+#include "constants.hpp"
 
 
 #define DEBUG

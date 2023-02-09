@@ -3,7 +3,7 @@
 
 #include <array>
 #include <cstdint>
-#include "../constants.hpp"
+#include "constants.hpp"
 
 /*
  * TODO: configure ecall to implement system calls.
