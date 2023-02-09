@@ -15,7 +15,7 @@ add_subdirectory(main)
 
 set_target_properties(emulator
     PROPERTIES
-      RUNTIME_OUTPUT_DIRECTORY "${PROJECT_SOURCE_DIR}/bin/$<CONFIG>")
+        RUNTIME_OUTPUT_DIRECTORY "${PROJECT_SOURCE_DIR}/bin/$<CONFIG>")
 
 target_compile_features(emulator PUBLIC cxx_std_17)
 
@@ -24,7 +24,7 @@ target_compile_features(emulator PUBLIC cxx_std_17)
 set(gcc_like_cxx "$<COMPILE_LANG_AND_ID:CXX,ARMClang,AppleClang,Clang,GNU>")
 set(msvc_cxx "$<COMPILE_LANG_AND_ID:CXX,MSVC>")
 
-set(gcc_flags "-Wall;-Wextra;-Wshadow;-Wshadow;-Wformat=2;-g;-DDEBUG")
+set(gcc_flags "-Wall;-Wextra;-Wshadow;-Wshadow;-Wformat=2;-g;")
 set(msvc_flags "-W3")
 
 target_compile_options(emulator PRIVATE

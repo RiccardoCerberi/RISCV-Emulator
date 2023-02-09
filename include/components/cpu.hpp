@@ -1,8 +1,8 @@
-#ifndef CPU_HPP
-#define CPU_HPP
+#pragma once
 
-#include <array>
+#include <vector>
 #include <cstdint>
+#include<iostream>
 #include "constants.hpp"
 
 /*
@@ -26,15 +26,14 @@
 
 class CPU {
 public:
+    CPU();
 private:
-    std::array<uint64_t, ktot_registers> m_registers; 
+    std::vector<uint64_t> m_registers;
     uint64_t m_pc; // it's the 32-th register
 
     // steps
-    void fetch();
-    void decode();
-    void execute();
-    void writeBack();
+    //void fetch();
+    //void decode();
+    //void execute();
+    //void writeBack();
 };
-
-#endif

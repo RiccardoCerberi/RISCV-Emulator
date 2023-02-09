@@ -1,5 +1,4 @@
-#ifndef EMULATOR_HPP
-#define EMULATOR_HPP
+#pragma once
 
 #include <fstream>
 #include <iostream>
@@ -17,11 +16,9 @@
 class Emulator{
 public:
     Emulator(std::string const&);
-    void runEmulator();
+    //void runEmulator();
 private:
     DRAM m_dram;
     CPU m_cpu;
 };
 
-
-#endif

@@ -6,10 +6,12 @@ file(GLOB emulator_sources emulator/*.cpp)
 
 add_library(
     components 
+    STATIC
     ${components_sources}
 )
 add_library(
     emulator
+    STATIC
     ${emulator_sources}
 )
 

@@ -1,8 +1,6 @@
 #include "../../include/components/DRAM.hpp"
 
-DRAM::DRAM() : m_last_instruction_address{0x0}, m_last_instruction_already_set{false} {
-    m_dram[register_index::kzero_register] = 0x0;
-    m_dram[register_index::ksp] = kdram_base + kdram_size;
+DRAM::DRAM() : m_dram(kdram_size,0),m_last_instruction_address{0x0}, m_last_instruction_already_set{false} {
 }
 
 #ifdef DEBUG

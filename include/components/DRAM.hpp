@@ -1,8 +1,7 @@
-#ifndef DRAM_HPP
-#define DRAM_HPP
+#pragma once
 
 #include <iostream>
-#include <array>
+#include <vector>
 #include <cstdint>
 #include <cstdio>
 #include <cassert>
@@ -46,12 +45,10 @@ public:
     void setLastInstructionAddress(uint64_t);
 
 private:
-    std::array<uint64_t, kdram_base> m_dram;
+    std::vector<uint64_t> m_dram;
     uint64_t m_last_instruction_address;
 
 // variable to know if the variable m_last_instruction_address has already been set to avoid user from wrongly change the variable
 // causing data corruption
     bool m_last_instruction_already_set;
 };
-
-#endif
