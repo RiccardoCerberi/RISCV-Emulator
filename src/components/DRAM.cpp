@@ -46,7 +46,7 @@ uint64_t DRAM::load(uint64_t address, data_size data_sz) {
 
 // function to set the m_last_instruction_address only once.
 // NOTE: possible problem with thread. If more than one read m_set_last_instruction_address == 0 can modify the m_last_instruction_address
-inline void DRAM::setLastInstructionAddress(uint64_t last_instruction_address) {
+void DRAM::setLastInstructionAddress(uint64_t last_instruction_address) {
     if (m_last_instruction_already_set == false) {
         m_last_instruction_address = last_instruction_address; 
         m_last_instruction_already_set = true;
