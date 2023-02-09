@@ -7,8 +7,9 @@
 
 Emulator::Emulator(std::string const &file_name)
 {
-    std::ifstream input_file(file_name,  std::ios::binary);
+    std::ifstream input_file;
 
+    input_file.open(file_name,  std::ios::binary);
     assert(input_file.is_open() == true);
 
     uint64_t address_tostore_instruction = kdram_base;
@@ -20,4 +21,5 @@ Emulator::Emulator(std::string const &file_name)
         address_tostore_instruction += data_size::kword;
     }
     m_dram.setLastInstructionAddress(address_tostore_instruction - static_cast<uint64_t>(data_size::kword));
+    std::cout << "Instructions are constructed\n";
 }

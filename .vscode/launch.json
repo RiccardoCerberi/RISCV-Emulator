@@ -8,7 +8,7 @@
             // Resolved by CMake Tools:
             "program": "${command:cmake.launchTargetPath}",
             "args": [
-                "testbinfile.bin"
+                "test.bin"
             ],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
