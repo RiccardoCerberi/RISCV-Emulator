@@ -1,4 +1,4 @@
-#include "DRAM.hpp"
+#include "include/components/DRAM.hpp"
 
 DRAM::DRAM() {
     m_dram[register_index::kzero_register] = 0x0;
