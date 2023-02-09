@@ -1,3 +1,3 @@
-int main() {
-    int n =0;
+int _start() {
+    int n = 0;
 }
