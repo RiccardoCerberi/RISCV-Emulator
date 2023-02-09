@@ -8,6 +8,7 @@
 #include "../components/DRAM.hpp"
 #include "../components/cpu.hpp"
 
+
 /*
  *   It reads the binary file that contains the instructions for the riscv
  * emulator

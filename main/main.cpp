@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cstring>
 
-#include "emulator/emulator.hpp"
+#include "../include/emulator/emulator.hpp"
 
 #define MAX_FILE_LENGTH 100
 

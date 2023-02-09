@@ -9,7 +9,7 @@
 #include "constants.hpp"
 
 
-#define DEBUG
+
 
 /*
     DRAM is implemented as an array of SIZE_DRAM bits.
