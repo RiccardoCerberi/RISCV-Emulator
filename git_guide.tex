@@ -79,3 +79,7 @@ Alcune note:
 Per iniziare si può clonare una repository online, il comando è semplice:
 \texttt{git clone url\_repository} che sintetizza i comandi:
 \texttt{mkdir nome\_repo cd nome\_repo git init git remote add origin url\_repo git pull}.
+
+\subsection{Recuperare directory cancellate}
+Se si è usato il comando rm per cancellare i file e non si è ancora fatto un add git, il comando \texttt{git checkout --filename}. 
+Qualora si volesse ristabilire lo stato iniziale della ripository basta non specificare \texttt{--filename} scrivendo soltanto \texttt{git checkout}.
