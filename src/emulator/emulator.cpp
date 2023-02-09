@@ -7,9 +7,9 @@
 
 Emulator::Emulator(std::string const &file_name)
 {
-    std::ifstream input_file(file_name, std::ios::binary);
+    std::ifstream input_file(file_name,  std::ios::binary);
 
-    assert(("Error in opening the file", input_file.is_open() == true));
+    assert(input_file.is_open() == true);
 
     uint64_t address_tostore_instruction = kdram_base;
     uint64_t current_instruction = 0x0;

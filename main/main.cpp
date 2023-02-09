@@ -15,11 +15,10 @@ int main(int argc, char **argv)
         std::cerr << "Error: \n";
         return -1;
     }
-    std::cout << "Everything fine. File provided: " << argv[index_file] << std::endl;
+    std::string bin_file{ argv[index_file]};
+    std::cout << "Everything fine. File provided: " << bin_file << std::endl;
 
-    std::string file_name(argv[index_file]);
-
-    Emulator riscv_emulator(file_name);
+    Emulator riscv_emulator(bin_file);
     return 0;
 }
 
