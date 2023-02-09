@@ -1,15 +1,12 @@
 #ifndef DRAM_HPP
 #define DRAM_HPP
 
-#include<iostream>
+#include <iostream>
 #include <array>
 #include <cstdint>
 #include <cstdio>
-#include<cassert>
+#include <cassert>
 #include "constants.hpp"
-
-
-
 
 /*
     DRAM is implemented as an array of SIZE_DRAM bits.
@@ -27,26 +24,34 @@ reduced by DRAM_BASE DRAM is defined as a vector that starts from 0, hence every
 address need to be reduced by DRAM_BASE.
 */
 
+class DRAM;
 
-class DRAM {
+
+#ifdef DEBUG
+// to print out data formatted it should be enough the << operator
+void printInstructionsMemory(DRAM const &);
+#endif
+
+class DRAM
+{
+#ifdef DEBUG
+    friend void printInstructionsMemory(DRAM const &);
+#endif
 public:
     DRAM();
 
     void store(uint64_t, uint64_t, data_size);
     uint64_t load(uint64_t, data_size);
 
-#ifdef DEBUG
-    // function to know till the instructions are stored in dram
     void setLastInstructionAddress(uint64_t);
-    // to print out data formatted it should be enough the << operator
-    void printInstructionsMemory();
-#endif
 
 private:
     std::array<uint64_t, kdram_base> m_dram;
-#ifdef DEBUG
     uint64_t m_last_instruction_address;
-#endif
+
+// variable to know if the variable m_last_instruction_address has already been set to avoid user from wrongly change the variable
+// causing data corruption
+    bool m_last_instruction_already_set;
 };
 
 #endif

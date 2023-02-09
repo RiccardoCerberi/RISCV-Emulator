@@ -12,15 +12,12 @@ Emulator::Emulator(std::string const &file_name)
     assert(("Error in opening the file", input_file.is_open() == true));
 
     uint64_t address_tostore_instruction = kdram_base;
-    uint64_t current_instruction;
-
+    uint64_t current_instruction = 0x0;
     while (
         input_file.read(reinterpret_cast<char *>(&current_instruction), data_size::kword))
     {
         m_dram.store(address_tostore_instruction, current_instruction, data_size::kword);
         address_tostore_instruction += data_size::kword;
     }
-#ifdef DEBUG
-    m_dram.setLastInstructionAddress(address_tostore_instruction - data_size::kword);
-#endif
+    m_dram.setLastInstructionAddress(address_tostore_instruction - static_cast<uint64_t>(data_size::kword));
 }
