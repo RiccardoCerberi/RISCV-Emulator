@@ -5,21 +5,12 @@
     because I'll be able to change it to interact with the operative system
 */
 
-Emulator::Emulator(std::string const &file_name)
-{
-    std::ifstream input_file;
+Emulator::Emulator(std::string const &file_name) : m_cpu(file_name)
+{}
 
-    input_file.open(file_name,  std::ios::binary);
-    assert(input_file.is_open() == true);
 
-    uint64_t address_tostore_instruction = kdram_base;
-    uint64_t current_instruction = 0x0;
-    while (
-        input_file.read(reinterpret_cast<char *>(&current_instruction), data_size::kword))
-    {
-        m_dram.store(address_tostore_instruction, current_instruction, data_size::kword);
-        address_tostore_instruction += data_size::kword;
+void Emulator::runEmulator() {
+    while (m_cpu.checkEndProgram() == false) {
+        m_cpu.steps();
     }
-    m_dram.setLastInstructionAddress(address_tostore_instruction - static_cast<uint64_t>(data_size::kword));
-    std::cout << "Instructions are constructed\n";
 }

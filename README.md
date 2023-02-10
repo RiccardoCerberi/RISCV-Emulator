@@ -21,6 +21,9 @@ Our memory model will be formed by the cpu and within the cache, ROM, DRAM and I
     * RAM, ROM and I/O
     * Registers 
 
+## Hierarchy ##
+emulator -> cpu -> bus -> dram
+
 ## How to interact with the Unix operative system? ##
 Every operative system interacts with the hardware through the device tree.
 

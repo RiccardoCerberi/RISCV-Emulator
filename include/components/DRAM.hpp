@@ -23,32 +23,13 @@ reduced by DRAM_BASE DRAM is defined as a vector that starts from 0, hence every
 address need to be reduced by DRAM_BASE.
 */
 
-class DRAM;
-
-
-#ifdef DEBUG
-// to print out data formatted it should be enough the << operator
-void printInstructionsMemory(DRAM const &);
-#endif
-
 class DRAM
 {
-#ifdef DEBUG
-    friend void printInstructionsMemory(DRAM const &);
-#endif
 public:
     DRAM();
 
     void store(uint64_t, uint64_t, data_size);
     uint64_t load(uint64_t, data_size);
-
-    void setLastInstructionAddress(uint64_t);
-
 private:
     std::vector<uint64_t> m_dram;
-    uint64_t m_last_instruction_address;
-
-// variable to know if the variable m_last_instruction_address has already been set to avoid user from wrongly change the variable
-// causing data corruption
-    bool m_last_instruction_already_set;
 };

@@ -1,22 +1,6 @@
 #include "../../include/components/DRAM.hpp"
 
-DRAM::DRAM() : m_dram(kdram_size,0),m_last_instruction_address{0x0}, m_last_instruction_already_set{false} {
-}
-
-#ifdef DEBUG
-    // to print out data formatted it should be enough the << operator
-    void printInstructionsMemory(DRAM const& dram) {
-        uint64_t instruction;
-        uint64_t address = kdram_base;
-        while (address != dram.m_last_instruction_address) {
-            instruction = dram.load(address, data_size::kword);
-            // check if it's right the way of formatting the instruction
-            std::cout << instruction << "\n";
-            address += data_size::kword;
-        }
-    }
-#endif
-
+DRAM::DRAM() : m_dram(kdram_size,0) {}
 
 void DRAM::store(uint64_t where_to_store, uint64_t what_to_store, data_size data_sz) {
     for (size_t i = 0; i < data_sz; ++i) {
@@ -40,13 +24,4 @@ uint64_t DRAM::load(uint64_t address, data_size data_sz) {
         data_to_take |= (uint64_t) (m_dram[address - kdram_base + i] << (8*i));
     }
     return data_to_take;
-}
-
-// function to set the m_last_instruction_address only once.
-// NOTE: possible problem with thread. If more than one read m_set_last_instruction_address == 0 can modify the m_last_instruction_address
-void DRAM::setLastInstructionAddress(uint64_t last_instruction_address) {
-    if (m_last_instruction_already_set == false) {
-        m_last_instruction_address = last_instruction_address; 
-        m_last_instruction_already_set = true;
-    }
 }
