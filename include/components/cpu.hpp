@@ -50,7 +50,7 @@ private:
 
     void setLastInstrAddress(uint64_t const);
 
-    uint8_t takeBits(uint32_t,uint8_t,uint8_t);
+    uint8_t takeBits(uint32_t,uint8_t const,uint8_t const);
     /*
      * 5-stages pipeline
      */
