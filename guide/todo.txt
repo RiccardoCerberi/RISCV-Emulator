@@ -1,2 +1,4 @@
+Complete the jal instruction execution. 
+Check the correcteness watching
 george hotz:
 47:02
