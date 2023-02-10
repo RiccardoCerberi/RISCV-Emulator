@@ -1,4 +1,5 @@
 #pragma once
+#include<cstdint>
 /*
  * TODO: see how riscv handles page-walking.
  * We'll use the Sv32 model, which involves two level page walking.
@@ -7,7 +8,7 @@
  * The address of the first page table is stored in the satp register that must be set every time a context switch occurs.
 */
 
-//class TLB {
-//    public:
-//    //static
-//};
+class TLB {
+    public:
+    uint64_t virtToPhys(uint64_t);
+};
