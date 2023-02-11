@@ -106,15 +106,8 @@ private:
 };
 
 class Jis : public InstructionFormat {
-<<<<<<< HEAD
-    private:
-        
-};
-=======
 public:
     Jis(uint32_t const& is) : InstructionFormat(is) {}
->>>>>>> bfe578073bbcf936b544c9da4f4da52cb63b72d1
-
 private:
     uint64_t m_immediate;
 };
