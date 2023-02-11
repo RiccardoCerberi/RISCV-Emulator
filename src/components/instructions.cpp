@@ -4,15 +4,20 @@
 #include <cwchar>
 
 // Default functions
+
+void InstructionFormat::readRegister(const reg_type &) {}
+
 void InstructionFormat::accessMemory(Bus&) {}
 
-void InstructionFormat::writeBack(reg_type&,uint64_t&) {}
+void InstructionFormat::writeBack(reg_type&) {}
+
+uint64_t InstructionFormat::moveNextInstruction() { 
+    return m_curr_pc + data_size::kword; 
+}
 
 // Jump
 void Jis::execution() {
-
     m_reg_save_pcis = BitsManipulation::takeBits(m_instruction, 7, 11);
-
     // the immediate recevied it's in half word, to report
     // it in byte it's needed a left shifting of 1
     m_immediate =
@@ -24,12 +29,18 @@ void Jis::execution() {
 #endif
 }
 
-void Jis::writeBack(reg_type& registers, uint64_t& pc) {
-    registers[m_reg_save_pcis] = pc + data_size::kword;
-    pc += m_immediate;
+void Jis::writeBack(reg_type& registers) {
+    registers[m_reg_save_pcis] =  + data_size::kword;
 }
 
+uint64_t Jis::moveNextInstruction() {
+    return m_curr_pc + m_immediate;
+}
+
+
 // I-format
+
+
 size_t I::takeRegS() {
     return BitsManipulation::takeBits(m_instruction,15,19);
 }
@@ -42,13 +53,46 @@ uint64_t I::takeImm() {
     return BitsManipulation::extendSign(BitsManipulation::takeBits(m_instruction, 20, 31));
 }
 
-// Jris
-void Jris::execution() {}
-
-void Jris::writeBack(reg_type& registers,uint64_t& pc) {
-    registers[m_reg_dest] = pc + data_size::kword; 
-    pc = (m_immediate + registers[m_reg_src]) & (static_cast<uint64_t>(-1) >>  (sizeof(uint64_t)*8 - 1)) ;
+uint8_t I::takeFunc3() {
+    return BitsManipulation::takeBits(m_instruction, 12, 14);
 }
+
+void I::readRegister(const reg_type & regs) {
+    m_rs = regs[m_index_rs];
+}
+
+void I::writeBack(reg_type &regs) {
+    regs[m_index_rd] = m_rd;
+}
+
+// Jris
+void Jris::execution() {
+    m_rs = m_immediate + m_rs;
+    m_rd = m_curr_pc + data_size::kword;
+}
+
+void Jris::writeBack(reg_type& registers) {
+    registers[m_reg_dest] =  
+}
+
+uint64_t Jris::moveNextInstruction() {
+    return (m_reg_res) 
+            & (static_cast<uint64_t>(-1) >>  (sizeof(uint64_t)*8 - 1));
+}
+
+void ImmOp::execution() {
+    
+}
+
+
+
+
+
+
+
+
+
+
 
 
 

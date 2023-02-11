@@ -1,7 +1,7 @@
-#include "../../include/components/cpu.hpp"
-
 #include <cstdint>
 #include <sys/types.h>
+
+#include "../../include/components/cpu.hpp"
 
 CPU::CPU(std::string const& file_name)
     : m_pc{kdram_base}
@@ -31,6 +31,10 @@ inline void CPU::setLastInstrAddress(uint64_t const l_is) {
     m_address_last_is = l_is;
 }
 
+#ifdef DEBUG
+    uint32_t CPU::getCurrentInstruction() { return m_pc; }
+#endif
+
 // last is included
 uint8_t BitsManipulation::takeBits(uint32_t is, uint8_t const beg, uint8_t const last) {
     assert(((last > beg) && (last - beg <= 8)));
@@ -44,6 +48,7 @@ uint8_t BitsManipulation::takeBits(uint32_t is, uint8_t const beg, uint8_t const
     return (is >> beg) & (uint32_t(-1) >> (sizeof(is) * 8 - 1 + beg - last));
 }
 
+
 void CPU::steps() {
     uint32_t is = fetch();
 
@@ -55,9 +60,9 @@ void CPU::steps() {
 
     writeBack(is_format);
 
-    is_format->~InstructionFormat();
+    m_pc = moveNextInstruction(is_format);
 
-    m_pc += data_size::kword;
+    is_format->~InstructionFormat();
 }
 
 uint32_t CPU::fetch() {
@@ -71,22 +76,30 @@ InstructionFormat* CPU::decode(uint32_t const is) {
 
     switch (BitsManipulation::takeBits(is, 0, 7)) {
         case kjal:
-            is_format = new Jis(is);
+            is_format = new Jis(is, m_pc);
             // TODO: complete all cases
         case kjalr:
-            is_format = new Jris(is);
+            is_format = new Jris(is, m_pc);
     }
     return is_format;
 }
 
 // execute the operation decoded in the previous stage
-void CPU::execute(InstructionFormat* is_format) { is_format->execution(); }
+void CPU::execute(InstructionFormat* is_format) { 
+    is_format->readRegister(m_registers);
+    is_format->execution(); 
+}
+
+
 // memory access to store or load data
 void CPU::memoryAccess(InstructionFormat* is_format) {
     is_format->accessMemory(m_bus);
 }
 // write the result to the address
 void CPU::writeBack(InstructionFormat* is_format) {
-    is_format->writeBack(m_registers, m_pc);
+    is_format->writeBack(m_registers);
 }
 
+uint64_t CPU::moveNextInstruction(InstructionFormat* is_format) {
+    return is_format->moveNextInstruction();
+}

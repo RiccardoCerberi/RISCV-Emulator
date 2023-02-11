@@ -4,7 +4,7 @@
 #include<cstdint>
 #include"bus.hpp"
 #include"constants.hpp"
-
+#include"cpu.hpp"
 
 /*
  * 
@@ -16,7 +16,7 @@
         kbranch = 0b1100011,
         kload = 0b0000011,
         kstore = 0b0100011,
-        kimm = 0b0010011,  // operations like addi
+        kimmop = 0b0010011,  // operations like addi
         kop = 0b0110011,   // operations without immediate, like add
         kfence = 0b0001111,
         ksystem = 0b1110011  // ecall ect
@@ -25,25 +25,27 @@
 
 class InstructionFormat {
 public:
-    InstructionFormat(uint32_t const&);
+    InstructionFormat(uint32_t const& is, uint64_t const pc)
+        : m_instruction(is), m_curr_pc(pc) {}
     // it prepares the information that will use in the next stages;
     // for instance rd, rs etc
+    virtual void readRegister(reg_type const&);
     virtual void execution() = 0;
-    // by default instructions that don't access memory or registers do nothing
     virtual void accessMemory(Bus&);
     virtual void writeBack(reg_type&);
-    virtual void moveNextInstruction(uint64_t&);
+    virtual uint64_t moveNextInstruction();
     virtual ~InstructionFormat() = default;
 protected:
     uint32_t const& m_instruction;
+    uint64_t const m_curr_pc;
 };
 
 class Jis : public InstructionFormat {
 public:
-    Jis(uint32_t const& is) : InstructionFormat(is) {}
+    Jis(uint32_t const& is, uint64_t const& pc) : InstructionFormat(is,pc){}
     void execution() override;
     void writeBack(reg_type&) override;
-    void moveNextInstruction(uint64_t&) override;
+    uint64_t moveNextInstruction() override;
     ~Jis() = default;
 private:
     uint64_t m_immediate;
@@ -51,27 +53,52 @@ private:
 };
 
 //  I-format 
+//  Every I-instruction reads register and add the result of the operation to 
 class I : public InstructionFormat{
+public:
+    void readRegister(reg_type const&) override;
+    void writeBack(reg_type&) override;
 protected:
-    I(uint32_t is) 
-        : InstructionFormat(is), m_reg_src(takeRegS()), m_reg_dest(takeRegD()), m_immediate(takeImm())
+    I(uint32_t is, uint64_t const& pc) 
+        : InstructionFormat(is, pc), 
+          m_index_rs(takeRegS()), 
+          m_index_rd(takeRegD()), 
+          m_immediate(takeImm()),
+          m_func3(takeFunc3())
     {}
 private:
     size_t takeRegS();
     size_t takeRegD();
     uint64_t takeImm();
+    uint8_t takeFunc3();
 protected:
     uint64_t m_immediate;
-    size_t m_reg_src;
-    size_t m_reg_dest;
+    size_t m_index_rs;
+    size_t m_index_rd;
+    uint8_t m_func3;
+
+    uint64_t m_rs;
+    uint64_t m_rd;
 };
 
 class Jris : public I {
 public:
-    Jris(uint32_t const& is) : I(is) {}
+    Jris(uint32_t const& is, uint64_t const&pc) : I(is,pc) {}
     void execution() override;
-    void writeBack(reg_type&) override;
-    void moveNextInstruction(uint64_t&) override;
+    uint64_t moveNextInstruction() override;
     ~Jris() = default;
 private:
+    uint64_t m_reg;
 };
+
+// addi, etc
+class ImmOp : public I {
+public:
+    ImmOp(uint32_t const& is, uint64_t const&pc) : I(is,pc) {}
+    void execution() override; 
+private:
+};
+
+
+
+

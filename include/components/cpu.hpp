@@ -50,6 +50,7 @@ public:
     bool checkEndProgram();
 #ifdef DEBUG
     void printReg();
+    uint32_t getCurrentInstruction();
 #endif
 private:
     enum opcode : uint8_t {
@@ -60,7 +61,7 @@ private:
         kbranch = 0b1100011,
         kload = 0b0000011,
         kstore = 0b0100011,
-        kimm = 0b0010011,  // operations like addi
+        kimmop = 0b0010011,  // operations like addi
         kop = 0b0110011,   // operations without immediate, like add
         kfence = 0b0001111,
         ksystem = 0b1110011  // ecall ect
@@ -91,5 +92,7 @@ private:
     void memoryAccess(InstructionFormat*);
     // write the result to the address
     void writeBack(InstructionFormat*);
+
+    uint64_t moveNextInstruction(InstructionFormat*);
 };
 
