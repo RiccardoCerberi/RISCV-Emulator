@@ -101,6 +101,9 @@ private:
     uint32_t const& m_instruction;
 };
 
-class Jis : public InstructionFormat {};
+class Jis : public InstructionFormat {
+    private:
+        
+};
 
 
