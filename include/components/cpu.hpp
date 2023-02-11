@@ -86,7 +86,8 @@ private:
     // proper instruction
     InstructionFormat* decode(uint32_t const);
     // execute the arithmetic operation decoded in the previous stage, by
-    // overloading the omonimum method
+    // overloading the omonimum method,
+    // It's needed a registers read
     void execute(InstructionFormat*);
     // memory access to store or load data
     void memoryAccess(InstructionFormat*);

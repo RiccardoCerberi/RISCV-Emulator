@@ -67,21 +67,16 @@ void I::writeBack(reg_type &regs) {
 
 // Jris
 void Jris::execution() {
-    m_rs = m_immediate + m_rs;
     m_rd = m_curr_pc + data_size::kword;
 }
 
-void Jris::writeBack(reg_type& registers) {
-    registers[m_reg_dest] =  
-}
-
 uint64_t Jris::moveNextInstruction() {
-    return (m_reg_res) 
+    return (m_rs + m_immediate) 
             & (static_cast<uint64_t>(-1) >>  (sizeof(uint64_t)*8 - 1));
 }
 
+// Finsh
 void ImmOp::execution() {
-    
 }
 
 

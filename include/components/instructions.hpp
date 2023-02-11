@@ -53,7 +53,10 @@ private:
 };
 
 //  I-format 
-//  Every I-instruction reads register and add the result of the operation to 
+//  Every I-instruction reads register and saves the result. 
+//  What distinguishes any instruction is the execute function that
+//  setup the result that will be stored in rd in addition to extra +
+//  operation, like saving the next instruction (jalr)
 class I : public InstructionFormat{
 public:
     void readRegister(reg_type const&) override;
