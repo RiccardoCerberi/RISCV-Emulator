@@ -10,6 +10,7 @@
 #include "bus.hpp"
 #include "constants.hpp"
 #include "tlb.hpp"
+#include "instructions.hpp"
 
 /*
  * TODO: configure ecall to implement system calls.
@@ -35,6 +36,11 @@
 using reg_type = std::array<uint64_t, ktot_registers>;
 
 class InstructionFormat;
+
+struct BitsManipulation {
+    static uint8_t takeBits(uint32_t, uint8_t const, uint8_t const);
+    static uint64_t extendSign(uint32_t);
+};
 
 class CPU {
 public:
@@ -69,9 +75,6 @@ private:
 
     void setLastInstrAddress(uint64_t const);
 
-    uint8_t takeBits(uint32_t, uint8_t const, uint8_t const);
-    uint64_t makeImmediate(uint32_t);
-    uint64_t extendSign(uint32_t);
     /*
      * 5-stages pipeline
      */
@@ -88,27 +91,5 @@ private:
     void memoryAccess(InstructionFormat*);
     // write the result to the address
     void writeBack(InstructionFormat*);
-};
-
-class InstructionFormat {
-public:
-    InstructionFormat(uint32_t const&);
-    // it prepares the information that will use in the next stages;
-    // for instance rd, rs etc
-    virtual void execution() = 0;
-    // by default instructions that don't access memory or registers do nothing
-    virtual void accessMemory(Bus&);
-    virtual void writeBack(reg_type&, uint64_t);
-    virtual ~InstructionFormat() = 0;
-
-private:
-    uint32_t const& m_instruction;
-};
-
-class Jis : public InstructionFormat {
-public:
-    Jis(uint32_t const& is) : InstructionFormat(is) {}
-private:
-    uint64_t m_immediate;
 };
 

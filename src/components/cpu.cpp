@@ -1,6 +1,7 @@
 #include "../../include/components/cpu.hpp"
 
 #include <cstdint>
+#include <sys/types.h>
 
 CPU::CPU(std::string const& file_name)
     : m_pc{kdram_base}
@@ -31,7 +32,7 @@ inline void CPU::setLastInstrAddress(uint64_t const l_is) {
 }
 
 // last is included
-uint8_t CPU::takeBits(uint32_t is, uint8_t const beg, uint8_t const last) {
+uint8_t BitsManipulation::takeBits(uint32_t is, uint8_t const beg, uint8_t const last) {
     assert(((last > beg) && (last - beg <= 8)));
 #ifdef DEBUG
     bitset<32> ins(is);
@@ -68,10 +69,12 @@ uint32_t CPU::fetch() {
 InstructionFormat* CPU::decode(uint32_t const is) {
     InstructionFormat* is_format = nullptr;
 
-    switch (takeBits(is, 0, 7)) {
+    switch (BitsManipulation::takeBits(is, 0, 7)) {
         case kjal:
             is_format = new Jis(is);
             // TODO: complete all cases
+        case kjalr:
+            is_format = new Jris(is);
     }
     return is_format;
 }
@@ -84,28 +87,6 @@ void CPU::memoryAccess(InstructionFormat* is_format) {
 }
 // write the result to the address
 void CPU::writeBack(InstructionFormat* is_format) {
-    is_format->writeBack(m_registers);
-}
-
-void InstructionFormat::accessMemory(Bus&) {}
-
-void InstructionFormat::writeBack(reg_type&) {}
-
-void Jis::execution() override {
-    // the immediate recevied it's in half word, to report
-    // it in byte it's needed a left shifting of 1
-    m_immediate =
-        extendSign(takeBits(is, 21, 30) << 1 | takeBits(is, 20, 20) << 11 |
-                   takeBits(is, 12, 19) << 12 | takeBits(is, 31, 31) << 20);
-#ifdef DEBUG
-    std::binset<data_size::kword> is_bin(is);
-    std::cout << "Instruction: " << is_bin << "\nImmediate=" << imm << "\n";
-#endif
-    // it's normally to have sum overflow, it's the way to jump backward
-}
-
-void Jis::writeBack(reg_type& registers) override {
-    registers[ra] = m_pc + 4;
-    m_pc += m_immediate;
+    is_format->writeBack(m_registers, m_pc);
 }
 
