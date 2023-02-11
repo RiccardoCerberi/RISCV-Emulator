@@ -9,6 +9,6 @@
 */
 
 class TLB {
-    public:
+public:
     uint64_t virtToPhys(uint64_t);
 };
