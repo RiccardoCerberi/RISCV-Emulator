@@ -39,7 +39,7 @@ class InstructionFormat;
 
 struct BitsManipulation {
     static uint8_t takeBits(uint32_t, uint8_t const, uint8_t const);
-    static uint64_t extendSign(uint32_t);
+    static uint64_t extendSign(uint32_t&);
 };
 
 class CPU {

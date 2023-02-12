@@ -48,6 +48,17 @@ uint8_t BitsManipulation::takeBits(uint32_t is, uint8_t const beg, uint8_t const
     return (is >> beg) & (uint32_t(-1) >> (sizeof(is) * 8 - 1 + beg - last));
 }
 
+// for the immediate only
+uint64_t BitsManipulation::extendSign(uint32_t imm) {
+    // 2048 = 0[...]1[...]0 and 1 is the twelfth, so if 
+    // the immediate has 1 in that position it will be equal to 2048,
+    // otherwise to 0
+    if ((imm & 2048 )== 2048) {
+        return (static_cast<uint64_t>(imm) | (static_cast<uint64_t>(-1) << 11));
+    }
+    // simply add zero
+    return static_cast<uint64_t>(imm);
+}
 
 void CPU::steps() {
     uint32_t is = fetch();
