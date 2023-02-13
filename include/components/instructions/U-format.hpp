@@ -5,14 +5,13 @@ class U : public InstructionFormat {
     public:
         U(uint32_t const is, uint64_t const pc) 
         : InstructionFormat(is,pc),
-          m_imm(takeImm()),
+          m_offset(takeOffset()),
           m_index_rd(takeRd())
     {}
-        void execution() override;
         void writeBack(reg_type&) override;
     private:
 
-        uint32_t takeImm();
+        uint32_t takeOffset();
         size_t takeRd();
 
         uint32_t m_offset;

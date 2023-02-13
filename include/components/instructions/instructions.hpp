@@ -13,11 +13,11 @@
      kauipc = 0b0010111,
      (V) kjal = 0b1101111, 
      (V) kjalr = 0b1100111,
-     kbranch = 0b1100011,
+     (V) kbranch = 0b1100011,
      (V) kload = 0b0000011,
-     kstore = 0b0100011,
+     (V) kstore = 0b0100011,
      (V) kimmop = 0b0010011,  // operations like addi
-     kop = 0b0110011,   // operations without immediate, like add
+     (V)kop = 0b0110011,   // operations without immediate, like add
      kfence = 0b0001111,
      ksystem = 0b1110011  // ecall ect
  *
