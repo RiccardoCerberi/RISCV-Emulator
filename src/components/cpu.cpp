@@ -81,11 +81,12 @@ uint32_t CPU::fetch() {
 // number [0, 5]
 InstructionFormat* CPU::decode(uint32_t const is) {
     InstructionFormat* is_format = nullptr;
+    opcode_t op = opcode_t(BitsManipulation::takeBits(is, 0, 7));
 
-    //switch (BitsManipulation::takeBits(is, 0, 7)) {
-        case kjal:
+    switch (op) {
+        case opcode_t::kjal:
             is_format = new Jis(is, m_pc);
-            // TODO: complete all cases
+            break;
         case kjalr:
             is_format = new Jris(is, m_pc);
     }
