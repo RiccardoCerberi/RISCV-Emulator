@@ -14,7 +14,7 @@ uint64_t Jis::takeOffset()
         | BitsManipulation::takeBits(m_instruction, 12, 19) << 12 
         | BitsManipulation::takeBits(m_instruction, 31, 31) << 20, 
         pos
-    );
+    ) << 1; // shifting required: it's in half word
 }
 
 size_t Jis::takeIndexRd()

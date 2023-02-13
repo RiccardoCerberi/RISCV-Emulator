@@ -35,7 +35,7 @@ class Branch : public InstructionFormat {
 
         size_t m_index_rs1;
         size_t m_index_rs2;
-        uint16_t m_offset;
+        uint64_t m_offset;
         // distinguish every conditions
         id_t m_id_cond;
 

@@ -1,11 +1,11 @@
-#include"../../include/components/imm-op.hpp"
+#include"../../../include/components/instructions/imm-op.hpp"
 
 void ImmOp::addi() {
-    m_rd = m_rs + m_immediate;
+    m_rd = m_rs + m_offset;
 }
 
 void ImmOp::slti() {
-    if (static_cast<int64_t>(m_rs) < static_cast<int64_t>(m_immediate)) {
+    if (static_cast<int64_t>(m_rs) < static_cast<int64_t>(m_offset)) {
         m_rd = 1;
     } else  {
         m_rd = 0;
@@ -13,7 +13,7 @@ void ImmOp::slti() {
 }
 
 void ImmOp::sltiu() {
-    if (m_rs < m_immediate) {
+    if (m_rs < m_offset) {
         m_rd = 1;
     } else {
         m_rd = 0;
@@ -21,16 +21,16 @@ void ImmOp::sltiu() {
 }
 
 void ImmOp::xori() {
-    m_rd = m_rs ^ m_immediate;
+    m_rd = m_rs ^ m_offset;
 }
 
 
 void ImmOp::ori() {
-    m_rd = m_rs | m_immediate;
+    m_rd = m_rs | m_offset;
 }
 
 void ImmOp::andi() {
-    m_rd = m_rs & m_immediate;
+    m_rd = m_rs & m_offset;
 }
 
 void ImmOp::slli() {

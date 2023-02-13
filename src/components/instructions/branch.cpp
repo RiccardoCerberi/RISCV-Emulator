@@ -10,7 +10,12 @@ size_t Branch::takeRs2() {
 }
 
 uint16_t Branch::takeOffset() {
-    return 
+    // NOTE: shifting starts from 1 because the offset in the instruction is in half word
+    return BitsManipulation::extendSign((BitsManipulation::takeBits(m_instruction, 8, 11))
+        | (BitsManipulation::takeBits(m_instruction, 25, 30) << 4)
+        | (BitsManipulation::takeBits(m_instruction, 7,7) << 10)
+        | (BitsManipulation::takeBits(m_instruction, 31,31) << 11),
+        12) << 1;
 }
     
 Branch::id_t Branch::takeIdCond() {
@@ -49,8 +54,8 @@ void Branch::execution() {
 
 uint64_t Branch::moveNextInstruction() {
     if (m_jump == true)
-        return m_current_pc + m_imm;
-    return m_current_pc + data_size::kword;
+        return m_curr_pc + m_offset;
+    return m_curr_pc + data_size::kword;
 }
 
 
