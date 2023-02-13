@@ -84,11 +84,34 @@ InstructionFormat* CPU::decode(uint32_t const is) {
     opcode_t op = opcode_t(BitsManipulation::takeBits(is, 0, 7));
 
     switch (op) {
+        case opcode_t::klui:
+            is_format = new Lui(is, m_pc);
+            break;
+        case opcode_t::kauipc:
+            is_format = new Auipc(is, m_pc);
+            break;
         case opcode_t::kjal:
             is_format = new Jis(is, m_pc);
             break;
-        case kjalr:
+        case opcode_t::kjalr:
             is_format = new Jris(is, m_pc);
+            break;
+        case opcode_t::kbranch:
+            is_format = new Branch(is, m_pc);
+            break;
+        case opcode_t::kload:
+            is_format = new Load(is, m_pc);
+            break;
+        case opcode_t::kstore:
+            is_format = new Store(is, m_pc);
+            break;
+        case opcode_t::kimmop:
+            is_format = new ImmOp(is, m_pc);
+            break;
+        case opcode_t::kop:
+            is_format = new Op(is, m_pc);
+            break;
+        // TODO: finish fence and system 
     }
     return is_format;
 }

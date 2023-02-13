@@ -3,7 +3,7 @@
 #include"instructions.hpp"
 #include <cstdint>
 
-class Store : InstructionFormat {
+class Store : public InstructionFormat {
 public:
     Store(uint32_t const is,
           uint64_t const pc)

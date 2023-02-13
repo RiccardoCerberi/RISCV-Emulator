@@ -63,7 +63,7 @@ public:
 #endif
 private:
     enum class opcode_t : uint8_t {
-        ku = 0b0110111,  // load upper immediate lui
+        klui = 0b0110111,  // load upper immediate lui
         kauipc = 0b0010111,
         kjal = 0b1101111,
         kjalr = 0b1100111,
