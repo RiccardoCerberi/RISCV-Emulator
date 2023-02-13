@@ -1,4 +1,4 @@
-#include"../../../src/components/instructions/op.hpp"
+#include"../../../include/components/instructions/op.hpp"
 
 
 void Op::add() {
@@ -30,7 +30,7 @@ void Op::sltu() {
     }
 }
 
-void Op::xor() {
+void Op::xorop() {
     m_rd = m_rs1 ^ m_rs2;
 }
 
@@ -38,49 +38,50 @@ void Op::srl() {
     m_rd = m_rs1 >> BitsManipulation::takeBits(m_rs2, 0, 4);
 }
 
+// it keeps the sign bit
 void Op::sra() {
-    m_rd =  (m_rs1 & (1 << (sizeof(uint64_t)*8-1)) | (m_rs1 >> BitsManipulation::takeBits(m_rs2, 0, 4));
+    m_rd =  (m_rs1 & (1 << (sizeof(uint64_t)*8-1)) | (m_rs1 >> BitsManipulation::takeBits(m_rs2, 0, 4)));
 }
 
-void Op::or() {
+void Op::orop() {
     m_rd = m_rs1 | m_rs2;
 }
 
-void Op::and() {
+void Op::andop() {
     m_rd = m_rs1 & m_rs2;
 }
 
 void Op::execution() {
     switch(m_id) {
-    case kadd:
+    case id_t::kadd:
         add();
         break;
-    case ksub;
+    case id_t::ksub:
         sub();
         break;
-    case ksll:
+    case id_t::ksll:
         sll();
         break;
-    case kslt:
+    case id_t::kslt:
         slt();
         break;
-    case ksltu:
+    case id_t::ksltu:
         sltu();
         break;
-    case kxor:
-        xor();
+    case id_t::kxor:
+        xorop();
         break;
-    case ksrl:
+    case id_t::ksrl:
         srl();
         break;
-    case ksra:
+    case id_t::ksra:
         sra();
         break;
-    case kor:
-        or();
+    case id_t::kor:
+        orop();
         break;
-    case kand:
-        and();
+    case id_t::kand:
+        andop();
         break;
     default:
         std::cerr << "Error: no matching in switch cases\n";

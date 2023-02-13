@@ -36,7 +36,7 @@ inline void CPU::setLastInstrAddress(uint64_t const l_is) {
 #endif
 
 // last is included
-uint8_t BitsManipulation::takeBits(uint32_t is, uint8_t const beg, uint8_t const last) {
+uint32_t BitsManipulation::takeBits(uint32_t is, uint8_t const beg, uint8_t const last) {
     assert(((last > beg) && (last - beg <= 8)));
 #ifdef DEBUG
     bitset<32> ins(is);
@@ -48,16 +48,13 @@ uint8_t BitsManipulation::takeBits(uint32_t is, uint8_t const beg, uint8_t const
     return (is >> beg) & (uint32_t(-1) >> (sizeof(is) * 8 - 1 + beg - last));
 }
 
-// for the immediate only
-uint64_t BitsManipulation::extendSign(uint32_t imm) {
-    // 2048 = 0[...]1[...]0 and 1 is the twelfth, so if 
-    // the immediate has 1 in that position it will be equal to 2048,
-    // otherwise to 0
-    if ((imm & 2048 )== 2048) {
-        return (static_cast<uint64_t>(imm) | (static_cast<uint64_t>(-1) << 11));
-    }
-    // simply add zero
-    return static_cast<uint64_t>(imm);
+// It extends a 32 bit sequence in sign based on the bit in the sign_pos.
+// Let's suppose the two parameters are 00101 and 2.
+// The first thing to do is the xor with 00100 because ^(0,x) = x and ^(1, 1) = 0 and ^(1,0) = 1; in this example: ^= 00001
+// Then, by summing 11100 (-1 << sign_pos), I'll get 11101 as expected.
+
+uint64_t extendSign(uint32_t const imm, uint8_t const sign_pos) {
+    return ((imm ^ (1 << sign_pos)) +(static_cast<uint64_t>(-1) << sign_pos));
 }
 
 void CPU::steps() {
@@ -85,7 +82,7 @@ uint32_t CPU::fetch() {
 InstructionFormat* CPU::decode(uint32_t const is) {
     InstructionFormat* is_format = nullptr;
 
-    switch (BitsManipulation::takeBits(is, 0, 7)) {
+    //switch (BitsManipulation::takeBits(is, 0, 7)) {
         case kjal:
             is_format = new Jis(is, m_pc);
             // TODO: complete all cases

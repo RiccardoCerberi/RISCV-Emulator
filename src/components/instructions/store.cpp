@@ -7,7 +7,7 @@ void Store::readRegister(const reg_type &reg) {
 }
 
 void Store::execution() {
-    m_base += m_imm ;
+    m_base += m_offset;
 }
 
 void Store::accessMemory(Bus& bus) {
@@ -22,13 +22,14 @@ size_t Store::takeSrc() {
     return BitsManipulation::takeBits(m_instruction, 20, 24);
 }
 
-uint16_t Store::takeImm() {
-    return (BitsManipulation::takeBits(m_instruction, 7, 11) | 
-(BitsManipulation::takeBits(m_instruction,25,31)  << 5)
-            );
+uint16_t Store::takeOffset() {
+    return BitsManipulation::extendSign(
+        BitsManipulation::takeBits(m_instruction, 7, 11) 
+        | (BitsManipulation::takeBits(m_instruction,25,31)  << 5),
+        12);
 }
 
-CPU::data_size Store::takeWidth() {
-    return BitsManipulation::takeBits(m_instruction,12, 14);
+data_size Store::takeWidth() {
+    return data_size(BitsManipulation::takeBits(m_instruction,12, 14));
 }
     

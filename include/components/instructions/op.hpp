@@ -11,10 +11,10 @@ class Op : public R {
         void sll();
         void slt();
         void sltu();
-        void xor();
+        void xorop();
         void srl();
         void sra();
-        void or();
-        void and();
+        void orop();
+        void andop();
 };
     

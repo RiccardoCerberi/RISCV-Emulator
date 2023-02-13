@@ -11,7 +11,7 @@ public:
           m_index_base(takeBase()),
           m_index_src(takeSrc()),
           m_width(takeWidth()),
-          m_imm(takeImm())
+          m_offset(takeOffset())
     {}
     void readRegister(reg_type const&) override;
     void execution() override;
@@ -20,12 +20,12 @@ private:
 
     size_t takeBase();
     size_t takeSrc();
-    uint16_t takeImm();
+    uint16_t takeOffset();
     data_size takeWidth();
 
     size_t m_index_base;
     size_t m_index_src;
-    uint16_t m_imm;
+    uint64_t m_offset;
     data_size m_width;
 
     uint64_t m_base;

@@ -35,7 +35,7 @@ class R : public InstructionFormat {
              m_id(takeId())
     {}
 
-    private:    
+    protected:    
         size_t takeRegS1();
         size_t takeRegS2();
         size_t takeRegD();

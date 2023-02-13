@@ -24,21 +24,20 @@ class I : public InstructionFormat{
             kandi = 0b00111,
         };
 
-
         I(uint32_t const is, uint64_t const pc) 
             : InstructionFormat(is, pc), 
             m_index_rs(takeRegS()), 
             m_index_rd(takeRegD()), 
-            m_immediate(takeImm()),
+            m_offset(takeOffset()),
             m_id(takeId())
     {}
     private:
         size_t takeRegS();
         size_t takeRegD();
-        uint64_t takeImm();
+        uint64_t takeOffset();
         id_t takeId();
     protected:
-        uint64_t m_immediate;
+        uint64_t m_offset;
         size_t m_index_rs;
         size_t m_index_rd;
         id_t m_id;

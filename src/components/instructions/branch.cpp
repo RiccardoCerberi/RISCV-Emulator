@@ -5,7 +5,7 @@ size_t Branch::takeRs1() {
     return BitsManipulation::takeBits(m_instruction, 15, 19);
 }
 
-size_t takeRs2() {
+size_t Branch::takeRs2() {
     return BitsManipulation::takeBits(m_instruction, 15, 19);
 }
 

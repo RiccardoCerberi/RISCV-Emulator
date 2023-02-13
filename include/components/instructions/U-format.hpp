@@ -15,7 +15,7 @@ class U : public InstructionFormat {
         uint32_t takeImm();
         size_t takeRd();
 
-        uint32_t m_imm;
+        uint32_t m_offset;
         size_t m_index_rd;
 };
 

@@ -10,7 +10,7 @@
 #include "bus.hpp"
 #include "constants.hpp"
 #include "tlb.hpp"
-#include "instructions.hpp"
+#include "instructions/instructions.hpp"
 
 /*
  * TODO: configure ecall to implement system calls.
@@ -38,8 +38,8 @@ using reg_type = std::array<uint64_t, ktot_registers>;
 class InstructionFormat;
 
 struct BitsManipulation {
-    static uint8_t takeBits(uint32_t, uint8_t const, uint8_t const);
-    static uint64_t extendSign(uint32_t&);
+    static uint32_t takeBits(uint32_t, uint8_t const, uint8_t const);
+    static uint64_t extendSign(uint32_t const, uint8_t const);
 };
 
 class CPU {
