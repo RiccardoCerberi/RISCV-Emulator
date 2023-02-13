@@ -12,7 +12,7 @@ size_t I::takeRegD(){
 
 uint64_t I::takeOffset()
 {
-    return BitsManipulation::extendSign(BitsManipulation::takeBits(m_instruction, 20, 31), 12);
+    return BitsManipulation::extendSign(BitsManipulation::takeBits(m_instruction, 20, 31), 11);
 }
 
 

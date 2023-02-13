@@ -26,7 +26,7 @@ uint16_t Store::takeOffset() {
     return BitsManipulation::extendSign(
         BitsManipulation::takeBits(m_instruction, 7, 11) 
         | (BitsManipulation::takeBits(m_instruction,25,31)  << 5),
-        12);
+        11);
 }
 
 data_size Store::takeWidth() {

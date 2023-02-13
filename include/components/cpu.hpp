@@ -11,6 +11,15 @@
 #include "constants.hpp"
 #include "tlb.hpp"
 #include "instructions/instructions.hpp"
+#include "instructions/auipc.hpp"
+#include "instructions/branch.hpp"
+#include "instructions/imm-op.hpp"
+#include "instructions/Jis.hpp"
+#include "instructions/Jris.hpp"
+#include "instructions/load.hpp"
+#include "instructions/lui.hpp"
+#include "instructions/op.hpp"
+#include "instructions/store.hpp"
 
 /*
  * TODO: configure ecall to implement system calls.

@@ -9,12 +9,13 @@ class U : public InstructionFormat {
           m_index_rd(takeRd())
     {}
         void writeBack(reg_type&) override;
-    private:
+    protected:
 
-        uint32_t takeOffset();
+        uint64_t takeOffset();
         size_t takeRd();
 
-        uint32_t m_offset;
+        uint64_t m_offset;
         size_t m_index_rd;
+        uint64_t m_rd;
 };
 

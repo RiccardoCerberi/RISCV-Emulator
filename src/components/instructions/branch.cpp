@@ -15,7 +15,7 @@ uint16_t Branch::takeOffset() {
         | (BitsManipulation::takeBits(m_instruction, 25, 30) << 4)
         | (BitsManipulation::takeBits(m_instruction, 7,7) << 10)
         | (BitsManipulation::takeBits(m_instruction, 31,31) << 11),
-        12) << 1;
+        11) << 1;
 }
     
 Branch::id_t Branch::takeIdCond() {
