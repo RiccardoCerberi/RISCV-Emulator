@@ -21,6 +21,7 @@ public:
     void accessCsr(csrs_t& csrs) override;
     void writeBack(reg_type &) override;
 private:
+// TODO: implement csr functions
     void srrw();
     void srrs();
     void srrc();

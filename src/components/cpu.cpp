@@ -16,7 +16,7 @@ CPU::CPU(std::string const& file_name)
     assert(input_file.is_open() == true);
 
     uint64_t adr_is = m_pc;
-    uint64_t is = 0x0;
+    uint64_t is = 0;
     while (input_file.read(reinterpret_cast<char*>(&is), data_size::kword)) {
         m_bus.storeData(adr_is, is, data_size::kword);
         adr_is += data_size::kword;
@@ -32,7 +32,12 @@ inline void CPU::setLastInstrAddress(uint64_t const l_is) {
 }
 
 void CPU::CheckWordAllign(uint64_t const pc) {
-    if (...)
+    // the lowest two bits are not zero throw
+    // the exception
+// TODO: check the of 0x003 when it's unsigned extended
+
+    uint64_t lowest_two_bits = 0x003;
+    if ((pc & lowest_two_bits) != 0)
         throw std::exception . message = "pc must be word alligned"
 }
 
@@ -57,16 +62,19 @@ uint32_t BitsManipulation::takeBits(uint32_t is, uint8_t const beg, uint8_t cons
 // Let's suppose the two parameters are 00101 and 2.
 // The first thing to do is the xor with 00100 because ^(0,x) = x and ^(1, 1) = 0 and ^(1,0) = 1; in this example: ^= 00001
 // Then, by summing 11100 (-1 << sign_pos), I'll get 11101 as expected.
-
-uint64_t extendSign(uint32_t const imm, uint8_t const sign_pos) {
+uint64_t BitsManipulation::extendSign(uint32_t const imm, uint8_t const sign_pos) {
     return ((imm ^ (1 << sign_pos)) +(static_cast<uint64_t>(-1) << sign_pos));
+}
+
+bool CPU::checkEndProgram() {
+    return m_pc == m_address_last_is;
 }
 
 void CPU::steps() {
     // it keeps going in the cycle till 
     // an exception occures, it might be due to pc out of boundary
     // or by the user that presses key to terminate the program
-    while (CheckPcBoundary()) {
+    while (checkEndProgram()) {
         uint32_t is = fetch();
 
         InstructionFormat* is_format = decode(is);
@@ -154,7 +162,7 @@ void CPU::execute(InstructionFormat* is_format) {
 // memory access to store or load data
 void CPU::memoryAccess(InstructionFormat* is_format) {
     is_format->accessMemory(m_bus);
-    is_format->accessCsrs(m_csrs);
+    is_format->accessCsr(m_csrs);
 }
 // write the result to the address
 void CPU::writeBack(InstructionFormat* is_format) {

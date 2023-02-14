@@ -1,4 +1,4 @@
-#include"../../include/components/instructions/instructions.hpp"
+#include"../../../include/components/instructions/instructions.hpp"
 #include <cstddef>
 #include <cstdint>
 #include <cwchar>
@@ -12,7 +12,7 @@ void InstructionFormat::readCSR(csrs_t const&) {}
 
 void InstructionFormat::accessMemory(Bus&) {}
 
-void InstructionsFormat::accessCsrs(csrs_t&) {}
+void InstructionFormat::accessCsr(csrs_t&) {}
 
 void InstructionFormat::writeBack(reg_type&) {}
 
