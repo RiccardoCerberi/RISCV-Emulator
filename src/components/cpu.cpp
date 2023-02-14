@@ -35,8 +35,7 @@ void CPU::CheckWordAllign(uint64_t const pc) {
     // the lowest two bits are not zero throw
     // the exception
 // TODO: check the of 0x003 when it's unsigned extended
-
-    uint64_t lowest_two_bits = 0x003;
+    uint64_t lowest_two_bits = 3;
     if ((pc & lowest_two_bits) != 0)
         throw std::exception . message = "pc must be word alligned"
 }

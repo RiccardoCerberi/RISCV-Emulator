@@ -8,4 +8,4 @@ Set pragma once
 
 See from minute 1:41:07 George Hotz Riscv live
 
-TODO: check if inheritance works with two level of indirection: (i->j means i is the father of j) A -> B -> C, a pointer to A can call A functions pointing C? 
+TODO: complete all csr functions

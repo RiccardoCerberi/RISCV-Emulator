@@ -38,6 +38,23 @@ void CSR::execution() {
     }
 }
 
+// TODO: finish csr functions
+void CSR::srrw() {
+
+}
+
+void CSR::srrs() {
+
+}
+
+void CSR::srrc() {
+
+}
+
+void srrwi();
+void srrsi();
+void srrci();
+
 void CSR::writeBack(reg_type &reg) {
     reg[m_index_rd] = m_rd;
 }
