@@ -6,5 +6,6 @@ Add PRAGMA ONCE in every headers
 Finish cpu cases: system
 Set pragma once
 
-See from minute 31:16 L19 MIT
 See from minute 1:41:07 George Hotz Riscv live
+
+TODO: check if inheritance works with two level of indirection: (i->j means i is the father of j) A -> B -> C, a pointer to A can call A functions pointing C? 
