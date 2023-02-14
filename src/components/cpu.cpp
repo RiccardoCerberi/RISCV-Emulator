@@ -31,6 +31,11 @@ inline void CPU::setLastInstrAddress(uint64_t const l_is) {
     m_address_last_is = l_is;
 }
 
+void CPU::CheckWordAllign(uint64_t const pc) {
+    if (...)
+        throw std::exception . message = "pc must be word alligned"
+}
+
 #ifdef DEBUG
     uint32_t CPU::getCurrentInstruction() { return m_pc; }
 #endif
@@ -58,19 +63,31 @@ uint64_t extendSign(uint32_t const imm, uint8_t const sign_pos) {
 }
 
 void CPU::steps() {
-    uint32_t is = fetch();
+    // it keeps going in the cycle till 
+    // an exception occures, it might be due to pc out of boundary
+    // or by the user that presses key to terminate the program
+    while (CheckPcBoundary()) {
+        uint32_t is = fetch();
 
-    InstructionFormat* is_format = decode(is);
+        InstructionFormat* is_format = decode(is);
 
-    execute(is_format);
+        execute(is_format);
 
-    memoryAccess(is_format);
+        memoryAccess(is_format);
 
-    writeBack(is_format);
+        writeBack(is_format);
 
-    m_pc = moveNextInstruction(is_format);
-
-    is_format->~InstructionFormat();
+        m_pc = moveNextInstruction(is_format);
+        
+        try {
+            CheckWordAllign(m_pc);
+        }
+        catch(exception & e) {
+            std::cerr << e.what() << std::endl;
+            break;
+        }
+        is_format->~InstructionFormat();
+    }
 }
 
 uint32_t CPU::fetch() {
@@ -111,7 +128,17 @@ InstructionFormat* CPU::decode(uint32_t const is) {
         case opcode_t::kop:
             is_format = new Op(is, m_pc);
             break;
-        // TODO: finish fence and system 
+        case opcode_t::kfence:
+            std::cout << "fence instruction has not implemented yet\n";
+            break;
+        case opcode_t::ksystem: {
+// speed up the code
+            uint8_t func3 = BitsManipulation::takeBits(is, 12, 14);
+            if (func3 == 0)
+                is_format = new Ecall(is,m_pc);
+            else
+                is_format = new CSR(is, m_pc);
+        }
     }
     return is_format;
 }
@@ -126,6 +153,7 @@ void CPU::execute(InstructionFormat* is_format) {
 // memory access to store or load data
 void CPU::memoryAccess(InstructionFormat* is_format) {
     is_format->accessMemory(m_bus);
+    is_format->accessCsrs(m_csrs);
 }
 // write the result to the address
 void CPU::writeBack(InstructionFormat* is_format) {

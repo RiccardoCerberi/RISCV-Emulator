@@ -3,5 +3,8 @@ george hotz:
 47:02
 
 Add PRAGMA ONCE in every headers
-Finish cpu cases: fence and system
+Finish cpu cases: system
 Set pragma once
+
+See from minute 31:16 L19 MIT
+See from minute 1:41:07 George Hotz Riscv live

@@ -4,6 +4,7 @@
 #include <bitset>
 #include <cassert>
 #include <cstdint>
+#include <memory>
 #include <fstream>
 #include <iostream>
 
@@ -20,6 +21,8 @@
 #include "instructions/lui.hpp"
 #include "instructions/op.hpp"
 #include "instructions/store.hpp"
+#include "instructions/ecall.hpp"
+#include "instructions/csrs.hpp"
 
 /*
  * TODO: configure ecall to implement system calls.
@@ -41,10 +44,6 @@
  * The address provided by the cpu will be translated by the tlb, but
  * for now the tlb is limited to only return the address itself
  */
-
-using reg_type = std::array<uint64_t, ktot_registers>;
-
-class InstructionFormat;
 
 struct BitsManipulation {
     static uint32_t takeBits(uint32_t, uint8_t const, uint8_t const);
@@ -72,7 +71,11 @@ private:
         kstore = 0b0100011,
         kimmop = 0b0010011,  // operations like addi
         kop = 0b0110011,   // operations without immediate, like add
-        kfence = 0b0001111,
+// fence instructions organize the sequence of instructions in a concurrent modeli (threads are called hearts), in fact, it's ensured that every instruction preceding the fence is executed before the ones after the fence. Therefore A B fence C D will be executed as {A,B} - {C,D}; the orther between instructions in curly braces can change: A-B as well as B-A.
+// I'm not going to implement fence instructions at this moment, because
+// it requires an advanced knowledge of concurrency.
+        kfence = 0b0001111, 
+        // exceptions are treated using the c++ syntax
         ksystem = 0b1110011  // ecall ect
     };
 
@@ -80,10 +83,17 @@ private:
     reg_type m_registers;
     uint64_t m_pc;  // it's the 32-th register
     uint64_t m_address_last_is;
+    csrs_t m_csrs; // CSRs registers
+
     Bus m_bus;
     TLB m_tlb;
 
     void setLastInstrAddress(uint64_t const);
+
+    // if the pc is pointing to an address that
+    // is not four byte alligned, it will throw an
+    // exception
+    void CheckWordAllign(uint64_t const pc);
 
     /*
      * 5-stages pipeline
@@ -93,6 +103,7 @@ private:
     uint32_t fetch();
     // reads the opcode and, based on that, creates the
     // proper instruction
+    // TODO: change the return type with a smart pointer
     InstructionFormat* decode(uint32_t const);
     // execute the arithmetic operation decoded in the previous stage, by
     // overloading the omonimum method,
