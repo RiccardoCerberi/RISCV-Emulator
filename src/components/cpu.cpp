@@ -134,6 +134,7 @@ InstructionFormat* CPU::decode(uint32_t const is) {
         case opcode_t::ksystem: {
 // speed up the code
             uint8_t func3 = BitsManipulation::takeBits(is, 12, 14);
+// The inheritance works with n-level of indirection so it will work
             if (func3 == 0)
                 is_format = new Ecall(is,m_pc);
             else
