@@ -14,7 +14,7 @@ public:
     System(uint32_t const is, uint64_t const pc)
         : InstructionFormat(is,pc), 
           m_index_rd(takeRd()),
-          m_index_rs1(takeRs1()),
+          m_qty(takeQty()),
           m_func3(takeFunc3()),
           m_func12(takeFunc12())
     {}
@@ -31,12 +31,13 @@ public:
 
     private:
         size_t takeRd();
-        size_t takeRs1();
+        uint8_t takeQty();
         func3_t takeFunc3();
         uint16_t takeFunc12();
     protected:
         size_t m_index_rd;
-        size_t m_index_rs1;
+// TODO: rename the variable better
+        uint8_t m_qty; // to distinguish from immediate and normal csrs opearation
         func3_t m_func3;
         uint16_t m_func12;
 };

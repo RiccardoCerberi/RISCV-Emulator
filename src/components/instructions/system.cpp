@@ -1,10 +1,11 @@
-#include"../../../include/components/instructions"
+#include"../../../include/components/system.hpp"
+#include <cstdint>
 
 size_t System::takeRd() {
     return BitsManipulation::takeBits(m_instruction,7,11);
 }
 
-size_t System::takeRs1() {
+uint8_t System::takeQty() {
     return BitsManipulation::takeBits(m_instruction, 15, 19);
 }
 

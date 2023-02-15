@@ -33,7 +33,7 @@ class InstructionFormat {
         virtual void readCSR(csrs_t const&);
         virtual void execution() = 0;
         virtual void accessMemory(Bus&);
-        virtual void accessCsr(csrs_t&);
+        virtual void writeCsr(csrs_t&);
         virtual void writeBack(reg_type&);
         virtual uint64_t moveNextInstruction();
         virtual ~InstructionFormat() = default;
