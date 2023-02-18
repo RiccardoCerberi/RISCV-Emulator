@@ -1,9 +1,10 @@
-#pragma once
-#include "instructions.hpp"
+#pragma once 
 
-class Jis : public InstructionFormat {
+#include "instructions-format.hpp"
+
+class Jump : public InstructionFormat {
     public:
-        Jis(uint32_t const is, uint64_t const pc) 
+        Jump(uint32_t const is, uint64_t const pc) 
             : InstructionFormat(is,pc),
               m_offset(takeOffset()),
               m_index_rd(takeIndexRd())
@@ -11,7 +12,7 @@ class Jis : public InstructionFormat {
         void execution() override;
         void writeBack(reg_type&) override;
         uint64_t moveNextInstruction() override;
-        ~Jis() = default;
+        ~Jump() = default;
     private:
 
         uint64_t takeOffset();

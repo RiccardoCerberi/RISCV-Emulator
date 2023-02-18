@@ -1,3 +1,5 @@
+#pragma once
+
 #include"system.hpp"
 #include <cstdint>
 

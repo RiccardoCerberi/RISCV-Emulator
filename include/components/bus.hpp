@@ -21,10 +21,8 @@
 class Bus
 {
 public:
-    uint64_t loadData(uint64_t, data_size const&);
-    void storeData(uint64_t, uint64_t, data_size const&);
-    void setLastInstrAddress(uint64_t);
-
+    uint64_t loadData(uint64_t const, data_size const&);
+    void storeData(uint64_t const, uint64_t const, data_size const&);
 #ifdef DEBUG
     void printMemory(uint64_t, uint64_t, data_size const&);
 #endif

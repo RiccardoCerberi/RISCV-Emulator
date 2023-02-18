@@ -1,3 +1,4 @@
+#pragma once
 #include "I-format.hpp"
 
 class Jris : public I {

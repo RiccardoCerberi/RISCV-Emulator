@@ -13,3 +13,12 @@ void Bus::printMemory(uint64_t const beg_adr, uint64_t const end_adr, data_size 
     }
 }
 #endif
+
+uint64_t Bus::loadData(uint64_t const address, data_size const& data_sz) {
+    return m_dram.load(address, data_sz);
+}
+
+
+void Bus::storeData(uint64_t const address, uint64_t const src, data_size const& data_sz) {
+    m_dram.store(address, src, data_sz);
+}

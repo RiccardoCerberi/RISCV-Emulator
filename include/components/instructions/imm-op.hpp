@@ -1,3 +1,5 @@
+#pragma once
+
 #include "I-format.hpp"
 
 

@@ -1,3 +1,5 @@
+#pragma once
+
 #include"U-format.hpp"
 
 class Auipc : public U {
