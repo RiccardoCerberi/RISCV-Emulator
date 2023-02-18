@@ -1,7 +1,7 @@
 project(${CMAKE_PROJECT_NAME} )
 
 #check if it's syntactically correct <name_folder>/
-file(GLOB components_sources CONFIGURE_DEPENDS  components/*.cpp)
+file(GLOB components_sources CONFIGURE_DEPENDS  components/*.cpp components/instructions/*.cpp)
 file(GLOB emulator_sources emulator/*.cpp)
 
 add_library(

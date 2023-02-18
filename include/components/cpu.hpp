@@ -8,14 +8,12 @@
 #include <fstream>
 #include <iostream>
 
-
 #include "constants.hpp"
 
 #include "bits-manipulation.hpp"
 
 #include "bus.hpp"
 #include "tlb.hpp"
-
 
 #include "instructions/instructions.hpp"
 #include "instructions/auipc.hpp"

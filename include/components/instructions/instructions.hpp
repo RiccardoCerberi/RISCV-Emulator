@@ -4,7 +4,7 @@
 #include<iostream>
 #include"../bus.hpp"
 #include"../constants.hpp"
-#include"../cpu.hpp"
+#include"../bits-manipulation.hpp"
 
 /*
  * 

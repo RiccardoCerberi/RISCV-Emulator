@@ -51,31 +51,31 @@ void ImmOp::srai() {
 
 void ImmOp::execution() {
     // see enum class in switch
-    switch(m_func3) {
-        case func3_t::kaddi:
+    switch(m_id) {
+        case id_t::kaddi:
             addi();
             break;
-        case func3_t::kslti:
+        case id_t::kslti:
             slti();
             break;
-        case func3_t::ksltiu:
+        case id_t::ksltiu:
             sltiu();
             break;
-        case func3_t::kxori:
+        case id_t::kxori:
             xori();
             break;
-        case func3_t::kori:
+        case id_t::kori:
             ori();
             break;
-        case func3_t::kandi:
+        case id_t::kandi:
             andi();
             break;
-        case func3_t::kslli:
+        case id_t::kslli:
             slli();
             break;
-        case func3_t::ksrli:
+        case id_t::ksrli:
             srli();
-        case func3_t::ksrai:
+        case id_t::ksrai:
             srai();
             break;
         default:
