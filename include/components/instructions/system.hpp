@@ -17,7 +17,6 @@ public:
           m_func3(takeFunc3()),
           m_func12(takeFunc12())
     {}
-
     enum class func3_t : uint8_t {
         kecall = 0b000,
         kcsrrw = 0b001,

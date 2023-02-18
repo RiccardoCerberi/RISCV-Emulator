@@ -1,4 +1,4 @@
-#include"../../../include/components/system.hpp"
+#include"../../../include/components/instructions/system.hpp"
 #include <cstdint>
 
 size_t System::takeRd() {
@@ -9,7 +9,7 @@ uint8_t System::takeQty() {
     return BitsManipulation::takeBits(m_instruction, 15, 19);
 }
 
-func3_t System::takeFunc3() {
+System::func3_t System::takeFunc3() {
     return func3_t(BitsManipulation::takeBits(m_instruction, 12, 14));
 }
 
