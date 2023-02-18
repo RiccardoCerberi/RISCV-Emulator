@@ -25,8 +25,8 @@ private:
 
     size_t m_index_base;
     size_t m_index_src;
-    uint64_t m_offset;
     data_size m_width;
+    uint64_t m_offset;
 
     uint64_t m_base;
     uint64_t m_src;
