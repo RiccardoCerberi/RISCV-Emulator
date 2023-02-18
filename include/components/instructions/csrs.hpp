@@ -1,6 +1,7 @@
 #pragma once
 
 #include"system.hpp"
+#include"../bits-manipulation.hpp"
 #include <cstdint>
 
 /*
@@ -11,12 +12,7 @@
  */
 
 /*
- * CSR class can be split in two parts: csr_notimm and csr_imm; 
- * the difference between these two types is the interpretation of bits from 15-19.
- * Csr_notimm uses these bits to read data from the registers, when csr_imm use it as 
- * immediate.
- * For this reason, the execution function that produces the result that will be written to CSR is different.
- * Therefore I need to define a class that represents these problems
+ * CSRAUx defines the interface for immediate and non operations with CSRs
  */
 
 class CSRAux {
@@ -26,12 +22,15 @@ public:
     CSRAux(System::func3_t const func3, uint8_t const qty) 
         : m_func3(func3), m_qty(qty)
     {}
-// It might be  either a register reading or making the immediate
+// If the CSRs instructions is a non immediate operations, then it will read
+// data from the normal registers (the ones from 0 to 31) based on the qty, in fact it becomes an index in the registers vector;
+// otherwise the quantity refers to an immediate, so it will use it just for making
+// the result 
     virtual void InterpretQty(reg_type const&) {}
     virtual uint64_t makeCSRResult(uint64_t const) = 0;
 protected:
     func3_t m_func3;
-    uint8_t m_qty;
+    uint8_t m_qty; //it can be either an immediate for csri instructions or an id to distinguish non-immediate instructions
     uint64_t m_rs1; // it can be either index in reg or immediate
 };
 
@@ -53,7 +52,8 @@ public:
     CSRImm(func3_t const func3, uint8_t const qty) 
         : CSRAux(func3,qty)
     {}
-     void InterpretQty(reg_type const&) override;
+    // distinguish between the two possible cases: immediate or operations id
+     void InterpretQty(reg_type const&) override; 
      uint64_t makeCSRResult(uint64_t const) override;
 private:
     void srrwi();
@@ -69,9 +69,9 @@ public:
     {
         if (static_cast<uint8_t>(m_func3) < 5) { 
             // TODO: solve the problem, possible reason: alias works internally, not externally. Easiest solution: delete alias and write System::func3_t
-            m_csr_aux = new CSRImm(m_func3);
+            m_csr_aux = new CSRImm(m_func3, BitsManipulation::takeBits(is,15,19));
         } else {
-            m_csr_aux = new CSRNotImm(m_func3);
+            m_csr_aux = new CSRNotImm(m_func3, BitsManipulation::takeBits(is,15,19));
         }
     }
     void readRegister(reg_type const&) override;

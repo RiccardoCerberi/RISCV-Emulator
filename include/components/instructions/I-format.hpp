@@ -39,9 +39,9 @@ class I : public InstructionFormat{
         uint64_t takeOffset();
         id_t takeId();
     protected:
-        uint64_t m_offset;
         size_t m_index_rs;
         size_t m_index_rd;
+        uint64_t m_offset;
         id_t m_id;
 
         uint64_t m_rs;

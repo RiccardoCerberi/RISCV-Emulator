@@ -8,9 +8,15 @@
 #include <fstream>
 #include <iostream>
 
-#include "bus.hpp"
+
 #include "constants.hpp"
+
+#include "bits-manipulation.hpp"
+
+#include "bus.hpp"
 #include "tlb.hpp"
+
+
 #include "instructions/instructions.hpp"
 #include "instructions/auipc.hpp"
 #include "instructions/branch.hpp"
@@ -45,10 +51,6 @@
  * for now the tlb is limited to only return the address itself
  */
 
-struct BitsManipulation {
-    static uint32_t takeBits(uint32_t, uint8_t const, uint8_t const);
-    static uint64_t extendSign(uint32_t const, uint8_t const);
-};
 
 class CPU {
 public:

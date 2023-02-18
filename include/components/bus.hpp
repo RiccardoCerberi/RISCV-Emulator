@@ -1,8 +1,6 @@
 #pragma once
 
 #include "DRAM.hpp"
-#include "cpu.hpp"
-
 /*
  * Bus it's the interface between the cpu and dram
 */

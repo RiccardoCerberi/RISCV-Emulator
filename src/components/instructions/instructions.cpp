@@ -12,7 +12,7 @@ void InstructionFormat::readCSR(csrs_t const&) {}
 
 void InstructionFormat::accessMemory(Bus&) {}
 
-void InstructionFormat::accessCsr(csrs_t&) {}
+void InstructionFormat::writeCsr(csrs_t&) {}
 
 void InstructionFormat::writeBack(reg_type&) {}
 
