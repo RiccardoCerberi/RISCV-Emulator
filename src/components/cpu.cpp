@@ -1,28 +1,35 @@
-#include <cstdint>
-#include <sys/types.h>
-
 #include "../../include/components/cpu.hpp"
+#define DEBUG
 
 CPU::CPU(std::string const &file_name)
         : m_pc{kdram_base} {
+    // set default register values
     m_registers[register_index::kzero_register] = 0;
     m_registers[register_index::ksp] = kdram_base + kdram_size;
 
+    // load instructions in memory
     std::ifstream input_file;
 
     input_file.open(file_name, std::ios::binary);
     assert(input_file.is_open() == true);
 
-    uint64_t adr_is = m_pc;
+    uint64_t adr_is = kdram_base;
     uint64_t is = 0;
     while (input_file.read(reinterpret_cast<char *>(&is), data_size::kword)) {
+
+#ifdef DEBUG
+        std::bitset<32> instruction_loaded(is);
+        std::cout << "instruction_loaded = " << instruction_loaded << "\n";
+#endif
         m_bus.storeData(adr_is, is, data_size::kword);
         adr_is += data_size::kword;
     }
     uint64_t last_is_ad = adr_is - data_size::kword;
     setLastInstrAddress(last_is_ad);
+#ifdef DEBUG
     std::cout << "Last instructions: " << std::hex << "0x" << last_is_ad << "\n";
     std::cout << "Instructions are loaded\n";
+#endif
 }
 
 // I can make it inline because no other units will use that
@@ -31,7 +38,7 @@ inline void CPU::setLastInstrAddress(uint64_t const l_is) {
     m_address_last_is = l_is;
 }
 
-void CPU::CheckWordAllign(uint64_t const pc) {
+void CPU::CheckWordAlign(uint64_t const pc) {
     // the lowest two bits are not zero throw
     // the exception
 // 3 = 00[...]0011
@@ -40,17 +47,21 @@ void CPU::CheckWordAllign(uint64_t const pc) {
         throw "Invalid address: pc can access only word-alligned addresses";
 }
 
-uint32_t CPU::getCurrentInstruction() { return CPU::m_pc; }
+
+uint32_t CPU::getCurrentInstruction() {
+    return m_pc; 
+}
 
 void CPU::printRegs() {
     int i = 0;
 
     std::cout << "Registers:\n";
     for (auto const &reg: m_registers) {
-        std::cout << "\\x" << i << "=" << std::hex << reg << "\n";
+        std::cout << "\\x" << i << "=" << std::hex << reg << " - ";
         ++i;
     }
 }
+
 
 bool CPU::checkEndProgram() {
     return m_pc == m_address_last_is;
@@ -58,15 +69,23 @@ bool CPU::checkEndProgram() {
 
 void CPU::steps() {
     // it keeps going in the cycle till 
-    // an exception occures, it might be due to pc out of boundary
+    // an exception occurs, it might be due to pc out of boundary
     // or by the user that presses key to terminate the program
-    while (checkEndProgram()) {
+    while (!checkEndProgram()) {
         uint32_t is = fetch();
-
-        std::cout << "Instruction fetched: " << is << "\n";
+#ifdef DEBUG
         printRegs();
+#endif
 
-        InstructionFormat *is_format = decode(is);
+        InstructionFormat* is_format = nullptr;
+        try {
+            is_format = decode(is);
+        } catch(const char* txt_exc) {
+            std::cout << "exception: " << txt_exc << "\n";
+            continue;
+        }
+
+        assert(is_format != nullptr);
 
         execute(is_format);
 
@@ -77,7 +96,7 @@ void CPU::steps() {
         m_pc = moveNextInstruction(is_format);
 
         try {
-            CheckWordAllign(m_pc);
+            CheckWordAlign(m_pc);
         }
         catch (char *const txt_exception) {
             std::cout << "Exception: " << txt_exception << std::endl;
@@ -95,8 +114,12 @@ uint32_t CPU::fetch() {
 // number [0, 5]
 InstructionFormat *CPU::decode(uint32_t const is) {
     InstructionFormat *is_format = nullptr;
-    opcode_t op = opcode_t(BitsManipulation::takeBits(is, 0, 7));
+#ifdef DEBUG
+    uint8_t opcode = BitsManipulation::takeBits(is, 0, klast_opcode_digit);
+    std::cout << "opcode = " << std::bitset<8>(opcode) << "\n";
+#endif
 
+    auto op = opcode_t(static_cast<uint8_t>(BitsManipulation::takeBits(is, 0, klast_opcode_digit)));
 
     switch (op) {
         case opcode_t::klui:
@@ -140,7 +163,10 @@ InstructionFormat *CPU::decode(uint32_t const is) {
                 abort();
             } else
                 is_format = new CSR(is, m_pc);
+            break;
         }
+        default:
+            throw "Invalid opcode";
     }
     return is_format;
 }

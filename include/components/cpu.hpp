@@ -7,6 +7,8 @@
 #include <memory>
 #include <fstream>
 #include <iostream>
+#include <cstdint>
+#include <sys/types.h>
 
 #include "constants.hpp"
 
@@ -28,10 +30,14 @@
 #include "instructions/ecall.hpp"
 #include "instructions/csrs.hpp"
 
+
 /*
  * TODO: configure ecall to implement system calls.
-    L21 of the MIT from 6:57 there's the implemenetation
+    L21 of the MIT from 6:57 there's the implemenetation.
+    Remove DEBUG macro
 */
+
+
 
 // Registers cannot be pointers because they have to support all the operations
 // like addiction or subtraction as well as deferencing; this will require
@@ -57,7 +63,6 @@ public:
     void steps();
     bool checkEndProgram();
 
-    // DEBUG functions
     uint32_t getCurrentInstruction();
     void printRegs();
 
@@ -90,12 +95,12 @@ private:
     Bus m_bus;
     TLB m_tlb;
 
-    void setLastInstrAddress(uint64_t const);
+    void setLastInstrAddress(uint64_t );
 
     // if the pc is pointing to an address that
     // is not four byte alligned, it will throw an
     // exception
-    void CheckWordAllign(uint64_t const pc);
+    void CheckWordAlign(uint64_t pc);
 
     /*
      * 5-stages pipeline

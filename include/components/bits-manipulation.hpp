@@ -2,9 +2,11 @@
 
 #include<cstdint>
 #include<cassert>
+#include<bitset>
+#include<iostream>
 
 
 struct BitsManipulation {
-    static uint32_t takeBits(uint32_t, uint8_t const, uint8_t const);
-    static uint64_t extendSign(uint32_t const, uint8_t const);
+    static uint64_t takeBits(uint64_t const, uint8_t const, uint8_t const);
+    static uint64_t extendSign(uint64_t const, uint8_t const);
 };

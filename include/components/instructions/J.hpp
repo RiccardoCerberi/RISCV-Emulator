@@ -1,6 +1,6 @@
 #pragma once 
 
-#include "instructions-format.hpp"
+#include "instructions.hpp"
 
 class Jump : public InstructionFormat {
     public:

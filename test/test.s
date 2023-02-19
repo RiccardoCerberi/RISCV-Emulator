@@ -12,7 +12,7 @@ _start:
 	sd	s0,24(sp)
 	addi	s0,sp,32
 	sw	zero,-20(s0)
-	nop
+	li	a5,0
 	mv	a0,a5
 	ld	s0,24(sp)
 	addi	sp,sp,32

@@ -6,6 +6,7 @@
 #include <cstdio>
 #include <cassert>
 #include "constants.hpp"
+#include "bits-manipulation.hpp"
 
 /*
     DRAM is implemented as an array of SIZE_DRAM bits.
@@ -31,5 +32,5 @@ public:
     void store(uint64_t, uint64_t, data_size);
     uint64_t load(uint64_t, data_size);
 private:
-    std::vector<uint64_t> m_dram;
+    std::vector<uint8_t> m_dram;
 };

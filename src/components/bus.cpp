@@ -19,6 +19,6 @@ uint64_t Bus::loadData(uint64_t const address, data_size const& data_sz) {
 }
 
 
-void Bus::storeData(uint64_t const address, uint64_t const src, data_size const& data_sz) {
-    m_dram.store(address, src, data_sz);
+void Bus::storeData(uint64_t const where, uint64_t const src, data_size const& data_sz) {
+    m_dram.store(where, src, data_sz);
 }

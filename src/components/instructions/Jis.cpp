@@ -1,9 +1,7 @@
 #include "../../../include/components/instructions/Jis.hpp"
-
-#include "../../../include/components/instructions/Jis.hpp"
+#include <cstdint>
 
 // Jump
-
 uint64_t Jis::takeOffset()
 {
     uint8_t pos = 8;
@@ -23,12 +21,7 @@ size_t Jis::takeIndexRd()
 }
 
 void Jis::execution()
-{
-#ifdef DEBUG
-    std::binset<data_size::kword> is_bin(is);
-    std::cout << "Instruction: " << is_bin << "\nImmediate=" << imm << "\n";
-#endif
-}
+{}
 
 void Jis::writeBack(reg_type &registers)
 {
@@ -37,5 +30,9 @@ void Jis::writeBack(reg_type &registers)
 
 uint64_t Jis::moveNextInstruction()
 {
+    uint64_t next_instruction = m_curr_pc + m_offset;
+#ifdef DEBUG
+    std::cout << "Jumping to instruction: " << next_instruction << "\n";
+#endif
     return m_curr_pc + m_offset;
 }

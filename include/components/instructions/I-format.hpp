@@ -12,7 +12,7 @@ class I : public InstructionFormat{
         void readRegister(reg_type const&) override;
         void writeBack(reg_type&) override;
     protected:
-        // There are duplicated func3, so I decied to append two digits in order to distinguish all operations
+        // There are duplicated func3, so I decided to append two digits in order to distinguish all operations
         enum class id_t : uint8_t {
             kaddi = 0b00000,
             kslli = 0b00001,

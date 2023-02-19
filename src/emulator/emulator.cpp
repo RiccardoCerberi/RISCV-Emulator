@@ -10,7 +10,5 @@ Emulator::Emulator(std::string const &file_name) : m_cpu(file_name)
 
 
 void Emulator::runEmulator() {
-    while (m_cpu.checkEndProgram() == false) {
         m_cpu.steps();
-    }
 }

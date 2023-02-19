@@ -52,19 +52,11 @@ void Branch::execution() {
     }
 }
 
-uint64_t Branch::moveNextInstruction() {
-    if (m_jump == true)
-        return m_curr_pc + m_offset;
-    return m_curr_pc + data_size::kword;
-}
-
-
 bool Branch::beq() {
     return m_rs1 == m_rs2;
 }
 
 bool Branch::bne() {
-    // analogue to !beq()
     return m_rs1 != m_rs2;
 }
 
@@ -84,6 +76,8 @@ bool Branch::bgeu() {
     return m_rs1 >= m_rs2;
 }
 
-
-
-
+uint64_t Branch::moveNextInstruction() {
+    if (m_jump == true)
+        return m_curr_pc + m_offset;
+    return m_curr_pc + data_size::kword;
+}
