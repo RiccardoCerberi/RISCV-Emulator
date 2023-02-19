@@ -27,6 +27,7 @@ set_target_properties(riscv-emulator
 
 target_compile_features(riscv-emulator PUBLIC cxx_std_17)
 
+
 # add compiler warning flags just when building this project
 # via the BUILD_INTERFACE generator expression
 set(gcc_like_cxx "$<COMPILE_LANG_AND_ID:CXX,ARMClang,AppleClang,Clang,GNU>")

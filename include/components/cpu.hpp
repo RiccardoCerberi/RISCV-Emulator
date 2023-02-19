@@ -49,17 +49,18 @@
  * for now the tlb is limited to only return the address itself
  */
 
-
 class CPU {
+    friend class CPU_Debug;
 public:
     // when the cpu is constructed the memory must have the instructions stored
     CPU(std::string const&);
     void steps();
     bool checkEndProgram();
-#ifdef DEBUG
-    void printReg();
+
+    // DEBUG functions
     uint32_t getCurrentInstruction();
-#endif
+    void printRegs();
+
 private:
     enum class opcode_t : uint8_t {
         klui = 0b0110111,  // load upper immediate lui
@@ -78,6 +79,7 @@ private:
         // exceptions are treated using the c++ syntax
         ksystem = 0b1110011  // ecall ect
     };
+
 
 private:
     reg_type m_registers;
@@ -116,4 +118,3 @@ private:
 
     uint64_t moveNextInstruction(InstructionFormat*);
 };
-

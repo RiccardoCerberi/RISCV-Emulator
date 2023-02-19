@@ -3,10 +3,8 @@
 
 #include "../../include/components/cpu.hpp"
 
-CPU::CPU(std::string const& file_name)
-    : m_pc{kdram_base}
-
-{
+CPU::CPU(std::string const &file_name)
+        : m_pc{kdram_base} {
     m_registers[register_index::kzero_register] = 0;
     m_registers[register_index::ksp] = kdram_base + kdram_size;
 
@@ -17,11 +15,13 @@ CPU::CPU(std::string const& file_name)
 
     uint64_t adr_is = m_pc;
     uint64_t is = 0;
-    while (input_file.read(reinterpret_cast<char*>(&is), data_size::kword)) {
+    while (input_file.read(reinterpret_cast<char *>(&is), data_size::kword)) {
         m_bus.storeData(adr_is, is, data_size::kword);
         adr_is += data_size::kword;
     }
-    setLastInstrAddress(adr_is - data_size::kword);
+    uint64_t last_is_ad = adr_is - data_size::kword;
+    setLastInstrAddress(last_is_ad);
+    std::cout << "Last instructions: " << std::hex << "0x" << last_is_ad << "\n";
     std::cout << "Instructions are loaded\n";
 }
 
@@ -40,9 +40,17 @@ void CPU::CheckWordAllign(uint64_t const pc) {
         throw "Invalid address: pc can access only word-alligned addresses";
 }
 
-#ifdef DEBUG
-    uint32_t CPU::getCurrentInstruction() { return m_pc; }
-#endif
+uint32_t CPU::getCurrentInstruction() { return CPU::m_pc; }
+
+void CPU::printRegs() {
+    int i = 0;
+
+    std::cout << "Registers:\n";
+    for (auto const &reg: m_registers) {
+        std::cout << "\\x" << i << "=" << std::hex << reg << "\n";
+        ++i;
+    }
+}
 
 bool CPU::checkEndProgram() {
     return m_pc == m_address_last_is;
@@ -55,7 +63,10 @@ void CPU::steps() {
     while (checkEndProgram()) {
         uint32_t is = fetch();
 
-        InstructionFormat* is_format = decode(is);
+        std::cout << "Instruction fetched: " << is << "\n";
+        printRegs();
+
+        InstructionFormat *is_format = decode(is);
 
         execute(is_format);
 
@@ -64,12 +75,12 @@ void CPU::steps() {
         writeBack(is_format);
 
         m_pc = moveNextInstruction(is_format);
-        
+
         try {
             CheckWordAllign(m_pc);
         }
-        catch(char * const txt_exception) {
-            std::cout << "Exception: "  << txt_exception << std::endl;
+        catch (char *const txt_exception) {
+            std::cout << "Exception: " << txt_exception << std::endl;
             break;
         }
         is_format->~InstructionFormat();
@@ -82,15 +93,18 @@ uint32_t CPU::fetch() {
 
 // read the opcode to know which operation to perform and translates it into a
 // number [0, 5]
-InstructionFormat* CPU::decode(uint32_t const is) {
-    InstructionFormat* is_format = nullptr;
+InstructionFormat *CPU::decode(uint32_t const is) {
+    InstructionFormat *is_format = nullptr;
     opcode_t op = opcode_t(BitsManipulation::takeBits(is, 0, 7));
+
 
     switch (op) {
         case opcode_t::klui:
+            std::cout << "load upper immediate instruction\n";
             is_format = new Lui(is, m_pc);
             break;
         case opcode_t::kauipc:
+            std::cout << "load upper immediate instruction\n";
             is_format = new Auipc(is, m_pc);
             break;
         case opcode_t::kjal:
@@ -120,13 +134,11 @@ InstructionFormat* CPU::decode(uint32_t const is) {
         case opcode_t::ksystem: {
 // speed up the code
             uint8_t func3 = BitsManipulation::takeBits(is, 12, 14);
-// The inheritance works with n-level of indirection so it will work
             if (func3 == 0) {
                 std::cerr << "Ecall not already defined\n";
                 //is_format = new Ecall(is,m_pc);
                 abort();
-            }
-            else
+            } else
                 is_format = new CSR(is, m_pc);
         }
     }
@@ -134,22 +146,23 @@ InstructionFormat* CPU::decode(uint32_t const is) {
 }
 
 // execute the operation decoded in the previous stage
-void CPU::execute(InstructionFormat* is_format) { 
+void CPU::execute(InstructionFormat *is_format) {
     is_format->readRegister(m_registers);
-    is_format->execution(); 
+    is_format->execution();
 }
 
 
 // memory access to store or load data
-void CPU::memoryAccess(InstructionFormat* is_format) {
+void CPU::memoryAccess(InstructionFormat *is_format) {
     is_format->accessMemory(m_bus);
     is_format->writeCsr(m_csrs);
 }
+
 // write the result to the address
-void CPU::writeBack(InstructionFormat* is_format) {
+void CPU::writeBack(InstructionFormat *is_format) {
     is_format->writeBack(m_registers);
 }
 
-uint64_t CPU::moveNextInstruction(InstructionFormat* is_format) {
+uint64_t CPU::moveNextInstruction(InstructionFormat *is_format) {
     return is_format->moveNextInstruction();
 }
