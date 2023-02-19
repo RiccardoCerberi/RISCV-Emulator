@@ -11,6 +11,28 @@
  * - swapping the result with register rd
  */
 
+class CSRAux;
+
+class CSR : public System {
+public:
+    CSR(uint32_t const is, uint64_t const pc);
+    void readRegister(reg_type const&) override;
+    void readCSR(const csrs_t &) override;
+// execution function makes the result for modify the csr
+// register at index m_index_csr
+    void execution() override;
+    void writeCsr(csrs_t& csrs) override;
+    void writeBack(reg_type &) override;
+private:
+    CSRAux* m_csr_aux;
+    uint16_t const& m_index_csr;
+    uint64_t m_rs1;
+    uint64_t m_csr_rs; // alias t in riscv instructions
+    uint64_t m_csr_rd;
+    uint64_t m_rd;
+}; 
+
+
 /*
  * CSRAUx defines the interface for immediate and non operations with CSRs
  */
@@ -30,8 +52,7 @@ public:
     virtual uint64_t makeCSRResult(uint64_t const) = 0;
 protected:
     func3_t m_func3;
-    uint8_t m_qty; //it can be either an immediate for csri instructions or an id to distinguish non-immediate instructions
-    uint64_t m_rs1; // it can be either index in reg or immediate
+    uint8_t m_qty; //it can be either an immediate for csri operations or an id to distinguish non-immediate operations
 };
 
 class CSRNotImm : public CSRAux {
@@ -39,12 +60,19 @@ public:
     CSRNotImm(func3_t const func3, uint8_t const qty) 
         : CSRAux(func3, qty)
     {}
-     void InterpretQty(reg_type const&) override;
-     uint64_t makeCSRResult(uint64_t const) override;
+    // in this case, qty represents the index of the register
+    // rs1, which is the operand in the functions srrw etc
+    void InterpretQty(reg_type const&) override;
+    // based on the qty it executes one function between
+    // srrw, srrr, srrc
+    uint64_t makeCSRResult(uint64_t const) override;
 private:
-    uint64_t srrw(uint64_t const);
-    uint64_t srrs(uint64_t const);
-    uint64_t srrc(uint64_t const);
+    uint64_t csrrw(uint64_t const);
+    uint64_t csrrs(uint64_t const);
+    uint64_t csrrc(uint64_t const);
+
+// it stores the content of the register at qty index.
+    uint64_t m_rs1; 
 };
 
 class CSRImm : public CSRAux {
@@ -52,38 +80,14 @@ public:
     CSRImm(func3_t const func3, uint8_t const qty) 
         : CSRAux(func3,qty)
     {}
-    // distinguish between the two possible cases: immediate or operations id
-     void InterpretQty(reg_type const&) override; 
-     uint64_t makeCSRResult(uint64_t const) override;
+// it zero-extends the immediate 
+    void InterpretQty(reg_type const&) override; 
+    uint64_t makeCSRResult(uint64_t const) override;
 private:
-    void srrwi();
-    void srrsi();
-    void srrci();
+    uint64_t csrrwi(uint64_t const);
+    uint64_t csrrsi(uint64_t const);
+    uint64_t csrrci(uint64_t const);
+
+    uint64_t m_imm;
 };
 
-
-class CSR : public System {
-public:
-    CSR(uint32_t const is, uint64_t const pc)
-        : System(is,pc), m_index_csr(m_func12)
-    {
-        if (static_cast<uint8_t>(m_func3) < 5) { 
-            // TODO: solve the problem, possible reason: alias works internally, not externally. Easiest solution: delete alias and write System::func3_t
-            m_csr_aux = new CSRImm(m_func3, BitsManipulation::takeBits(is,15,19));
-        } else {
-            m_csr_aux = new CSRNotImm(m_func3, BitsManipulation::takeBits(is,15,19));
-        }
-    }
-    void readRegister(reg_type const&) override;
-    void readCSR(const csrs_t &) override;
-    void execution() override;
-    void writeCsr(csrs_t& csrs) override;
-    void writeBack(reg_type &) override;
-private:
-    CSRAux* m_csr_aux;
-    uint16_t const& m_index_csr;
-    uint64_t m_rs1;
-    uint64_t m_csr_rs; // alias t in riscv instructions
-    uint64_t m_csr_rd;
-    uint64_t m_rd;
-}; 

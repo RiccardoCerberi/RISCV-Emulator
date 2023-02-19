@@ -3,10 +3,11 @@
 #include"instructions.hpp"
 #include <cstdint>
 #include <memory>
+
+
 /*
  * Fence and CSRs are instructions that divided the string of bits in the same way, the only difference is the interpretation they give to the chuncks generated
  */
-
 
 class System : public InstructionFormat {
 public:
@@ -19,6 +20,7 @@ public:
     {}
     enum class func3_t : uint8_t {
         kecall = 0b000,
+        kebreak = 0b000,
         kcsrrw = 0b001,
         kcsrrs = 0b010,
         ksrrc = 0b011,

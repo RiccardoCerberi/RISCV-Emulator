@@ -40,7 +40,8 @@ void Op::srl() {
 
 // it keeps the sign bit
 void Op::sra() {
-    m_rd =  (m_rs1 & (1 << (sizeof(uint64_t)*8-1)) | (m_rs1 >> BitsManipulation::takeBits(m_rs2, 0, 4)));
+    m_rd =  (m_rs1 & (static_cast<uint64_t>(1) << 
+        (sizeof(uint64_t)*8-1)) | (m_rs1 >> BitsManipulation::takeBits(m_rs2, 0, 4)));
 }
 
 void Op::orop() {
