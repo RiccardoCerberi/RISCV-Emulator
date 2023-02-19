@@ -24,10 +24,9 @@ CPU::CPU(std::string const &file_name)
         m_bus.storeData(adr_is, is, data_size::kword);
         adr_is += data_size::kword;
     }
-    uint64_t last_is_ad = adr_is - data_size::kword;
-    setLastInstrAddress(last_is_ad);
+    setLastInstrAddress(adr_is);
 #ifdef DEBUG
-    std::cout << "Last instructions: " << std::hex << "0x" << last_is_ad << "\n";
+    std::cout << "Last instructions: " << std::hex << "0x" << adr_is << "\n";
     std::cout << "Instructions are loaded\n";
 #endif
 }
@@ -57,9 +56,10 @@ void CPU::printRegs() {
 
     std::cout << "Registers:\n";
     for (auto const &reg: m_registers) {
-        std::cout << "\\x" << i << "=" << std::hex << reg << " - ";
+        std::cout << "\\x" << std::dec << i << "="; std::cout << "0x" << std::hex << reg << " ";
         ++i;
     }
+    std::cout << std::endl;
 }
 
 
@@ -73,6 +73,10 @@ void CPU::steps() {
     // or by the user that presses key to terminate the program
     while (!checkEndProgram()) {
         uint32_t is = fetch();
+#ifdef DEBUG
+        std::cout << "pc = " << std::hex << m_pc << " " << "instruction = " << std::bitset<32>(is) << std::endl;
+#endif
+
 #ifdef DEBUG
         printRegs();
 #endif
