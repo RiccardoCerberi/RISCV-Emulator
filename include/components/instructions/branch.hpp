@@ -48,9 +48,4 @@ class Branch : public InstructionFormat {
         bool bge();
         bool bltu();
         bool bgeu();
-
-
-         void printRdIndex() override;
-         void printRs1Index() override;        
-         void printRs2Index() override;
 };

@@ -19,3 +19,8 @@ void InstructionFormat::writeBack(reg_type&) {}
 uint64_t InstructionFormat::moveNextInstruction() { 
     return m_curr_pc + data_size::kword; 
 }
+
+
+std::string printRegIndex(std::size_t const reg_ind) {
+    return "x" + std::to_string(reg_ind);
+}
