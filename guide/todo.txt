@@ -8,4 +8,7 @@ Set pragma once
 
 See from minute 1:41:07 George Hotz Riscv live
 
+
+TODO: Set specific print functions to knwo what's happening 
+
 TODO: Define functions to printout the instruction that is currently being processed (Hint: check George Hotz' implementation)

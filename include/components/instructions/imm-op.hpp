@@ -18,8 +18,4 @@ class ImmOp : public I {
         void slli();
         void srli();
         void srai();
-
-        void printRdIndex();
-        void printRs1Index();
-        void printRs2Index();
 };

@@ -1,9 +1,14 @@
 #include"../../../include/components/instructions/imm-op.hpp"
 
+#define DEBUG
+
 void ImmOp::addi() {
 #ifdef DEBUG  
-    std::cout << "X" << m_index_rd << " = "
-              << "X" << m_index_rs << " + " << m_offset
+    std::cout << printRegIndex(m_index_rd)
+              << " = " 
+              << printRegIndex(m_index_rs)
+              << " + " 
+              << m_offset
               << std::endl;
 #endif
     m_rd = m_rs + m_offset;
@@ -11,7 +16,7 @@ void ImmOp::addi() {
 
 void ImmOp::slti() {
 #ifdef DEBUG
-    std::cout << "(sign extended) X" << m_index_rs
+    std::cout << "(sign extended) " + printRegIndex(m_index_rs)
               << " < "
               << m_offset
               << std::endl;
@@ -26,7 +31,7 @@ void ImmOp::slti() {
 
 void ImmOp::sltiu() {
 #ifdef DEBUG
-    std::cout << "(unsigned) X" << m_index_rs
+    std::cout << "(unsigned) " + printRegIndex(m_index_rs)
               << " < "
               << m_offset
               << std::endl;
@@ -41,9 +46,11 @@ void ImmOp::sltiu() {
 
 void ImmOp::xori() {
 #ifdef DEBUG
-    std::cout << "X" << m_index_rs
-              << " ^ "
-              << m_offset 
+    std::cout << printRegIndex(m_index_rd)
+              << " = " 
+              << printRegIndex(m_index_rs)
+              << " ^ " 
+              << m_offset
               << std::endl;
 #endif
     m_rd = m_rs ^ m_offset;
@@ -52,9 +59,11 @@ void ImmOp::xori() {
 
 void ImmOp::ori() {
 #ifdef DEBUG
-    std::cout << "X" << m_index_rs
-              << " | "
-              << m_offset 
+    std::cout << printRegIndex(m_index_rd)
+              << " = " 
+              << printRegIndex(m_index_rs)
+              << " | " 
+              << m_offset
               << std::endl;
 #endif
     m_rd = m_rs | m_offset;
@@ -62,46 +71,57 @@ void ImmOp::ori() {
 
 void ImmOp::andi() {
 #ifdef DEBUG
-    std::cout << "X" << m_index_rs
-              << " & "
-              << m_offset 
+    std::cout << printRegIndex(m_index_rd)
+              << " = " 
+              << printRegIndex(m_index_rs)
+              << " & " 
+              << m_offset
               << std::endl;
 #endif
     m_rd = m_rs & m_offset;
 }
 
 void ImmOp::slli() {
-#ifdef DEBUG
-    std::cout << "X" << m_index_rs
-              << "  "
-              << m_offset 
-              << std::endl;
-#endif
     uint64_t shamt = BitsManipulation::takeBits(m_instruction, 20, 24);
     m_rd = m_rs << shamt;
+
+#ifdef DEBUG
+    std::cout << printRegIndex(m_index_rd)
+              << " = " 
+              << printRegIndex(m_index_rs)
+              << " << " 
+              << shamt
+              << std::endl;
+#endif
 }
 
 void ImmOp::srli() {
-#ifdef DEBUG
-    std::cout << "X" << m_index_rs
-              << " | "
-              << m_offset 
-              << std::endl;
-#endif
     uint64_t shamt = BitsManipulation::takeBits(m_instruction, 20, 24);
     m_rd = m_rs >> shamt;
+
+#ifdef DEBUG
+    std::cout << printRegIndex(m_index_rd)
+              << " = " 
+              << printRegIndex(m_index_rs)
+              << " >> " 
+              << shamt
+              << std::endl;
+#endif
 }
 
 void ImmOp::srai() {
-#ifdef DEBUG
-    std::cout << "X" << m_index_rs
-              << " | "
-              << m_offset 
-              << std::endl;
-#endif
     uint64_t shamt = BitsManipulation::takeBits(m_instruction, 20, 24);
     uint64_t vacant_bit = static_cast<uint64_t>(1) << (sizeof(uint64_t)*8 -1);
     m_rd = (vacant_bit & m_rs) | (m_rs >> shamt);
+
+#ifdef DEBUG
+    std::cout << "(arithmetic shift)" + printRegIndex(m_index_rd)
+              << " = " 
+              << printRegIndex(m_index_rs)
+              << " >> " 
+              << shamt
+              << std::endl;
+#endif
 }
 
 void ImmOp::execution() {
