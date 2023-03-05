@@ -53,31 +53,75 @@ void Branch::execution() {
 }
 
 bool Branch::beq() {
+#ifdef DEBUG
+    std::cout << "X" << m_index_rs1 
+              << " == " <<
+              << "X" << m_index_rs2
+              << std::endl;
+#endif
     return m_rs1 == m_rs2;
 }
 
 bool Branch::bne() {
+#ifdef DEBUG
+    std::cout << "X" << m_index_rs1 
+              << " != " <<
+              << "X" << m_index_rs2
+              << std::endl;
+#endif
     return m_rs1 != m_rs2;
 }
 
 bool Branch::blt() {
+#ifdef DEBUG
+    std::cout << "(sign extended) X" << m_index_rs1 
+              << " < " <<
+              << "X" << m_index_rs2
+              << std::endl;
+#endif
     return static_cast<int64_t>(m_rs1) < static_cast<int64_t>(m_rs2);
 }
 
 bool Branch::bltu() {
+#ifdef DEBUG
+    std::cout << "(unsigned) X" << m_index_rs1 
+              << " < " <<
+              << "X" << m_index_rs2
+              << std::endl;
+#endif
     return m_rs1 < m_rs2;
 }
 
 bool Branch::bge() {
+#ifdef DEBUG
+    std::cout << "(sign extended) X" << m_index_rs1 
+              << " >= " <<
+              << "X" << m_index_rs2
+              << std::endl;
+#endif
     return static_cast<int64_t>(m_rs1) >= static_cast<int64_t>(m_rs2);
 }
 
 bool Branch::bgeu() {
+#ifdef DEBUG
+    std::cout << "(unsigned) X" << m_index_rs1 
+              << " >= " <<
+              << "X" << m_index_rs2
+              << std::endl;
+#endif
     return m_rs1 >= m_rs2;
 }
 
 uint64_t Branch::moveNextInstruction() {
-    if (m_jump == true)
+    if (m_jump == true) {
+        std::cout << "condition is true\n";
         return m_curr_pc + m_offset;
+    } 
+    std::cout << "condition is false\n";
     return m_curr_pc + data_size::kword;
 }
+
+
+         void printRdIndex() override;
+         void printRs1Index() override;        
+         void printRs2Index() override;

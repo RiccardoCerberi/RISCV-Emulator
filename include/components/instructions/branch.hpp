@@ -36,7 +36,6 @@ class Branch : public InstructionFormat {
         size_t m_index_rs1;
         size_t m_index_rs2;
         uint64_t m_offset;
-        // distinguish every conditions
         id_t m_id_cond;
 
         uint64_t m_rs1;
@@ -49,4 +48,9 @@ class Branch : public InstructionFormat {
         bool bge();
         bool bltu();
         bool bgeu();
+
+
+         void printRdIndex() override;
+         void printRs1Index() override;        
+         void printRs2Index() override;
 };

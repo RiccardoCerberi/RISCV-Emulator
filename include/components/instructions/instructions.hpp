@@ -38,8 +38,13 @@ class InstructionFormat {
         virtual uint64_t moveNextInstruction();
         virtual ~InstructionFormat() = default;
     protected:
+        virtual void printRdIndex() {}
+        virtual void printRs1Index() {}
+        virtual void printRs2Index() {}
+    protected:
         uint32_t const m_instruction;
         uint64_t const m_curr_pc;
+
 };
 
 
