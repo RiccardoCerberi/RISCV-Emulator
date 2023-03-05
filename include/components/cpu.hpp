@@ -32,12 +32,11 @@
 
 
 /*
+ * TODO: configure tlb to translate addresses
  * TODO: configure ecall to implement system calls.
     L21 of the MIT from 6:57 there's the implemenetation.
     Remove DEBUG macro
 */
-
-
 
 // Registers cannot be pointers because they have to support all the operations
 // like addiction or subtraction as well as deferencing; this will require
@@ -56,7 +55,6 @@
  */
 
 class CPU {
-    friend class CPU_Debug;
 public:
     // when the cpu is constructed the memory must have the instructions stored
     CPU(std::string const&);
@@ -64,7 +62,6 @@ public:
     bool checkEndProgram();
 
     uint32_t getCurrentInstruction();
-    void printRegs();
 
 private:
     enum class opcode_t : uint8_t {
@@ -100,7 +97,7 @@ private:
     // if the pc is pointing to an address that
     // is not four byte alligned, it will throw an
     // exception
-    void CheckWordAlign(uint64_t pc);
+    void checkWordAlign(uint64_t pc);
 
     /*
      * 5-stages pipeline
@@ -108,18 +105,14 @@ private:
     // takes the instruction from memory at the address pointed by the pc and
     // returns its data
     uint32_t fetch();
-    // reads the opcode and, based on that, creates the
-    // proper instruction
-    // TODO: change the return type with a smart pointer
-    InstructionFormat* decode(uint32_t const);
-    // execute the arithmetic operation decoded in the previous stage, by
-    // overloading the omonimum method,
-    // It's needed a registers read
-    void execute(InstructionFormat*);
-    // memory access to store or load data
-    void memoryAccess(InstructionFormat*);
-    // write the result to the address
-    void writeBack(InstructionFormat*);
+    // creates the instruction based on decode bits
+    std::unique_ptr<InstructionFormat> decode(uint32_t );
 
-    uint64_t moveNextInstruction(InstructionFormat*);
+    void execute(std::unique_ptr<InstructionFormat> const&);
+    void memoryAccess(std::unique_ptr<InstructionFormat> const&);
+    void writeBack(std::unique_ptr<InstructionFormat> const&);
+
+    uint64_t moveNextInstruction(std::unique_ptr<InstructionFormat> const&);
+
+    void printRegs();
 };

@@ -2,11 +2,14 @@
 
 #include "instructions.hpp"
 
-//  I-format 
-//  Every I-instruction reads register and saves the result. 
-//  What distinguishes every instruction is the execute function that
-//  setup the source register or the destination one, that will be written back.
-//  operation, like saving the next instruction (jalr)
+/*
+ * I-format:
+ * - rd => register that will store the result
+ * - func3 => specifies the instruction variant (addi, jalr)
+ * - rs1 => source register
+ * - immediate
+ */
+
 class I : public InstructionFormat{
     public:
         void readRegister(reg_type const&) override;

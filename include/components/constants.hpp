@@ -5,6 +5,7 @@
 #include<array>
 
 constexpr uint64_t kdram_base = 0x80000000;
+
 constexpr uint32_t kdram_size = 128 * 1024 * 1024;
 
 constexpr uint8_t ktot_registers = 32;

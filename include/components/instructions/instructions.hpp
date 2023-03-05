@@ -40,10 +40,6 @@ class InstructionFormat {
     protected:
         uint32_t const m_instruction;
         uint64_t const m_curr_pc;
-
-#ifdef DEBUG
-        virtual void printInstruction() = 0;
-#endif
 };
 
 
