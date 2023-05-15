@@ -73,6 +73,9 @@ private:
         kload = 0b0000011,
         kstore = 0b0100011,
         kimmop = 0b0010011,  // operations like addi
+/*
+ * To invoke syscall, the user has to store the code of the syscall in a  specific register, then call syscall.
+ */
         kop = 0b0110011,   // operations without immediate, like add
 // fence instructions organize the sequence of instructions in a concurrent modeli (threads are called hearts), in fact, it's ensured that every instruction preceding the fence is executed before the ones after the fence. Therefore A B fence C D will be executed as {A,B} - {C,D}; the orther between instructions in curly braces can change: A-B as well as B-A.
 // I'm not going to implement fence instructions at this moment, because
