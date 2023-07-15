@@ -22,8 +22,7 @@ void CSR::readCSR( csrs_t const& csrs) {
 
 void CSR::execution() {
     m_csr_rd = m_csr_aux->makeCSRResult(m_csr_rs);
-// TODO: check possible errors because I'm not considering to separate m_csr_rs reading
-// and m_rd assingment; in the guide: t = m_csr_rs [...] m_rd = t
+// TODO: check possible errors because I'm not considering to separate m_csr_rs reading and m_rd assingment; in the guide: t = m_csr_rs [...] m_rd = t
     m_rd = m_csr_rs;  // always present, maybe with t
 }
 
@@ -60,7 +59,7 @@ uint64_t CSRNotImm::makeCSRResult(uint64_t const csr_rs) {
     return result;
 }
 
-uint64_t CSRNotImm::csrrw(uint64_t const csr_rs) {
+uint64_t CSRNotImm::csrrw(uint64_t const) {
     return m_rs1;  
 }
 
@@ -74,7 +73,7 @@ uint64_t CSRNotImm::csrrc(uint64_t const csr_rs) {
 
 //Immediate members
 
-void CSRImm::InterpretQty(reg_type const& reg) {
+void CSRImm::InterpretQty(reg_type const&) {
     m_imm = static_cast<uint64_t>(m_imm);
 }
 
@@ -92,7 +91,7 @@ uint64_t CSRImm::makeCSRResult(uint64_t const csr_rs) {
     }
 }
 
-uint64_t CSRImm::csrrwi(uint64_t const csr_rs) {
+uint64_t CSRImm::csrrwi(uint64_t const) {
     return m_imm;
 }
 
@@ -103,8 +102,4 @@ uint64_t CSRImm::csrrsi(uint64_t const csr_rs) {
 uint64_t CSRImm::csrrci(uint64_t const csr_rs) {
     return csr_rs & (!m_imm);
 }
-
-
-
-
 

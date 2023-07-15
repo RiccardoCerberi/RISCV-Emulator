@@ -5,7 +5,6 @@
 #include <sys/types.h>
 
 // Default functions
-
 void InstructionFormat::readRegister(const reg_type &) {}
 
 void InstructionFormat::readCSR(csrs_t const&) {}

@@ -9,6 +9,7 @@ Emulator::Emulator(std::string const &file_name) : m_cpu(file_name)
 {}
 
 
+// entry point for the program
 void Emulator::runEmulator() {
     m_cpu.steps();
 }

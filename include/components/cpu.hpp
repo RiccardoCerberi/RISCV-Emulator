@@ -30,12 +30,12 @@
 #include "instructions/ecall.hpp"
 #include "instructions/csrs.hpp"
 
-
 /*
- * TODO: configure tlb to translate addresses
  * TODO: configure ecall to implement system calls.
-    L21 of the MIT from 6:57 there's the implemenetation.
-    Remove DEBUG macro
+ * TODO: configure tlb to translate addresses.
+ *  by default, riscv doesn't provide an offical way to do that so it's up to the operating system take care of that.
+ *  L21 of the MIT from 6:57 there's an explanation about page walk 
+    by splitting virtual page number in two parts each one is an offset for the page table entry.
 */
 
 // Registers cannot be pointers because they have to support all the operations

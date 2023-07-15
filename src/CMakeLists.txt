@@ -1,6 +1,5 @@
 project(${CMAKE_PROJECT_NAME} )
 
-#check if it's syntactically correct <name_folder>/
 file(GLOB instructions components/instructions/*.cpp)
 file(GLOB components_sources CONFIGURE_DEPENDS  components/*.cpp )
 file(GLOB emulator_sources emulator/*.cpp)

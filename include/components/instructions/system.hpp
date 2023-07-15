@@ -4,7 +4,6 @@
 #include <cstdint>
 #include <memory>
 
-
 /*
  * Fence and CSRs are instructions that divided the string of bits in the same way, the only difference is the interpretation they give to the chuncks generated
  */
@@ -36,7 +35,6 @@ public:
         uint16_t takeFunc12();
     protected:
         size_t m_index_rd;
-// TODO: rename the variable better
         uint8_t m_qty; // to distinguish from immediate and normal csrs opearation
         func3_t m_func3;
         uint16_t m_func12;

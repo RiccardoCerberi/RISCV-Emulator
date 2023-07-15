@@ -80,7 +80,7 @@ public:
     CSRImm(func3_t const func3, uint8_t const qty) 
         : CSRAux(func3,qty)
     {}
-// it zero-extends the immediate 
+    // it zero-extends the immediate 
     void InterpretQty(reg_type const&) override; 
     uint64_t makeCSRResult(uint64_t const) override;
 private:

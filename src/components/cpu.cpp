@@ -87,15 +87,22 @@ void CPU::steps() {
         std::unique_ptr<InstructionFormat> is_format = nullptr;
         try {
             is_format = decode(is);
-        } catch(const char* txt_exc) {
-            std::cout << "exception: " << txt_exc << "\n";
+        } catch(const char* decode_exc) {
+            std::cout << "Exception in decoding instruction: " << decode_exc << "\n";
             continue;
         }
 
         assert(is_format != nullptr);
 
-        execute(is_format);
-
+        try {
+            execute(is_format);
+        } catch(const char* execute_exc) {
+            std::cout << "Exception in excuting instruction: " << execute_exc << std::endl;
+#ifdef DEBUG
+            abort();
+#endif
+            break;
+        }
         memoryAccess(is_format);
 
         writeBack(is_format);
@@ -174,7 +181,11 @@ std::unique_ptr<InstructionFormat> CPU::decode(uint32_t const is) {
 
 void CPU::execute(std::unique_ptr<InstructionFormat> const& is_format) {
     is_format->readRegister(m_registers);
-    is_format->execution();
+    try {
+            is_format->execution();
+    } catch(const char* exc) {
+        throw exc;
+    }
 }
 
 void CPU::memoryAccess(std::unique_ptr<InstructionFormat> const& is_format) {
