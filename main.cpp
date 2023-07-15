@@ -20,7 +20,7 @@ int main(int argc, char **argv) {
     }
 
     std::string bin_file{argv[index_file]};
-    std::cout << "Everything fine. \nFile provided: " << bin_file << std::endl;
+    std::cout << "File provided: " << bin_file << std::endl;
 
     Emulator riscv_emulator(bin_file);
 

@@ -2,18 +2,31 @@
 
 
 void Op::add() {
+#ifdef DEBUG
+    printInstruction("ADD", "+");
+#endif
     m_rd = m_rs1 + m_rs2;    
 }
 
 void Op::sub() {
+#ifdef DEBUG
+    printInstruction("SUB", "-");
+#endif
     m_rd = m_rs1 - m_rs2;
 }
 
 void Op::sll() {
-    m_rd = m_rs1 << BitsManipulation::takeBits(m_rs2, 0, 4);
+    auto lower_five_bits = BitsManipulation::takeBits(m_rs2, 0, 4);
+#ifdef DEBUG
+    printInstruction("SLL", "<<")    ;
+#endif
+    m_rd = m_rs1 << lower_five_bits;
 }
 
 void Op::slt() {
+#ifdef DEBUG
+    printInstruction("SLT", "<<")    ;
+#endif
     if (static_cast<int64_t>(m_rs1) < static_cast<int64_t>(m_rs2)) {
         m_rd = 1;
     } else {
@@ -23,6 +36,9 @@ void Op::slt() {
 
 
 void Op::sltu() {
+#ifdef DEBUG
+    printInstruction("SLTU", "<<")    ;
+#endif
     if (m_rs1 < m_rs2) {
         m_rd = 1;
     } else {
@@ -31,24 +47,39 @@ void Op::sltu() {
 }
 
 void Op::xorop() {
+#ifdef DEBUG
+    printInstruction("XOROP", "^");
+#endif
     m_rd = m_rs1 ^ m_rs2;
 }
 
 void Op::srl() {
+#ifdef DEBUG
+    printInstruction("SRL", ">>");
+#endif
     m_rd = m_rs1 >> BitsManipulation::takeBits(m_rs2, 0, 4);
 }
 
-// it keeps the sign bit
+// arithmetic right shift of rs1 by the lower five bits in rs2
 void Op::sra() {
-    m_rd =  (m_rs1 & (static_cast<uint64_t>(1) << 
-        (sizeof(uint64_t)*8-1)) | (m_rs1 >> BitsManipulation::takeBits(m_rs2, 0, 4)));
+#ifdef DEBUG
+    printInstruction("SRA", ">>");
+#endif
+    uint64_t last_digit = m_rs1 & ((uint64_t) 1 << 63);
+    m_rd = (m_rs1 >> BitsManipulation::takeBits(m_rs2, 0, 4)) | (last_digit);
 }
 
 void Op::orop() {
+#ifdef DEBUG
+    printInstruction("OROP", "|");
+#endif
     m_rd = m_rs1 | m_rs2;
 }
 
 void Op::andop() {
+#ifdef DEBUG
+    printInstruction("ANDOP", "&");
+#endif
     m_rd = m_rs1 & m_rs2;
 }
 
@@ -90,11 +121,6 @@ void Op::execution() {
     }
 }
 
-
-
-
-
-
-
-
-
+void Op::printInstruction(std::string const &is_name, std::string const &op) {
+    std::cout << is_name << " " << printRegIndex(m_index_rd) <<  " = " << printRegIndex(m_index_rs1) << " " << op << " " << printRegIndex(m_index_rs2) << std::endl;
+}

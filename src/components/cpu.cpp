@@ -15,7 +15,7 @@ CPU::CPU(std::string const &file_name)
     uint64_t is = 0;
     while (input_file.read(reinterpret_cast<char *>(&is), data_size::kword)) {
 
-#ifdef DEBUG
+#ifdef DEB_BIN_INS
         std::bitset<32> instruction_loaded(is);
         std::cout << "instruction_loaded = " << instruction_loaded << "\n";
 #endif
@@ -76,11 +76,11 @@ bool CPU::checkEndProgram() {
 void CPU::steps() {
     while (!checkEndProgram()) {
         uint32_t is = fetch();
-#ifdef DEBUG
+#ifdef DEB_PC
         std::cout << "pc = " << std::hex << m_pc << " " << "instruction = " << std::bitset<32>(is) << std::endl;
 #endif
 
-#ifdef DEBUG
+#ifdef DEB_REGS
         printRegs();
 #endif
 
@@ -128,7 +128,7 @@ std::unique_ptr<InstructionFormat> CPU::decode(uint32_t const is) {
     std::unique_ptr<InstructionFormat> is_format;
 #ifdef DEBUG
     uint8_t opcode = BitsManipulation::takeBits(is, 0, klast_opcode_digit);
-    std::cout << "opcode = " << std::bitset<8>(opcode) << "\n";
+    std::cout << "<opcode = " << std::bitset<8>(opcode) << "> ";
 #endif
 
     auto op = opcode_t(static_cast<uint8_t>(BitsManipulation::takeBits(is, 0, klast_opcode_digit)));

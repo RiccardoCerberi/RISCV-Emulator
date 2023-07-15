@@ -16,7 +16,6 @@ uint64_t I::takeOffset()
 }
 
 
-// TODO: testing
 I::id_t I::takeId() {
     return I::id_t(BitsManipulation::takeBits(m_instruction, 12, 14)
                     | (BitsManipulation::takeBits(m_instruction,30,31) << 3));

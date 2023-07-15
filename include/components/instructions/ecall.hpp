@@ -11,8 +11,6 @@ class Ecall : public System {
         {}
         // TODO: implement this function
         void execution() override{
-            triggerExe
+            throw "Ecall not implemented yet\n";
         } 
-        // TODO: implement the execute function considering linux
-        // system calls convention.
 };

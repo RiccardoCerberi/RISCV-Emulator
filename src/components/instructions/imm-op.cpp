@@ -2,7 +2,8 @@
 
 void ImmOp::addi() {
 #ifdef DEBUG  
-    std::cout << printRegIndex(m_index_rd)
+    std::cout << "ADDI " 
+              << printRegIndex(m_index_rd)
               << " = " 
               << printRegIndex(m_index_rs)
               << " + " 
@@ -14,7 +15,7 @@ void ImmOp::addi() {
 
 void ImmOp::slti() {
 #ifdef DEBUG
-    std::cout << "(sign extended) " + printRegIndex(m_index_rs)
+    std::cout << "SLTI(sign extended) " + printRegIndex(m_index_rs)
               << " < "
               << m_offset
               << std::endl;
@@ -29,7 +30,7 @@ void ImmOp::slti() {
 
 void ImmOp::sltiu() {
 #ifdef DEBUG
-    std::cout << "(unsigned) " + printRegIndex(m_index_rs)
+    std::cout << "SLTIU (unsigned) " + printRegIndex(m_index_rs)
               << " < "
               << m_offset
               << std::endl;
@@ -44,7 +45,8 @@ void ImmOp::sltiu() {
 
 void ImmOp::xori() {
 #ifdef DEBUG
-    std::cout << printRegIndex(m_index_rd)
+    std::cout << "XORI "
+             << printRegIndex(m_index_rd)
               << " = " 
               << printRegIndex(m_index_rs)
               << " ^ " 
@@ -57,7 +59,8 @@ void ImmOp::xori() {
 
 void ImmOp::ori() {
 #ifdef DEBUG
-    std::cout << printRegIndex(m_index_rd)
+    std::cout << "ORI "
+              <<  printRegIndex(m_index_rd)
               << " = " 
               << printRegIndex(m_index_rs)
               << " | " 
@@ -69,7 +72,8 @@ void ImmOp::ori() {
 
 void ImmOp::andi() {
 #ifdef DEBUG
-    std::cout << printRegIndex(m_index_rd)
+    std::cout << "ANDI "
+              << printRegIndex(m_index_rd)
               << " = " 
               << printRegIndex(m_index_rs)
               << " & " 
@@ -84,7 +88,8 @@ void ImmOp::slli() {
     m_rd = m_rs << shamt;
 
 #ifdef DEBUG
-    std::cout << printRegIndex(m_index_rd)
+    std::cout << "SLLI "
+              << printRegIndex(m_index_rd)
               << " = " 
               << printRegIndex(m_index_rs)
               << " << " 
@@ -98,7 +103,8 @@ void ImmOp::srli() {
     m_rd = m_rs >> shamt;
 
 #ifdef DEBUG
-    std::cout << printRegIndex(m_index_rd)
+    std::cout << "SRLI"
+              << printRegIndex(m_index_rd)
               << " = " 
               << printRegIndex(m_index_rs)
               << " >> " 
@@ -113,10 +119,11 @@ void ImmOp::srai() {
     m_rd = (vacant_bit & m_rs) | (m_rs >> shamt);
 
 #ifdef DEBUG
-    std::cout << "(arithmetic shift)" + printRegIndex(m_index_rd)
-              << " = " 
+    std::cout << "SRAI (arithmetic shift) "
+              << printRegIndex(m_index_rd)
+              << " = "
               << printRegIndex(m_index_rs)
-              << " >> " 
+              << " >> "
               << shamt
               << std::endl;
 #endif
@@ -148,6 +155,7 @@ void ImmOp::execution() {
             break;
         case id_t::ksrli:
             srli();
+            break;
         case id_t::ksrai:
             srai();
             break;
