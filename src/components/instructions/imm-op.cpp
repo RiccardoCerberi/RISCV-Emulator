@@ -1,7 +1,5 @@
 #include"../../../include/components/instructions/imm-op.hpp"
 
-#define DEBUG
-
 void ImmOp::addi() {
 #ifdef DEBUG  
     std::cout << printRegIndex(m_index_rd)

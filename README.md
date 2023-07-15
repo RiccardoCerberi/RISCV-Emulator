@@ -13,7 +13,11 @@ Create a riscv emulator that is able to run nv6 unix system
   >   ./configure --prefix=/opt/riscv
   >   make && make linux
    Make sure riscv compiler environment variable is set by typing riscv64-unknown-elf-gcc -S test.c.
-   If an error appear make sure
+   If riscv64-unknown-elf-gcc  is not recognized it means you have to edit the PATH environment variable: type export PATH=$PATH:/opt/riscv/bin/ in .bashrc file in home directory.
+   Riscv offers binary files to test the execution for any instructions.
+   These files can be found at https://github.com/riscv-software-src/riscv-tests.
+   To install them follow the instruction on the github repo.
+   NOTE: the model is a 32 bits.
 ## Structure: ##
 The memory is formed by SRAM, DRAM, Disk. 
 SRAM and DRAM are grouped in RAM.

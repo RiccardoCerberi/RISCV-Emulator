@@ -1,8 +1,6 @@
 #include "../../../include/components/instructions/Jis.hpp"
 #include <cstdint>
 
-#define DEBUG
-
 // Jump
 uint64_t Jis::takeOffset()
 {

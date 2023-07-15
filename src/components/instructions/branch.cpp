@@ -1,7 +1,5 @@
 #include"../../../include/components/instructions/branch.hpp"
 
-#define DEBUG
-
 size_t Branch::takeRs1() {
     return BitsManipulation::takeBits(m_instruction, 15, 19);
 }

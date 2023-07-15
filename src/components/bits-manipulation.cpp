@@ -1,7 +1,5 @@
 #include "../../include/components/bits-manipulation.hpp"
 
-// remember to remove DEBUG flag
-#define DEBUG
 // last is included
 uint64_t BitsManipulation::takeBits(uint64_t const is, uint8_t const beg, uint8_t const last) {
     assert(last > beg);

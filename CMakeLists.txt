@@ -27,11 +27,15 @@ set_target_properties(riscv-emulator
 
 target_compile_features(riscv-emulator PUBLIC cxx_std_17)
 
-set(gcc_flags "-Wall;-Wextra;-Wshadow;-Wshadow;-Wformat=2;-g;-DDEBUG=1")
+set(gcc_flags "-Wall;-Wextra;-Wshadow;-Wshadow;-Wformat=2;-g;-DDEBUG")
 set(msvc_flags "-W3")
 
 set(gcc_like_cxx "$<COMPILE_LANG_AND_ID:CXX,ARMClang,AppleClang,Clang,GNU>")
 set(msvc_cxx "$<COMPILE_LANG_AND_ID:CXX,MSVC>")
+
+target_compile_options(riscv-emulator PRIVATE
+        "$<${gcc_like_cxx}:$<BUILD_INTERFACE:${gcc_flags}>>"
+   "$<${msvc_cxx}: $<BUILD_INTERFACE:${msvc_flags}>>")
 
 if (DEBUG)
     message("DEBUG flag")
@@ -40,7 +44,3 @@ else()
     message("No DEBUG flag")
 endif (DEBUG)
 
-
-target_compile_options(riscv-emulator PRIVATE
-        "$<${gcc_like_cxx}:$<BUILD_INTERFACE:${gcc_flags}>>"
-        "$<${msvc_cxx}: $<BUILD_INTERFACE:${msvc_flags}>>")
