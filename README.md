@@ -17,7 +17,9 @@ Create a riscv emulator that is able to run nv6 unix system
    Riscv offers binary files to test the execution for any instructions.
    These files can be found at https://github.com/riscv-software-src/riscv-tests.
    To install them follow the instruction on the github repo.
-   NOTE: the model is a 32 bits.
+## Debug ##
+The repository contains a .vscode directory where is stored the launch.json file to set debug args in gdb.
+To debug with this settings click on the gdb icon and select  (gdb) launch.
 ## Structure: ##
 The memory is formed by SRAM, DRAM, Disk. 
 SRAM and DRAM are grouped in RAM.
