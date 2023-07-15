@@ -68,10 +68,14 @@ bool CPU::checkEndProgram() {
     return m_pc == m_address_last_is;
 }
 
+// Instructions are 32 bits long.
+// steps function executes the  needed cycle instructions.
+// In total the instructions are fetch, decode, execute, memory access and write back.
+// fetch to get the current instruction stored in memory;
+// decode to translate the first 8 bits of the instruction to know which operation to perform;
+// execute, as the name suggests, to execute the operation;
+// some operations require to store the result in memory, for example sd, as others to store it in register, such as add.
 void CPU::steps() {
-    // it keeps going in the cycle till 
-    // an exception occurs, it might be due to pc out of boundary
-    // or by the user that presses key to terminate the program
     while (!checkEndProgram()) {
         uint32_t is = fetch();
 #ifdef DEBUG
@@ -115,6 +119,7 @@ uint32_t CPU::fetch() {
     return static_cast<uint32_t>(m_bus.loadData(m_pc, data_size::kword));
 }
 
+// decode function uses polymorphism, in order to know which instruction return it needs to decode the first 8 bits.
 std::unique_ptr<InstructionFormat> CPU::decode(uint32_t const is) {
     std::unique_ptr<InstructionFormat> is_format;
 #ifdef DEBUG

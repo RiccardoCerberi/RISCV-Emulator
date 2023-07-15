@@ -3,5 +3,6 @@
         "algorithm": "cpp",
         "memory": "cpp",
         "numeric": "cpp"
-    }
+    },
+    "cmake.configureOnOpen": true
 }

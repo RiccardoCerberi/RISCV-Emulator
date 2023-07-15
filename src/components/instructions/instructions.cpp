@@ -21,6 +21,6 @@ uint64_t InstructionFormat::moveNextInstruction() {
 }
 
 
-std::string printRegIndex(std::size_t const reg_ind) {
+std::string InstructionFormat::printRegIndex(std::size_t const reg_ind) {
     return "x" + std::to_string(reg_ind);
 }
