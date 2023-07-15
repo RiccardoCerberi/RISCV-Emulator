@@ -8,6 +8,9 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 set(CMAKE_CXX_STANDARD 17)
 
+set(cxx_com_flags "-Wall -Wextra -Wshadow -Wformat=2 -g -DDEBUG=1")
+set(CMAKE_CXX_FLAGS "${cxx_com_flags}")
+
 #headers always before sources
 add_subdirectory(include)
 add_subdirectory(src)
@@ -27,18 +30,19 @@ set_target_properties(riscv-emulator
 
 target_compile_features(riscv-emulator PUBLIC cxx_std_17)
 
-set(gcc_flags "-Wall;-Wextra;-Wshadow;-Wshadow;-Wformat=2;-g;-DDEBUG")
-set(msvc_flags "-W3")
-
-set(gcc_like_cxx "$<COMPILE_LANG_AND_ID:CXX,ARMClang,AppleClang,Clang,GNU>")
-set(msvc_cxx "$<COMPILE_LANG_AND_ID:CXX,MSVC>")
-
-target_compile_options(riscv-emulator PRIVATE
-        "$<${gcc_like_cxx}:$<BUILD_INTERFACE:${gcc_flags}>>"
-   "$<${msvc_cxx}: $<BUILD_INTERFACE:${msvc_flags}>>")
+# compiler flags as written in medium GUIDE
+#set(gcc_flags "-Wall;-Wextra;-Wshadow;-Wformat=2;-g;-DDEBUG")
+#set(msvc_flags "-W3")
+#
+#set(gcc_like_cxx "$<COMPILE_LANG_AND_ID:CXX,ARMClang,AppleClang,Clang,GNU>")
+#set(msvc_cxx "$<COMPILE_LANG_AND_ID:CXX,MSVC>")
+#
+#target_compile_options(riscv-emulator PRIVATE
+#        "$<${gcc_like_cxx}:$<BUILD_INTERFACE:${gcc_flags}>>"
+#   "$<${msvc_cxx}: $<BUILD_INTERFACE:${msvc_flags}>>")
 
 if (DEBUG)
-    message("DEBUG flag")
+    message("DEBUG flag is set")
     add_definitions(-DDEBUG=1)
 else()
     message("No DEBUG flag")
