@@ -130,11 +130,9 @@ std::unique_ptr<InstructionFormat> CPU::decode(uint32_t const is) {
 
     switch (op) {
         case opcode_t::klui:
-            std::cout << "load upper immediate instruction\n";
             is_format = std::make_unique<Lui>(is, m_pc);
             break;
         case opcode_t::kauipc:
-            std::cout << "load upper immediate instruction\n";
             is_format = std::make_unique<Auipc>(is, m_pc);
             break;
         case opcode_t::kjal:

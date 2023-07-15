@@ -7,6 +7,13 @@ Create a riscv emulator that is able to run nv6 unix system
 ## External tools: ##
    * Compiler to get c code that will be translated in a sequence of instructions following the riscv format that will be executed by the emulator. 
    * A serie of test for the riscv instructions
+   Go to https://github.com/riscv/riscv-gnu-toolchain and install all required packages.
+   Install gcc compiler for riscv run these commands: 
+  >  git clone https://github.com/riscv/riscv-gnu-toolchain
+  >   ./configure --prefix=/opt/riscv
+  >   make && make linux
+   Make sure riscv compiler environment variable is set by typing riscv64-unknown-elf-gcc -S test.c.
+   If an error appear make sure
 ## Structure: ##
 The memory is formed by SRAM, DRAM, Disk. 
 SRAM and DRAM are grouped in RAM.
