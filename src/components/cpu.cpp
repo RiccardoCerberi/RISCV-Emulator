@@ -111,7 +111,6 @@ void CPU::steps() {
             std::cout << "Exception: " << txt_exception << std::endl;
             break;
         }
-        is_format->~InstructionFormat();
     }
 }
 
