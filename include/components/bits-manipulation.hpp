@@ -13,4 +13,5 @@
 struct BitsManipulation {
     static uint64_t takeBits(uint64_t , uint8_t , uint8_t );
     static uint64_t extendSign(uint64_t , uint8_t );
+    static uint64_t takeVacantBit(uint64_t);
 };

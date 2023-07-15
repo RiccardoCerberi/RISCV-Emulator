@@ -13,3 +13,7 @@ uint64_t BitsManipulation::takeBits(uint64_t const is, uint8_t const beg, uint8_
 uint64_t BitsManipulation::extendSign(uint64_t const imm, uint8_t const sign_pos) {
     return ((imm ^ (1 << sign_pos)) +(static_cast<uint64_t>(-1) << sign_pos));
 }
+
+uint64_t BitsManipulation::takeVacantBit(uint64_t n) {
+    return n & ((uint64_t) 1 << 63);
+}

@@ -19,7 +19,6 @@ class Op : public R {
         void sra();
         void orop();
         void andop();
-
         void printInstruction(std::string const& is_name, std::string const& op);
 };
     

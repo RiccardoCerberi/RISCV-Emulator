@@ -65,8 +65,8 @@ void Op::sra() {
 #ifdef DEBUG
     printInstruction("SRA", ">>");
 #endif
-    uint64_t last_digit = m_rs1 & ((uint64_t) 1 << 63);
-    m_rd = (m_rs1 >> BitsManipulation::takeBits(m_rs2, 0, 4)) | (last_digit);
+    uint64_t vacant_bit = BitsManipulation::takeVacantBit(m_rs1);
+    m_rd = (m_rs1 >> BitsManipulation::takeBits(m_rs2, 0, 4)) | (vacant_bit);
 }
 
 void Op::orop() {

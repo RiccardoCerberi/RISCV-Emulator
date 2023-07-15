@@ -18,4 +18,5 @@ class ImmOp : public I {
         void slli();
         void srli();
         void srai();
+        void printInstruction(std::string const &is_name, std::string const &op);
 };
