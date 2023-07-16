@@ -1,4 +1,4 @@
-#include "../../include/components/bits-manipulation.hpp"
+#include "../include/bits-manipulation.hpp"
 
 // last is included
 uint64_t BitsManipulation::takeBits(uint64_t const is, uint8_t const beg, uint8_t const last) {
