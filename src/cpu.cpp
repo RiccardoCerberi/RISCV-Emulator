@@ -2,22 +2,12 @@
 
 CPU::CPU(std::string const& file_name) : m_bus{file_name}, m_pc{krom_base} {
     m_registers[register_index::kzero_register] = 0;
-    m_registers[register_index::ksp] = kram_end;
+    m_registers[register_index::ksp] = kram_end-1;
 }
 
-// I can make it inline because no other units will use that
-// function
+// see how program knows where the code ends
 inline void CPU::setLastInstrAddress(uint64_t const l_is) {
     m_address_last_is = l_is;
-}
-
-void CPU::checkWordAlign(uint64_t const pc) {
-    // the lowest two bits are not zero throw
-    // the exception
-    // 3 = 00[...]0011
-    uint64_t lowest_two_bits = 3;
-    if ((pc & lowest_two_bits) != 0)
-        throw "Invalid address: pc can access only word-alligned addresses";
 }
 
 uint32_t CPU::getCurrentInstruction() { return m_pc; }
@@ -93,7 +83,7 @@ void CPU::steps() {
 }
 
 uint32_t CPU::fetch() {
-    return static_cast<uint32_t>(m_bus.loadData(m_pc, data_size::kword));
+    return static_cast<uint32_t>(m_bus.loadData(m_pc, DataSize_t::kword));
 }
 
 // decode function uses polymorphism, in order to know which instruction return
@@ -107,7 +97,6 @@ std::unique_ptr<InstructionFormat> CPU::decode(uint32_t const is) {
 
     auto op = opcode_t(static_cast<uint8_t>(
         BitsManipulation::takeBits(is, 0, klast_opcode_digit)));
-
     switch (op) {
         case opcode_t::klui:
             is_format = std::make_unique<Lui>(is, m_pc);

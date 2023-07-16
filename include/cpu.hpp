@@ -90,7 +90,7 @@ private:
     uint64_t m_address_last_is;
     csrs_t m_csrs; // CSRs registers
 
-    MemorySystem m_bus;
+    SystemInterface m_bus;
     TLB m_tlb;
 
 private:

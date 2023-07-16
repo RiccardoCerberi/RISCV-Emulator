@@ -2,7 +2,11 @@
 
 #include<cstdint>
 #include<iostream>
-#include"../bus.hpp"
+#include <cstddef>
+#include <cstdint>
+#include <cwchar>
+#include <sys/types.h>
+#include"../memory.hpp"
 #include"../constants.hpp"
 #include"../bits-manipulation.hpp"
 
@@ -34,7 +38,7 @@ class InstructionFormat {
         virtual void readRegister(reg_type const&);
         virtual void readCSR(csrs_t const&);
         virtual void execution() = 0;
-        virtual void accessMemory(Bus&);
+        virtual void accessMemory(SystemInterface&);
         virtual void writeCsr(csrs_t&);
         virtual void writeBack(reg_type&);
         virtual uint64_t moveNextInstruction();
@@ -44,7 +48,6 @@ class InstructionFormat {
     protected:
         uint32_t const m_instruction;
         uint64_t const m_curr_pc;
-
 };
 
 

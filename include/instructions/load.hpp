@@ -7,5 +7,5 @@ class Load : public I {
     public:
         Load(uint32_t const is, uint64_t const pc) : I(is, pc) {}
         void execution() override;
-        void accessMemory(Bus&) override;
+        void accessMemory(SystemInterface&) override;
 };

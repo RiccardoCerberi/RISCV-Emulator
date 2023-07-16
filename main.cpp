@@ -2,7 +2,7 @@
 #include <cstring>
 #include<vector>
 
-#include "include/emulator/emulator.hpp"
+#include "include/emulator.hpp"
 
 #define MAX_FILE_LENGTH 100
 

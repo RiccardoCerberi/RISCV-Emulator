@@ -1,4 +1,4 @@
-#include "../../include/emulator/emulator.hpp"
+#include "../include/emulator.hpp"
 
 /*
     I could have written the DRAM constructor to set the instructions in memory, but I prefer to use this method

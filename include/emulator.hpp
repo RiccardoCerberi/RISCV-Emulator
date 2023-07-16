@@ -4,7 +4,7 @@
 #include <iostream>
 #include<cassert>
 
-#include "../components/cpu.hpp"
+#include "cpu.hpp"
 
 class Emulator{
 public:

@@ -15,17 +15,17 @@ public:
     {}
     void readRegister(reg_type const&) override;
     void execution() override;
-    void accessMemory(Bus&) override;
+    void accessMemory(SystemInterface&) override;
 private:
 
     size_t takeBase();
     size_t takeSrc();
     uint16_t takeOffset();
-    data_size takeWidth();
+    DataSize_t takeWidth();
 
     size_t m_index_base;
     size_t m_index_src;
-    data_size m_width;
+    DataSize_t m_width;
     uint64_t m_offset;
 
     uint64_t m_base;

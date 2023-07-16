@@ -48,11 +48,11 @@ private:
     Mem_t m_ram;
 };
 
-class MemorySystem {
+class SystemInterface {
 public:
-    MemorySystem(std::string const &);
-    uint64_t load(Address_t, DataSize_t);
-    void store(Address_t, uint64_t, DataSize_t);
+    SystemInterface(std::string const &);
+    uint64_t loadData(Address_t, DataSize_t);
+    void storeData(Address_t, uint64_t, DataSize_t);
 private:
     RAM m_ram;
     ROM m_rom;

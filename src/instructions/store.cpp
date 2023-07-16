@@ -1,5 +1,4 @@
-#include"../../../include/components/instructions/store.hpp"
-
+#include"../../include/instructions/store.hpp"
 
 void Store::readRegister(const reg_type &reg) {
     m_base = reg[m_index_base];
@@ -10,7 +9,7 @@ void Store::execution() {
     m_base += m_offset;
 }
 
-void Store::accessMemory(Bus& bus) {
+void Store::accessMemory(SystemInterface& bus) {
     bus.storeData(m_base, m_src, m_width);
 }
 
@@ -29,7 +28,7 @@ uint16_t Store::takeOffset() {
         11);
 }
 
-data_size Store::takeWidth() {
-    return data_size(BitsManipulation::takeBits(m_instruction,12, 14));
+DataSize_t Store::takeWidth() {
+    return DataSize_t(BitsManipulation::takeBits(m_instruction,12, 14));
 }
     
