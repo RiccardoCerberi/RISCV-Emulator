@@ -1,4 +1,4 @@
-#include"../../../include/components/instructions/U-format.hpp"
+#include"../../include/instructions/U-format.hpp"
 
 uint64_t U::takeOffset() {
     return BitsManipulation::extendSign(

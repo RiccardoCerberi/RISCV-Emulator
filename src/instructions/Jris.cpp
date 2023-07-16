@@ -1,10 +1,10 @@
-#include"../../../include/components/instructions/Jris.hpp"
+#include"../../include/instructions/Jris.hpp"
 #include <cstdint>
 
 
 // Jris
 void Jris::execution() {
-    m_rd = m_curr_pc + data_size::kword;
+    m_rd = m_curr_pc + DataSize_t::kword;
 }
 
 // NOTE: the least significant bit is not set to zero,

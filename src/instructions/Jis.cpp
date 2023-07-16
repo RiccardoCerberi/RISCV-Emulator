@@ -1,4 +1,4 @@
-#include "../../../include/components/instructions/Jis.hpp"
+#include "../../include/instructions/Jis.hpp"
 #include <cstdint>
 
 // Jump
@@ -30,10 +30,10 @@ void Jis::writeBack(reg_type &registers)
               << " = "
               << m_curr_pc
               << " + "
-              << data_size::kword
+              << DataSize_t::kword
               << std::endl;
 #endif
-    registers[m_index_rd] = m_curr_pc + data_size::kword;
+    registers[m_index_rd] = m_curr_pc + DataSize_t::kword;
 }
 
 uint64_t Jis::moveNextInstruction()

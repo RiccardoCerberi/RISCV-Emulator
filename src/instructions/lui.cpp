@@ -1,4 +1,4 @@
-#include"../../../include/components/instructions/lui.hpp"
+#include"../../include/instructions/lui.hpp"
 
 void Lui::execution() {
 #ifdef DEBUG

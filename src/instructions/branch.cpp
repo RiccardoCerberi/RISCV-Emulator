@@ -1,4 +1,4 @@
-#include"../../../include/components/instructions/branch.hpp"
+#include"../../include/instructions/branch.hpp"
 
 size_t Branch::takeRs1() {
     return BitsManipulation::takeBits(m_instruction, 15, 19);
@@ -118,6 +118,6 @@ uint64_t Branch::moveNextInstruction() {
         return m_curr_pc + m_offset;
     } 
     std::cout << "condition is false\n";
-    return m_curr_pc + data_size::kword;
+    return m_curr_pc + DataSize_t::kword;
 }
 

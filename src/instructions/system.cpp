@@ -1,4 +1,4 @@
-#include"../../../include/components/instructions/system.hpp"
+#include"../../include/instructions/system.hpp"
 #include <cstdint>
 
 size_t System::takeRd() {

@@ -1,4 +1,4 @@
-#include"../../../include/components/instructions/I-format.hpp"
+#include"../../include/instructions/I-format.hpp"
 
 
 size_t I::takeRegS() {

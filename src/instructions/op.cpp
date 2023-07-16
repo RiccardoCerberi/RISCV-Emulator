@@ -1,4 +1,4 @@
-#include"../../../include/components/instructions/op.hpp"
+#include"../../include/instructions/op.hpp"
 
 
 void Op::add() {

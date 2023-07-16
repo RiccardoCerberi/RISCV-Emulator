@@ -1,4 +1,4 @@
-#include"../../../include/components/instructions/csrs.hpp"
+#include"../../include/instructions/csrs.hpp"
 #include <cstdint>
 
 CSR::CSR(uint32_t const is, uint64_t const pc) 
