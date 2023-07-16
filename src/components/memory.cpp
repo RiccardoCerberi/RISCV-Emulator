@@ -2,6 +2,23 @@
 
 // LITTLE ENDIAN: the lew significant bit is stored in the lower address.
 // Therefore 1100-0001 is stored as 0x0: 0001 0x1: 1100
+MemorySystem::MemorySystem(std::string const& file_name) {
+    std::ifstream input_file;
+
+    input_file.open(file_name, std::ios::binary);
+    assert(input_file.is_open() == true);
+
+    Mem_t code;
+    std::byte b;
+    while (input_file.read(reinterpret_cast<char *>(&b), kbyte)) {
+        code.push_back(b);
+    }
+    m_rom.storeBlock(krom_base, code);
+}
+
+static bool isAllign(Address_t ad, DataSize_t sz) {
+    return ad % sz == 0;
+}
 
 uint64_t readFromMemory(Mem_t& mem, uint64_t base, Address_t read_from, DataSize_t data_size)  {
     uint64_t data_to_take = 0;
@@ -24,6 +41,7 @@ void writeToMemory(Mem_t& mem,uint64_t base, Address_t where_to_write, uint64_t 
     size_t indx = where_to_write - base;
     assert(indx < mem.size());
 
+
     for (size_t i = 0; i < size; ++i) {
         std::byte byte_to_store = std::byte(what_to_write >> (8 * i));
 #ifdef DEB_BIN_INS
@@ -35,6 +53,27 @@ void writeToMemory(Mem_t& mem,uint64_t base, Address_t where_to_write, uint64_t 
 
 }
 
+uint64_t MemorySystem::read(Address_t read_from, DataSize_t sz) {
+    assert(isAllign(read_from, sz));
+
+    if (krom_base <= read_from && read_from < krom_end) {
+        return m_rom.read(read_from, sz);
+    }
+    if (kram_base <= read_from && read_from < kram_end) {
+        return m_ram.read(read_from, sz);
+    }
+    throw("try to read from an address out of space\n");
+}
+
+void MemorySystem::write(Address_t write_to, uint64_t what_write, DataSize_t sz) {
+    assert(isAllign(write_to, sz));
+
+    if (kram_base <= write_to && write_to < kram_end) {
+        return m_ram.write(write_to, what_write, sz);
+    }
+    throw("try to write from an address out of space\n");
+}
+
 void ROM::storeBlock(Address_t where_to_store,
                      std::vector<std::byte> const &what_to_load) {
     size_t i = 0;
@@ -42,7 +81,6 @@ void ROM::storeBlock(Address_t where_to_store,
         writeToMemory(m_rom, krom_base, where_to_store + 8*i, std::to_integer<uint64_t>(b), kbyte);
     }
 }
-
 
 uint64_t ROM::read(Address_t read_from, DataSize_t data_size) {
     return readFromMemory(m_rom, krom_base, read_from, data_size);

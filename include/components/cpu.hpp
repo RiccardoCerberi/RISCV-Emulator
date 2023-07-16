@@ -14,7 +14,7 @@
 
 #include "bits-manipulation.hpp"
 
-#include "bus.hpp"
+#include "memory.hpp"
 #include "tlb.hpp"
 
 #include "instructions/instructions.hpp"
@@ -84,7 +84,6 @@ private:
         // exceptions are treated using the c++ syntax
         ksystem = 0b1110011  // ecall ect
     };
-
 
 private:
     reg_type m_registers;
