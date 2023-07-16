@@ -1,5 +1,6 @@
 project(${CMAKE_PROJECT_NAME} )
 
+#TODO: rewrite this cmake
 file(GLOB instructions components/instructions/*.cpp)
 file(GLOB components_sources CONFIGURE_DEPENDS  components/*.cpp )
 file(GLOB emulator_sources emulator/*.cpp)

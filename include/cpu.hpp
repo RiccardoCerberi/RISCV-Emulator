@@ -91,7 +91,7 @@ private:
     uint64_t m_address_last_is;
     csrs_t m_csrs; // CSRs registers
 
-    Bus m_bus;
+    MemorySystem m_bus;
     TLB m_tlb;
 
     void setLastInstrAddress(uint64_t );

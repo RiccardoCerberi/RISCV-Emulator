@@ -53,7 +53,7 @@ void writeToMemory(Mem_t& mem,uint64_t base, Address_t where_to_write, uint64_t 
 
 }
 
-uint64_t MemorySystem::read(Address_t read_from, DataSize_t sz) {
+uint64_t MemorySystem::load(Address_t read_from, DataSize_t sz) {
     assert(isAllign(read_from, sz));
 
     if (krom_base <= read_from && read_from < krom_end) {
@@ -65,7 +65,7 @@ uint64_t MemorySystem::read(Address_t read_from, DataSize_t sz) {
     throw("try to read from an address out of space\n");
 }
 
-void MemorySystem::write(Address_t write_to, uint64_t what_write, DataSize_t sz) {
+void MemorySystem::store(Address_t write_to, uint64_t what_write, DataSize_t sz) {
     assert(isAllign(write_to, sz));
 
     if (kram_base <= write_to && write_to < kram_end) {

@@ -51,8 +51,8 @@ private:
 class MemorySystem {
 public:
     MemorySystem(std::string const &);
-    uint64_t read(Address_t, DataSize_t);
-    void write(Address_t, uint64_t, DataSize_t);
+    uint64_t load(Address_t, DataSize_t);
+    void store(Address_t, uint64_t, DataSize_t);
 private:
     RAM m_ram;
     ROM m_rom;
