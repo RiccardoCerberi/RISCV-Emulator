@@ -2,30 +2,34 @@
 
 
 void Op::add() {
+    std::string op = "+";
 #ifdef DEBUG
-    printInstruction("ADD", "+");
+    printInstruction("ADD", op);
 #endif
-    m_rd = m_rs1 + m_rs2;    
+    m_rd = arith(m_rs1, m_rs2, op);
 }
 
 void Op::sub() {
+    std::string op = "-";
 #ifdef DEBUG
-    printInstruction("SUB", "-");
+    printInstruction("SUB", op);
 #endif
-    m_rd = m_rs1 - m_rs2;
+    m_rd = arith(m_rs1, m_rs2, op);
 }
 
 void Op::sll() {
+    std::string op = "<<";
     auto lower_five_bits = BitsManipulation::takeBits(m_rs2, 0, 4);
 #ifdef DEBUG
-    printInstruction("SLL", "<<")    ;
+    printInstruction("SLL", op)    ;
 #endif
-    m_rd = m_rs1 << lower_five_bits;
+    m_rd = arith(m_rs1, lower_five_bits, op);
 }
 
 void Op::slt() {
+    std::string op = "<<";
 #ifdef DEBUG
-    printInstruction("SLT", "<<")    ;
+    printInstruction("SLT", op)    ;
 #endif
     if (static_cast<int64_t>(m_rs1) < static_cast<int64_t>(m_rs2)) {
         m_rd = 1;
@@ -47,40 +51,45 @@ void Op::sltu() {
 }
 
 void Op::xorop() {
+    std::string op = "^";
 #ifdef DEBUG
-    printInstruction("XOROP", "^");
+    printInstruction("XOROP", op);
 #endif
-    m_rd = m_rs1 ^ m_rs2;
+    m_rd = arith(m_rs1,m_rs2, op);
 }
 
 void Op::srl() {
+    std::string op = ">>";
 #ifdef DEBUG
-    printInstruction("SRL", ">>");
+    printInstruction("SRL", op);
 #endif
-    m_rd = m_rs1 >> BitsManipulation::takeBits(m_rs2, 0, 4);
+    m_rd = arith(m_rs1, BitsManipulation::takeBits(m_rs2, 0, 4), op);
 }
 
 // arithmetic right shift of rs1 by the lower five bits in rs2
 void Op::sra() {
+    std::string op = ">>";
 #ifdef DEBUG
-    printInstruction("SRA", ">>");
+    printInstruction("SRA", op);
 #endif
     uint64_t vacant_bit = BitsManipulation::takeVacantBit(m_rs1);
-    m_rd = (m_rs1 >> BitsManipulation::takeBits(m_rs2, 0, 4)) | (vacant_bit);
+    m_rd = arith(m_rs1, BitsManipulation::takeBits(m_rs2, 0, 4), op) | (vacant_bit);
 }
 
 void Op::orop() {
+    std::string op = "|";
 #ifdef DEBUG
-    printInstruction("OROP", "|");
+    printInstruction("OROP", op);
 #endif
-    m_rd = m_rs1 | m_rs2;
+    m_rd = arith(m_rs1,m_rs2, op);
 }
 
 void Op::andop() {
+    std::string op = "&";
 #ifdef DEBUG
-    printInstruction("ANDOP", "&");
+    printInstruction("ANDOP", op);
 #endif
-    m_rd = m_rs1 & m_rs2;
+    m_rd = arith(m_rs1, m_rs2, op);
 }
 
 void Op::execution() {
@@ -121,6 +130,6 @@ void Op::execution() {
     }
 }
 
-void Op::printInstruction(std::string const &is_name, std::string const &op) {
+void Op::printInstruction(std::string const &is_name, std::string const& op) {
     std::cout << is_name << " " << printRegIndex(m_index_rd) <<  " = " << printRegIndex(m_index_rs1) << " " << op << " " << printRegIndex(m_index_rs2) << std::endl;
 }

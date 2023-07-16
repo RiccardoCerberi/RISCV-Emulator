@@ -10,7 +10,7 @@ class Ecall : public System {
             : System(is, pc)
         {}
         // TODO: implement this function
-        void execution() override{
+        void execution() override {
             throw "Ecall not implemented yet\n";
         } 
 };

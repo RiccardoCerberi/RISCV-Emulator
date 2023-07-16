@@ -23,6 +23,8 @@
  *
  */
 
+uint64_t arith(uint64_t lhs, uint64_t rhs, std::string const& op);
+
 class InstructionFormat {
     public:
         InstructionFormat(uint32_t const is, uint64_t const pc)
@@ -44,9 +46,6 @@ class InstructionFormat {
         uint64_t const m_curr_pc;
 
 };
-
-
-
 
 
 

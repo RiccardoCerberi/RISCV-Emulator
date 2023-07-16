@@ -22,7 +22,6 @@ void CSR::readCSR( csrs_t const& csrs) {
 
 void CSR::execution() {
     m_csr_rd = m_csr_aux->makeCSRResult(m_csr_rs);
-// TODO: check possible errors because I'm not considering to separate m_csr_rs reading and m_rd assingment; in the guide: t = m_csr_rs [...] m_rd = t
     m_rd = m_csr_rs;  // always present, maybe with t
 }
 
@@ -91,6 +90,7 @@ uint64_t CSRImm::makeCSRResult(uint64_t const csr_rs) {
     }
 }
 
+// I could have used arith function
 uint64_t CSRImm::csrrwi(uint64_t const) {
     return m_imm;
 }

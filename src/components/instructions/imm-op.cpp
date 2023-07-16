@@ -1,17 +1,17 @@
 #include"../../../include/components/instructions/imm-op.hpp"
 
 void ImmOp::addi() {
+    std::string op = "+";
 #ifdef DEBUG  
-    printInstruction("ADDI", "+");
+    printInstruction("ADDI", op);
 #endif
-    m_rd = m_rs + m_offset;
+    m_rd = arith(m_rs, m_offset, op);
 }
 
 void ImmOp::slti() {
 #ifdef DEBUG
     printInstruction("SLTI", "<");
 #endif
-
     if (static_cast<int64_t>(m_rs) < static_cast<int64_t>(m_offset)) {
         m_rd = 1;
     } else  {
@@ -32,62 +32,68 @@ void ImmOp::sltiu() {
 }
 
 void ImmOp::xori() {
+    std::string op = "^";
 #ifdef DEBUG
-    printInstruction("XORI", "^");
+    printInstruction("XORI", op);
 #endif
-    m_rd = m_rs ^ m_offset;
+    m_rd = arith(m_rs,m_offset, op);
 }
 
 
 void ImmOp::ori() {
+    std::string op = "|";
 #ifdef DEBUG
-    printInstruction("ORI", "|");
+    printInstruction("ORI", op);
 #endif
-    m_rd = m_rs | m_offset;
+    m_rd = arith(m_rs, m_offset, op);
 }
 
 void ImmOp::andi() {
+    std::string op = "&";
 #ifdef DEBUG
-    printInstruction("ANDI", "&");
+    printInstruction("ANDI",op);
 #endif
-    m_rd = m_rs & m_offset;
+    m_rd = arith(m_rs,m_offset, op);
 }
 
 void ImmOp::slli() {
+    std::string op = "<<";
     uint64_t shamt = BitsManipulation::takeBits(m_instruction, 20, 24);
-    m_rd = m_rs << shamt;
+    m_rd = arith(m_rs,shamt, op);
 
 #ifdef DEBUG
     // takes only a part of the offset
     auto temp = m_offset;
     m_offset = shamt;
-    printInstruction("SLLI", "<<");
+    printInstruction("SLLI", op);
     m_offset = temp;
 #endif
 }
 
 void ImmOp::srli() {
+    std::string op = ">>";
     uint64_t shamt = BitsManipulation::takeBits(m_instruction, 20, 24);
-    m_rd = m_rs >> shamt;
+    m_rd = arith(m_rs, shamt, op);
 
 #ifdef DEBUG
     // takes only a part of the offset
     auto temp = m_offset;
     m_offset = shamt;
-    printInstruction("SRLI", ">>");
+    printInstruction("SRLI", op);
     m_offset = temp;
 #endif
 }
 
 void ImmOp::srai() {
+    std::string op = ">>";
     uint64_t shamt = BitsManipulation::takeBits(m_instruction, 20, 24);
     uint64_t vacant_bit = BitsManipulation::takeVacantBit(m_rs);
-    m_rd = (vacant_bit) | (m_rs >> shamt);
+    m_rd = (vacant_bit) | arith(m_rs,shamt, op);
 #ifdef DEBUG
     // takes only a part of the offset
     auto temp = m_offset;
     m_offset = shamt;
-    printInstruction("SRAI", ">>");
+    printInstruction("SRAI", op);
     m_offset = temp;
 #endif
 }
@@ -128,7 +134,6 @@ void ImmOp::execution() {
     }
 }
 
-
 void ImmOp::printInstruction(std::string const &is_name, std::string const &op) {
-    std::cout << is_name << " " << printRegIndex(m_index_rd) <<  " = " << printRegIndex(m_index_rs) << " " << op << " " << printRegIndex(m_offset) << std::endl;
+    std::cout << is_name << " " << printRegIndex(m_index_rd) <<  " = " << printRegIndex(m_index_rs) << " " << op << " " << m_offset << std::endl;
 }
