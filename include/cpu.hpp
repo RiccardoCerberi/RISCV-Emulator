@@ -84,7 +84,6 @@ private:
         // exceptions are treated using the c++ syntax
         ksystem = 0b1110011  // ecall ect
     };
-
 private:
     reg_type m_registers;
     uint64_t m_pc;  // it's the 32-th register
@@ -94,6 +93,7 @@ private:
     MemorySystem m_bus;
     TLB m_tlb;
 
+private:
     void setLastInstrAddress(uint64_t );
 
     // if the pc is pointing to an address that
