@@ -1,8 +1,8 @@
 #pragma once
 
-#include<cmath>
 #include <bitset>
 #include <cassert>
+#include <cmath>
 #include <cstddef>
 #include <cstdint>
 #include <cstdio>
@@ -28,6 +28,8 @@ using Mem_t = std::vector<std::byte>;
 // maybe inline, test later
 uint64_t readFromMemory(Mem_t &, uint64_t, Address_t, DataSize_t);
 void writeToMemory(Mem_t &, uint64_t base, Address_t, uint64_t, DataSize_t);
+std::ostream& operator<<(std::ostream& os, std::byte b);
+
 
 class ROM {
 public:
@@ -53,7 +55,15 @@ public:
     SystemInterface(std::string const &);
     uint64_t loadData(Address_t, DataSize_t);
     void storeData(Address_t, uint64_t, DataSize_t);
+    uint32_t getLastInstruction() { return m_last_instruction; }
+#ifdef DEB_BIN_INS
+private:
+    void printCode();
+#endif
+private:
+    void loadCode(std::string const&);
 private:
     RAM m_ram;
     ROM m_rom;
+    uint32_t m_last_instruction;
 };

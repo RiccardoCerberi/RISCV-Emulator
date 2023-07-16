@@ -1,8 +1,9 @@
 #include "../include/cpu.hpp"
 
 CPU::CPU(std::string const& file_name) : m_bus{file_name}, m_pc{krom_base} {
+    m_address_last_is = m_bus.getLastInstruction();
     m_registers[register_index::kzero_register] = 0;
-    m_registers[register_index::ksp] = kram_end-1;
+    m_registers[register_index::ksp] = kram_end - 1;
 }
 
 // TODO: see how program knows where the code ends
@@ -52,7 +53,7 @@ void CPU::steps() {
         } catch (const char* decode_exc) {
             std::cout << "Exception in decoding instruction: " << decode_exc
                       << "\n";
-            continue;
+            break;
         }
 
         assert(is_format != nullptr);
@@ -72,7 +73,7 @@ void CPU::steps() {
         writeBack(is_format);
 
         try {
-        m_pc = moveNextInstruction(is_format);
+            m_pc = moveNextInstruction(is_format);
         } catch (char* const txt_exception) {
             std::cout << "Exception: " << txt_exception << std::endl;
             break;
