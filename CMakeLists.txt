@@ -32,7 +32,6 @@ target_link_libraries(
         riscv-emulator
         PRIVATE
         components
-        emulator
 )
 
 set_target_properties(riscv-emulator

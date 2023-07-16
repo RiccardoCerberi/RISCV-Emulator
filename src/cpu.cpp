@@ -5,7 +5,7 @@ CPU::CPU(std::string const& file_name) : m_bus{file_name}, m_pc{krom_base} {
     m_registers[register_index::ksp] = kram_end-1;
 }
 
-// see how program knows where the code ends
+// TODO: see how program knows where the code ends
 inline void CPU::setLastInstrAddress(uint64_t const l_is) {
     m_address_last_is = l_is;
 }
@@ -71,10 +71,8 @@ void CPU::steps() {
 
         writeBack(is_format);
 
-        m_pc = moveNextInstruction(is_format);
-
         try {
-            checkWordAlign(m_pc);
+        m_pc = moveNextInstruction(is_format);
         } catch (char* const txt_exception) {
             std::cout << "Exception: " << txt_exception << std::endl;
             break;

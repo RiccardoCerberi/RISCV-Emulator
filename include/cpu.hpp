@@ -96,11 +96,6 @@ private:
 private:
     void setLastInstrAddress(uint64_t );
 
-    // if the pc is pointing to an address that
-    // is not four byte alligned, it will throw an
-    // exception
-    void checkWordAlign(uint64_t pc);
-
     /*
      * 5-stages pipeline
      */
