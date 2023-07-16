@@ -23,10 +23,11 @@ enum register_index : size_t { kzero_register = 0, kra = 1, ksp = 2 };
 using reg_type = std::array<uint64_t, ktot_registers>;
 using csrs_t = std::array<uint64_t, kcsrs_size>;
 
+// Data size in byte
 enum DataSize_t 
 {
-    kbyte = 8,
-    khalf_word = 16,
-    kword = 32,
-    kdouble_word = 64
+    kbyte = 1,
+    khalf_word = 2,
+    kword = 4,
+    kdouble_word = 8
 };
