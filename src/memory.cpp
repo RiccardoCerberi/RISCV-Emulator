@@ -25,10 +25,9 @@ void SystemInterface::loadCode(std::string const& file_name) {
     assert(input_file.is_open() == true);
 
     std::vector<std::byte> code;
-    // std::byte b;
-    char byte;
-    while (input_file.read(reinterpret_cast<char*>(&byte), kbyte)) {
-        code.push_back(std::byte{byte});
+    std::byte b;
+    while (input_file.read(reinterpret_cast<char*>(&b), kbyte)) {
+        code.push_back(b);
     }
     m_last_instruction = krom_base + code.size();
 #ifdef DEBUG
