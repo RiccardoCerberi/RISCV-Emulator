@@ -14,6 +14,9 @@ constexpr uint64_t krom_base = 0x80000000;
 constexpr uint64_t krom_size = 1024;
 constexpr uint64_t krom_end = krom_base + krom_size;
 
+// in test there's no distinction between rom and ram therefore 
+//  beginning of ram (equivalent to end of rom)
+// should be set dynamically based on last instruction address
 constexpr uint64_t kram_base = krom_end;
 constexpr uint64_t kram_size = 1024*1024;
 constexpr uint64_t kram_end = kram_base + kram_size;
