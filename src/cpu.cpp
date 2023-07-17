@@ -13,12 +13,34 @@ inline void CPU::setLastInstrAddress(uint64_t const l_is) {
 
 uint32_t CPU::getCurrentInstruction() { return m_pc; }
 
+static std::string abi_names[ktot_registers] = {
+    "zero",
+    "ra",
+    "sp",
+    "gp",
+    "tp",
+    "t0",
+    "t1",
+    "t2",
+    "s0",
+    "s1",
+    "a0", "a1","a2", "a3", "a4", "a5", "a6", "a7",
+    "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11",
+    "t3", "t4", "t5", "t6"
+};
+
+std::string printABIName(size_t indx) {
+    assert(0 <= indx && indx < ktot_registers);
+    return abi_names[indx];
+}
+
+
 void CPU::printRegs() {
-    int i = 0;
+    size_t i = 0;
 
     std::cout << "Registers:\n";
     for (auto const& reg : m_registers) {
-        std::cout << "<\\x" << std::dec << i << "=";
+        std::cout << "<\\x" << std::dec << i << "(" << printABIName(i) << ") = ";
         std::cout << "0x" << std::hex << reg << "> ";
         ++i;
     }

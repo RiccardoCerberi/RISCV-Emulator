@@ -1,3 +1,4 @@
 -Test basic instructions: store, load, add shift, ...
 -Understand csrs 
 -Implement supervisor and user instructions
+-Change CmakeSrc to avoid unnecessary source file recompilation

@@ -1,5 +1,6 @@
 project(${CMAKE_PROJECT_NAME} )
 
+#TODO: change target to avoid recompilation of all sources even if when they're untouched
 set(SRCS 
 bits-manipulation.cpp 
 cpu.cpp
