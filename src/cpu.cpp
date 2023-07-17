@@ -1,12 +1,11 @@
 #include "../include/cpu.hpp"
 
-CPU::CPU(std::string const& file_name) : m_bus{file_name}, m_pc{krom_base} {
+CPU::CPU(std::string const& file_name) : m_pc{krom_base}, m_bus{file_name} {
     m_address_last_is = m_bus.getLastInstruction();
     m_registers[register_index::kzero_register] = 0;
     m_registers[register_index::ksp] = kram_end - 1;
 }
 
-// TODO: see how program knows where the code ends
 inline void CPU::setLastInstrAddress(uint64_t const l_is) {
     m_address_last_is = l_is;
 }
@@ -18,23 +17,17 @@ void CPU::printRegs() {
 
     std::cout << "Registers:\n";
     for (auto const& reg : m_registers) {
-        std::cout << "\\x" << std::dec << i << "=";
-        std::cout << "0x" << std::hex << reg << " ";
+        std::cout << "<\\x" << std::dec << i << "=";
+        std::cout << "0x" << std::hex << reg << "> ";
         ++i;
     }
     std::cout << std::endl;
 }
 
+// The processor performs one operation per clock cycle (is not how modern processor works) this make the design easier, avoiding conflicts 
+// with jump instructions.
+// Instructions are divided in classes based on the instruction format on riscv manual
 bool CPU::checkEndProgram() { return m_pc == m_address_last_is; }
-
-// Instructions are 32 bits long.
-// steps function executes the  needed cycle instructions.
-// In total the instructions are fetch, decode, execute, memory access and write
-// back. fetch to get the current instruction stored in memory; decode to
-// translate the first 8 bits of the instruction to know which operation to
-// perform; execute, as the name suggests, to execute the operation; some
-// operations require to store the result in memory, for example sd, as others
-// to store it in register, such as add.
 void CPU::steps() {
     while (!checkEndProgram()) {
         uint32_t is = fetch();
@@ -42,11 +35,9 @@ void CPU::steps() {
         std::cout << "pc = " << std::hex << m_pc << " "
                   << "instruction = " << std::bitset<32>(is) << std::endl;
 #endif
-
 #ifdef DEB_REGS
         printRegs();
 #endif
-
         std::unique_ptr<InstructionFormat> is_format = nullptr;
         try {
             is_format = decode(is);

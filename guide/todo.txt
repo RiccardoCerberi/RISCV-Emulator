@@ -1,14 +1,3 @@
-Check the correcteness watching
-george hotz:
-47:02
-
-Add PRAGMA ONCE in every headers
-Finish cpu cases: system
-Set pragma once
-
-See from minute 1:41:07 George Hotz Riscv live
-
-
-TODO: Set specific print functions to knwo what's happening 
-
-TODO: Define functions to printout the instruction that is currently being processed (Hint: check George Hotz' implementation)
+-Test basic instructions: store, load, add shift, ...
+-Understand csrs 
+-Implement supervisor and user instructions
