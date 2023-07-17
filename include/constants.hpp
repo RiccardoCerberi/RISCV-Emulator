@@ -8,7 +8,9 @@ using RegisterSize_t = uint64_t;
 using Address_t = uint64_t;
 using Instruction_t = uint32_t;
 
-constexpr uint64_t krom_base = 0x1000000;
+// krom base set at 0x80...0 
+// to work with test
+constexpr uint64_t krom_base = 0x80000000;
 constexpr uint64_t krom_size = 1024;
 constexpr uint64_t krom_end = krom_base + krom_size;
 
