@@ -13,7 +13,7 @@ void SystemInterface::printCode() {
     Address_t i = krom_base;
     while (i < m_last_instruction) {
         std::cout << loadData(i, kbyte) << "\n";
-        ++i ;
+        ++i;
     }
 }
 #endif
@@ -89,7 +89,7 @@ uint64_t SystemInterface::loadData(Address_t read_from, DataSize_t sz) {
     if (kram_base <= read_from && read_from < kram_end) {
         return m_ram.read(read_from, sz);
     }
-    throw("try to read from an address out of space\n");
+    throw(std::format("Try to read from invalid location {}\n", read_from));
 }
 
 void SystemInterface::storeData(Address_t write_to, uint64_t what_write,
@@ -99,7 +99,8 @@ void SystemInterface::storeData(Address_t write_to, uint64_t what_write,
     if (kram_base <= write_to && write_to < kram_end) {
         return m_ram.write(write_to, what_write, sz);
     }
-    throw("try to write from an address out of space\n");
+    throw(std::format("Try to write {} to invalid location {}\n", what_write,
+                      write_to));
 }
 
 void ROM::storeBlock(Address_t where_to_store,

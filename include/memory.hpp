@@ -1,6 +1,7 @@
 #pragma once
 
 #include <bitset>
+#include<format>
 #include <cassert>
 #include <cmath>
 #include <cstddef>

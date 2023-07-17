@@ -3,6 +3,7 @@
 CPU::CPU(std::string const& file_name) : m_pc{krom_base}, m_bus{file_name} {
     m_address_last_is = m_bus.getLastInstruction();
     m_registers[register_index::kzero_register] = 0;
+    // this doesn't happen in real processor because it ups to the Operative System to assign the sp the right value
     m_registers[register_index::ksp] = kram_end - 1;
 }
 

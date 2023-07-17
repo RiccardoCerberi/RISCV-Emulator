@@ -6,7 +6,7 @@ project(riscv-emulator)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 
 #boolean variables to know which is the deafult compiler in the system
 set(gcc_like_cxx "$<COMPILE_LANG_AND_ID:CXX,ARMClang,AppleClang,Clang,GNU>")
@@ -38,7 +38,7 @@ set_target_properties(riscv-emulator
         PROPERTIES
         RUNTIME_OUTPUT_DIRECTORY "${PROJECT_SOURCE_DIR}/bin/$<CONFIG>")
 
-target_compile_features(riscv-emulator PUBLIC cxx_std_17)
+target_compile_features(riscv-emulator PUBLIC cxx_std_20)
 
 target_compile_options(riscv-emulator PRIVATE
         "$<${gcc_like_cxx}:$<BUILD_INTERFACE:${gcc_flags}>>"
