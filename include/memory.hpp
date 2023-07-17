@@ -1,7 +1,10 @@
 #pragma once
 
 #include <bitset>
+
+#if __GNUC__ >= 13
 #include<format>
+#endif
 #include <cassert>
 #include <cmath>
 #include <cstddef>

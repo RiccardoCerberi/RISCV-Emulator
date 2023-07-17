@@ -89,7 +89,11 @@ uint64_t SystemInterface::loadData(Address_t read_from, DataSize_t sz) {
     if (kram_base <= read_from && read_from < kram_end) {
         return m_ram.read(read_from, sz);
     }
+    #if __GNUC__ >= 13
     throw(std::format("Try to read from invalid location {}\n", read_from));
+    #else
+    throw("Invalid read location\n");
+    #endif
 }
 
 void SystemInterface::storeData(Address_t write_to, uint64_t what_write,
@@ -99,8 +103,13 @@ void SystemInterface::storeData(Address_t write_to, uint64_t what_write,
     if (kram_base <= write_to && write_to < kram_end) {
         return m_ram.write(write_to, what_write, sz);
     }
+#if __GNUC__ >= 13
     throw(std::format("Try to write {} to invalid location {}\n", what_write,
                       write_to));
+#else
+        throw("Invalid write location\n");
+#endif
+
 }
 
 void ROM::storeBlock(Address_t where_to_store,
