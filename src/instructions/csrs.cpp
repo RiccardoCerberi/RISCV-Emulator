@@ -22,7 +22,7 @@ void CSR::readCSR( csrs_t const& csrs) {
 
 void CSR::execution() {
     m_csr_rd = m_csr_aux->makeCSRResult(m_csr_rs);
-    m_rd = m_csr_rs;  // always present, maybe with t
+    m_rd = m_csr_rs; 
 }
 
 void CSR::writeCsr(csrs_t& csrs) {
@@ -30,10 +30,8 @@ void CSR::writeCsr(csrs_t& csrs) {
 }
 
 void CSR::writeBack(reg_type &reg) {
-    reg[m_index_rd] = m_rd;
+    if (m_index_rd != 0) reg[m_index_rd] = m_rd;
 }
-
-// CSR not immediate members
 
 void CSRNotImm::InterpretQty( reg_type const & reg) {
     m_rs1 = reg[m_qty];
@@ -63,14 +61,12 @@ uint64_t CSRNotImm::csrrw(uint64_t const) {
 }
 
 uint64_t CSRNotImm::csrrs(uint64_t const csr_rs) {
-    return csr_rs | m_rs1;
+    return arith(csr_rs, m_rs1, "|");
 }
 
 uint64_t CSRNotImm::csrrc(uint64_t const csr_rs) {
-    return csr_rs & (!(m_rs1));  
+    return arith(csr_rs, !m_rs1, "&");
 }
-
-//Immediate members
 
 void CSRImm::InterpretQty(reg_type const&) {
     m_imm = static_cast<uint64_t>(m_imm);
@@ -90,16 +86,15 @@ uint64_t CSRImm::makeCSRResult(uint64_t const csr_rs) {
     }
 }
 
-// I could have used arith function
 uint64_t CSRImm::csrrwi(uint64_t const) {
     return m_imm;
 }
 
 uint64_t CSRImm::csrrsi(uint64_t const csr_rs) {
-    return csr_rs | m_imm;
+    return arith(csr_rs, m_imm, "|");
 }
 
 uint64_t CSRImm::csrrci(uint64_t const csr_rs) {
-    return csr_rs & (!m_imm);
+    return arith(csr_rs, !m_imm, "&");
 }
 

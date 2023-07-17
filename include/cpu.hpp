@@ -91,8 +91,6 @@ private:
     csrs_t m_csrs; // CSRs registers
 
     SystemInterface m_bus;
-    TLB m_tlb;
-
 private:
     void setLastInstrAddress(uint64_t );
 
