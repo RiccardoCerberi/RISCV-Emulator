@@ -29,6 +29,7 @@
 #include "instructions/store.hpp"
 #include "instructions/ecall.hpp"
 #include "instructions/csrs.hpp"
+#include "csr_reg.hpp"
 
 /*
  * TODO: configure ecall to implement system calls.
@@ -88,8 +89,7 @@ private:
     reg_type m_registers;
     uint64_t m_pc;  // it's the 32-th register
     uint64_t m_address_last_is;
-    csrs_t m_csrs; // CSRs registers
-
+    CSRInterface m_csrs; 
     SystemInterface m_bus;
 private:
     void setLastInstrAddress(uint64_t );

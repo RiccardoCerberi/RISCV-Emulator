@@ -85,7 +85,6 @@ void CPU::steps() {
         memoryAccess(is_format);
 
         writeBack(is_format);
-
         try {
             m_pc = moveNextInstruction(is_format);
         } catch (char* const txt_exception) {
@@ -158,6 +157,7 @@ std::unique_ptr<InstructionFormat> CPU::decode(uint32_t const is) {
 
 void CPU::execute(std::unique_ptr<InstructionFormat> const& is_format) {
     is_format->readRegister(m_registers);
+    is_format->readCSR(m_csrs);
     try {
         is_format->execution();
     } catch (const char* exc) {

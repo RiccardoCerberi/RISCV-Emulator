@@ -9,6 +9,7 @@
 #include"../memory.hpp"
 #include"../constants.hpp"
 #include"../bits-manipulation.hpp"
+#include"../csr_reg.hpp"
 
 /*
  * 
@@ -36,10 +37,10 @@ class InstructionFormat {
         // it prepares the information that will use in the next stages;
         // for instance rd, rs etc
         virtual void readRegister(reg_type const&);
-        virtual void readCSR(csrs_t const&);
+        virtual void readCSR(CSRInterface const&);
         virtual void execution() = 0;
         virtual void accessMemory(SystemInterface&);
-        virtual void writeCsr(csrs_t&);
+        virtual void writeCsr(CSRInterface&);
         virtual void writeBack(reg_type&);
         virtual uint64_t moveNextInstruction();
         virtual ~InstructionFormat() = default;

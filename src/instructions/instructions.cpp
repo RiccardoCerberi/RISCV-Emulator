@@ -4,11 +4,11 @@
 // Default functions
 void InstructionFormat::readRegister(const reg_type &) {}
 
-void InstructionFormat::readCSR(csrs_t const&) {}
+void InstructionFormat::readCSR(CSRInterface const&) {}
 
 void InstructionFormat::accessMemory(SystemInterface&) {}
 
-void InstructionFormat::writeCsr(csrs_t&) {}
+void InstructionFormat::writeCsr(CSRInterface&) {}
 
 void InstructionFormat::writeBack(reg_type&) {}
 
@@ -21,7 +21,6 @@ std::string InstructionFormat::printRegIndex(std::size_t const reg_ind) {
 }
 
 uint64_t arith(uint64_t lhs, uint64_t rhs, std::string const& op) {
-    uint64_t res;
     if (op == "+") {
         return  lhs + rhs;
     } else if (op == "-") {

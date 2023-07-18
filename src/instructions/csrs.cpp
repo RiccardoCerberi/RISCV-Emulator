@@ -22,15 +22,18 @@ void CSR::readRegister(reg_type const& reg) {
     }
 }
 
-void CSR::readCSR(csrs_t const& csrs) { m_csr_rs = csrs[m_func12]; }
+void CSR::readCSR(CSRInterface const& csrs) { 
+    m_csr_rs = csrs.read(m_func12);
+    }
 
 void CSR::execution() {
     m_csr_rd = makeCSRResult();
     m_rd = m_csr_rs;
 }
 
-void CSR::writeCsr(csrs_t& csrs) {
-    if (write_to_csrs == true) csrs[m_func12] = m_csr_rd;
+void CSR::writeCsr(CSRInterface& csrs) {
+    if (write_to_csrs == true) 
+        csrs.write(m_func12, m_csr_rd);
 }
 
 void CSR::writeBack(reg_type& reg) {
