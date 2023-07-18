@@ -6,6 +6,7 @@ bits-manipulation.cpp
 cpu.cpp
 emulator.cpp
 memory.cpp
+csr_reg.cpp
 instructions/auipc.cpp
 instructions/branch.cpp
 instructions/csrs.cpp
