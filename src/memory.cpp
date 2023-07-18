@@ -1,4 +1,5 @@
 #include "../include/memory.hpp"
+#include <cstddef>
 
 // LITTLE ENDIAN: the lew significant bit is stored in the lower address.
 // Therefore 1100-0001 is stored as 0x0: 0001 0x1: 1100
@@ -24,17 +25,17 @@ void SystemInterface::loadCode(std::string const& file_name) {
     input_file.open(file_name, std::ios::binary);
     assert(input_file.is_open() == true);
 
-    std::vector<std::byte> code;
+    Address_t is_ad = kdram_base;
     std::byte b;
     while (input_file.read(reinterpret_cast<char*>(&b), kbyte)) {
-        code.push_back(b);
+        m_memory.write(is_ad, std::to_integer<uint64_t>(b), kbyte);
+        is_ad += kbyte;
     }
-    m_last_instruction = krom_base + code.size();
+    m_last_instruction = is_ad - kbyte;
 #ifdef DEBUG
     std::cout << "Number of instructions: "
-              << (m_last_instruction - krom_base) / 4 << "\n";
+              << (m_last_instruction - kdram_size) / 4 << "\n";
 #endif
-    m_rom.storeBlock(krom_base, code);
 #ifdef DEB_BIN_INS
     std::cout << "Code loaded: \n";
     printCode();
@@ -61,6 +62,10 @@ uint64_t readFromMemory(Mem_t& mem, uint64_t base, Address_t read_from,
     return data_to_take;
 }
 
+bool SystemInterface::checkLimit(Address_t a) {
+    return kdram_base <= a && a < (kdram_base + kdram_size);
+}
+
 void writeToMemory(Mem_t& mem, uint64_t base, Address_t where_to_write,
                    uint64_t what_to_write, DataSize_t size) {
 #ifdef DEB_BIN_INS
@@ -83,54 +88,34 @@ void writeToMemory(Mem_t& mem, uint64_t base, Address_t where_to_write,
 uint64_t SystemInterface::loadData(Address_t read_from, DataSize_t sz) {
     assert(isAllign(read_from, sz));
 
-    if (krom_base <= read_from && read_from < krom_end) {
-        return m_rom.read(read_from, sz);
+    if (kdram_base <= read_from && read_from < (kdram_base + kdram_size)) {
+        return m_memory.read(read_from, sz);
     }
-    if (kram_base <= read_from && read_from < kram_end) {
-        return m_ram.read(read_from, sz);
-    }
-    #if __GNUC__ >= 13
+#if __GNUC__ >= 13
     throw(std::format("Try to read from invalid location {}\n", read_from));
-    #else
+#else
     throw("Invalid read location\n");
-    #endif
+#endif
 }
 
 void SystemInterface::storeData(Address_t write_to, uint64_t what_write,
                                 DataSize_t sz) {
     assert(isAllign(write_to, sz));
 
-    if (kram_base <= write_to && write_to < kram_end) {
-        return m_ram.write(write_to, what_write, sz);
-    }
+    if (checkLimit(write_to)) return m_memory.write(write_to, what_write, sz);
 #if __GNUC__ >= 13
     throw(std::format("Try to write {} to invalid location {}\n", what_write,
                       write_to));
 #else
-        throw("Invalid write location\n");
+    throw("Invalid write location\n");
 #endif
-
 }
 
-void ROM::storeBlock(Address_t where_to_store,
-                     std::vector<std::byte> const& what_to_load) {
-    size_t i = 0;
-    for (auto const& b : what_to_load) {
-        writeToMemory(m_rom, krom_base, where_to_store + i,
-                      std::to_integer<uint64_t>(b), kbyte);
-        ++i;
-    }
-}
-
-uint64_t ROM::read(Address_t read_from, DataSize_t data_size) {
-    return readFromMemory(m_rom, krom_base, read_from, data_size);
-}
-
-void RAM::write(Address_t where_to_write, uint64_t what_to_write,
+void DRAM::write(Address_t where_to_write, uint64_t what_to_write,
                 DataSize_t size) {
-    writeToMemory(m_ram, kram_base, where_to_write, what_to_write, size);
+    writeToMemory(m_dram, kdram_base, where_to_write, what_to_write, size);
 }
 
-uint64_t RAM::read(Address_t read_from, DataSize_t data_size) {
-    return readFromMemory(m_ram, kram_base, read_from, data_size);
+uint64_t DRAM::read(Address_t read_from, DataSize_t data_size) {
+    return readFromMemory(m_dram, kdram_base, read_from, data_size);
 }

@@ -28,23 +28,13 @@ uint64_t readFromMemory(Mem_t &, uint64_t, Address_t, DataSize_t);
 void writeToMemory(Mem_t &, uint64_t base, Address_t, uint64_t, DataSize_t);
 std::ostream& operator<<(std::ostream& os, std::byte b);
 
-class ROM {
+class DRAM {
 public:
-    ROM() : m_rom{krom_size, std::byte{0}} {}
-    void storeBlock(Address_t, std::vector<std::byte> const &);
-    uint64_t read(Address_t, DataSize_t);
-private:
-    Mem_t m_rom;
-};
-
-class RAM {
-public:
-    RAM() : m_ram{kram_size, std::byte{0}} {}
+    DRAM() : m_dram{kdram_size, std::byte{0}} {}
     void write(Address_t, uint64_t, DataSize_t);
     uint64_t read(Address_t, DataSize_t);
-
 private:
-    Mem_t m_ram;
+    Mem_t m_dram;
 };
 
 class SystemInterface {
@@ -59,8 +49,8 @@ private:
 #endif
 private:
     void loadCode(std::string const&);
+    bool checkLimit(Address_t);
 private:
-    RAM m_ram;
-    ROM m_rom;
+    DRAM m_memory;
     uint32_t m_last_instruction;
 };

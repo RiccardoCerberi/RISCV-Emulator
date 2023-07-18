@@ -19,7 +19,7 @@ class CSRInterface{
     private:
         uint8_t getMode(Address_t a) const { return a >> kmode_beg; }
         uint8_t getPermission(Address_t a) const{ return  a >> kperm_beg; }
-        bool checkLimit(Address_t a) const { return 0 <= a && a < kcsrs_size; }
+        bool checkLimit(Address_t a) const { return a < kcsrs_size; }
     private:
         std::array<uint64_t, kcsrs_size> m_csrs;
 };
