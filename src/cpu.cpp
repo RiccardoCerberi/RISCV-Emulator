@@ -91,6 +91,7 @@ void CPU::steps() {
             std::cout << "Exception: " << txt_exception << std::endl;
             break;
         }
+        m_csrs.updateTimer();
     }
 }
 

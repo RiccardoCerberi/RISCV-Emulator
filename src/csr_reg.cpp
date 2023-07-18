@@ -10,3 +10,9 @@ uint64_t CSRInterface::read(Address_t where) const {
     assert(checkLimit(where));
     return m_csrs[where];
 }
+
+
+void CSRInterface::updateTimer() {
+    m_csrs[time_address]  += 1;
+}
+
