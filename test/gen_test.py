@@ -2,9 +2,17 @@ import os
 import glob
 import subprocess
 
-if __name__ == 'main':
-    if not os.isdir('bin_files'):
-        os.mkdir('bin_files')
-    for file in glob.glob('riscv-tests/isa/rv32ui-p-*'):
+DIR_PATH = 'riscv-tests/isa'
+BIN_FILES = 'bin_files'
+
+def main():
+    if not os.path.isdir(BIN_FILES):
+        os.mkdir(BIN_FILES)
+    for file in glob.glob(f'{DIR_PATH}/rv32ui-p-*'):
         if not file.endswith('.dump'):
-            subprocess.run(f'riscv64-unknown-elf-objcopy -O binary {file} {file}.bin')
+            bin_file = file[file.find('rv32'):len(file)] + '.bin'
+            print(f'Generating binary {bin_file} for executable {file}')
+            subprocess.run(f'riscv64-unknown-elf-objcopy -O binary {file} \
+                    {BIN_FILES}/{bin_file}', shell=True)
+
+main()
