@@ -12,8 +12,6 @@
  * - swapping the result with register rd
  */
 
-class CSRAux;
-
 class CSR : public System {
 public:
     CSR(uint32_t const is, uint64_t const pc);
@@ -25,10 +23,12 @@ public:
 
 private:
     uint64_t makeCSRResult();
-
+    bool isWriteOp();
 private:
     uint64_t m_second_operand;
     uint64_t m_csr_rs;  // alias t in riscv instructions
     uint64_t m_csr_rd;
     uint64_t m_rd;
+    bool write_to_reg;
+    bool write_to_csrs;
 };
