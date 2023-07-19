@@ -30,7 +30,7 @@ static std::string abi_names[ktot_registers] = {
 };
 
 std::string printABIName(size_t indx) {
-    assert(0 <= indx && indx < ktot_registers);
+    assert(indx < ktot_registers);
     return abi_names[indx];
 }
 

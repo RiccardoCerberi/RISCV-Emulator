@@ -33,8 +33,8 @@ void SystemInterface::loadCode(std::string const& file_name) {
     }
     m_last_instruction = is_ad - kbyte;
 #ifdef DEBUG
-    std::cout << "Number of instructions: "
-              << (m_last_instruction - kdram_size) / 4 << "\n";
+    std::cout << "Last instruction: "
+       << std::hex  << m_last_instruction << "\n";
 #endif
 #ifdef DEB_BIN_INS
     std::cout << "Code loaded: \n";
