@@ -6,6 +6,7 @@ void ImmOp::addi() {
     printInstruction("ADDI", op);
 #endif
     m_rd = arith(m_rs, m_offset, op);
+    std::cout << "rd = " << m_rd << std::endl;
 }
 
 void ImmOp::slti() {

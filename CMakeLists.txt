@@ -13,7 +13,7 @@ set(gcc_like_cxx "$<COMPILE_LANG_AND_ID:CXX,ARMClang,AppleClang,Clang,GNU>")
 set(msvc_cxx "$<COMPILE_LANG_AND_ID:CXX,MSVC>")
 
 #compiler flags
-set(gcc_flags "-Wall;-Wextra;-Wshadow;-Wformat=2;-g;-DDEBUG=1;")
+set(gcc_flags "-Wall;-Wextra;-Wunused;-Wshadow;-Wformat=2;-g;-DDEBUG=1;")
 set(msvc_flags "-W3")
 
 #add_compile_options("$<$<STREQUAL:$<TARGET_PROPERTY:LINKER_LANGUAGE>,CXX>:-std=c++11>")

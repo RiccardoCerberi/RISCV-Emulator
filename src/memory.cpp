@@ -36,7 +36,7 @@ void SystemInterface::loadCode(std::string const& file_name) {
     std::cout << "Last instruction: "
        << std::hex  
        << m_last_instruction
-       << "\n";
+       << std::dec << std::endl;
 #endif
 #ifdef DEB_BIN_INS
     std::cout << "Code loaded: \n";

@@ -44,7 +44,7 @@ void CPU::printRegs() {
         std::cout << "0x" << std::hex << reg << "> ";
         ++i;
     }
-    std::cout << std::endl;
+    std::cout << std::dec << std::endl;
 }
 
 // The processor performs one operation per clock cycle (is not how modern processor works) this make the design easier, avoiding conflicts 
@@ -55,7 +55,7 @@ void CPU::steps() {
     while (!checkEndProgram()) {
         uint32_t is = fetch();
 #ifdef DEBUG
-        std::cout << "<current_instruction> pc = " << std::hex << m_pc << "\n";
+        std::cout << "<current_instruction> pc = " << std::hex << m_pc << std::dec << std::endl;
 #endif
 #ifdef DEB_REGS
         printRegs();
