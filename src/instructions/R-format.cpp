@@ -28,11 +28,11 @@ R::id_t R::takeId() {
 }
 
 
-void R::readRegister(const reg_type &reg) {
-    m_rs1 = reg[m_index_rs1];
-    m_rs2 = reg[m_index_rs2];
+void R::readRegister(Registers const &reg) {
+    m_rs1 = reg.read(m_index_rs1);
+    m_rs2 = reg.read(m_index_rs2);
 }
 
-void R::writeBack(reg_type &reg) {
-    reg[m_index_rd] = m_rd;
+void R::writeBack(Registers &regs) {
+    regs.write(m_index_rd,m_rd);
 }

@@ -22,7 +22,7 @@ class U : public InstructionFormat {
           m_offset(takeOffset()),
           m_index_rd(takeRd())
     {}
-        void writeBack(reg_type&) override;
+        void writeBack(Registers&) override;
     protected:
 
         uint64_t takeOffset();

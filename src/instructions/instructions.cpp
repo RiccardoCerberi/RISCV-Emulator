@@ -2,7 +2,7 @@
 
 
 // Default functions
-void InstructionFormat::readRegister(const reg_type &) {}
+void InstructionFormat::readRegister(const Registers &) {}
 
 void InstructionFormat::readCSR(CSRInterface const&) {}
 
@@ -10,7 +10,7 @@ void InstructionFormat::accessMemory(SystemInterface&) {}
 
 void InstructionFormat::writeCsr(CSRInterface&) {}
 
-void InstructionFormat::writeBack(reg_type&) {}
+void InstructionFormat::writeBack(Registers&) {}
 
 uint64_t InstructionFormat::moveNextInstruction() { 
     return m_curr_pc + DataSize_t::kword; 

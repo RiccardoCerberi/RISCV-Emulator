@@ -21,9 +21,9 @@ Branch::id_t Branch::takeIdCond() {
     return id_t(BitsManipulation::takeBits(m_instruction,12,14));
 }
 
-void Branch::readRegister(const reg_type &reg) {
-    m_rs1 = reg[m_index_rs1];
-    m_rs2 = reg[m_index_rs2];
+void Branch::readRegister(const Registers &reg) {
+    m_rs1 = reg.read(m_index_rs1);
+    m_rs2 = reg.read(m_index_rs2);
 }
 
 void Branch::execution() {

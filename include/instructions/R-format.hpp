@@ -14,8 +14,8 @@
 
 class R : public InstructionFormat {
     public:
-       void readRegister(reg_type const&) override;   
-       void writeBack(reg_type&) override;
+       void readRegister(Registers const&) override;   
+       void writeBack(Registers&) override;
     protected:
        enum class id_t : uint8_t{
             kadd = 0b00000,

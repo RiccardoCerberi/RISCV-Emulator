@@ -13,7 +13,7 @@ class Branch : public InstructionFormat {
             m_id_cond(takeIdCond()),
             m_jump(false)
     {}    
-        void readRegister(reg_type const&) override;
+        void readRegister(Registers const&) override;
 
          void execution() override;
          uint64_t moveNextInstruction()override;

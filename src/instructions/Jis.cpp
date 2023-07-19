@@ -23,7 +23,7 @@ size_t Jis::takeIndexRd()
 void Jis::execution()
 {}
 
-void Jis::writeBack(reg_type &registers)
+void Jis::writeBack(Registers &regs)
 {
 #ifdef DEBUG
     std::cout << printRegIndex(m_index_rd) 
@@ -33,7 +33,7 @@ void Jis::writeBack(reg_type &registers)
               << DataSize_t::kword
               << std::endl;
 #endif
-    registers[m_index_rd] = m_curr_pc + DataSize_t::kword;
+    regs.write(m_index_rd, m_curr_pc + DataSize_t::kword);
 }
 
 uint64_t Jis::moveNextInstruction()

@@ -12,8 +12,8 @@
 
 class I : public InstructionFormat{
     public:
-        void readRegister(reg_type const&) override;
-        void writeBack(reg_type&) override;
+        void readRegister(Registers const&) override;
+        void writeBack(Registers&) override;
     protected:
         // There are duplicated func3, so I decided to append two digits in order to distinguish all operations
         enum class id_t : uint8_t {

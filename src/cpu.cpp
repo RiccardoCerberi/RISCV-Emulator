@@ -2,9 +2,6 @@
 
 CPU::CPU(std::string const& file_name) : m_pc{kdram_base}, m_bus{file_name} {
     m_address_last_is = m_bus.getLastInstruction();
-    m_registers[register_index::kzero_register] = 0;
-    // this doesn't happen in real processor because it ups to the Operative System to assign the sp the right value
-    m_registers[register_index::ksp] = kdram_base + kdram_size;
 }
 
 inline void CPU::setLastInstrAddress(uint64_t const l_is) {
@@ -14,48 +11,26 @@ inline void CPU::setLastInstrAddress(uint64_t const l_is) {
 uint32_t CPU::getCurrentInstruction() { return m_pc; }
 
 static std::string abi_names[ktot_registers] = {
-    "zero",
-    "ra",
-    "sp",
-    "gp",
-    "tp",
-    "t0",
-    "t1",
-    "t2",
-    "s0",
-    "s1",
-    "a0", "a1","a2", "a3", "a4", "a5", "a6", "a7",
-    "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11",
-    "t3", "t4", "t5", "t6"
-};
+    "zero", "ra", "sp", "gp", "tp",  "t0",  "t1", "t2", "s0", "s1", "a0",
+    "a1",   "a2", "a3", "a4", "a5",  "a6",  "a7", "s2", "s3", "s4", "s5",
+    "s6",   "s7", "s8", "s9", "s10", "s11", "t3", "t4", "t5", "t6"};
 
 std::string printABIName(size_t indx) {
     assert(indx < ktot_registers);
     return abi_names[indx];
 }
 
-
-void CPU::printRegs() {
-    size_t i = 0;
-
-    std::cout << "Registers:\n";
-    for (auto const& reg : m_registers) {
-        std::cout << "<\\x" << std::dec << i << "(" << printABIName(i) << ") = ";
-        std::cout << "0x" << std::hex << reg << "> ";
-        ++i;
-    }
-    std::cout << std::dec << std::endl;
-}
-
-// The processor performs one operation per clock cycle (is not how modern processor works) this make the design easier, avoiding conflicts 
-// with jump instructions.
-// Instructions are divided in classes based on the instruction format on riscv manual
+// The processor performs one operation per clock cycle (is not how modern
+// processor works) this make the design easier, avoiding conflicts with jump
+// instructions. Instructions are divided in classes based on the instruction
+// format on riscv manual
 bool CPU::checkEndProgram() { return m_pc >= m_address_last_is; }
 void CPU::steps() {
     while (!checkEndProgram()) {
         uint32_t is = fetch();
 #ifdef DEBUG
-        std::cout << "<current_instruction> pc = " << std::hex << m_pc << std::dec << std::endl;
+        std::cout << "<current_instruction> pc = " << std::hex << m_pc
+                  << std::dec << std::endl;
 #endif
 #ifdef DEB_REGS
         printRegs();

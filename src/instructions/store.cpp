@@ -1,8 +1,8 @@
 #include"../../include/instructions/store.hpp"
 
-void Store::readRegister(const reg_type &reg) {
-    m_base = reg[m_index_base];
-    m_src = reg[m_index_src];
+void Store::readRegister(Registers const &reg) {
+    m_base = reg.read(m_index_base);
+    m_src = reg.read(m_index_src);
 }
 
 void Store::execution() {

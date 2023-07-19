@@ -1,40 +1,39 @@
 #pragma once
 
+#include <sys/types.h>
+
 #include <array>
 #include <bitset>
 #include <cassert>
 #include <cstdint>
-#include <memory>
 #include <fstream>
 #include <iostream>
-#include <cstdint>
-#include <sys/types.h>
-
-#include "constants.hpp"
+#include <memory>
 
 #include "bits-manipulation.hpp"
-
-#include "memory.hpp"
-#include "tlb.hpp"
-
-#include "instructions/instructions.hpp"
-#include "instructions/auipc.hpp"
-#include "instructions/branch.hpp"
-#include "instructions/imm-op.hpp"
+#include "constants.hpp"
+#include "csr_reg.hpp"
 #include "instructions/Jis.hpp"
 #include "instructions/Jris.hpp"
+#include "instructions/auipc.hpp"
+#include "instructions/branch.hpp"
+#include "instructions/csrs.hpp"
+#include "instructions/ecall.hpp"
+#include "instructions/imm-op.hpp"
+#include "instructions/instructions.hpp"
 #include "instructions/load.hpp"
 #include "instructions/lui.hpp"
 #include "instructions/op.hpp"
 #include "instructions/store.hpp"
-#include "instructions/ecall.hpp"
-#include "instructions/csrs.hpp"
-#include "csr_reg.hpp"
+#include "memory.hpp"
+#include"registers.hpp"
 
 /*
- *  by default, riscv doesn't provide an offical way to do that so it's up to the operating system take care of that.
- *  L21 of the MIT from 6:57 there's an explanation about page walk 
-    by splitting virtual page number in two parts each one is an offset for the page table entry.
+ *  by default, riscv doesn't provide an offical way to do that so it's up to
+ the operating system take care of that.
+ *  L21 of the MIT from 6:57 there's an explanation about page walk
+    by splitting virtual page number in two parts each one is an offset for the
+ page table entry.
 */
 
 // Registers cannot be pointers because they have to support all the operations
@@ -72,26 +71,33 @@ private:
         kload = 0b0000011,
         kstore = 0b0100011,
         kimmop = 0b0010011,  // operations like addi
-/*
- * To invoke syscall, the user has to store the code of the syscall in a  specific register, then call syscall.
- */
-        kop = 0b0110011,   // operations without immediate, like add
-// fence instructions organize the sequence of instructions in a concurrent modeli (threads are called hearts), in fact, it's ensured that every instruction preceding the fence is executed before the ones after the fence. Therefore A B fence C D will be executed as {A,B} - {C,D}; the orther between instructions in curly braces can change: A-B as well as B-A.
-// I'm not going to implement fence instructions at this moment, because
-// it requires an advanced knowledge of concurrency.
-        kfence = 0b0001111, 
+                             /*
+                              * To invoke syscall, the user has to store the code of the syscall in a
+                              * specific register, then call syscall.
+                              */
+        kop = 0b0110011,     // operations without immediate, like add
+        // fence instructions organize the sequence of instructions in a
+        // concurrent modeli (threads are called hearts), in fact, it's ensured
+        // that every instruction preceding the fence is executed before the
+        // ones after the fence. Therefore A B fence C D will be executed as
+        // {A,B} - {C,D}; the orther between instructions in curly braces can
+        // change: A-B as well as B-A. I'm not going to implement fence
+        // instructions at this moment, because it requires an advanced
+        // knowledge of concurrency.
+        kfence = 0b0001111,
         // exceptions are treated using the c++ syntax
         ksystem = 0b1110011  // ecall ect
     };
+
 private:
-    // TODO: Define register class and check for attempts to write x0
-    reg_type m_registers;
+    Registers m_registers;
     uint64_t m_pc;  // it's the 32-th register
     uint64_t m_address_last_is;
-    CSRInterface m_csrs; 
+    CSRInterface m_csrs;
     SystemInterface m_bus;
+
 private:
-    void setLastInstrAddress(uint64_t );
+    void setLastInstrAddress(uint64_t);
 
     /*
      * 5-stages pipeline
@@ -100,13 +106,11 @@ private:
     // returns its data
     uint32_t fetch();
     // creates the instruction based on decode bits
-    std::unique_ptr<InstructionFormat> decode(uint32_t );
+    std::unique_ptr<InstructionFormat> decode(uint32_t);
 
     void execute(std::unique_ptr<InstructionFormat> const&);
     void memoryAccess(std::unique_ptr<InstructionFormat> const&);
     void writeBack(std::unique_ptr<InstructionFormat> const&);
 
     uint64_t moveNextInstruction(std::unique_ptr<InstructionFormat> const&);
-
-    void printRegs();
 };

@@ -10,6 +10,6 @@ size_t U::takeRd() {
     return BitsManipulation::takeBits(m_instruction, 7,11);
 }
 
-void U::writeBack(reg_type& reg) {
-    reg[m_index_rd] = m_rd;
+void U::writeBack(Registers& regs) {
+    regs.write(m_index_rd, m_rd);
 }

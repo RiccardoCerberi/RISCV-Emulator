@@ -9,7 +9,7 @@ bool CSR::isWriteOp() {
     return m_func3 == System::func3_t::kcsrrw || m_func3 == System::func3_t::kcsrrwi;
 }
 
-void CSR::readRegister(reg_type const& reg) {
+void CSR::readRegister(Registers const& reg) {
     m_second_operand = BitsManipulation::takeBits(m_instruction, 15, 19);
     if (m_second_operand == 0 && isWriteOp()==false) {
         write_to_csrs = false;
@@ -18,7 +18,7 @@ void CSR::readRegister(reg_type const& reg) {
         write_to_reg = false;
     }
     if (static_cast<uint8_t>(m_func3) >= 5) {
-        m_second_operand = reg[m_second_operand];
+        m_second_operand = reg.read(m_second_operand);
     }
 }
 
@@ -36,8 +36,9 @@ void CSR::writeCsr(CSRInterface& csrs) {
         csrs.write(m_func12, m_csr_rd);
 }
 
-void CSR::writeBack(reg_type& reg) {
-    if (write_to_reg == true) reg[m_index_rd] = m_rd;
+void CSR::writeBack(Registers& reg) {
+    if (write_to_reg == true)
+       reg.write(m_index_rd, m_rd);
 }
 
 uint64_t CSR::makeCSRResult() {

@@ -15,11 +15,11 @@
 class CSR : public System {
 public:
     CSR(uint32_t const is, uint64_t const pc);
-    void readRegister(reg_type const &) override;
+    void readRegister(Registers const &) override;
     void readCSR(const CSRInterface &) override;
     void execution() override;
     void writeCsr(CSRInterface &) override;
-    void writeBack(reg_type &) override;
+    void writeBack(Registers &) override;
 private:
     uint64_t makeCSRResult();
     bool isWriteOp();

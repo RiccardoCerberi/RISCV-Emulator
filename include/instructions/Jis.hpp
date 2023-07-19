@@ -9,7 +9,7 @@ class Jis : public InstructionFormat {
               m_index_rd(takeIndexRd())
         {}
         void execution() override;
-        void writeBack(reg_type&) override;
+        void writeBack(Registers&) override;
         uint64_t moveNextInstruction() override;
         ~Jis() = default;
     private:

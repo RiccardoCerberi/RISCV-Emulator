@@ -21,11 +21,11 @@ I::id_t I::takeId() {
                     | (BitsManipulation::takeBits(m_instruction,30,31) << 3));
 }
 
-void I::readRegister(const reg_type & regs) {
-    m_rs = regs[m_index_rs];
+void I::readRegister(Registers const & regs) {
+    m_rs = regs.read(m_index_rs);
 }
 
-void I::writeBack(reg_type &regs) {
-    regs[m_index_rd] = m_rd;
+void I::writeBack(Registers &regs) {
+    regs.write(m_index_rd, m_rd);
 }
 

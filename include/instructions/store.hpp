@@ -13,7 +13,7 @@ public:
           m_width(takeWidth()),
           m_offset(takeOffset())
     {}
-    void readRegister(reg_type const&) override;
+    void readRegister(Registers const&) override;
     void execution() override;
     void accessMemory(SystemInterface&) override;
 private:
