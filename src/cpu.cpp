@@ -50,13 +50,12 @@ void CPU::printRegs() {
 // The processor performs one operation per clock cycle (is not how modern processor works) this make the design easier, avoiding conflicts 
 // with jump instructions.
 // Instructions are divided in classes based on the instruction format on riscv manual
-bool CPU::checkEndProgram() { return m_pc == m_address_last_is; }
+bool CPU::checkEndProgram() { return m_pc >= m_address_last_is; }
 void CPU::steps() {
     while (!checkEndProgram()) {
         uint32_t is = fetch();
-#ifdef DEB_PC
-        std::cout << "pc = " << std::hex << m_pc << " "
-                  << "instruction = " << std::bitset<32>(is) << std::endl;
+#ifdef DEBUG
+        std::cout << "<current_instruction> pc = " << std::hex << m_pc << "\n";
 #endif
 #ifdef DEB_REGS
         printRegs();

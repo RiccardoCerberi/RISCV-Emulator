@@ -26,15 +26,17 @@ void SystemInterface::loadCode(std::string const& file_name) {
     assert(input_file.is_open() == true);
 
     Address_t is_ad = kdram_base;
-    std::byte b;
+    char b;
     while (input_file.read(reinterpret_cast<char*>(&b), kbyte)) {
-        m_memory.write(is_ad, std::to_integer<uint64_t>(b), kbyte);
+        m_memory.write(is_ad, b, kbyte);
         is_ad += kbyte;
     }
-    m_last_instruction = is_ad - kbyte;
+    m_last_instruction = is_ad;
 #ifdef DEBUG
     std::cout << "Last instruction: "
-       << std::hex  << m_last_instruction << "\n";
+       << std::hex  
+       << m_last_instruction
+       << "\n";
 #endif
 #ifdef DEB_BIN_INS
     std::cout << "Code loaded: \n";
@@ -52,7 +54,7 @@ uint64_t readFromMemory(Mem_t& mem, uint64_t base, Address_t read_from,
                         DataSize_t data_size) {
     uint64_t data_to_take = 0;
     assert(read_from >= base);
-    size_t index = read_from - base;
+    size_t const index = read_from - base;
     assert(index < mem.size());
 
     for (size_t i = 0; i < data_size; ++i) {

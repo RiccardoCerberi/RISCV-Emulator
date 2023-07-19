@@ -4,15 +4,15 @@
 // Jump
 uint64_t Jis::takeOffset()
 {
-    uint8_t pos = 8;
+    uint8_t pos = 20;
 
     return BitsManipulation::extendSign(
-        BitsManipulation::takeBits(m_instruction, 21, 30) << 1 
+        BitsManipulation::takeBits(m_instruction, 21, 30) << 1 // implicit shift done here 
         | BitsManipulation::takeBits(m_instruction, 20, 20) << 11 
         | BitsManipulation::takeBits(m_instruction, 12, 19) << 12 
         | BitsManipulation::takeBits(m_instruction, 31, 31) << 20, 
         pos
-    ) << 1; // shifting required: it's in half word
+    ); 
 }
 
 size_t Jis::takeIndexRd()

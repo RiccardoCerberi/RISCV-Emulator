@@ -84,6 +84,7 @@ private:
         ksystem = 0b1110011  // ecall ect
     };
 private:
+    // TODO: Define register class and check for attempts to write x0
     reg_type m_registers;
     uint64_t m_pc;  // it's the 32-th register
     uint64_t m_address_last_is;

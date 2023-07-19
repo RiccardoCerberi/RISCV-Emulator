@@ -12,7 +12,6 @@ void Jris::execution() {
 // belongs to the I-format
 uint64_t Jris::moveNextInstruction() {
     uint64_t next_instruction = (m_rs + m_offset) 
-            & (static_cast<uint64_t>(-1) >>  (sizeof(uint64_t)*8 - 1));
-
+            & (static_cast<uint64_t>(-1) >>  (63));
     return next_instruction;
 }
