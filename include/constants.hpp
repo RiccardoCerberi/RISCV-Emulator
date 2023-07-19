@@ -15,7 +15,7 @@ constexpr uint8_t ktot_registers = 32;
 constexpr uint16_t kcsrs_size = 4096;
 
 constexpr uint8_t klast_opcode_digit = 6;
-
+constexpr uint8_t kopcode_len = 7;
 using reg_type = std::array<RegisterSize_t, ktot_registers>;
 
 enum register_index : size_t { kzero_register = 0, kra = 1, ksp = 2 };
@@ -28,3 +28,4 @@ enum DataSize_t
     kword = 4,
     kdouble_word = 8
 };
+

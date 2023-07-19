@@ -65,7 +65,7 @@ uint64_t readFromMemory(Mem_t& mem, uint64_t base, Address_t read_from,
 }
 
 bool SystemInterface::checkLimit(Address_t a) {
-    return kdram_base <= a && a < (kdram_base + kdram_size);
+    return m_last_instruction <= a && a < (kdram_base + kdram_size);
 }
 
 void writeToMemory(Mem_t& mem, uint64_t base, Address_t where_to_write,

@@ -34,6 +34,8 @@ public:
     void write(Address_t, uint64_t, DataSize_t);
     uint64_t read(Address_t, DataSize_t);
 private:
+    void loader(std::string const&);
+private:
     Mem_t m_dram;
 };
 

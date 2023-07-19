@@ -1,4 +1,4 @@
-#include"../../include/instructions/branch.hpp"
+#include "../../include/instructions/branch.hpp"
 
 size_t Branch::takeRs1() {
     return BitsManipulation::takeBits(m_instruction, 15, 19);
@@ -9,16 +9,19 @@ size_t Branch::takeRs2() {
 }
 
 uint16_t Branch::takeOffset() {
-    // NOTE: shifting starts from 1 because the offset in the instruction is in half word
-    return BitsManipulation::extendSign((BitsManipulation::takeBits(m_instruction, 8, 11))
-        | (BitsManipulation::takeBits(m_instruction, 25, 30) << 4)
-        | (BitsManipulation::takeBits(m_instruction, 7,7) << 10)
-        | (BitsManipulation::takeBits(m_instruction, 31,31) << 11),
-        11) << 1;
+    // NOTE: shifting starts from 1 because the offset in the instruction is in
+    // half word
+    return BitsManipulation::extendSign(
+               (BitsManipulation::takeBits(m_instruction, 8, 11)) |
+                   (BitsManipulation::takeBits(m_instruction, 25, 30) << 4) |
+                   (BitsManipulation::takeBits(m_instruction, 7, 7) << 10) |
+                   (BitsManipulation::takeBits(m_instruction, 31, 31) << 11),
+               11)
+           << 1;
 }
-    
+
 Branch::id_t Branch::takeIdCond() {
-    return id_t(BitsManipulation::takeBits(m_instruction,12,14));
+    return id_t(BitsManipulation::takeBits(m_instruction, 12, 14));
 }
 
 void Branch::readRegister(const Registers &reg) {
@@ -27,7 +30,7 @@ void Branch::readRegister(const Registers &reg) {
 }
 
 void Branch::execution() {
-    switch(m_id_cond) {
+    switch (m_id_cond) {
         case id_t::kbeq:
             m_jump = beq();
             break;
@@ -53,30 +56,24 @@ void Branch::execution() {
 
 bool Branch::beq() {
 #ifdef DEBUG
-               std::cout << printRegIndex(m_index_rs1)
-                 << " == " 
-                 << printRegIndex(m_index_rs2)
-                 << std::endl;
+    std::cout << printRegIndex(m_index_rs1)
+              << " == " << printRegIndex(m_index_rs2) << std::endl;
 #endif
     return m_rs1 == m_rs2;
 }
 
 bool Branch::bne() {
 #ifdef DEBUG
-               std::cout << printRegIndex(m_index_rs1)
-              << " != " 
-            << printRegIndex(m_index_rs2)
-              << std::endl;
+    std::cout << printRegIndex(m_index_rs1)
+              << " != " << printRegIndex(m_index_rs2) << std::endl;
 #endif
     return m_rs1 != m_rs2;
 }
 
 bool Branch::blt() {
 #ifdef DEBUG
-               std::cout << printRegIndex(m_index_rs1)
-              << " < " 
-              << printRegIndex(m_index_rs2)
-              << std::endl;
+    std::cout << printRegIndex(m_index_rs1) << " < "
+              << printRegIndex(m_index_rs2) << std::endl;
 #endif
     return static_cast<int64_t>(m_rs1) < static_cast<int64_t>(m_rs2);
 }
@@ -84,10 +81,8 @@ bool Branch::blt() {
 bool Branch::bltu() {
 #ifdef DEBUG
 
-              std::cout << "(unsigned) " + printRegIndex(m_index_rs1)
-              << " < " 
-              << printRegIndex(m_index_rs2)
-              << std::endl;
+    std::cout << "(unsigned) " + printRegIndex(m_index_rs1) << " < "
+              << printRegIndex(m_index_rs2) << std::endl;
 #endif
     return m_rs1 < m_rs2;
 }
@@ -95,9 +90,7 @@ bool Branch::bltu() {
 bool Branch::bge() {
 #ifdef DEBUG
     std::cout << "(sign extended) " + printRegIndex(m_index_rs1)
-              << " >= " 
-              << printRegIndex(m_index_rs2)
-              << std::endl;
+              << " >= " << printRegIndex(m_index_rs2) << std::endl;
 #endif
     return static_cast<int64_t>(m_rs1) >= static_cast<int64_t>(m_rs2);
 }
@@ -105,9 +98,7 @@ bool Branch::bge() {
 bool Branch::bgeu() {
 #ifdef DEBUG
     std::cout << "(unsigned) " + printRegIndex(m_index_rs1)
-              << " >= " 
-              << printRegIndex(m_index_rs2)
-              << std::endl;
+              << " >= " << printRegIndex(m_index_rs2) << std::endl;
 #endif
     return m_rs1 >= m_rs2;
 }
@@ -116,8 +107,7 @@ uint64_t Branch::moveNextInstruction() {
     if (m_jump == true) {
         std::cout << "condition is true\n";
         return m_curr_pc + m_offset;
-    } 
+    }
     std::cout << "condition is false\n";
     return m_curr_pc + DataSize_t::kword;
 }
-

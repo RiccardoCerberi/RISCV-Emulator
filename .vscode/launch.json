@@ -8,7 +8,7 @@
             // Resolved by CMake Tools:
             "program": "${command:cmake.launchTargetPath}",
             "args": [
-                "test/rv32ui-p-add.bin"
+                "test/bin_files/rv32ui-p-addi.bin"
                 //"test/add-addi.bin"
             ],
             "stopAtEntry": false,

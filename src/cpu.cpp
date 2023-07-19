@@ -10,15 +10,6 @@ inline void CPU::setLastInstrAddress(uint64_t const l_is) {
 
 uint32_t CPU::getCurrentInstruction() { return m_pc; }
 
-static std::string abi_names[ktot_registers] = {
-    "zero", "ra", "sp", "gp", "tp",  "t0",  "t1", "t2", "s0", "s1", "a0",
-    "a1",   "a2", "a3", "a4", "a5",  "a6",  "a7", "s2", "s3", "s4", "s5",
-    "s6",   "s7", "s8", "s9", "s10", "s11", "t3", "t4", "t5", "t6"};
-
-std::string printABIName(size_t indx) {
-    assert(indx < ktot_registers);
-    return abi_names[indx];
-}
 
 // The processor performs one operation per clock cycle (is not how modern
 // processor works) this make the design easier, avoiding conflicts with jump
@@ -79,7 +70,7 @@ std::unique_ptr<InstructionFormat> CPU::decode(uint32_t const is) {
     std::unique_ptr<InstructionFormat> is_format;
 #ifdef DEBUG
     uint8_t opcode = BitsManipulation::takeBits(is, 0, klast_opcode_digit);
-    std::cout << "<opcode = " << std::bitset<8>(opcode) << "> ";
+    std::cout << "<opcode = " << std::bitset<kopcode_len>(opcode) << "> ";
 #endif
 
     auto op = opcode_t(static_cast<uint8_t>(

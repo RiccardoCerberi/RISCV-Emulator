@@ -3,10 +3,11 @@ project(${CMAKE_PROJECT_NAME} )
 #TODO: change target to avoid recompilation of all sources even if when they're untouched
 set(SRCS 
 bits-manipulation.cpp 
-cpu.cpp
 emulator.cpp
-memory.cpp
+cpu.cpp
+registers.cpp
 csr_reg.cpp
+memory.cpp
 instructions/auipc.cpp
 instructions/branch.cpp
 instructions/csrs.cpp
