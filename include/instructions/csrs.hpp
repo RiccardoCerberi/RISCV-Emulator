@@ -20,7 +20,6 @@ public:
     void execution() override;
     void writeCsr(CSRInterface &) override;
     void writeBack(reg_type &) override;
-
 private:
     uint64_t makeCSRResult();
     bool isWriteOp();
@@ -32,3 +31,4 @@ private:
     bool write_to_reg;
     bool write_to_csrs;
 };
+
