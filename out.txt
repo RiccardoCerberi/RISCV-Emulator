@@ -130,17 +130,7 @@ X5 = offset + current_pc = 2147483952
 <opcode = 0010011> SLLI x10(a0) = x10(a0) << 31
 <current_instruction> pc = 80000144
 <opcode = 1100011> x10(a0) < x0(zero)
-condition is false
-<current_instruction> pc = 80000148
-<opcode = 0001111> Fence instruction: synchronization
-<current_instruction> pc = 8000014c
-<opcode = 0010011> ADDI x3(gp) = x0(zero) + 1
-<current_instruction> pc = 80000150
-<opcode = 0010011> ADDI x17(a7) = x0(zero) + 93
-<current_instruction> pc = 80000154
-<opcode = 0010011> ADDI x10(a0) = x0(zero) + 0
-<current_instruction> pc = 80000158
-<opcode = 1110011> Calling to operative system
+condition is true
 <current_instruction> pc = 8000015c
 <opcode = 0010011> ADDI x5(t0) = x0(zero) + 0
 <current_instruction> pc = 80000160

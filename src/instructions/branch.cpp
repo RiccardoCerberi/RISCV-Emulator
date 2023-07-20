@@ -74,7 +74,7 @@ bool Branch::blt() {
     std::cout << printRegIndex(m_index_rs1) << " < "
               << printRegIndex(m_index_rs2) << std::endl;
 #endif
-    return static_cast<int64_t>(m_rs1) < static_cast<int64_t>(m_rs2);
+    return static_cast<int32_t>(m_rs1) < static_cast<int32_t>(m_rs2);
 }
 
 bool Branch::bltu() {
@@ -91,7 +91,7 @@ bool Branch::bge() {
     std::cout << "(sign extended) " + printRegIndex(m_index_rs1)
               << " >= " << printRegIndex(m_index_rs2) << std::endl;
 #endif
-    return static_cast<int64_t>(m_rs1) >= static_cast<int64_t>(m_rs2);
+    return static_cast<int32_t>(m_rs1) >= static_cast<int32_t>(m_rs2);
 }
 
 bool Branch::bgeu() {
