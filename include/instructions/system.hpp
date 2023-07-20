@@ -10,7 +10,7 @@
 
 class System : public InstructionFormat {
 public:
-    System(uint32_t const is, uint64_t const pc)
+    System(InstructionSize_t const is, Address_t const pc)
         : InstructionFormat(is,pc), 
           m_index_rd(takeRd()),
           m_qty(takeQty()),

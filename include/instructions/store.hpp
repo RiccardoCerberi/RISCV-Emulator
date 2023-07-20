@@ -5,8 +5,8 @@
 
 class Store : public InstructionFormat {
 public:
-    Store(uint32_t const is,
-          uint64_t const pc)
+    Store(InstructionSize_t const is,
+          Address_t const pc)
         : InstructionFormat(is,pc),
           m_index_rs1(takeIndexRS1()),
           m_index_rs2(takeIndexRS2()),
@@ -26,9 +26,9 @@ private:
     size_t m_index_rs1;
     size_t m_index_rs2;
     uint8_t m_func3;
-    uint64_t m_offset;
+    RegisterSize_t m_offset;
 
-    uint64_t m_rs1;
-    uint64_t m_rs2;
+    RegisterSize_t m_rs1;
+    RegisterSize_t m_rs2;
     Address_t m_ad_write;
 };

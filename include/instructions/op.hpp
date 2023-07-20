@@ -4,7 +4,7 @@
 
 class Op : public R {
     public:
-        Op(uint32_t const is, uint64_t const pc)
+        Op(InstructionSize_t const is, Address_t const pc)
             : R(is,pc)
         {}
         void execution() override;

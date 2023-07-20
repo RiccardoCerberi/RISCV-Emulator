@@ -43,7 +43,7 @@ class InstructionFormat {
         virtual void accessMemory(SystemInterface&);
         virtual void writeCsr(CSRInterface&);
         virtual void writeBack(Registers&);
-        virtual uint64_t moveNextInstruction();
+        virtual InstructionSize_t moveNextInstruction();
         virtual ~InstructionFormat() = default;
     protected:
         std::string printRegIndex(std::size_t); 

@@ -3,10 +3,10 @@
 
 class Jris : public I {
     public:
-        Jris(uint32_t const is, uint64_t const pc) : I(is,pc) {}
+        Jris(InstructionSize_t const is, Address_t const pc) : I(is,pc) {}
         void execution() override;
-        uint64_t moveNextInstruction() override;
+        Address_t moveNextInstruction() override;
         ~Jris() = default;
     private:
-        uint64_t m_reg;
+        RegisterSize_t m_reg;
 };
