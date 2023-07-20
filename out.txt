@@ -356,6 +356,3 @@ condition is false
 <opcode = 0010011> ADDI x4(tp) = x4(tp) + 1
 <current_instruction> pc = 80000308
 <opcode = 0010011> ADDI x5(t0) = x0(zero) + 2
-<current_instruction> pc = 8000030c
-<opcode = 1100011> x4(tp) != x5(t0)
-condition is true
