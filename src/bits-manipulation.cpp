@@ -10,7 +10,7 @@ uint64_t BitsManipulation::takeBits(uint64_t const is, uint8_t const beg, uint8_
 // NOTE: sign_pos refers to bit position counting from zero
 uint64_t BitsManipulation::extendSign(uint64_t const imm, uint8_t const sign_pos) {
     if (imm >> sign_pos == 1) 
-        return -((1 << (imm+1)) -imm);
+        return -((1 << (sign_pos+1)) -imm);
     return imm;
 }
 
