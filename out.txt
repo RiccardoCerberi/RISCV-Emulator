@@ -72,7 +72,7 @@ condition is false
 <current_instruction> pc = 800000d4
 <opcode = 0010111> Auipc:
 - offset(20-th) =  0
-- current_pc = 2147483860
+- current_pc = 800000d4
 X5 = offset + current_pc = 2147483860
 <current_instruction> pc = 800000d8
 <opcode = 0010011> ADDI x5(t0) = x5(t0) + 16
@@ -81,7 +81,7 @@ X5 = offset + current_pc = 2147483860
 <opcode = 1110011> <current_instruction> pc = 800000e4
 <opcode = 0010111> Auipc:
 - offset(20-th) =  0
-- current_pc = 2147483876
+- current_pc = 800000e4
 X5 = offset + current_pc = 2147483876
 <current_instruction> pc = 800000e8
 <opcode = 0010011> ADDI x5(t0) = x5(t0) + 16
@@ -90,14 +90,13 @@ X5 = offset + current_pc = 2147483876
 <opcode = 1110011> <current_instruction> pc = 800000f4
 <opcode = 0010111> Auipc:
 - offset(20-th) =  0
-- current_pc = 2147483892
+- current_pc = 800000f4
 X5 = offset + current_pc = 2147483892
 <current_instruction> pc = 800000f8
 <opcode = 0010011> ADDI x5(t0) = x5(t0) + 32
 <current_instruction> pc = 800000fc
 <opcode = 1110011> <current_instruction> pc = 80000100
-<opcode = 0110111> Lui(20-th bit):
- offset = 2147475456
+<opcode = 0110111> Lui: offset = 0x7fffe000
 <current_instruction> pc = 80000104
 <opcode = 0010011> ADDI x5(t0) = x5(t0) + 4094
 <current_instruction> pc = 80000108
@@ -108,7 +107,7 @@ X5 = offset + current_pc = 2147483892
 <opcode = 1110011> <current_instruction> pc = 80000118
 <opcode = 0010111> Auipc:
 - offset(20-th) =  0
-- current_pc = 2147483928
+- current_pc = 80000118
 X5 = offset + current_pc = 2147483928
 <current_instruction> pc = 8000011c
 <opcode = 0010011> ADDI x5(t0) = x5(t0) + 20
@@ -120,7 +119,7 @@ X5 = offset + current_pc = 2147483928
 <current_instruction> pc = 80000130
 <opcode = 0010111> Auipc:
 - offset(20-th) =  0
-- current_pc = 2147483952
+- current_pc = 80000130
 X5 = offset + current_pc = 2147483952
 <current_instruction> pc = 80000134
 <opcode = 0010011> ADDI x5(t0) = x5(t0) + 18446744073707458260
@@ -151,7 +150,7 @@ condition is true
 <opcode = 1110011> <current_instruction> pc = 80000178
 <opcode = 0010111> Auipc:
 - offset(20-th) =  0
-- current_pc = 2147484024
+- current_pc = 80000178
 X5 = offset + current_pc = 2147484024
 <current_instruction> pc = 8000017c
 <opcode = 0010011> ADDI x5(t0) = x5(t0) + 20
@@ -206,26 +205,22 @@ condition is false
 <current_instruction> pc = 800001dc
 <opcode = 0010011> ADDI x3(gp) = x0(zero) + 6
 <current_instruction> pc = 800001e0
-<opcode = 0110111> Lui(20-th bit):
- offset = 2147475456
+<opcode = 0110111> Lui: offset = 0x7fffe000
 <current_instruction> pc = 800001e4
 <opcode = 0010011> ADDI x14(a4) = x1(ra) + 0
 <current_instruction> pc = 800001e8
-<opcode = 0110111> Lui(20-th bit):
- offset = 2147475456
+<opcode = 0110111> Lui: offset = 0x7fffe000
 <current_instruction> pc = 800001ec
 <opcode = 1100011> x14(a4) != x7(t2)
 condition is false
 <current_instruction> pc = 800001f0
 <opcode = 0010011> ADDI x3(gp) = x0(zero) + 7
 <current_instruction> pc = 800001f4
-<opcode = 0110111> Lui(20-th bit):
- offset = 2147475456
+<opcode = 0110111> Lui: offset = 0x7fffe000
 <current_instruction> pc = 800001f8
 <opcode = 0010011> ADDI x14(a4) = x1(ra) + 2046
 <current_instruction> pc = 800001fc
-<opcode = 0110111> Lui(20-th bit):
- offset = 2147475456
+<opcode = 0110111> Lui: offset = 0x7fffe000
 <current_instruction> pc = 80000200
 <opcode = 0010011> ADDI x7(t2) = x7(t2) + 2046
 <current_instruction> pc = 80000204
@@ -245,15 +240,13 @@ condition is false
 <current_instruction> pc = 8000021c
 <opcode = 0010011> ADDI x3(gp) = x0(zero) + 9
 <current_instruction> pc = 80000220
-<opcode = 0110111> Lui(20-th bit):
- offset = 2147475456
+<opcode = 0110111> Lui: offset = 0x7fffe000
 <current_instruction> pc = 80000224
 <opcode = 0010011> ADDI x1(ra) = x1(ra) + 4094
 <current_instruction> pc = 80000228
 <opcode = 0010011> ADDI x14(a4) = x1(ra) + 0
 <current_instruction> pc = 8000022c
-<opcode = 0110111> Lui(20-th bit):
- offset = 2147475456
+<opcode = 0110111> Lui: offset = 0x7fffe000
 <current_instruction> pc = 80000230
 <opcode = 0010011> ADDI x7(t2) = x7(t2) + 4094
 <current_instruction> pc = 80000234
@@ -262,15 +255,13 @@ condition is false
 <current_instruction> pc = 80000238
 <opcode = 0010011> ADDI x3(gp) = x0(zero) + 10
 <current_instruction> pc = 8000023c
-<opcode = 0110111> Lui(20-th bit):
- offset = 2147475456
+<opcode = 0110111> Lui: offset = 0x7fffe000
 <current_instruction> pc = 80000240
 <opcode = 0010011> ADDI x1(ra) = x1(ra) + 4094
 <current_instruction> pc = 80000244
 <opcode = 0010011> ADDI x14(a4) = x1(ra) + 2047
 <current_instruction> pc = 80000248
-<opcode = 0110111> Lui(20-th bit):
- offset = 2147475456
+<opcode = 0110111> Lui: offset = 0x7fffe000
 <current_instruction> pc = 8000024c
 <opcode = 0010011> ADDI x7(t2) = x7(t2) + 2046
 <current_instruction> pc = 80000250

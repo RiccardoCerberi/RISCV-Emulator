@@ -2,7 +2,7 @@
 
 void Lui::execution() {
 #ifdef DEBUG
-    std::cout << "Lui(20-th bit):\n offset = " << m_offset << std::endl;
+    std::cout << "Lui: offset = 0x" <<std::hex<< m_offset << std::dec << std::endl;
 #endif
     m_rd = m_offset;
 }
