@@ -12,8 +12,6 @@ public:
 public:
     Registers() : m_registers{0} {
         m_registers[register_index::kzero_register] = 0;
-        // this doesn't happen in real processor because it ups to the Operative
-        // System to assign the sp the right value
         m_registers[register_index::ksp]            = kdram_base + kdram_size;
     }
     void write(size_t reg_indx, RegisterSize_t what) {

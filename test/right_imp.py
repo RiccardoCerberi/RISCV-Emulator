@@ -29,7 +29,7 @@ def reset():
   global regfile, memory
   regfile = Regfile()
   # 16kb at 0x80000000
-  memory = b'\x00'*0x4000
+  memory = b'\x00'*0x40000
 
 from enum import Enum
 # RV32I Base Instruction Set
@@ -241,14 +241,20 @@ def step():
 
 
 if __name__ == "__main__":
-    x = 'bin_files/rv32ui-p-addi.bin' 
+  if not os.path.isdir('test-cache'):
+    os.mkdir('test-cache')
+  for x in glob.glob("riscv-tests/isa/rv32ui-p-*"):
+    if x.endswith('.dump'):
+      continue
     with open(x, 'rb') as f:
       reset()
       print("test", x)
-      ad = 0x80000000
-      for b in x:
-        ws(ad, b)
-        ad += 1
+      e = ELFFile(f)
+      for s in e.iter_segments():
+        ws(s.header.p_paddr, s.data())
+      with open("test-cache/%s" % x.split("/")[-1], "wb") as g:
+        g.write(b'\n'.join([binascii.hexlify(memory[i:i+4][::-1]) for i in range(0,len(memory),4)]))
+        #g.write(b'\n'.join([binascii.hexlify(memory[i:i+1]) for i in range(0,len(memory))]))
       regfile[PC] = 0x80000000
       inscnt = 0
       while step():
