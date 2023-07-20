@@ -8,8 +8,8 @@ size_t I::takeRegD() {
     return BitsManipulation::takeBits(m_instruction, 7, 11);
 }
 
-uint64_t I::takeOffset() {
-    uint64_t offset = BitsManipulation::takeBits(m_instruction, 20, 31);
+RegisterSize_t I::takeOffset() {
+    RegisterSize_t offset = BitsManipulation::takeBits(m_instruction, 20, 31);
     return BitsManipulation::extendSign(offset, 11);
 }
 

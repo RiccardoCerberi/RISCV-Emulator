@@ -1,6 +1,6 @@
 #include"../../include/instructions/U-format.hpp"
 
-uint64_t U::takeOffset() {
+RegisterSize_t U::takeOffset() {
     return BitsManipulation::extendSign(
         BitsManipulation::takeBits(m_instruction, 12, 31),
         19) << 12;

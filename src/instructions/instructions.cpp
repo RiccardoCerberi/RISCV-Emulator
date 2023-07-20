@@ -11,7 +11,7 @@ void InstructionFormat::writeCsr(CSRInterface&) {}
 
 void InstructionFormat::writeBack(Registers&) {}
 
-uint64_t InstructionFormat::moveNextInstruction() {
+InstructionSize_t InstructionFormat::moveNextInstruction() {
     return m_curr_pc + DataSize_t::kword;
 }
 

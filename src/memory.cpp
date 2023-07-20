@@ -50,9 +50,9 @@ std::ostream& operator<<(std::ostream& os, std::byte b) {
 
 static bool isAllign(Address_t ad, DataSize_t sz) { return ad % sz == 0; }
 
-uint64_t readFromMemory(Mem_t& mem, uint64_t base, Address_t read_from,
+RegisterSize_t readFromMemory(Mem_t& mem, uint64_t base, Address_t read_from,
                         DataSize_t data_size) {
-    uint64_t data_to_take = 0;
+    RegisterSize_t data_to_take = 0;
     assert(read_from >= base);
     size_t const index = read_from - base;
     assert(index < mem.size());
@@ -68,8 +68,8 @@ bool SystemInterface::checkLimit(Address_t a) {
     return m_last_instruction <= a && a < (kdram_base + kdram_size);
 }
 
-void writeToMemory(Mem_t& mem, uint64_t base, Address_t where_to_write,
-                   uint64_t what_to_write, DataSize_t size) {
+void writeToMemory(Mem_t& mem, Address_t base, Address_t where_to_write,
+                   RegisterSize_t what_to_write, DataSize_t size) {
 #ifdef DEB_BIN_INS
     std::bitset<64> whs_b(what_to_write);
     std::cout << "what_to_store_binary = " << whs_b << std::endl;
@@ -87,7 +87,7 @@ void writeToMemory(Mem_t& mem, uint64_t base, Address_t where_to_write,
     }
 }
 
-uint64_t SystemInterface::readData(Address_t read_from, DataSize_t sz) {
+RegisterSize_t SystemInterface::readData(Address_t read_from, DataSize_t sz) {
     assert(isAllign(read_from, sz));
 
     if (kdram_base <= read_from && read_from < (kdram_base + kdram_size)) {
@@ -100,7 +100,7 @@ uint64_t SystemInterface::readData(Address_t read_from, DataSize_t sz) {
 #endif
 }
 
-void SystemInterface::writeData(Address_t write_to, uint64_t what_write,
+void SystemInterface::writeData(Address_t write_to, RegisterSize_t what_write,
                                 DataSize_t sz) {
     assert(isAllign(write_to, sz));
 
@@ -113,11 +113,11 @@ void SystemInterface::writeData(Address_t write_to, uint64_t what_write,
 #endif
 }
 
-void DRAM::write(Address_t where_to_write, uint64_t what_to_write,
+void DRAM::write(Address_t where_to_write, RegisterSize_t what_to_write,
                 DataSize_t size) {
     writeToMemory(m_dram, kdram_base, where_to_write, what_to_write, size);
 }
 
-uint64_t DRAM::read(Address_t read_from, DataSize_t data_size) {
+RegisterSize_t DRAM::read(Address_t read_from, DataSize_t data_size) {
     return readFromMemory(m_dram, kdram_base, read_from, data_size);
 }

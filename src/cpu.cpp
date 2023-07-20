@@ -4,7 +4,7 @@ CPU::CPU(std::string const& file_name) : m_pc{kdram_base}, m_bus{file_name} {
     m_address_last_is = m_bus.getLastInstruction();
 }
 
-inline void CPU::setLastInstrAddress(uint64_t const l_is) {
+inline void CPU::setLastInstrAddress(InstructionSize_t const l_is) {
     m_address_last_is = l_is;
 }
 
@@ -58,13 +58,13 @@ void CPU::steps() {
     }
 }
 
-uint32_t CPU::fetch() {
-    return static_cast<uint32_t>(m_bus.readData(m_pc, DataSize_t::kword));
+InstructionSize_t CPU::fetch() {
+    return static_cast<InstructionSize_t>(m_bus.readData(m_pc, DataSize_t::kword));
 }
 
 // decode function uses polymorphism, in order to know which instruction return
 // it needs to decode the first 8 bits.
-std::unique_ptr<InstructionFormat> CPU::decode(uint32_t const is) {
+std::unique_ptr<InstructionFormat> CPU::decode(InstructionSize_t const is) {
     std::unique_ptr<InstructionFormat> is_format;
 #ifdef DEBUG
     uint8_t opcode = BitsManipulation::takeBits(is, 0, klast_opcode_digit);
@@ -139,7 +139,7 @@ void CPU::writeBack(std::unique_ptr<InstructionFormat> const& is_format) {
     is_format->writeBack(m_registers);
 }
 
-uint64_t CPU::moveNextInstruction(
+InstructionSize_t CPU::moveNextInstruction(
     std::unique_ptr<InstructionFormat> const& is_format) {
     return is_format->moveNextInstruction();
 }

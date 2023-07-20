@@ -2,7 +2,7 @@
 
 #include <cstdint>
 
-CSR::CSR(uint32_t const is, uint64_t const pc) : System(is, pc), write_to_reg{true}, 
+CSR::CSR(InstructionSize_t const is, Address_t const pc) : System(is, pc), write_to_reg{true}, 
 write_to_csrs{true} {}
 
 bool CSR::isWriteOp() {
@@ -41,7 +41,7 @@ void CSR::writeBack(Registers& reg) {
        reg.write(m_index_rd, m_rd);
 }
 
-uint64_t CSR::makeCSRResult() {
+CSRRegisterSize_t CSR::makeCSRResult() {
     if (m_func3 == System::func3_t::kcsrrw ||
         m_func3 == System::func3_t::kcsrrwi) {
         return m_second_operand;

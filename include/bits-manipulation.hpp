@@ -12,7 +12,7 @@
  */
 
 struct BitsManipulation {
-    static uint64_t takeBits(InstructionSize_t , uint8_t , uint8_t );
-    static uint64_t extendSign(RegisterSize_t , uint8_t );
-    static uint64_t takeVacantBit(RegisterSize_t);
+    static RegisterSize_t takeBits(InstructionSize_t , uint8_t , uint8_t );
+    static RegisterSize_t extendSign(RegisterSize_t , uint8_t );
+    static RegisterSize_t takeVacantBit(RegisterSize_t);
 };

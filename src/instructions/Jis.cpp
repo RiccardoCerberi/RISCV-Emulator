@@ -2,7 +2,7 @@
 #include <cstdint>
 
 // Jump
-uint64_t Jis::takeOffset()
+RegisterSize_t Jis::takeOffset()
 {
     uint8_t pos = 20;
 
@@ -36,9 +36,9 @@ void Jis::writeBack(Registers &regs)
     regs.write(m_index_rd, m_curr_pc + DataSize_t::kword);
 }
 
-uint64_t Jis::moveNextInstruction()
+InstructionSize_t Jis::moveNextInstruction()
 {
-    uint64_t next_instruction = m_curr_pc + m_offset;
+    InstructionSize_t next_instruction = m_curr_pc + m_offset;
 #ifdef DEBUG
     std::cout << "Next_instruction "
               << " = "
