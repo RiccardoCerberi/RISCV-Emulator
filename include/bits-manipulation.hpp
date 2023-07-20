@@ -1,5 +1,6 @@
 #pragma once
 
+#include"constants.hpp"
 #include<cstdint>
 #include<cassert>
 #include<bitset>
@@ -11,7 +12,7 @@
  */
 
 struct BitsManipulation {
-    static uint64_t takeBits(uint64_t , uint8_t , uint8_t );
-    static uint64_t extendSign(uint64_t , uint8_t );
-    static uint64_t takeVacantBit(uint64_t);
+    static uint64_t takeBits(InstructionSize_t , uint8_t , uint8_t );
+    static uint64_t extendSign(RegisterSize_t , uint8_t );
+    static uint64_t takeVacantBit(RegisterSize_t);
 };

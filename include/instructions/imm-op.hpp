@@ -20,7 +20,7 @@ class ImmOp : public I {
             kandi  = 0b111,
         };
     public:
-        ImmOp(uint32_t const is, uint64_t const pc) : I(is,pc), m_func3{I::m_func3} {}
+        ImmOp(InstructionSize_t const is, Address_t const pc) : I(is,pc), m_func3{I::m_func3} {}
         void execution() override; 
     private:
         void addi();

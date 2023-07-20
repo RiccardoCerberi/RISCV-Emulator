@@ -4,9 +4,10 @@
 #include <cstdlib>
 #include<array>
 
-using RegisterSize_t = uint64_t;
-using Address_t = uint64_t;
-using Instruction_t = uint32_t;
+using Address_t = uint32_t;
+using InstructionSize_t = uint32_t;
+using RegisterSize_t = uint32_t;
+using CSRRegisterSize_t = uint32_t;
 
 constexpr uint64_t kdram_base = 0x80000000;
 constexpr uint64_t kdram_size = 1024*1024;

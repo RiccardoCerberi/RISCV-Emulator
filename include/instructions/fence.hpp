@@ -4,7 +4,7 @@
 
 class Fence : public InstructionFormat {
     public:
-        Fence(uint32_t const is, uint64_t const pc)
+        Fence(InstructionSize_t const is, Address_t const pc)
             : InstructionFormat(is,pc) {}
     void execution() override {
         std::cout << "Fence instruction: synchronization\n";

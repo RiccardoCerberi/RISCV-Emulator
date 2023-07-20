@@ -92,26 +92,25 @@ private:
 
 private:
     Registers m_registers;
-    uint64_t m_pc;  // it's the 32-th register
-    uint64_t m_address_last_is;
+    RegisterSize_t m_pc;  // it's the 32-th register
+    Address_t m_address_last_is;
     CSRInterface m_csrs;
     SystemInterface m_bus;
 
 private:
-    void setLastInstrAddress(uint64_t);
+    void setLastInstrAddress(Address_t);
 
     /*
      * 5-stages pipeline
      */
     // takes the instruction from memory at the address pointed by the pc and
     // returns its data
-    uint32_t fetch();
+    InstructionSize_t fetch();
     // creates the instruction based on decode bits
-    std::unique_ptr<InstructionFormat> decode(uint32_t);
+    std::unique_ptr<InstructionFormat> decode(InstructionSize_t);
 
     void execute(std::unique_ptr<InstructionFormat> const&);
     void memoryAccess(std::unique_ptr<InstructionFormat> const&);
     void writeBack(std::unique_ptr<InstructionFormat> const&);
-
-    uint64_t moveNextInstruction(std::unique_ptr<InstructionFormat> const&);
+    InstructionSize_t moveNextInstruction(std::unique_ptr<InstructionFormat> const&);
 };

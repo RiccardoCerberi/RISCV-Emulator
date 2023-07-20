@@ -29,7 +29,7 @@
  *
  */
 
-uint64_t arith(uint64_t lhs, uint64_t rhs, std::string const& op);
+RegisterSize_t arith(RegisterSize_t lhs, RegisterSize_t rhs, std::string const& op);
 
 class InstructionFormat {
     public:
@@ -48,8 +48,8 @@ class InstructionFormat {
     protected:
         std::string printRegIndex(std::size_t); 
     protected:
-        uint32_t const m_instruction;
-        uint64_t const m_curr_pc;
+        InstructionSize_t const m_instruction;
+        Address_t const m_curr_pc;
 };
 
 

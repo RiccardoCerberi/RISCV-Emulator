@@ -7,8 +7,8 @@
 class CSRInterface{
     public:
         CSRInterface() : m_csrs{0} {}
-        void write(Address_t, uint64_t);
-        uint64_t read(Address_t) const;
+        void write(Address_t, RegisterSize_t);
+        RegisterSize_t read(Address_t) const;
         void updateTimer();
     private:
         static constexpr uint8_t kmode_beg = 8;
@@ -21,5 +21,5 @@ class CSRInterface{
         uint8_t getPermission(Address_t a) const{ return  a >> kperm_beg; }
         bool checkLimit(Address_t a) const { return a < kcsrs_size; }
     private:
-        std::array<uint64_t, kcsrs_size> m_csrs;
+        std::array<CSRRegisterSize_t, kcsrs_size> m_csrs;
 };

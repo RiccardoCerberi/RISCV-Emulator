@@ -6,7 +6,7 @@
 // Ecall differs from Ebreak for the func12 bits
 class Ecall : public System {
     public:
-        Ecall(uint32_t const is, uint64_t const pc)
+        Ecall(InstructionSize_t const is, Address_t const pc)
             : System(is, pc)
         {}
         // implementation beyond ui instructions

@@ -5,7 +5,7 @@
 
 class Branch : public InstructionFormat {
     public:
-        Branch(uint32_t const is, uint64_t const pc) 
+        Branch(InstructionSize_t const is, Address_t const pc) 
             : InstructionFormat(is,pc),
             m_index_rs1(takeRs1()),
             m_index_rs2(takeRs2()),
@@ -16,7 +16,7 @@ class Branch : public InstructionFormat {
         void readRegister(Registers const&) override;
 
          void execution() override;
-         uint64_t moveNextInstruction()override;
+         InstructionSize_t moveNextInstruction()override;
 
     private:
         enum class func3_t {
@@ -35,11 +35,11 @@ class Branch : public InstructionFormat {
 
         size_t m_index_rs1;
         size_t m_index_rs2;
-        uint64_t m_offset;
+        RegisterSize_t m_offset;
         func3_t m_func3;
 
-        uint64_t m_rs1;
-        uint64_t m_rs2;
+        RegisterSize_t m_rs1;
+        RegisterSize_t m_rs2;
         bool m_jump;
 
         bool beq();

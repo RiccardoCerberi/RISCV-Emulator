@@ -1,5 +1,6 @@
 #pragma once
 #include<cstdint>
+#include"constants.hpp"
 /*
  * TODO: see how riscv handles page-walking.
  * We'll use the Sv32 model, which involves two level page walking.
@@ -10,5 +11,5 @@
 
 class TLB {
 public:
-    uint64_t virtToPhys(uint64_t);
+    Address_t virtToPhys(Address_t);
 };
