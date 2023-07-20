@@ -9,8 +9,8 @@ class Ecall : public System {
         Ecall(uint32_t const is, uint64_t const pc)
             : System(is, pc)
         {}
-        // TODO: implement this function
+        // implementation beyond ui instructions
         void execution() override {
-            throw "Ecall not implemented yet\n";
+            std::cout << "Calling to operative system\n";
         } 
 };

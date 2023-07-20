@@ -5,8 +5,8 @@ void Auipc::execution() {
 #ifdef DEBUG
     std::cout << "Auipc:"
               << "\n- offset(20-th) =  " << m_offset 
-              << "\n- current_pc = " << m_curr_pc
-              << "\nX" << m_index_rd << " = offset + current_pc = " << m_rd 
+              << "\n- current_pc = " << std::hex << m_curr_pc
+              << "\nX" << m_index_rd << " = offset + current_pc = " << std::dec << m_rd 
               << std::endl;
 #endif
 }

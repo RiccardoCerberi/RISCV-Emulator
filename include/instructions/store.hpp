@@ -8,9 +8,9 @@ public:
     Store(uint32_t const is,
           uint64_t const pc)
         : InstructionFormat(is,pc),
-          m_index_base(takeBase()),
-          m_index_src(takeSrc()),
-          m_width(takeWidth()),
+          m_index_rs1(takeIndexRS1()),
+          m_index_rs2(takeIndexRS2()),
+          m_func3(takeFunc3()),
           m_offset(takeOffset())
     {}
     void readRegister(Registers const&) override;
@@ -18,16 +18,17 @@ public:
     void accessMemory(SystemInterface&) override;
 private:
 
-    size_t takeBase();
-    size_t takeSrc();
+    size_t takeIndexRS1();
+    size_t takeIndexRS2();
     uint16_t takeOffset();
-    DataSize_t takeWidth();
+    uint8_t takeFunc3();
 
-    size_t m_index_base;
-    size_t m_index_src;
-    DataSize_t m_width;
+    size_t m_index_rs1;
+    size_t m_index_rs2;
+    uint8_t m_func3;
     uint64_t m_offset;
 
-    uint64_t m_base;
-    uint64_t m_src;
+    uint64_t m_rs1;
+    uint64_t m_rs2;
+    Address_t m_ad_write;
 };

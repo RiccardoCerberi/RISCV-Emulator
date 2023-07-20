@@ -1,23 +1,29 @@
 #include"../../include/instructions/store.hpp"
 
 void Store::readRegister(Registers const &reg) {
-    m_base = reg.read(m_index_base);
-    m_src = reg.read(m_index_src);
+    m_rs1 = reg.read(m_index_rs1);
+    m_rs2 = reg.read(m_index_rs2);
 }
 
 void Store::execution() {
-    m_base += m_offset;
+    m_ad_write = m_rs1 + m_offset;
 }
 
 void Store::accessMemory(SystemInterface& bus) {
-    bus.storeData(m_base, m_src, m_width);
+    if (m_func3 > 2) {
+        std::cerr << "Invalid data size for store instruction\n";
+        abort();
+    }
+    bus.writeData(m_ad_write, m_rs2, 
+       DataSize_t(1 << m_func3)
+    );
 }
 
-size_t Store::takeBase() {
+size_t Store::takeIndexRS1() {
     return BitsManipulation::takeBits(m_instruction, 15, 19);
 }
 
-size_t Store::takeSrc() {
+size_t Store::takeIndexRS2() {
     return BitsManipulation::takeBits(m_instruction, 20, 24);
 }
 
@@ -28,7 +34,6 @@ uint16_t Store::takeOffset() {
         11);
 }
 
-DataSize_t Store::takeWidth() {
-    return DataSize_t(BitsManipulation::takeBits(m_instruction,12, 14));
+uint8_t Store::takeFunc3() {
+    return BitsManipulation::takeBits(m_instruction,12, 14);
 }
-    

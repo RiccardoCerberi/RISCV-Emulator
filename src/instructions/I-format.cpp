@@ -13,8 +13,8 @@ uint64_t I::takeOffset() {
         BitsManipulation::takeBits(m_instruction, 20, 31), 11);
 }
 
-I::func3_t I::takeFunc3() {
-    return func3_t(BitsManipulation::takeBits(m_instruction, 12, 14));
+uint8_t I::takeFunc3() {
+    return BitsManipulation::takeBits(m_instruction, 12, 14);
 }
 
 void I::readRegister(Registers const &regs) { m_rs = regs.read(m_index_rs); }

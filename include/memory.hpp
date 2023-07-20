@@ -42,8 +42,8 @@ private:
 class SystemInterface {
 public:
     SystemInterface(std::string const &);
-    uint64_t loadData(Address_t, DataSize_t);
-    void storeData(Address_t, uint64_t, DataSize_t);
+    uint64_t readData(Address_t, DataSize_t);
+    void writeData(Address_t, uint64_t, DataSize_t);
     uint32_t getLastInstruction() { return m_last_instruction; }
 #ifdef DEB_BIN_INS
 private:

@@ -10,7 +10,7 @@ class Branch : public InstructionFormat {
             m_index_rs1(takeRs1()),
             m_index_rs2(takeRs2()),
             m_offset(takeOffset()),
-            m_id_cond(takeIdCond()),
+            m_func3(takeFunc3()),
             m_jump(false)
     {}    
         void readRegister(Registers const&) override;
@@ -19,7 +19,7 @@ class Branch : public InstructionFormat {
          uint64_t moveNextInstruction()override;
 
     private:
-        enum class id_t {
+        enum class func3_t {
             kbeq = 0b000,
             kbne = 0b001,
             kblt = 0b100,
@@ -31,12 +31,12 @@ class Branch : public InstructionFormat {
         size_t takeRs1();
         size_t takeRs2();
         uint16_t takeOffset();
-        id_t takeIdCond();
+        func3_t takeFunc3();
 
         size_t m_index_rs1;
         size_t m_index_rs2;
         uint64_t m_offset;
-        id_t m_id_cond;
+        func3_t m_func3;
 
         uint64_t m_rs1;
         uint64_t m_rs2;

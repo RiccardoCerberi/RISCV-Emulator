@@ -25,6 +25,7 @@
 #include "instructions/lui.hpp"
 #include "instructions/op.hpp"
 #include "instructions/store.hpp"
+#include "instructions/fence.hpp"
 #include "memory.hpp"
 #include"registers.hpp"
 

@@ -87,7 +87,7 @@ void writeToMemory(Mem_t& mem, uint64_t base, Address_t where_to_write,
     }
 }
 
-uint64_t SystemInterface::loadData(Address_t read_from, DataSize_t sz) {
+uint64_t SystemInterface::readData(Address_t read_from, DataSize_t sz) {
     assert(isAllign(read_from, sz));
 
     if (kdram_base <= read_from && read_from < (kdram_base + kdram_size)) {
@@ -100,7 +100,7 @@ uint64_t SystemInterface::loadData(Address_t read_from, DataSize_t sz) {
 #endif
 }
 
-void SystemInterface::storeData(Address_t write_to, uint64_t what_write,
+void SystemInterface::writeData(Address_t write_to, uint64_t what_write,
                                 DataSize_t sz) {
     assert(isAllign(write_to, sz));
 

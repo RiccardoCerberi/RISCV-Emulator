@@ -35,8 +35,6 @@ void CPU::steps() {
             break;
         }
 
-        assert(is_format != nullptr);
-
         try {
             execute(is_format);
         } catch (const char* execute_exc) {
@@ -61,7 +59,7 @@ void CPU::steps() {
 }
 
 uint32_t CPU::fetch() {
-    return static_cast<uint32_t>(m_bus.loadData(m_pc, DataSize_t::kword));
+    return static_cast<uint32_t>(m_bus.readData(m_pc, DataSize_t::kword));
 }
 
 // decode function uses polymorphism, in order to know which instruction return
@@ -104,19 +102,20 @@ std::unique_ptr<InstructionFormat> CPU::decode(uint32_t const is) {
             is_format = std::make_unique<Op>(is, m_pc);
             break;
         case opcode_t::kfence:
-            std::cout << "fence instruction has not been implemented yet\n";
+            is_format = std::make_unique<Fence>(is, m_pc);
             break;
         case opcode_t::ksystem: {
             uint8_t func3 = BitsManipulation::takeBits(is, 12, 14);
             if (func3 == 0) {
-                std::cerr << "Ecall not already defined\n";
-                abort();
+                is_format = std::make_unique<Ecall>(is,m_pc);
             } else
                 is_format = std::make_unique<CSR>(is, m_pc);
             break;
         }
-        default:
-            throw "Invalid opcode";
+        default: {
+            std::cerr << "No opcode matches\n";
+            abort();
+        }
     }
     return is_format;
 }

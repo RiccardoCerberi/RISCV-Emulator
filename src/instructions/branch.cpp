@@ -5,23 +5,21 @@ size_t Branch::takeRs1() {
 }
 
 size_t Branch::takeRs2() {
-    return BitsManipulation::takeBits(m_instruction, 15, 19);
+    return BitsManipulation::takeBits(m_instruction, 20, 24);
 }
 
 uint16_t Branch::takeOffset() {
-    // NOTE: shifting starts from 1 because the offset in the instruction is in
-    // half word
+    const uint8_t last_digit = 12; 
     return BitsManipulation::extendSign(
-               (BitsManipulation::takeBits(m_instruction, 8, 11)) |
-                   (BitsManipulation::takeBits(m_instruction, 25, 30) << 4) |
-                   (BitsManipulation::takeBits(m_instruction, 7, 7) << 10) |
-                   (BitsManipulation::takeBits(m_instruction, 31, 31) << 11),
-               11)
-           << 1;
+               (BitsManipulation::takeBits(m_instruction, 8, 11) << 1) |
+                   (BitsManipulation::takeBits(m_instruction, 25, 30) << 5) |
+                   (BitsManipulation::takeBits(m_instruction, 7, 7) << 11) |
+                   (BitsManipulation::takeBits(m_instruction, 31, 31) << 12),
+               last_digit);
 }
 
-Branch::id_t Branch::takeIdCond() {
-    return id_t(BitsManipulation::takeBits(m_instruction, 12, 14));
+Branch::func3_t Branch::takeFunc3() {
+    return func3_t(BitsManipulation::takeBits(m_instruction, 12, 14));
 }
 
 void Branch::readRegister(const Registers &reg) {
@@ -30,27 +28,28 @@ void Branch::readRegister(const Registers &reg) {
 }
 
 void Branch::execution() {
-    switch (m_id_cond) {
-        case id_t::kbeq:
+    switch (m_func3) {
+        case func3_t::kbeq:
             m_jump = beq();
             break;
-        case id_t::kbne:
+        case func3_t::kbne:
             m_jump = bne();
             break;
-        case id_t::kblt:
+        case func3_t::kblt:
             m_jump = blt();
             break;
-        case id_t::kbge:
+        case func3_t::kbge:
             m_jump = bge();
             break;
-        case id_t::kbltu:
+        case func3_t::kbltu:
             m_jump = bltu();
             break;
-        case id_t::kbgeu:
+        case func3_t::kbgeu:
             m_jump = bgeu();
             break;
         default:
-            std::cerr << "Error: there must be a match\n";
+            std::cerr << "Error: func3 missed\n";
+            abort();
     }
 }
 
