@@ -16,7 +16,7 @@ class Branch : public InstructionFormat {
         void readRegister(Registers const&) override;
 
          void execution() override;
-         InstructionSize_t moveNextInstruction()override;
+         Address_t moveNextInstruction()override;
 
     private:
         enum class func3_t {

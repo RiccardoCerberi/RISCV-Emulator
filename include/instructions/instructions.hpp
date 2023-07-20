@@ -33,7 +33,7 @@ RegisterSize_t arith(RegisterSize_t lhs, RegisterSize_t rhs, std::string const& 
 
 class InstructionFormat {
     public:
-        InstructionFormat(uint32_t const is, uint64_t const pc)
+        InstructionFormat(InstructionSize_t const is, Address_t const pc)
             : m_instruction(is), m_curr_pc(pc) {}
         // it prepares the information that will use in the next stages;
         // for instance rd, rs etc
@@ -43,7 +43,7 @@ class InstructionFormat {
         virtual void accessMemory(SystemInterface&);
         virtual void writeCsr(CSRInterface&);
         virtual void writeBack(Registers&);
-        virtual InstructionSize_t moveNextInstruction();
+        virtual Address_t moveNextInstruction();
         virtual ~InstructionFormat() = default;
     protected:
         std::string printRegIndex(std::size_t); 

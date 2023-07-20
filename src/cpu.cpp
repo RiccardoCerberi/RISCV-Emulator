@@ -4,7 +4,7 @@ CPU::CPU(std::string const& file_name) : m_pc{kdram_base}, m_bus{file_name} {
     m_address_last_is = m_bus.getLastInstruction();
 }
 
-inline void CPU::setLastInstrAddress(InstructionSize_t const l_is) {
+inline void CPU::setLastInstrAddress(Address_t const l_is) {
     m_address_last_is = l_is;
 }
 
@@ -34,6 +34,7 @@ void CPU::steps() {
                       << "\n";
             break;
         }
+        assert(is_format != nullptr);
 
         try {
             execute(is_format);
@@ -65,7 +66,7 @@ InstructionSize_t CPU::fetch() {
 // decode function uses polymorphism, in order to know which instruction return
 // it needs to decode the first 8 bits.
 std::unique_ptr<InstructionFormat> CPU::decode(InstructionSize_t const is) {
-    std::unique_ptr<InstructionFormat> is_format;
+    std::unique_ptr<InstructionFormat> is_format = nullptr;
 #ifdef DEBUG
     uint8_t opcode = BitsManipulation::takeBits(is, 0, klast_opcode_digit);
     std::cout << "<opcode = " << std::bitset<kopcode_len>(opcode) << "> ";

@@ -8,8 +8,8 @@
             // Resolved by CMake Tools:
             "program": "${command:cmake.launchTargetPath}",
             "args": [
-                "test/test.bin",
-                //"test/bin_files/rv32ui-p-addi.bin",
+                //"test/test.bin",
+                "test/bin_files/rv32ui-p-addi.bin",
                 ">",
                 "out.txt"
             ],

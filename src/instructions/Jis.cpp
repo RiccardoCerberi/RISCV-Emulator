@@ -36,9 +36,9 @@ void Jis::writeBack(Registers &regs)
     regs.write(m_index_rd, m_curr_pc + DataSize_t::kword);
 }
 
-InstructionSize_t Jis::moveNextInstruction()
+Address_t Jis::moveNextInstruction()
 {
-    InstructionSize_t next_instruction = m_curr_pc + m_offset;
+    Address_t next_instruction = m_curr_pc + m_offset;
 #ifdef DEBUG
     std::cout << "Next_instruction "
               << " = "

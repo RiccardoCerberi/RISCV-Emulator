@@ -54,5 +54,5 @@ private:
     bool checkLimit(Address_t);
 private:
     DRAM m_memory;
-    InstructionSize_t m_last_instruction;
+    Address_t m_last_instruction;
 };

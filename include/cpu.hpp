@@ -92,7 +92,7 @@ private:
 
 private:
     Registers m_registers;
-    RegisterSize_t m_pc;  // it's the 32-th register
+    Address_t m_pc;  // it's the 32-th register
     Address_t m_address_last_is;
     CSRInterface m_csrs;
     SystemInterface m_bus;

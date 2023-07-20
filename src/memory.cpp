@@ -49,7 +49,7 @@ std::ostream& operator<<(std::ostream& os, std::byte b) {
 
 static bool    isAllign(Address_t ad, DataSize_t sz) { return ad % sz == 0; }
 
-RegisterSize_t readFromMemory(Mem_t& mem, uint64_t base, Address_t read_from,
+RegisterSize_t readFromMemory(Mem_t& mem, Address_t base, Address_t read_from,
                               DataSize_t data_size) {
     RegisterSize_t data_to_take = 0;
     assert(read_from >= base);

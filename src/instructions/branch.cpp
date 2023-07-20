@@ -102,7 +102,7 @@ bool Branch::bgeu() {
     return m_rs1 >= m_rs2;
 }
 
-InstructionSize_t Branch::moveNextInstruction() {
+Address_t Branch::moveNextInstruction() {
     if (m_jump == true) {
         std::cout << "condition is true\n";
         return m_curr_pc + m_offset;

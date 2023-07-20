@@ -4,12 +4,16 @@
 #include <cstdlib>
 #include<array>
 
+// bits require to map all memory
 using Address_t = uint32_t;
+// bits per instruction. It's used to manipulate bits that form instruction, for example to get the offset  
 using InstructionSize_t = uint32_t;
+// bits per register in cpu
 using RegisterSize_t = uint32_t;
+// bits per register in cssrs
 using CSRRegisterSize_t = uint32_t;
 
-constexpr uint64_t kdram_base = 0x80000000;
+constexpr Address_t kdram_base = 0x80000000;
 constexpr uint64_t kdram_size = 1024*1024;
 
 constexpr uint8_t ktot_registers = 32;
