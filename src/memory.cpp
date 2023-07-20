@@ -1,4 +1,5 @@
 #include "../include/memory.hpp"
+
 #include <cstddef>
 
 // LITTLE ENDIAN: the lew significant bit is stored in the lower address.
@@ -26,17 +27,15 @@ void SystemInterface::loadCode(std::string const& file_name) {
     assert(input_file.is_open() == true);
 
     Address_t is_ad = kdram_base;
-    char b;
+    char      b;
     while (input_file.read(reinterpret_cast<char*>(&b), kbyte)) {
         m_memory.write(is_ad, b, kbyte);
         is_ad += kbyte;
     }
     m_last_instruction = is_ad;
 #ifdef DEBUG
-    std::cout << "Last instruction: "
-       << std::hex  
-       << m_last_instruction
-       << std::dec << std::endl;
+    std::cout << "Last instruction: " << std::hex << m_last_instruction
+              << std::dec << std::endl;
 #endif
 #ifdef DEB_BIN_INS
     std::cout << "Code loaded: \n";
@@ -48,10 +47,10 @@ std::ostream& operator<<(std::ostream& os, std::byte b) {
     return os << std::bitset<8>(std::to_integer<int>(b));
 }
 
-static bool isAllign(Address_t ad, DataSize_t sz) { return ad % sz == 0; }
+static bool    isAllign(Address_t ad, DataSize_t sz) { return ad % sz == 0; }
 
 RegisterSize_t readFromMemory(Mem_t& mem, uint64_t base, Address_t read_from,
-                        DataSize_t data_size) {
+                              DataSize_t data_size) {
     RegisterSize_t data_to_take = 0;
     assert(read_from >= base);
     size_t const index = read_from - base;
@@ -114,7 +113,7 @@ void SystemInterface::writeData(Address_t write_to, RegisterSize_t what_write,
 }
 
 void DRAM::write(Address_t where_to_write, RegisterSize_t what_to_write,
-                DataSize_t size) {
+                 DataSize_t size) {
     writeToMemory(m_dram, kdram_base, where_to_write, what_to_write, size);
 }
 

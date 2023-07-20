@@ -19,7 +19,7 @@ std::string InstructionFormat::printRegIndex(std::size_t const reg_ind) {
     return "x" + std::to_string(reg_ind) + "(" + Registers::printABIName(reg_ind) + ")";
 }
 
-uint64_t arith(uint64_t lhs, uint64_t rhs, std::string const& op) {
+RegisterSize_t arith(RegisterSize_t lhs, RegisterSize_t rhs, std::string const& op) {
     if (op == "+") {
         return lhs + rhs;
     } else if (op == "-") {
