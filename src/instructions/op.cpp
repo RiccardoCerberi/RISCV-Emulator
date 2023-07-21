@@ -66,14 +66,12 @@ void Op::srl() {
     m_rd = arith(m_rs1, BitsManipulation::takeBits(m_rs2, 0, 4), op);
 }
 
-// arithmetic right shift of rs1 by the lower five bits in rs2
 void Op::sra() {
     std::string op = ">>";
 #ifdef DEBUG
     printInstruction("SRA", op);
 #endif
-    uint64_t vacant_bit = BitsManipulation::takeVacantBit(m_rs1);
-    m_rd = arith(m_rs1, BitsManipulation::takeBits(m_rs2, 0, 4), op) | (vacant_bit);
+    m_rd = arith(m_rs1, BitsManipulation::takeBits(m_rs2, 0, 4), op); 
 }
 
 void Op::orop() {

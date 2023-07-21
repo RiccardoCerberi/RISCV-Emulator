@@ -27,7 +27,7 @@ RegisterSize_t arith(RegisterSize_t lhs, RegisterSize_t rhs, std::string const& 
     } else if (op == "<<") {
         return lhs << rhs;
     } else if (op == ">>") {
-        return lhs >> rhs;
+        return static_cast<int32_t>(lhs) >> rhs;
     } else if (op == "^") {
         return lhs ^ rhs;
     } else if (op == "|") {

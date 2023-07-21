@@ -56,9 +56,9 @@ void ImmOp::andi() {
 }
 
 void ImmOp::slli() {
-    std::string op    = "<<";
-    RegisterSize_t    shamt = BitsManipulation::takeBits(m_instruction, 20, 24);
-    m_rd              = arith(m_rs, shamt, op);
+    std::string    op    = "<<";
+    RegisterSize_t shamt = BitsManipulation::takeBits(m_instruction, 20, 24);
+    m_rd                 = arith(m_rs, shamt, op);
 
 #ifdef DEBUG
     // takes only a part of the offset
@@ -70,9 +70,9 @@ void ImmOp::slli() {
 }
 
 void ImmOp::srli() {
-    std::string op    = ">>";
-    RegisterSize_t    shamt = BitsManipulation::takeBits(m_instruction, 20, 24);
-    m_rd              = arith(m_rs, shamt, op);
+    std::string    op    = ">>";
+    RegisterSize_t shamt = BitsManipulation::takeBits(m_instruction, 20, 24);
+    m_rd                 = arith(m_rs, shamt, op);
 
 #ifdef DEBUG
     // takes only a part of the offset
@@ -84,10 +84,9 @@ void ImmOp::srli() {
 }
 
 void ImmOp::srai() {
-    std::string op         = ">>";
-    RegisterSize_t    shamt      = BitsManipulation::takeBits(m_instruction, 20, 24);
-    RegisterSize_t    vacant_bit = BitsManipulation::takeVacantBit(m_rs);
-    m_rd                   = (vacant_bit) | arith(m_rs, shamt, op);
+    std::string    op    = ">>";
+    RegisterSize_t shamt = BitsManipulation::takeBits(m_instruction, 20, 24);
+    m_rd = arith(m_rs, shamt, op);
 #ifdef DEBUG
     // takes only a part of the offset
     auto temp = m_offset;

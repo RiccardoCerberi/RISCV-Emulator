@@ -12,7 +12,7 @@
  */
 
 struct BitsManipulation {
+    constexpr static uint8_t lastIndx();
     static RegisterSize_t takeBits(InstructionSize_t , uint8_t , uint8_t );
     static RegisterSize_t extendSign(RegisterSize_t , uint8_t );
-    static RegisterSize_t takeVacantBit(RegisterSize_t);
 };

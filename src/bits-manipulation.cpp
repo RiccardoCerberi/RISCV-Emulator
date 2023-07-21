@@ -2,7 +2,7 @@
 
 // bits are indexed from zero
 
-constexpr uint8_t lastIndx()   {
+constexpr uint8_t BitsManipulation::lastIndx()   {
     return sizeof(RegisterSize_t) * 8 -1;
 }
 
@@ -16,8 +16,4 @@ RegisterSize_t BitsManipulation::extendSign(RegisterSize_t const imm, uint8_t co
     if (imm >> sign_pos == 1) 
         return - ((1 << (sign_pos+1)) - imm);
     return imm;
-}
-
-RegisterSize_t BitsManipulation::takeVacantBit(RegisterSize_t const n) {
-    return n & ((RegisterSize_t) 1 << (lastIndx()));
 }
