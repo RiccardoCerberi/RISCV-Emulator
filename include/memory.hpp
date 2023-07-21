@@ -34,8 +34,6 @@ public:
     void write(Address_t, RegisterSize_t, DataSize_t);
     RegisterSize_t read(Address_t, DataSize_t);
 private:
-    void loader(std::string const&);
-private:
     Mem_t m_dram;
 };
 
@@ -52,6 +50,7 @@ private:
 private:
     void loadCode(std::string const&);
     bool checkLimit(Address_t);
+    bool validWrite(Address_t);
 private:
     DRAM m_memory;
     Address_t m_last_instruction;

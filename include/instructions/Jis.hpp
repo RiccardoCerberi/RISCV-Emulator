@@ -13,9 +13,9 @@ public:
     ~Jis() = default;
 
 private:
-    RegisterSize_t takeOffset();
-    size_t         takeIndexRd();
+    Address_t takeOffset();
+    size_t    takeIndexRd();
 
-    RegisterSize_t m_offset;
-    size_t         m_index_rd;
+    Address_t m_offset;
+    size_t    m_index_rd;
 };

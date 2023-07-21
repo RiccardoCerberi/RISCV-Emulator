@@ -27,7 +27,7 @@ void SystemInterface::loadCode(std::string const& file_name) {
     assert(input_file.is_open() == true);
 
     Address_t is_ad = kdram_base;
-    char      b;
+    unsigned char b;
     while (input_file.read(reinterpret_cast<char*>(&b), kbyte)) {
         m_memory.write(is_ad, b, kbyte);
         is_ad += kbyte;
@@ -64,7 +64,8 @@ RegisterSize_t readFromMemory(Mem_t& mem, Address_t base, Address_t read_from,
 }
 
 bool SystemInterface::checkLimit(Address_t a) {
-    return m_last_instruction <= a && a < (kdram_base + kdram_size);
+    int indx = a - kdram_base; 
+    return 0 <= indx && indx < kdram_size;
 }
 
 void writeToMemory(Mem_t& mem, Address_t base, Address_t where_to_write,
@@ -88,10 +89,8 @@ void writeToMemory(Mem_t& mem, Address_t base, Address_t where_to_write,
 
 RegisterSize_t SystemInterface::readData(Address_t read_from, DataSize_t sz) {
     assert(isAllign(read_from, sz));
-
-    if (kdram_base <= read_from && read_from < (kdram_base + kdram_size)) {
-        return m_memory.read(read_from, sz);
-    }
+    assert(checkLimit(read_from));
+    return m_memory.read(read_from, sz);
 #if __GNUC__ >= 13
     throw(std::format("Try to read from invalid location {}\n", read_from));
 #else
@@ -100,11 +99,14 @@ RegisterSize_t SystemInterface::readData(Address_t read_from, DataSize_t sz) {
     abort();
 }
 
+bool SystemInterface::validWrite(Address_t write_to) { return m_last_instruction <= write_to && write_to < (kdram_base + kdram_size);}
+
 void SystemInterface::writeData(Address_t write_to, RegisterSize_t what_write,
                                 DataSize_t sz) {
     assert(isAllign(write_to, sz));
-
-    if (checkLimit(write_to)) return m_memory.write(write_to, what_write, sz);
+    assert(checkLimit(write_to));
+    assert(validWrite(write_to));
+    return m_memory.write(write_to, what_write, sz);
 #if __GNUC__ >= 13
     throw(std::format("Try to write {} to invalid location {}\n", what_write,
                       write_to));

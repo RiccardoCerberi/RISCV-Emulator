@@ -30,12 +30,12 @@ private:
 
     size_t         takeRs1();
     size_t         takeRs2();
-    uint16_t       takeOffset();
+    Address_t      takeOffset();
     func3_t        takeFunc3();
 
     size_t         m_index_rs1;
     size_t         m_index_rs2;
-    RegisterSize_t m_offset;
+    Address_t      m_offset;
     func3_t        m_func3;
 
     RegisterSize_t m_rs1;

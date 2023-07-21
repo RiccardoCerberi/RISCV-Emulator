@@ -2,7 +2,7 @@
 #include <cstdint>
 
 // Jump
-RegisterSize_t Jis::takeOffset()
+Address_t Jis::takeOffset()
 {
     uint8_t pos = 20;
 

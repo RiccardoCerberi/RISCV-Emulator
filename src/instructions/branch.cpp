@@ -8,13 +8,14 @@ size_t Branch::takeRs2() {
     return BitsManipulation::takeBits(m_instruction, 20, 24);
 }
 
-uint16_t Branch::takeOffset() {
+Address_t Branch::takeOffset() {
     const uint8_t last_digit = 12;
     uint16_t      of{0};
-    of = (BitsManipulation::takeBits(m_instruction, 8, 11) << 1) |
-         (BitsManipulation::takeBits(m_instruction, 25, 30) << 5) |
-         (BitsManipulation::takeBits(m_instruction, 7, 7) << 11) |
-         (BitsManipulation::takeBits(m_instruction, 31, 31) << 12);
+    RegisterSize_t temp0 = BitsManipulation::takeBits(m_instruction, 8, 11) << 1;
+    RegisterSize_t temp1 = BitsManipulation::takeBits(m_instruction, 25, 30) << 5;
+    RegisterSize_t temp2 = BitsManipulation::takeBits(m_instruction, 7, 7) << 11;
+    RegisterSize_t temp3 = BitsManipulation::takeBits(m_instruction, 31, 31) << 12;
+    of = temp0 | temp1 | temp2 | temp3;
     BitsManipulation::extendSign(of, last_digit);
 }
 

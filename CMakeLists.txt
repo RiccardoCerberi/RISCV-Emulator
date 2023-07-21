@@ -13,17 +13,17 @@ set(gcc_like_cxx "$<COMPILE_LANG_AND_ID:CXX,ARMClang,AppleClang,Clang,GNU>")
 set(msvc_cxx "$<COMPILE_LANG_AND_ID:CXX,MSVC>")
 
 #compiler flags
-set(gcc_flags "-Wall;-Wextra;-Wunused;-Wshadow;-Wformat=2;-Wconversion;-g;-fsanitize=address;-DDEBUG=1;")
+set(gcc_flags "-Wall;-Wextra;-Wunused;-Wshadow;-Wformat=2;-Wconversion;-g;-DDEBUG=1;")
 set(msvc_flags "-W3")
 
 #add_compile_options("$<$<STREQUAL:$<TARGET_PROPERTY:LINKER_LANGUAGE>,CXX>:-std=c++11>")
 add_compile_options(
         "$<${gcc_like_cxx}:$<BUILD_INTERFACE:${gcc_flags}>>"
    "$<${msvc_cxx}: $<BUILD_INTERFACE:${msvc_flags}>>")
-set(ld_flags "-fsanitize=address")
-add_link_options(
-        "$<${gcc_like_cxx}:$<BUILD_INTERFACE:${ld_flags}>>"
-        )
+#set(ld_flags "-fsanitize=address")
+#add_link_options(
+#        "$<${gcc_like_cxx}:$<BUILD_INTERFACE:${ld_flags}>>"
+#        )
 
 #headers always before sources
 add_subdirectory(include)
