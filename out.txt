@@ -1,4 +1,4 @@
-File provided: ../../test/bin_files/rv32ui-p-add.bin
+File provided: test/bin_files/rv32ui-p-add.bin
 Last instruction: 80001048
 <current_instruction> pc = 80000000
 <opcode = 1101111> x0(zero) = 2147483648 + 4

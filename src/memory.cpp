@@ -97,6 +97,7 @@ RegisterSize_t SystemInterface::readData(Address_t read_from, DataSize_t sz) {
 #else
     throw("Invalid read location\n");
 #endif
+    abort();
 }
 
 void SystemInterface::writeData(Address_t write_to, RegisterSize_t what_write,
@@ -110,6 +111,7 @@ void SystemInterface::writeData(Address_t write_to, RegisterSize_t what_write,
 #else
     throw("Invalid write location\n");
 #endif
+    abort();
 }
 
 void DRAM::write(Address_t where_to_write, RegisterSize_t what_to_write,

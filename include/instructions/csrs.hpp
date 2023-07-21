@@ -20,15 +20,16 @@ public:
     void execution() override;
     void writeCsr(CSRInterface &) override;
     void writeBack(Registers &) override;
+
 private:
     CSRRegisterSize_t makeCSRResult();
-    bool isWriteOp();
+    bool              isWriteOp();
+
 private:
-    RegisterSize_t m_second_operand;
+    RegisterSize_t    m_second_operand;
     CSRRegisterSize_t m_csr_rs;  // alias t in riscv instructions
     CSRRegisterSize_t m_csr_rd;
-    RegisterSize_t m_rd;
-    bool write_to_reg;
-    bool write_to_csrs;
+    RegisterSize_t    m_rd;
+    bool              write_to_reg;
+    bool              write_to_csrs;
 };
-

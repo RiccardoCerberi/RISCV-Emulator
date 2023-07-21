@@ -12,6 +12,6 @@ void Jris::execution() {
 // belongs to the I-format
 Address_t Jris::moveNextInstruction() {
     Address_t next_instruction = (m_rs + m_offset) 
-            & (static_cast<Address_t>(-1) << 1);
+            & (~1); // set last digit to 0
     return next_instruction;
 }

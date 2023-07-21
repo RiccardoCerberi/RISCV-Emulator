@@ -48,7 +48,7 @@ protected:
     size_t   m_index_rs1;
     size_t   m_index_rs2;
     size_t   m_index_rd;
-    id_t     m_id;
+    id_t     m_id; // fusion of func3 and the last two bits
 
     RegisterSize_t m_rs1;
     RegisterSize_t m_rs2;
