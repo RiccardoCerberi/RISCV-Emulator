@@ -1,5 +1,10 @@
 #include "../../include/instructions/imm-op.hpp"
 
+// TODO: remove from function
+static int32_t takeOffsetSigned(RegisterSize_t offset) {
+    return static_cast<int32_t>(BitsManipulation::extendSign(offset, 11));
+}
+
 void ImmOp::addi() {
     std::string op = "+";
 #ifdef DEBUG
@@ -12,7 +17,8 @@ void ImmOp::slti() {
 #ifdef DEBUG
     printInstruction("SLTI", "<");
 #endif
-    if (static_cast<int64_t>(m_rs) < static_cast<int64_t>(m_offset)) {
+// TODO: check order of operands
+    if (static_cast<RegisterSize_t>(m_rs) < takeOffsetSigned(m_offset) ) {
         m_rd = 1;
     } else {
         m_rd = 0;

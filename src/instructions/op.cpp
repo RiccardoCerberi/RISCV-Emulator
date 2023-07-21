@@ -31,7 +31,7 @@ void Op::slt() {
 #ifdef DEBUG
     printInstruction("SLT", op)    ;
 #endif
-    if (static_cast<int64_t>(m_rs1) < static_cast<int64_t>(m_rs2)) {
+    if (static_cast<int32_t>(m_rs1) < static_cast<int32_t>(m_rs2)) {
         m_rd = 1;
     } else {
         m_rd = 0;
