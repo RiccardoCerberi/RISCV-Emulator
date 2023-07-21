@@ -2,6 +2,7 @@
 
 void CSRInterface::write(Address_t write_to, RegisterSize_t what) {
     assert(checkLimit(write_to));
+    // read only instructions are not allowed to be written
     assert(getPermission(write_to) != 3);
     m_csrs[write_to]  = what;
 }

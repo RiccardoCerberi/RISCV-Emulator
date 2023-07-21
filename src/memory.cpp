@@ -24,7 +24,10 @@ void SystemInterface::loadCode(std::string const& file_name) {
     std::ifstream input_file;
 
     input_file.open(file_name, std::ios::binary);
-    assert(input_file.is_open() == true);
+    if (input_file.is_open() == false) {
+        std::cerr << "Invalid file name: " << file_name << "\n";
+        abort();
+    }
 
     Address_t is_ad = kdram_base;
     unsigned char b;
