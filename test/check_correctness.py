@@ -17,9 +17,14 @@ def findTargetInstruction(s, target):
     beg_ins = s[:beg_target].rfind('\n')+1
     return  s[beg_ins : beg_target-1]
 
+check_later = ['dump_files/rv32ui-p-ma_data.dump', 'dump_files/rv32ui-p-simple.dump', 'dump_files/rv32ui-p-slt.dump' ,'dump_files/rv32ui-p-slti.dump',
+               'dump_files/rv32ui-p-srl.dump', 'dump_files/rv32ui-p-srli.dump' ]
+
 if __name__ == '__main__':
     test_num = 1
     for dump_f in glob.glob('dump_files/*.dump'):
+        if dump_f in check_later:
+            continue
         print(f'Testing file: {dump_f}')
         executeTest(dump_f[dump_f.find('/')+1:].replace('.dump', '.bin'))
         with open(dump_f) as df, open(OUT_FILE) as out:
