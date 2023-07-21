@@ -12,6 +12,7 @@ RegisterSize_t BitsManipulation::takeBits(InstructionSize_t const is, uint8_t co
 }
 
 RegisterSize_t BitsManipulation::extendSign(RegisterSize_t const imm, uint8_t const sign_pos) {
+    assert(sign_pos <= lastIndx());
     if (imm >> sign_pos == 1) 
         return - ((1 << (sign_pos+1)) - imm);
     return imm;

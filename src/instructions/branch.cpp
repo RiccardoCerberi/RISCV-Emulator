@@ -9,13 +9,13 @@ size_t Branch::takeRs2() {
 }
 
 uint16_t Branch::takeOffset() {
-    const uint8_t last_digit = 12; 
-    return BitsManipulation::extendSign(
-               (BitsManipulation::takeBits(m_instruction, 8, 11) << 1) |
-                   (BitsManipulation::takeBits(m_instruction, 25, 30) << 5) |
-                   (BitsManipulation::takeBits(m_instruction, 7, 7) << 11) |
-                   (BitsManipulation::takeBits(m_instruction, 31, 31) << 12),
-               last_digit);
+    const uint8_t last_digit = 12;
+    uint16_t      of{0};
+    of = (BitsManipulation::takeBits(m_instruction, 8, 11) << 1) |
+         (BitsManipulation::takeBits(m_instruction, 25, 30) << 5) |
+         (BitsManipulation::takeBits(m_instruction, 7, 7) << 11) |
+         (BitsManipulation::takeBits(m_instruction, 31, 31) << 12);
+    BitsManipulation::extendSign(of, last_digit);
 }
 
 Branch::func3_t Branch::takeFunc3() {
@@ -104,8 +104,11 @@ bool Branch::bgeu() {
 
 Address_t Branch::moveNextInstruction() {
     if (m_jump == true) {
-        std::cout << "condition is true\n";
-        return m_curr_pc + m_offset;
+        Address_t new_ins = m_curr_pc + m_offset;
+        std::cout << "condition is true: "
+                  << "new instruction = "
+                  << "0x" << std::hex << new_ins;
+        return new_ins;
     }
     std::cout << "condition is false\n";
     return m_curr_pc + DataSize_t::kword;
