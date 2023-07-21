@@ -67,8 +67,7 @@ Next_instruction  = 2147483648 + 80
 <opcode = 0010011> ADDI x31(t6) = x0(zero) + 0
 <current_instruction> pc = 800000cc
 <opcode = 1110011> <current_instruction> pc = 800000d0
-<opcode = 1100011> x10(a0) != x0(zero)
-condition is false
+<opcode = 1100011> x10(a0) != x0(zero)	condition is false
 <current_instruction> pc = 800000d4
 <opcode = 0010111> Auipc: offset =  0 current_pc = 800000d4 x5 = offset + current_pc = 800000d4
 <current_instruction> pc = 800000d8
@@ -114,12 +113,10 @@ condition is false
 <current_instruction> pc = 80000140
 <opcode = 0010011> SLLI x10(a0) = x10(a0) << 31
 <current_instruction> pc = 80000144
-<opcode = 1100011> x10(a0) < x0(zero)
-condition is true: new instruction = 0x8000015c<current_instruction> pc = 8000015c
+<opcode = 1100011> x10(a0) < x0(zero)	condition is true: new instruction = 0x8000015c<current_instruction> pc = 8000015c
 <opcode = 0010011> ADDI x5(t0) = x0(zero) + 0
 <current_instruction> pc = 80000160
-<opcode = 1100011> x5(t0) == x0(zero)
-condition is true: new instruction = 0x80000174<current_instruction> pc = 80000174
+<opcode = 1100011> x5(t0) == x0(zero)	condition is true: new instruction = 0x80000174<current_instruction> pc = 80000174
 <opcode = 1110011> <current_instruction> pc = 80000178
 <opcode = 0010111> Auipc: offset =  0 current_pc = 80000178 x5 = offset + current_pc = 80000178
 <current_instruction> pc = 8000017c
@@ -139,8 +136,7 @@ condition is true: new instruction = 0x80000174<current_instruction> pc = 800001
 <current_instruction> pc = 8000019c
 <opcode = 0010011> ADDI x7(t2) = x0(zero) + 0
 <current_instruction> pc = 800001a0
-<opcode = 1100011> x14(a4) != x7(t2)
-condition is false
+<opcode = 1100011> x14(a4) != x7(t2)	condition is false
 <current_instruction> pc = 800001a4
 <opcode = 0010011> ADDI x3(gp) = x0(zero) + 3
 <current_instruction> pc = 800001a8
@@ -152,8 +148,7 @@ condition is false
 <current_instruction> pc = 800001b4
 <opcode = 0010011> ADDI x7(t2) = x0(zero) + 2
 <current_instruction> pc = 800001b8
-<opcode = 1100011> x14(a4) != x7(t2)
-condition is false
+<opcode = 1100011> x14(a4) != x7(t2)	condition is false
 <current_instruction> pc = 800001bc
 <opcode = 0010011> ADDI x3(gp) = x0(zero) + 4
 <current_instruction> pc = 800001c0
@@ -165,8 +160,7 @@ condition is false
 <current_instruction> pc = 800001cc
 <opcode = 0010011> ADDI x7(t2) = x0(zero) + 10
 <current_instruction> pc = 800001d0
-<opcode = 1100011> x14(a4) != x7(t2)
-condition is false
+<opcode = 1100011> x14(a4) != x7(t2)	condition is false
 <current_instruction> pc = 800001d4
 <opcode = 0010011> ADDI x3(gp) = x0(zero) + 5
 <current_instruction> pc = 800001d8
@@ -178,8 +172,7 @@ condition is false
 <current_instruction> pc = 800001e4
 <opcode = 0110111> Lui: offset = 0xffff8000
 <current_instruction> pc = 800001e8
-<opcode = 1100011> x14(a4) != x7(t2)
-condition is false
+<opcode = 1100011> x14(a4) != x7(t2)	condition is false
 <current_instruction> pc = 800001ec
 <opcode = 0010011> ADDI x3(gp) = x0(zero) + 6
 <current_instruction> pc = 800001f0
@@ -191,8 +184,7 @@ condition is false
 <current_instruction> pc = 800001fc
 <opcode = 0110111> Lui: offset = 0x80000000
 <current_instruction> pc = 80000200
-<opcode = 1100011> x14(a4) != x7(t2)
-condition is false
+<opcode = 1100011> x14(a4) != x7(t2)	condition is false
 <current_instruction> pc = 80000204
 <opcode = 0010011> ADDI x3(gp) = x0(zero) + 7
 <current_instruction> pc = 80000208
@@ -204,8 +196,7 @@ condition is false
 <current_instruction> pc = 80000214
 <opcode = 0110111> Lui: offset = 0x7fff8000
 <current_instruction> pc = 80000218
-<opcode = 1100011> x14(a4) != x7(t2)
-condition is false
+<opcode = 1100011> x14(a4) != x7(t2)	condition is false
 <current_instruction> pc = 8000021c
 <opcode = 0010011> ADDI x3(gp) = x0(zero) + 8
 <current_instruction> pc = 80000220
@@ -221,8 +212,7 @@ condition is false
 <current_instruction> pc = 80000234
 <opcode = 0010011> ADDI x7(t2) = x7(t2) + 4294967295
 <current_instruction> pc = 80000238
-<opcode = 1100011> x14(a4) != x7(t2)
-condition is false
+<opcode = 1100011> x14(a4) != x7(t2)	condition is false
 <current_instruction> pc = 8000023c
 <opcode = 0010011> ADDI x3(gp) = x0(zero) + 9
 <current_instruction> pc = 80000240
@@ -238,8 +228,7 @@ condition is false
 <current_instruction> pc = 80000254
 <opcode = 0010011> ADDI x7(t2) = x7(t2) + 4294967295
 <current_instruction> pc = 80000258
-<opcode = 1100011> x14(a4) != x7(t2)
-condition is false
+<opcode = 1100011> x14(a4) != x7(t2)	condition is false
 <current_instruction> pc = 8000025c
 <opcode = 0010011> ADDI x3(gp) = x0(zero) + 10
 <current_instruction> pc = 80000260
@@ -257,8 +246,7 @@ condition is false
 <current_instruction> pc = 80000278
 <opcode = 0010011> ADDI x7(t2) = x7(t2) + 4294967294
 <current_instruction> pc = 8000027c
-<opcode = 1100011> x14(a4) != x7(t2)
-condition is false
+<opcode = 1100011> x14(a4) != x7(t2)	condition is false
 <current_instruction> pc = 80000280
 <opcode = 0010011> ADDI x3(gp) = x0(zero) + 11
 <current_instruction> pc = 80000284
@@ -274,8 +262,7 @@ condition is false
 <current_instruction> pc = 80000298
 <opcode = 0010011> ADDI x7(t2) = x7(t2) + 4294967295
 <current_instruction> pc = 8000029c
-<opcode = 1100011> x14(a4) != x7(t2)
-condition is false
+<opcode = 1100011> x14(a4) != x7(t2)	condition is false
 <current_instruction> pc = 800002a0
 <opcode = 0010011> ADDI x3(gp) = x0(zero) + 12
 <current_instruction> pc = 800002a4
@@ -291,8 +278,7 @@ condition is false
 <current_instruction> pc = 800002b8
 <opcode = 0010011> ADDI x7(t2) = x7(t2) + 4294967295
 <current_instruction> pc = 800002bc
-<opcode = 1100011> x14(a4) != x7(t2)
-condition is false
+<opcode = 1100011> x14(a4) != x7(t2)	condition is false
 <current_instruction> pc = 800002c0
 <opcode = 0010011> ADDI x3(gp) = x0(zero) + 13
 <current_instruction> pc = 800002c4
@@ -304,8 +290,7 @@ condition is false
 <current_instruction> pc = 800002d0
 <opcode = 0010011> ADDI x7(t2) = x0(zero) + 4294967295
 <current_instruction> pc = 800002d4
-<opcode = 1100011> x14(a4) != x7(t2)
-condition is false
+<opcode = 1100011> x14(a4) != x7(t2)	condition is false
 <current_instruction> pc = 800002d8
 <opcode = 0010011> ADDI x3(gp) = x0(zero) + 14
 <current_instruction> pc = 800002dc
@@ -317,8 +302,7 @@ condition is false
 <current_instruction> pc = 800002e8
 <opcode = 0010011> ADDI x7(t2) = x0(zero) + 0
 <current_instruction> pc = 800002ec
-<opcode = 1100011> x14(a4) != x7(t2)
-condition is false
+<opcode = 1100011> x14(a4) != x7(t2)	condition is false
 <current_instruction> pc = 800002f0
 <opcode = 0010011> ADDI x3(gp) = x0(zero) + 15
 <current_instruction> pc = 800002f4
@@ -330,8 +314,7 @@ condition is false
 <current_instruction> pc = 80000300
 <opcode = 0010011> ADDI x7(t2) = x0(zero) + 4294967294
 <current_instruction> pc = 80000304
-<opcode = 1100011> x14(a4) != x7(t2)
-condition is false
+<opcode = 1100011> x14(a4) != x7(t2)	condition is false
 <current_instruction> pc = 80000308
 <opcode = 0010011> ADDI x3(gp) = x0(zero) + 16
 <current_instruction> pc = 8000030c
@@ -345,8 +328,7 @@ condition is false
 <current_instruction> pc = 8000031c
 <opcode = 0110111> Lui: offset = 0x80000000
 <current_instruction> pc = 80000320
-<opcode = 1100011> x14(a4) != x7(t2)
-condition is false
+<opcode = 1100011> x14(a4) != x7(t2)	condition is false
 <current_instruction> pc = 80000324
 <opcode = 0010011> ADDI x3(gp) = x0(zero) + 17
 <current_instruction> pc = 80000328
@@ -358,8 +340,7 @@ condition is false
 <current_instruction> pc = 80000334
 <opcode = 0010011> ADDI x7(t2) = x0(zero) + 24
 <current_instruction> pc = 80000338
-<opcode = 1100011> x1(ra) != x7(t2)
-condition is false
+<opcode = 1100011> x1(ra) != x7(t2)	condition is false
 <current_instruction> pc = 8000033c
 <opcode = 0010011> ADDI x3(gp) = x0(zero) + 18
 <current_instruction> pc = 80000340
@@ -371,8 +352,7 @@ condition is false
 <current_instruction> pc = 8000034c
 <opcode = 0010011> ADDI x7(t2) = x0(zero) + 25
 <current_instruction> pc = 80000350
-<opcode = 1100011> x2(sp) != x7(t2)
-condition is false
+<opcode = 1100011> x2(sp) != x7(t2)	condition is false
 <current_instruction> pc = 80000354
 <opcode = 0010011> ADDI x3(gp) = x0(zero) + 19
 <current_instruction> pc = 80000358
@@ -382,8 +362,7 @@ condition is false
 <current_instruction> pc = 80000360
 <opcode = 0010011> ADDI x7(t2) = x0(zero) + 26
 <current_instruction> pc = 80000364
-<opcode = 1100011> x1(ra) != x7(t2)
-condition is false
+<opcode = 1100011> x1(ra) != x7(t2)	condition is false
 <current_instruction> pc = 80000368
 <opcode = 0010011> ADDI x3(gp) = x0(zero) + 20
 <current_instruction> pc = 8000036c
@@ -401,8 +380,7 @@ condition is false
 <current_instruction> pc = 80000384
 <opcode = 0010011> ADDI x5(t0) = x0(zero) + 2
 <current_instruction> pc = 80000388
-<opcode = 1100011> x4(tp) != x5(t0)
-condition is true: new instruction = 0x80000370<current_instruction> pc = 80000370
+<opcode = 1100011> x4(tp) != x5(t0)	condition is true: new instruction = 0x80000370<current_instruction> pc = 80000370
 <opcode = 0010011> ADDI x1(ra) = x0(zero) + 13
 <current_instruction> pc = 80000374
 <opcode = 0010011> ADDI x2(sp) = x0(zero) + 11
@@ -415,13 +393,11 @@ condition is true: new instruction = 0x80000370<current_instruction> pc = 800003
 <current_instruction> pc = 80000384
 <opcode = 0010011> ADDI x5(t0) = x0(zero) + 2
 <current_instruction> pc = 80000388
-<opcode = 1100011> x4(tp) != x5(t0)
-condition is false
+<opcode = 1100011> x4(tp) != x5(t0)	condition is false
 <current_instruction> pc = 8000038c
 <opcode = 0010011> ADDI x7(t2) = x0(zero) + 24
 <current_instruction> pc = 80000390
-<opcode = 1100011> x6(t1) != x7(t2)
-condition is false
+<opcode = 1100011> x6(t1) != x7(t2)	condition is false
 <current_instruction> pc = 80000394
 <opcode = 0010011> ADDI x3(gp) = x0(zero) + 21
 <current_instruction> pc = 80000398
@@ -441,8 +417,7 @@ condition is false
 <current_instruction> pc = 800003b4
 <opcode = 0010011> ADDI x5(t0) = x0(zero) + 2
 <current_instruction> pc = 800003b8
-<opcode = 1100011> x4(tp) != x5(t0)
-condition is true: new instruction = 0x8000039c<current_instruction> pc = 8000039c
+<opcode = 1100011> x4(tp) != x5(t0)	condition is true: new instruction = 0x8000039c<current_instruction> pc = 8000039c
 <opcode = 0010011> ADDI x1(ra) = x0(zero) + 14
 <current_instruction> pc = 800003a0
 <opcode = 0010011> ADDI x2(sp) = x0(zero) + 11
@@ -457,13 +432,11 @@ condition is true: new instruction = 0x8000039c<current_instruction> pc = 800003
 <current_instruction> pc = 800003b4
 <opcode = 0010011> ADDI x5(t0) = x0(zero) + 2
 <current_instruction> pc = 800003b8
-<opcode = 1100011> x4(tp) != x5(t0)
-condition is false
+<opcode = 1100011> x4(tp) != x5(t0)	condition is false
 <current_instruction> pc = 800003bc
 <opcode = 0010011> ADDI x7(t2) = x0(zero) + 25
 <current_instruction> pc = 800003c0
-<opcode = 1100011> x6(t1) != x7(t2)
-condition is false
+<opcode = 1100011> x6(t1) != x7(t2)	condition is false
 <current_instruction> pc = 800003c4
 <opcode = 0010011> ADDI x3(gp) = x0(zero) + 22
 <current_instruction> pc = 800003c8
@@ -485,8 +458,7 @@ condition is false
 <current_instruction> pc = 800003e8
 <opcode = 0010011> ADDI x5(t0) = x0(zero) + 2
 <current_instruction> pc = 800003ec
-<opcode = 1100011> x4(tp) != x5(t0)
-condition is true: new instruction = 0x800003cc<current_instruction> pc = 800003cc
+<opcode = 1100011> x4(tp) != x5(t0)	condition is true: new instruction = 0x800003cc<current_instruction> pc = 800003cc
 <opcode = 0010011> ADDI x1(ra) = x0(zero) + 15
 <current_instruction> pc = 800003d0
 <opcode = 0010011> ADDI x2(sp) = x0(zero) + 11
@@ -503,13 +475,11 @@ condition is true: new instruction = 0x800003cc<current_instruction> pc = 800003
 <current_instruction> pc = 800003e8
 <opcode = 0010011> ADDI x5(t0) = x0(zero) + 2
 <current_instruction> pc = 800003ec
-<opcode = 1100011> x4(tp) != x5(t0)
-condition is false
+<opcode = 1100011> x4(tp) != x5(t0)	condition is false
 <current_instruction> pc = 800003f0
 <opcode = 0010011> ADDI x7(t2) = x0(zero) + 26
 <current_instruction> pc = 800003f4
-<opcode = 1100011> x6(t1) != x7(t2)
-condition is false
+<opcode = 1100011> x6(t1) != x7(t2)	condition is false
 <current_instruction> pc = 800003f8
 <opcode = 0010011> ADDI x3(gp) = x0(zero) + 23
 <current_instruction> pc = 800003fc
@@ -525,8 +495,7 @@ condition is false
 <current_instruction> pc = 80000410
 <opcode = 0010011> ADDI x5(t0) = x0(zero) + 2
 <current_instruction> pc = 80000414
-<opcode = 1100011> x4(tp) != x5(t0)
-condition is true: new instruction = 0x80000400<current_instruction> pc = 80000400
+<opcode = 1100011> x4(tp) != x5(t0)	condition is true: new instruction = 0x80000400<current_instruction> pc = 80000400
 <opcode = 0010011> ADDI x1(ra) = x0(zero) + 13
 <current_instruction> pc = 80000404
 <opcode = 0010011> ADDI x2(sp) = x0(zero) + 11
@@ -537,13 +506,11 @@ condition is true: new instruction = 0x80000400<current_instruction> pc = 800004
 <current_instruction> pc = 80000410
 <opcode = 0010011> ADDI x5(t0) = x0(zero) + 2
 <current_instruction> pc = 80000414
-<opcode = 1100011> x4(tp) != x5(t0)
-condition is false
+<opcode = 1100011> x4(tp) != x5(t0)	condition is false
 <current_instruction> pc = 80000418
 <opcode = 0010011> ADDI x7(t2) = x0(zero) + 24
 <current_instruction> pc = 8000041c
-<opcode = 1100011> x14(a4) != x7(t2)
-condition is false
+<opcode = 1100011> x14(a4) != x7(t2)	condition is false
 <current_instruction> pc = 80000420
 <opcode = 0010011> ADDI x3(gp) = x0(zero) + 24
 <current_instruction> pc = 80000424
@@ -561,8 +528,7 @@ condition is false
 <current_instruction> pc = 8000043c
 <opcode = 0010011> ADDI x5(t0) = x0(zero) + 2
 <current_instruction> pc = 80000440
-<opcode = 1100011> x4(tp) != x5(t0)
-condition is true: new instruction = 0x80000428<current_instruction> pc = 80000428
+<opcode = 1100011> x4(tp) != x5(t0)	condition is true: new instruction = 0x80000428<current_instruction> pc = 80000428
 <opcode = 0010011> ADDI x1(ra) = x0(zero) + 14
 <current_instruction> pc = 8000042c
 <opcode = 0010011> ADDI x2(sp) = x0(zero) + 11
@@ -575,13 +541,11 @@ condition is true: new instruction = 0x80000428<current_instruction> pc = 800004
 <current_instruction> pc = 8000043c
 <opcode = 0010011> ADDI x5(t0) = x0(zero) + 2
 <current_instruction> pc = 80000440
-<opcode = 1100011> x4(tp) != x5(t0)
-condition is false
+<opcode = 1100011> x4(tp) != x5(t0)	condition is false
 <current_instruction> pc = 80000444
 <opcode = 0010011> ADDI x7(t2) = x0(zero) + 25
 <current_instruction> pc = 80000448
-<opcode = 1100011> x14(a4) != x7(t2)
-condition is false
+<opcode = 1100011> x14(a4) != x7(t2)	condition is false
 <current_instruction> pc = 8000044c
 <opcode = 0010011> ADDI x3(gp) = x0(zero) + 25
 <current_instruction> pc = 80000450
@@ -601,8 +565,7 @@ condition is false
 <current_instruction> pc = 8000046c
 <opcode = 0010011> ADDI x5(t0) = x0(zero) + 2
 <current_instruction> pc = 80000470
-<opcode = 1100011> x4(tp) != x5(t0)
-condition is true: new instruction = 0x80000454<current_instruction> pc = 80000454
+<opcode = 1100011> x4(tp) != x5(t0)	condition is true: new instruction = 0x80000454<current_instruction> pc = 80000454
 <opcode = 0010011> ADDI x1(ra) = x0(zero) + 15
 <current_instruction> pc = 80000458
 <opcode = 0010011> ADDI x2(sp) = x0(zero) + 11
@@ -617,13 +580,11 @@ condition is true: new instruction = 0x80000454<current_instruction> pc = 800004
 <current_instruction> pc = 8000046c
 <opcode = 0010011> ADDI x5(t0) = x0(zero) + 2
 <current_instruction> pc = 80000470
-<opcode = 1100011> x4(tp) != x5(t0)
-condition is false
+<opcode = 1100011> x4(tp) != x5(t0)	condition is false
 <current_instruction> pc = 80000474
 <opcode = 0010011> ADDI x7(t2) = x0(zero) + 26
 <current_instruction> pc = 80000478
-<opcode = 1100011> x14(a4) != x7(t2)
-condition is false
+<opcode = 1100011> x14(a4) != x7(t2)	condition is false
 <current_instruction> pc = 8000047c
 <opcode = 0010011> ADDI x3(gp) = x0(zero) + 26
 <current_instruction> pc = 80000480
@@ -641,8 +602,7 @@ condition is false
 <current_instruction> pc = 80000498
 <opcode = 0010011> ADDI x5(t0) = x0(zero) + 2
 <current_instruction> pc = 8000049c
-<opcode = 1100011> x4(tp) != x5(t0)
-condition is true: new instruction = 0x80000484<current_instruction> pc = 80000484
+<opcode = 1100011> x4(tp) != x5(t0)	condition is true: new instruction = 0x80000484<current_instruction> pc = 80000484
 <opcode = 0010011> ADDI x1(ra) = x0(zero) + 13
 <current_instruction> pc = 80000488
 <opcode = 0010011> ADDI x0(zero) = x0(zero) + 0
@@ -655,13 +615,11 @@ condition is true: new instruction = 0x80000484<current_instruction> pc = 800004
 <current_instruction> pc = 80000498
 <opcode = 0010011> ADDI x5(t0) = x0(zero) + 2
 <current_instruction> pc = 8000049c
-<opcode = 1100011> x4(tp) != x5(t0)
-condition is false
+<opcode = 1100011> x4(tp) != x5(t0)	condition is false
 <current_instruction> pc = 800004a0
 <opcode = 0010011> ADDI x7(t2) = x0(zero) + 24
 <current_instruction> pc = 800004a4
-<opcode = 1100011> x14(a4) != x7(t2)
-condition is false
+<opcode = 1100011> x14(a4) != x7(t2)	condition is false
 <current_instruction> pc = 800004a8
 <opcode = 0010011> ADDI x3(gp) = x0(zero) + 27
 <current_instruction> pc = 800004ac
@@ -681,8 +639,7 @@ condition is false
 <current_instruction> pc = 800004c8
 <opcode = 0010011> ADDI x5(t0) = x0(zero) + 2
 <current_instruction> pc = 800004cc
-<opcode = 1100011> x4(tp) != x5(t0)
-condition is true: new instruction = 0x800004b0<current_instruction> pc = 800004b0
+<opcode = 1100011> x4(tp) != x5(t0)	condition is true: new instruction = 0x800004b0<current_instruction> pc = 800004b0
 <opcode = 0010011> ADDI x1(ra) = x0(zero) + 14
 <current_instruction> pc = 800004b4
 <opcode = 0010011> ADDI x0(zero) = x0(zero) + 0
@@ -697,13 +654,11 @@ condition is true: new instruction = 0x800004b0<current_instruction> pc = 800004
 <current_instruction> pc = 800004c8
 <opcode = 0010011> ADDI x5(t0) = x0(zero) + 2
 <current_instruction> pc = 800004cc
-<opcode = 1100011> x4(tp) != x5(t0)
-condition is false
+<opcode = 1100011> x4(tp) != x5(t0)	condition is false
 <current_instruction> pc = 800004d0
 <opcode = 0010011> ADDI x7(t2) = x0(zero) + 25
 <current_instruction> pc = 800004d4
-<opcode = 1100011> x14(a4) != x7(t2)
-condition is false
+<opcode = 1100011> x14(a4) != x7(t2)	condition is false
 <current_instruction> pc = 800004d8
 <opcode = 0010011> ADDI x3(gp) = x0(zero) + 28
 <current_instruction> pc = 800004dc
@@ -723,8 +678,7 @@ condition is false
 <current_instruction> pc = 800004f8
 <opcode = 0010011> ADDI x5(t0) = x0(zero) + 2
 <current_instruction> pc = 800004fc
-<opcode = 1100011> x4(tp) != x5(t0)
-condition is true: new instruction = 0x800004e0<current_instruction> pc = 800004e0
+<opcode = 1100011> x4(tp) != x5(t0)	condition is true: new instruction = 0x800004e0<current_instruction> pc = 800004e0
 <opcode = 0010011> ADDI x1(ra) = x0(zero) + 15
 <current_instruction> pc = 800004e4
 <opcode = 0010011> ADDI x0(zero) = x0(zero) + 0
@@ -739,13 +693,11 @@ condition is true: new instruction = 0x800004e0<current_instruction> pc = 800004
 <current_instruction> pc = 800004f8
 <opcode = 0010011> ADDI x5(t0) = x0(zero) + 2
 <current_instruction> pc = 800004fc
-<opcode = 1100011> x4(tp) != x5(t0)
-condition is false
+<opcode = 1100011> x4(tp) != x5(t0)	condition is false
 <current_instruction> pc = 80000500
 <opcode = 0010011> ADDI x7(t2) = x0(zero) + 26
 <current_instruction> pc = 80000504
-<opcode = 1100011> x14(a4) != x7(t2)
-condition is false
+<opcode = 1100011> x14(a4) != x7(t2)	condition is false
 <current_instruction> pc = 80000508
 <opcode = 0010011> ADDI x3(gp) = x0(zero) + 29
 <current_instruction> pc = 8000050c
@@ -761,8 +713,7 @@ condition is false
 <current_instruction> pc = 80000520
 <opcode = 0010011> ADDI x5(t0) = x0(zero) + 2
 <current_instruction> pc = 80000524
-<opcode = 1100011> x4(tp) != x5(t0)
-condition is true: new instruction = 0x80000510<current_instruction> pc = 80000510
+<opcode = 1100011> x4(tp) != x5(t0)	condition is true: new instruction = 0x80000510<current_instruction> pc = 80000510
 <opcode = 0010011> ADDI x2(sp) = x0(zero) + 11
 <current_instruction> pc = 80000514
 <opcode = 0010011> ADDI x1(ra) = x0(zero) + 13
@@ -773,13 +724,11 @@ condition is true: new instruction = 0x80000510<current_instruction> pc = 800005
 <current_instruction> pc = 80000520
 <opcode = 0010011> ADDI x5(t0) = x0(zero) + 2
 <current_instruction> pc = 80000524
-<opcode = 1100011> x4(tp) != x5(t0)
-condition is false
+<opcode = 1100011> x4(tp) != x5(t0)	condition is false
 <current_instruction> pc = 80000528
 <opcode = 0010011> ADDI x7(t2) = x0(zero) + 24
 <current_instruction> pc = 8000052c
-<opcode = 1100011> x14(a4) != x7(t2)
-condition is false
+<opcode = 1100011> x14(a4) != x7(t2)	condition is false
 <current_instruction> pc = 80000530
 <opcode = 0010011> ADDI x3(gp) = x0(zero) + 30
 <current_instruction> pc = 80000534
@@ -797,8 +746,7 @@ condition is false
 <current_instruction> pc = 8000054c
 <opcode = 0010011> ADDI x5(t0) = x0(zero) + 2
 <current_instruction> pc = 80000550
-<opcode = 1100011> x4(tp) != x5(t0)
-condition is true: new instruction = 0x80000538<current_instruction> pc = 80000538
+<opcode = 1100011> x4(tp) != x5(t0)	condition is true: new instruction = 0x80000538<current_instruction> pc = 80000538
 <opcode = 0010011> ADDI x2(sp) = x0(zero) + 11
 <current_instruction> pc = 8000053c
 <opcode = 0010011> ADDI x1(ra) = x0(zero) + 14
@@ -811,13 +759,11 @@ condition is true: new instruction = 0x80000538<current_instruction> pc = 800005
 <current_instruction> pc = 8000054c
 <opcode = 0010011> ADDI x5(t0) = x0(zero) + 2
 <current_instruction> pc = 80000550
-<opcode = 1100011> x4(tp) != x5(t0)
-condition is false
+<opcode = 1100011> x4(tp) != x5(t0)	condition is false
 <current_instruction> pc = 80000554
 <opcode = 0010011> ADDI x7(t2) = x0(zero) + 25
 <current_instruction> pc = 80000558
-<opcode = 1100011> x14(a4) != x7(t2)
-condition is false
+<opcode = 1100011> x14(a4) != x7(t2)	condition is false
 <current_instruction> pc = 8000055c
 <opcode = 0010011> ADDI x3(gp) = x0(zero) + 31
 <current_instruction> pc = 80000560
@@ -837,8 +783,7 @@ condition is false
 <current_instruction> pc = 8000057c
 <opcode = 0010011> ADDI x5(t0) = x0(zero) + 2
 <current_instruction> pc = 80000580
-<opcode = 1100011> x4(tp) != x5(t0)
-condition is true: new instruction = 0x80000564<current_instruction> pc = 80000564
+<opcode = 1100011> x4(tp) != x5(t0)	condition is true: new instruction = 0x80000564<current_instruction> pc = 80000564
 <opcode = 0010011> ADDI x2(sp) = x0(zero) + 11
 <current_instruction> pc = 80000568
 <opcode = 0010011> ADDI x1(ra) = x0(zero) + 15
@@ -853,13 +798,11 @@ condition is true: new instruction = 0x80000564<current_instruction> pc = 800005
 <current_instruction> pc = 8000057c
 <opcode = 0010011> ADDI x5(t0) = x0(zero) + 2
 <current_instruction> pc = 80000580
-<opcode = 1100011> x4(tp) != x5(t0)
-condition is false
+<opcode = 1100011> x4(tp) != x5(t0)	condition is false
 <current_instruction> pc = 80000584
 <opcode = 0010011> ADDI x7(t2) = x0(zero) + 26
 <current_instruction> pc = 80000588
-<opcode = 1100011> x14(a4) != x7(t2)
-condition is false
+<opcode = 1100011> x14(a4) != x7(t2)	condition is false
 <current_instruction> pc = 8000058c
 <opcode = 0010011> ADDI x3(gp) = x0(zero) + 32
 <current_instruction> pc = 80000590
@@ -877,8 +820,7 @@ condition is false
 <current_instruction> pc = 800005a8
 <opcode = 0010011> ADDI x5(t0) = x0(zero) + 2
 <current_instruction> pc = 800005ac
-<opcode = 1100011> x4(tp) != x5(t0)
-condition is true: new instruction = 0x80000594<current_instruction> pc = 80000594
+<opcode = 1100011> x4(tp) != x5(t0)	condition is true: new instruction = 0x80000594<current_instruction> pc = 80000594
 <opcode = 0010011> ADDI x2(sp) = x0(zero) + 11
 <current_instruction> pc = 80000598
 <opcode = 0010011> ADDI x0(zero) = x0(zero) + 0
@@ -891,13 +833,11 @@ condition is true: new instruction = 0x80000594<current_instruction> pc = 800005
 <current_instruction> pc = 800005a8
 <opcode = 0010011> ADDI x5(t0) = x0(zero) + 2
 <current_instruction> pc = 800005ac
-<opcode = 1100011> x4(tp) != x5(t0)
-condition is false
+<opcode = 1100011> x4(tp) != x5(t0)	condition is false
 <current_instruction> pc = 800005b0
 <opcode = 0010011> ADDI x7(t2) = x0(zero) + 24
 <current_instruction> pc = 800005b4
-<opcode = 1100011> x14(a4) != x7(t2)
-condition is false
+<opcode = 1100011> x14(a4) != x7(t2)	condition is false
 <current_instruction> pc = 800005b8
 <opcode = 0010011> ADDI x3(gp) = x0(zero) + 33
 <current_instruction> pc = 800005bc
@@ -917,8 +857,7 @@ condition is false
 <current_instruction> pc = 800005d8
 <opcode = 0010011> ADDI x5(t0) = x0(zero) + 2
 <current_instruction> pc = 800005dc
-<opcode = 1100011> x4(tp) != x5(t0)
-condition is true: new instruction = 0x800005c0<current_instruction> pc = 800005c0
+<opcode = 1100011> x4(tp) != x5(t0)	condition is true: new instruction = 0x800005c0<current_instruction> pc = 800005c0
 <opcode = 0010011> ADDI x2(sp) = x0(zero) + 11
 <current_instruction> pc = 800005c4
 <opcode = 0010011> ADDI x0(zero) = x0(zero) + 0
@@ -933,13 +872,11 @@ condition is true: new instruction = 0x800005c0<current_instruction> pc = 800005
 <current_instruction> pc = 800005d8
 <opcode = 0010011> ADDI x5(t0) = x0(zero) + 2
 <current_instruction> pc = 800005dc
-<opcode = 1100011> x4(tp) != x5(t0)
-condition is false
+<opcode = 1100011> x4(tp) != x5(t0)	condition is false
 <current_instruction> pc = 800005e0
 <opcode = 0010011> ADDI x7(t2) = x0(zero) + 25
 <current_instruction> pc = 800005e4
-<opcode = 1100011> x14(a4) != x7(t2)
-condition is false
+<opcode = 1100011> x14(a4) != x7(t2)	condition is false
 <current_instruction> pc = 800005e8
 <opcode = 0010011> ADDI x3(gp) = x0(zero) + 34
 <current_instruction> pc = 800005ec
@@ -959,8 +896,7 @@ condition is false
 <current_instruction> pc = 80000608
 <opcode = 0010011> ADDI x5(t0) = x0(zero) + 2
 <current_instruction> pc = 8000060c
-<opcode = 1100011> x4(tp) != x5(t0)
-condition is true: new instruction = 0x800005f0<current_instruction> pc = 800005f0
+<opcode = 1100011> x4(tp) != x5(t0)	condition is true: new instruction = 0x800005f0<current_instruction> pc = 800005f0
 <opcode = 0010011> ADDI x2(sp) = x0(zero) + 11
 <current_instruction> pc = 800005f4
 <opcode = 0010011> ADDI x0(zero) = x0(zero) + 0
@@ -975,13 +911,11 @@ condition is true: new instruction = 0x800005f0<current_instruction> pc = 800005
 <current_instruction> pc = 80000608
 <opcode = 0010011> ADDI x5(t0) = x0(zero) + 2
 <current_instruction> pc = 8000060c
-<opcode = 1100011> x4(tp) != x5(t0)
-condition is false
+<opcode = 1100011> x4(tp) != x5(t0)	condition is false
 <current_instruction> pc = 80000610
 <opcode = 0010011> ADDI x7(t2) = x0(zero) + 26
 <current_instruction> pc = 80000614
-<opcode = 1100011> x14(a4) != x7(t2)
-condition is false
+<opcode = 1100011> x14(a4) != x7(t2)	condition is false
 <current_instruction> pc = 80000618
 <opcode = 0010011> ADDI x3(gp) = x0(zero) + 35
 <current_instruction> pc = 8000061c
@@ -991,8 +925,7 @@ condition is false
 <current_instruction> pc = 80000624
 <opcode = 0010011> ADDI x7(t2) = x0(zero) + 15
 <current_instruction> pc = 80000628
-<opcode = 1100011> x2(sp) != x7(t2)
-condition is false
+<opcode = 1100011> x2(sp) != x7(t2)	condition is false
 <current_instruction> pc = 8000062c
 <opcode = 0010011> ADDI x3(gp) = x0(zero) + 36
 <current_instruction> pc = 80000630
@@ -1002,8 +935,7 @@ condition is false
 <current_instruction> pc = 80000638
 <opcode = 0010011> ADDI x7(t2) = x0(zero) + 32
 <current_instruction> pc = 8000063c
-<opcode = 1100011> x2(sp) != x7(t2)
-condition is false
+<opcode = 1100011> x2(sp) != x7(t2)	condition is false
 <current_instruction> pc = 80000640
 <opcode = 0010011> ADDI x3(gp) = x0(zero) + 37
 <current_instruction> pc = 80000644
@@ -1011,8 +943,7 @@ condition is false
 <current_instruction> pc = 80000648
 <opcode = 0010011> ADDI x7(t2) = x0(zero) + 0
 <current_instruction> pc = 8000064c
-<opcode = 1100011> x1(ra) != x7(t2)
-condition is false
+<opcode = 1100011> x1(ra) != x7(t2)	condition is false
 <current_instruction> pc = 80000650
 <opcode = 0010011> ADDI x3(gp) = x0(zero) + 38
 <current_instruction> pc = 80000654
@@ -1024,11 +955,9 @@ condition is false
 <current_instruction> pc = 80000660
 <opcode = 0010011> ADDI x7(t2) = x0(zero) + 0
 <current_instruction> pc = 80000664
-<opcode = 1100011> x0(zero) != x7(t2)
-condition is false
+<opcode = 1100011> x0(zero) != x7(t2)	condition is false
 <current_instruction> pc = 80000668
-<opcode = 1100011> x0(zero) != x3(gp)
-condition is true: new instruction = 0x80000688<current_instruction> pc = 80000688
+<opcode = 1100011> x0(zero) != x3(gp)	condition is true: new instruction = 0x80000688<current_instruction> pc = 80000688
 <opcode = 0001111> Fence instruction: synchronization
 <current_instruction> pc = 8000068c
 <opcode = 0010011> ADDI x3(gp) = x0(zero) + 1

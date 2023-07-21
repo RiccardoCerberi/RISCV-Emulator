@@ -57,7 +57,7 @@ void Branch::execution() {
 bool Branch::beq() {
 #ifdef DEBUG
     std::cout << printRegIndex(m_index_rs1)
-              << " == " << printRegIndex(m_index_rs2) << std::endl;
+              << " == " << printRegIndex(m_index_rs2) << "	";
 #endif
     return m_rs1 == m_rs2;
 }
@@ -65,7 +65,7 @@ bool Branch::beq() {
 bool Branch::bne() {
 #ifdef DEBUG
     std::cout << printRegIndex(m_index_rs1)
-              << " != " << printRegIndex(m_index_rs2) << std::endl;
+              << " != " << printRegIndex(m_index_rs2) << "	";
 #endif
     return m_rs1 != m_rs2;
 }
@@ -73,7 +73,7 @@ bool Branch::bne() {
 bool Branch::blt() {
 #ifdef DEBUG
     std::cout << printRegIndex(m_index_rs1) << " < "
-              << printRegIndex(m_index_rs2) << std::endl;
+              << printRegIndex(m_index_rs2) << "	";
 #endif
     return static_cast<int32_t>(m_rs1) < static_cast<int32_t>(m_rs2);
 }
@@ -82,7 +82,7 @@ bool Branch::bltu() {
 #ifdef DEBUG
 
     std::cout << "(unsigned) " + printRegIndex(m_index_rs1) << " < "
-              << printRegIndex(m_index_rs2) << std::endl;
+              << printRegIndex(m_index_rs2) << "	";
 #endif
     return m_rs1 < m_rs2;
 }
@@ -90,7 +90,7 @@ bool Branch::bltu() {
 bool Branch::bge() {
 #ifdef DEBUG
     std::cout << "(sign extended) " + printRegIndex(m_index_rs1)
-              << " >= " << printRegIndex(m_index_rs2) << std::endl;
+              << " >= " << printRegIndex(m_index_rs2) << "\t";
 #endif
     return static_cast<int32_t>(m_rs1) >= static_cast<int32_t>(m_rs2);
 }
@@ -98,7 +98,7 @@ bool Branch::bge() {
 bool Branch::bgeu() {
 #ifdef DEBUG
     std::cout << "(unsigned) " + printRegIndex(m_index_rs1)
-              << " >= " << printRegIndex(m_index_rs2) << std::endl;
+              << " >= " << printRegIndex(m_index_rs2) << "\t";
 #endif
     return m_rs1 >= m_rs2;
 }
