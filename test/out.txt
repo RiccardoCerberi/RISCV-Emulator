@@ -1,4 +1,4 @@
-File provided: test/bin_files/rv32ui-p-auipc.bin
+File provided: test/bin_files/rv32ui-p-srai.bin
 Last instruction: 80001048
 <current_instruction> pc = 80000000
 <opcode = 1101111> x0(zero) = 2147483648 + 4
@@ -128,46 +128,25 @@ Next_instruction  = 2147483648 + 80
 <current_instruction> pc = 8000018c
 <opcode = 0010011> ADDI x3(gp) = x0(zero) + 2
 <current_instruction> pc = 80000190
-<opcode = 0010111> Auipc: offset =  8192 current_pc = 80000190 xa = offset + current_pc = 80002190
+<opcode = 0010011> ADDI x1(ra) = x0(zero) + 0
 <current_instruction> pc = 80000194
-<opcode = 0010011> ADDI x10(a0) = x10(a0) + 1820
+<opcode = 0010011> SRAI x14(a4) = x1(ra) >> 0
 <current_instruction> pc = 80000198
-<opcode = 1101111> x11(a1) = 2147484056 + 4
-Next_instruction  = 2147484056 + 4
+<opcode = 0010011> ADDI x7(t2) = x0(zero) + 0
 <current_instruction> pc = 8000019c
-<opcode = 0110011> SUB x10(a0) = x10(a0) - x11(a1)
+<opcode = 1100011> x14(a4) != x7(t2)	condition is false
 <current_instruction> pc = 800001a0
-<opcode = 0110111> Lui: offset = 0x2000
-<current_instruction> pc = 800001a4
-<opcode = 0010011> ADDI x7(t2) = x7(t2) + 1808
-<current_instruction> pc = 800001a8
-<opcode = 1100011> x10(a0) != x7(t2)	condition is false
-<current_instruction> pc = 800001ac
 <opcode = 0010011> ADDI x3(gp) = x0(zero) + 3
+<current_instruction> pc = 800001a4
+<opcode = 0110111> Lui: offset = 0x80000000
+<current_instruction> pc = 800001a8
+<opcode = 0010011> SRAI x14(a4) = x1(ra) >> 1
+<current_instruction> pc = 800001ac
+<opcode = 0110111> Lui: offset = 0xc0000000
 <current_instruction> pc = 800001b0
-<opcode = 0010111> Auipc: offset =  4294959104 current_pc = 800001b0 xa = offset + current_pc = 7fffe1b0
+<opcode = 1100011> x14(a4) != x7(t2)	condition is false
 <current_instruction> pc = 800001b4
-<opcode = 0010011> ADDI x10(a0) = x10(a0) + 4294965500
+<opcode = 0010011> ADDI x3(gp) = x0(zero) + 4
 <current_instruction> pc = 800001b8
-<opcode = 1101111> x11(a1) = 2147484088 + 4
-Next_instruction  = 2147484088 + 4
+<opcode = 0110111> Lui: offset = 0x80000000
 <current_instruction> pc = 800001bc
-<opcode = 0110011> SUB x10(a0) = x10(a0) - x11(a1)
-<current_instruction> pc = 800001c0
-<opcode = 0110111> Lui: offset = 0xffffe000
-<current_instruction> pc = 800001c4
-<opcode = 0010011> ADDI x7(t2) = x7(t2) + 4294965488
-<current_instruction> pc = 800001c8
-<opcode = 1100011> x10(a0) != x7(t2)	condition is false
-<current_instruction> pc = 800001cc
-<opcode = 1100011> x0(zero) != x3(gp)	condition is true: new instruction = 0x800001ec<current_instruction> pc = 800001ec
-<opcode = 0001111> Fence instruction: synchronization
-<current_instruction> pc = 800001f0
-<opcode = 0010011> ADDI x3(gp) = x0(zero) + 1
-<current_instruction> pc = 800001f4
-<opcode = 0010011> ADDI x17(a7) = x0(zero) + 93
-<current_instruction> pc = 800001f8
-<opcode = 0010011> ADDI x10(a0) = x0(zero) + 0
-<current_instruction> pc = 800001fc
-<opcode = 1110011> Calling to operative system
-<current_instruction> pc = 80000200
