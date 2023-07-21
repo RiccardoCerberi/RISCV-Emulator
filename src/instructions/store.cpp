@@ -27,7 +27,7 @@ size_t Store::takeIndexRS2() {
     return BitsManipulation::takeBits(m_instruction, 20, 24);
 }
 
-uint16_t Store::takeOffset() {
+Address_t Store::takeOffset() {
     return BitsManipulation::extendSign(
         BitsManipulation::takeBits(m_instruction, 7, 11) 
         | (BitsManipulation::takeBits(m_instruction,25,31)  << 5),

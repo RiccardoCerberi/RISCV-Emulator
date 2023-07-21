@@ -197,21 +197,807 @@ Next_instruction  = 2147484184 + 8
 <current_instruction> pc = 80000224
 <opcode = 0010011> ADDI x7(t2) = x7(t2) + 4294965920
 <current_instruction> pc = 80000228
-<opcode = 1100011> x14(a4) != x7(t2)	condition is true: new instruction = 0x80000684
-<current_instruction> pc = 80000684
-<opcode = 0001111> Fence instruction: synchronization
-<current_instruction> pc = 80000688
-<opcode = 1100011> x3(gp) == x0(zero)	condition is false
-<current_instruction> pc = 8000068c
-<opcode = 0010011> SLLI x3(gp) = x3(gp) << 1
-<current_instruction> pc = 80000690
-<opcode = 0010011> ORI x3(gp) = x3(gp) | 1
-<current_instruction> pc = 80000694
-<opcode = 0010011> ADDI x17(a7) = x0(zero) + 93
-<current_instruction> pc = 80000698
-<opcode = 0010011> ADDI x10(a0) = x3(gp) + 0
-<current_instruction> pc = 8000069c
-<opcode = 1110011> Calling to operative system
+<opcode = 1100011> x14(a4) != x7(t2)	condition is false
+<current_instruction> pc = 8000022c
+<opcode = 0010011> ADDI x3(gp) = x0(zero) + 5
+<current_instruction> pc = 80000230
+<opcode = 0010111> Auipc: offset =  8192 current_pc = 80000230 x1 = offset + current_pc = 80002230
+<current_instruction> pc = 80000234
+<opcode = 0010011> ADDI x1(ra) = x1(ra) + 4294966736
+<current_instruction> pc = 80000238
+<opcode = 0110111> Lui: offset = 0xffffa000
+<current_instruction> pc = 8000023c
+<opcode = 0010011> ADDI x2(sp) = x2(sp) + 10
+<current_instruction> pc = 80000240
+<opcode = 0010111> Auipc: offset =  0 current_pc = 80000240 xf = offset + current_pc = 80000240
+<current_instruction> pc = 80000244
+<opcode = 0010011> ADDI x15(a5) = x15(a5) + 20
+<current_instruction> pc = 80000248
+<opcode = 0100011> <current_instruction> pc = 8000024c
+<opcode = 0000011> <current_instruction> pc = 80000250
+<opcode = 1101111> x0(zero) = 2147484240 + 4
+Next_instruction  = 2147484240 + 8
+<current_instruction> pc = 80000258
+<opcode = 0110111> Lui: offset = 0xffffa000
+<current_instruction> pc = 8000025c
+<opcode = 0010011> ADDI x7(t2) = x7(t2) + 10
+<current_instruction> pc = 80000260
+<opcode = 1100011> x14(a4) != x7(t2)	condition is false
+<current_instruction> pc = 80000264
+<opcode = 0010011> ADDI x3(gp) = x0(zero) + 6
+<current_instruction> pc = 80000268
+<opcode = 0010111> Auipc: offset =  8192 current_pc = 80000268 x1 = offset + current_pc = 80002268
+<current_instruction> pc = 8000026c
+<opcode = 0010011> ADDI x1(ra) = x1(ra) + 4294966694
+<current_instruction> pc = 80000270
+<opcode = 0010011> ADDI x2(sp) = x0(zero) + 170
+<current_instruction> pc = 80000274
+<opcode = 0010111> Auipc: offset =  0 current_pc = 80000274 xf = offset + current_pc = 80000274
+<current_instruction> pc = 80000278
+<opcode = 0010011> ADDI x15(a5) = x15(a5) + 20
+<current_instruction> pc = 8000027c
+<opcode = 0100011> <current_instruction> pc = 80000280
+<opcode = 0000011> <current_instruction> pc = 80000284
+<opcode = 1101111> x0(zero) = 2147484292 + 4
+Next_instruction  = 2147484292 + 8
+<current_instruction> pc = 8000028c
+<opcode = 0010011> ADDI x7(t2) = x0(zero) + 170
+<current_instruction> pc = 80000290
+<opcode = 1100011> x14(a4) != x7(t2)	condition is false
+<current_instruction> pc = 80000294
+<opcode = 0010011> ADDI x3(gp) = x0(zero) + 7
+<current_instruction> pc = 80000298
+<opcode = 0010111> Auipc: offset =  8192 current_pc = 80000298 x1 = offset + current_pc = 80002298
+<current_instruction> pc = 8000029c
+<opcode = 0010011> ADDI x1(ra) = x1(ra) + 4294966646
+<current_instruction> pc = 800002a0
+<opcode = 0110111> Lui: offset = 0xffffb000
+<current_instruction> pc = 800002a4
+<opcode = 0010011> ADDI x2(sp) = x2(sp) + 4294965760
+<current_instruction> pc = 800002a8
+<opcode = 0010111> Auipc: offset =  0 current_pc = 800002a8 xf = offset + current_pc = 800002a8
+<current_instruction> pc = 800002ac
+<opcode = 0010011> ADDI x15(a5) = x15(a5) + 20
+<current_instruction> pc = 800002b0
+<opcode = 0100011> <current_instruction> pc = 800002b4
+<opcode = 0000011> <current_instruction> pc = 800002b8
+<opcode = 1101111> x0(zero) = 2147484344 + 4
+Next_instruction  = 2147484344 + 8
+<current_instruction> pc = 800002c0
+<opcode = 0110111> Lui: offset = 0xffffb000
+<current_instruction> pc = 800002c4
+<opcode = 0010011> ADDI x7(t2) = x7(t2) + 4294965760
+<current_instruction> pc = 800002c8
+<opcode = 1100011> x14(a4) != x7(t2)	condition is false
+<current_instruction> pc = 800002cc
+<opcode = 0010011> ADDI x3(gp) = x0(zero) + 8
+<current_instruction> pc = 800002d0
+<opcode = 0010111> Auipc: offset =  8192 current_pc = 800002d0 x1 = offset + current_pc = 800022d0
+<current_instruction> pc = 800002d4
+<opcode = 0010011> ADDI x1(ra) = x1(ra) + 4294966590
+<current_instruction> pc = 800002d8
+<opcode = 0110111> Lui: offset = 0x1000
+<current_instruction> pc = 800002dc
+<opcode = 0010011> ADDI x2(sp) = x2(sp) + 4294965920
+<current_instruction> pc = 800002e0
+<opcode = 0010111> Auipc: offset =  0 current_pc = 800002e0 xf = offset + current_pc = 800002e0
+<current_instruction> pc = 800002e4
+<opcode = 0010011> ADDI x15(a5) = x15(a5) + 20
+<current_instruction> pc = 800002e8
+<opcode = 0100011> <current_instruction> pc = 800002ec
+<opcode = 0000011> <current_instruction> pc = 800002f0
+<opcode = 1101111> x0(zero) = 2147484400 + 4
+Next_instruction  = 2147484400 + 8
+<current_instruction> pc = 800002f8
+<opcode = 0110111> Lui: offset = 0x1000
+<current_instruction> pc = 800002fc
+<opcode = 0010011> ADDI x7(t2) = x7(t2) + 4294965920
+<current_instruction> pc = 80000300
+<opcode = 1100011> x14(a4) != x7(t2)	condition is false
+<current_instruction> pc = 80000304
+<opcode = 0010011> ADDI x3(gp) = x0(zero) + 9
+<current_instruction> pc = 80000308
+<opcode = 0010111> Auipc: offset =  8192 current_pc = 80000308 x1 = offset + current_pc = 80002308
+<current_instruction> pc = 8000030c
+<opcode = 0010011> ADDI x1(ra) = x1(ra) + 4294966534
+<current_instruction> pc = 80000310
+<opcode = 0110111> Lui: offset = 0xffffa000
+<current_instruction> pc = 80000314
+<opcode = 0010011> ADDI x2(sp) = x2(sp) + 10
+<current_instruction> pc = 80000318
+<opcode = 0010111> Auipc: offset =  0 current_pc = 80000318 xf = offset + current_pc = 80000318
+<current_instruction> pc = 8000031c
+<opcode = 0010011> ADDI x15(a5) = x15(a5) + 20
+<current_instruction> pc = 80000320
+<opcode = 0100011> <current_instruction> pc = 80000324
+<opcode = 0000011> <current_instruction> pc = 80000328
+<opcode = 1101111> x0(zero) = 2147484456 + 4
+Next_instruction  = 2147484456 + 8
+<current_instruction> pc = 80000330
+<opcode = 0110111> Lui: offset = 0xffffa000
+<current_instruction> pc = 80000334
+<opcode = 0010011> ADDI x7(t2) = x7(t2) + 10
+<current_instruction> pc = 80000338
+<opcode = 1100011> x14(a4) != x7(t2)	condition is false
+<current_instruction> pc = 8000033c
+<opcode = 0010011> ADDI x3(gp) = x0(zero) + 10
+<current_instruction> pc = 80000340
+<opcode = 0010111> Auipc: offset =  8192 current_pc = 80000340 x1 = offset + current_pc = 80002340
+<current_instruction> pc = 80000344
+<opcode = 0010011> ADDI x1(ra) = x1(ra) + 4294966480
+<current_instruction> pc = 80000348
+<opcode = 0110111> Lui: offset = 0x12345000
+<current_instruction> pc = 8000034c
+<opcode = 0010011> ADDI x2(sp) = x2(sp) + 1656
+<current_instruction> pc = 80000350
+<opcode = 0010011> ADDI x4(tp) = x1(ra) + 4294967264
+<current_instruction> pc = 80000354
+<opcode = 0100011> <current_instruction> pc = 80000358
+<opcode = 0000011> <current_instruction> pc = 8000035c
+<opcode = 0110111> Lui: offset = 0x5000
+<current_instruction> pc = 80000360
+<opcode = 0010011> ADDI x7(t2) = x7(t2) + 1656
+<current_instruction> pc = 80000364
+<opcode = 1100011> x5(t0) != x7(t2)	condition is false
+<current_instruction> pc = 80000368
+<opcode = 0010011> ADDI x3(gp) = x0(zero) + 11
+<current_instruction> pc = 8000036c
+<opcode = 0010111> Auipc: offset =  8192 current_pc = 8000036c x1 = offset + current_pc = 8000236c
+<current_instruction> pc = 80000370
+<opcode = 0010011> ADDI x1(ra) = x1(ra) + 4294966436
+<current_instruction> pc = 80000374
+<opcode = 0110111> Lui: offset = 0x3000
+<current_instruction> pc = 80000378
+<opcode = 0010011> ADDI x2(sp) = x2(sp) + 152
+<current_instruction> pc = 8000037c
+<opcode = 0010011> ADDI x1(ra) = x1(ra) + 4294967291
+<current_instruction> pc = 80000380
+<opcode = 0100011> <current_instruction> pc = 80000384
+<opcode = 0010111> Auipc: offset =  8192 current_pc = 80000384 x4 = offset + current_pc = 80002384
+<current_instruction> pc = 80000388
+<opcode = 0010011> ADDI x4(tp) = x4(tp) + 4294966414
+<current_instruction> pc = 8000038c
+<opcode = 0000011> <current_instruction> pc = 80000390
+<opcode = 0110111> Lui: offset = 0x3000
+<current_instruction> pc = 80000394
+<opcode = 0010011> ADDI x7(t2) = x7(t2) + 152
+<current_instruction> pc = 80000398
+<opcode = 1100011> x5(t0) != x7(t2)	condition is false
+<current_instruction> pc = 8000039c
+<opcode = 0010011> ADDI x3(gp) = x0(zero) + 12
+<current_instruction> pc = 800003a0
+<opcode = 0010011> ADDI x4(tp) = x0(zero) + 0
+<current_instruction> pc = 800003a4
+<opcode = 0110111> Lui: offset = 0xffffd000
+<current_instruction> pc = 800003a8
+<opcode = 0010011> ADDI x1(ra) = x1(ra) + 4294966493
+<current_instruction> pc = 800003ac
+<opcode = 0010111> Auipc: offset =  8192 current_pc = 800003ac x2 = offset + current_pc = 800023ac
+<current_instruction> pc = 800003b0
+<opcode = 0010011> ADDI x2(sp) = x2(sp) + 4294966356
+<current_instruction> pc = 800003b4
+<opcode = 0100011> <current_instruction> pc = 800003b8
+<opcode = 0000011> <current_instruction> pc = 800003bc
+<opcode = 0110111> Lui: offset = 0xffffd000
+<current_instruction> pc = 800003c0
+<opcode = 0010011> ADDI x7(t2) = x7(t2) + 4294966493
+<current_instruction> pc = 800003c4
+<opcode = 1100011> x14(a4) != x7(t2)	condition is false
+<current_instruction> pc = 800003c8
+<opcode = 0010011> ADDI x4(tp) = x4(tp) + 1
+<current_instruction> pc = 800003cc
+<opcode = 0010011> ADDI x5(t0) = x0(zero) + 2
+<current_instruction> pc = 800003d0
+<opcode = 1100011> x4(tp) != x5(t0)	condition is true: new instruction = 0x800003a4
+<current_instruction> pc = 800003a4
+<opcode = 0110111> Lui: offset = 0xffffd000
+<current_instruction> pc = 800003a8
+<opcode = 0010011> ADDI x1(ra) = x1(ra) + 4294966493
+<current_instruction> pc = 800003ac
+<opcode = 0010111> Auipc: offset =  8192 current_pc = 800003ac x2 = offset + current_pc = 800023ac
+<current_instruction> pc = 800003b0
+<opcode = 0010011> ADDI x2(sp) = x2(sp) + 4294966356
+<current_instruction> pc = 800003b4
+<opcode = 0100011> <current_instruction> pc = 800003b8
+<opcode = 0000011> <current_instruction> pc = 800003bc
+<opcode = 0110111> Lui: offset = 0xffffd000
+<current_instruction> pc = 800003c0
+<opcode = 0010011> ADDI x7(t2) = x7(t2) + 4294966493
+<current_instruction> pc = 800003c4
+<opcode = 1100011> x14(a4) != x7(t2)	condition is false
+<current_instruction> pc = 800003c8
+<opcode = 0010011> ADDI x4(tp) = x4(tp) + 1
+<current_instruction> pc = 800003cc
+<opcode = 0010011> ADDI x5(t0) = x0(zero) + 2
+<current_instruction> pc = 800003d0
+<opcode = 1100011> x4(tp) != x5(t0)	condition is false
+<current_instruction> pc = 800003d4
+<opcode = 0010011> ADDI x3(gp) = x0(zero) + 13
+<current_instruction> pc = 800003d8
+<opcode = 0010011> ADDI x4(tp) = x0(zero) + 0
+<current_instruction> pc = 800003dc
+<opcode = 0110111> Lui: offset = 0xffffc000
+<current_instruction> pc = 800003e0
+<opcode = 0010011> ADDI x1(ra) = x1(ra) + 4294966477
+<current_instruction> pc = 800003e4
+<opcode = 0010111> Auipc: offset =  8192 current_pc = 800003e4 x2 = offset + current_pc = 800023e4
+<current_instruction> pc = 800003e8
+<opcode = 0010011> ADDI x2(sp) = x2(sp) + 4294966300
+<current_instruction> pc = 800003ec
+<opcode = 0010011> ADDI x0(zero) = x0(zero) + 0
+<current_instruction> pc = 800003f0
+<opcode = 0100011> <current_instruction> pc = 800003f4
+<opcode = 0000011> <current_instruction> pc = 800003f8
+<opcode = 0110111> Lui: offset = 0xffffc000
+<current_instruction> pc = 800003fc
+<opcode = 0010011> ADDI x7(t2) = x7(t2) + 4294966477
+<current_instruction> pc = 80000400
+<opcode = 1100011> x14(a4) != x7(t2)	condition is false
+<current_instruction> pc = 80000404
+<opcode = 0010011> ADDI x4(tp) = x4(tp) + 1
+<current_instruction> pc = 80000408
+<opcode = 0010011> ADDI x5(t0) = x0(zero) + 2
+<current_instruction> pc = 8000040c
+<opcode = 1100011> x4(tp) != x5(t0)	condition is true: new instruction = 0x800003dc
+<current_instruction> pc = 800003dc
+<opcode = 0110111> Lui: offset = 0xffffc000
+<current_instruction> pc = 800003e0
+<opcode = 0010011> ADDI x1(ra) = x1(ra) + 4294966477
+<current_instruction> pc = 800003e4
+<opcode = 0010111> Auipc: offset =  8192 current_pc = 800003e4 x2 = offset + current_pc = 800023e4
+<current_instruction> pc = 800003e8
+<opcode = 0010011> ADDI x2(sp) = x2(sp) + 4294966300
+<current_instruction> pc = 800003ec
+<opcode = 0010011> ADDI x0(zero) = x0(zero) + 0
+<current_instruction> pc = 800003f0
+<opcode = 0100011> <current_instruction> pc = 800003f4
+<opcode = 0000011> <current_instruction> pc = 800003f8
+<opcode = 0110111> Lui: offset = 0xffffc000
+<current_instruction> pc = 800003fc
+<opcode = 0010011> ADDI x7(t2) = x7(t2) + 4294966477
+<current_instruction> pc = 80000400
+<opcode = 1100011> x14(a4) != x7(t2)	condition is false
+<current_instruction> pc = 80000404
+<opcode = 0010011> ADDI x4(tp) = x4(tp) + 1
+<current_instruction> pc = 80000408
+<opcode = 0010011> ADDI x5(t0) = x0(zero) + 2
+<current_instruction> pc = 8000040c
+<opcode = 1100011> x4(tp) != x5(t0)	condition is false
+<current_instruction> pc = 80000410
+<opcode = 0010011> ADDI x3(gp) = x0(zero) + 14
+<current_instruction> pc = 80000414
+<opcode = 0010011> ADDI x4(tp) = x0(zero) + 0
+<current_instruction> pc = 80000418
+<opcode = 0110111> Lui: offset = 0xffffc000
+<current_instruction> pc = 8000041c
+<opcode = 0010011> ADDI x1(ra) = x1(ra) + 4294966220
+<current_instruction> pc = 80000420
+<opcode = 0010111> Auipc: offset =  8192 current_pc = 80000420 x2 = offset + current_pc = 80002420
+<current_instruction> pc = 80000424
+<opcode = 0010011> ADDI x2(sp) = x2(sp) + 4294966240
+<current_instruction> pc = 80000428
+<opcode = 0010011> ADDI x0(zero) = x0(zero) + 0
+<current_instruction> pc = 8000042c
+<opcode = 0010011> ADDI x0(zero) = x0(zero) + 0
+<current_instruction> pc = 80000430
+<opcode = 0100011> <current_instruction> pc = 80000434
+<opcode = 0000011> <current_instruction> pc = 80000438
+<opcode = 0110111> Lui: offset = 0xffffc000
+<current_instruction> pc = 8000043c
+<opcode = 0010011> ADDI x7(t2) = x7(t2) + 4294966220
+<current_instruction> pc = 80000440
+<opcode = 1100011> x14(a4) != x7(t2)	condition is false
+<current_instruction> pc = 80000444
+<opcode = 0010011> ADDI x4(tp) = x4(tp) + 1
+<current_instruction> pc = 80000448
+<opcode = 0010011> ADDI x5(t0) = x0(zero) + 2
+<current_instruction> pc = 8000044c
+<opcode = 1100011> x4(tp) != x5(t0)	condition is true: new instruction = 0x80000418
+<current_instruction> pc = 80000418
+<opcode = 0110111> Lui: offset = 0xffffc000
+<current_instruction> pc = 8000041c
+<opcode = 0010011> ADDI x1(ra) = x1(ra) + 4294966220
+<current_instruction> pc = 80000420
+<opcode = 0010111> Auipc: offset =  8192 current_pc = 80000420 x2 = offset + current_pc = 80002420
+<current_instruction> pc = 80000424
+<opcode = 0010011> ADDI x2(sp) = x2(sp) + 4294966240
+<current_instruction> pc = 80000428
+<opcode = 0010011> ADDI x0(zero) = x0(zero) + 0
+<current_instruction> pc = 8000042c
+<opcode = 0010011> ADDI x0(zero) = x0(zero) + 0
+<current_instruction> pc = 80000430
+<opcode = 0100011> <current_instruction> pc = 80000434
+<opcode = 0000011> <current_instruction> pc = 80000438
+<opcode = 0110111> Lui: offset = 0xffffc000
+<current_instruction> pc = 8000043c
+<opcode = 0010011> ADDI x7(t2) = x7(t2) + 4294966220
+<current_instruction> pc = 80000440
+<opcode = 1100011> x14(a4) != x7(t2)	condition is false
+<current_instruction> pc = 80000444
+<opcode = 0010011> ADDI x4(tp) = x4(tp) + 1
+<current_instruction> pc = 80000448
+<opcode = 0010011> ADDI x5(t0) = x0(zero) + 2
+<current_instruction> pc = 8000044c
+<opcode = 1100011> x4(tp) != x5(t0)	condition is false
+<current_instruction> pc = 80000450
+<opcode = 0010011> ADDI x3(gp) = x0(zero) + 15
+<current_instruction> pc = 80000454
+<opcode = 0010011> ADDI x4(tp) = x0(zero) + 0
+<current_instruction> pc = 80000458
+<opcode = 0110111> Lui: offset = 0xffffb000
+<current_instruction> pc = 8000045c
+<opcode = 0010011> ADDI x1(ra) = x1(ra) + 4294966204
+<current_instruction> pc = 80000460
+<opcode = 0010011> ADDI x0(zero) = x0(zero) + 0
+<current_instruction> pc = 80000464
+<opcode = 0010111> Auipc: offset =  8192 current_pc = 80000464 x2 = offset + current_pc = 80002464
+<current_instruction> pc = 80000468
+<opcode = 0010011> ADDI x2(sp) = x2(sp) + 4294966172
+<current_instruction> pc = 8000046c
+<opcode = 0100011> <current_instruction> pc = 80000470
+<opcode = 0000011> <current_instruction> pc = 80000474
+<opcode = 0110111> Lui: offset = 0xffffb000
+<current_instruction> pc = 80000478
+<opcode = 0010011> ADDI x7(t2) = x7(t2) + 4294966204
+<current_instruction> pc = 8000047c
+<opcode = 1100011> x14(a4) != x7(t2)	condition is false
+<current_instruction> pc = 80000480
+<opcode = 0010011> ADDI x4(tp) = x4(tp) + 1
+<current_instruction> pc = 80000484
+<opcode = 0010011> ADDI x5(t0) = x0(zero) + 2
+<current_instruction> pc = 80000488
+<opcode = 1100011> x4(tp) != x5(t0)	condition is true: new instruction = 0x80000458
+<current_instruction> pc = 80000458
+<opcode = 0110111> Lui: offset = 0xffffb000
+<current_instruction> pc = 8000045c
+<opcode = 0010011> ADDI x1(ra) = x1(ra) + 4294966204
+<current_instruction> pc = 80000460
+<opcode = 0010011> ADDI x0(zero) = x0(zero) + 0
+<current_instruction> pc = 80000464
+<opcode = 0010111> Auipc: offset =  8192 current_pc = 80000464 x2 = offset + current_pc = 80002464
+<current_instruction> pc = 80000468
+<opcode = 0010011> ADDI x2(sp) = x2(sp) + 4294966172
+<current_instruction> pc = 8000046c
+<opcode = 0100011> <current_instruction> pc = 80000470
+<opcode = 0000011> <current_instruction> pc = 80000474
+<opcode = 0110111> Lui: offset = 0xffffb000
+<current_instruction> pc = 80000478
+<opcode = 0010011> ADDI x7(t2) = x7(t2) + 4294966204
+<current_instruction> pc = 8000047c
+<opcode = 1100011> x14(a4) != x7(t2)	condition is false
+<current_instruction> pc = 80000480
+<opcode = 0010011> ADDI x4(tp) = x4(tp) + 1
+<current_instruction> pc = 80000484
+<opcode = 0010011> ADDI x5(t0) = x0(zero) + 2
+<current_instruction> pc = 80000488
+<opcode = 1100011> x4(tp) != x5(t0)	condition is false
+<current_instruction> pc = 8000048c
+<opcode = 0010011> ADDI x3(gp) = x0(zero) + 16
+<current_instruction> pc = 80000490
+<opcode = 0010011> ADDI x4(tp) = x0(zero) + 0
+<current_instruction> pc = 80000494
+<opcode = 0110111> Lui: offset = 0xffffb000
+<current_instruction> pc = 80000498
+<opcode = 0010011> ADDI x1(ra) = x1(ra) + 4294965947
+<current_instruction> pc = 8000049c
+<opcode = 0010011> ADDI x0(zero) = x0(zero) + 0
+<current_instruction> pc = 800004a0
+<opcode = 0010111> Auipc: offset =  8192 current_pc = 800004a0 x2 = offset + current_pc = 800024a0
+<current_instruction> pc = 800004a4
+<opcode = 0010011> ADDI x2(sp) = x2(sp) + 4294966112
+<current_instruction> pc = 800004a8
+<opcode = 0010011> ADDI x0(zero) = x0(zero) + 0
+<current_instruction> pc = 800004ac
+<opcode = 0100011> <current_instruction> pc = 800004b0
+<opcode = 0000011> <current_instruction> pc = 800004b4
+<opcode = 0110111> Lui: offset = 0xffffb000
+<current_instruction> pc = 800004b8
+<opcode = 0010011> ADDI x7(t2) = x7(t2) + 4294965947
+<current_instruction> pc = 800004bc
+<opcode = 1100011> x14(a4) != x7(t2)	condition is false
+<current_instruction> pc = 800004c0
+<opcode = 0010011> ADDI x4(tp) = x4(tp) + 1
+<current_instruction> pc = 800004c4
+<opcode = 0010011> ADDI x5(t0) = x0(zero) + 2
+<current_instruction> pc = 800004c8
+<opcode = 1100011> x4(tp) != x5(t0)	condition is true: new instruction = 0x80000494
+<current_instruction> pc = 80000494
+<opcode = 0110111> Lui: offset = 0xffffb000
+<current_instruction> pc = 80000498
+<opcode = 0010011> ADDI x1(ra) = x1(ra) + 4294965947
+<current_instruction> pc = 8000049c
+<opcode = 0010011> ADDI x0(zero) = x0(zero) + 0
+<current_instruction> pc = 800004a0
+<opcode = 0010111> Auipc: offset =  8192 current_pc = 800004a0 x2 = offset + current_pc = 800024a0
+<current_instruction> pc = 800004a4
+<opcode = 0010011> ADDI x2(sp) = x2(sp) + 4294966112
+<current_instruction> pc = 800004a8
+<opcode = 0010011> ADDI x0(zero) = x0(zero) + 0
+<current_instruction> pc = 800004ac
+<opcode = 0100011> <current_instruction> pc = 800004b0
+<opcode = 0000011> <current_instruction> pc = 800004b4
+<opcode = 0110111> Lui: offset = 0xffffb000
+<current_instruction> pc = 800004b8
+<opcode = 0010011> ADDI x7(t2) = x7(t2) + 4294965947
+<current_instruction> pc = 800004bc
+<opcode = 1100011> x14(a4) != x7(t2)	condition is false
+<current_instruction> pc = 800004c0
+<opcode = 0010011> ADDI x4(tp) = x4(tp) + 1
+<current_instruction> pc = 800004c4
+<opcode = 0010011> ADDI x5(t0) = x0(zero) + 2
+<current_instruction> pc = 800004c8
+<opcode = 1100011> x4(tp) != x5(t0)	condition is false
+<current_instruction> pc = 800004cc
+<opcode = 0010011> ADDI x3(gp) = x0(zero) + 17
+<current_instruction> pc = 800004d0
+<opcode = 0010011> ADDI x4(tp) = x0(zero) + 0
+<current_instruction> pc = 800004d4
+<opcode = 0110111> Lui: offset = 0xffffe000
+<current_instruction> pc = 800004d8
+<opcode = 0010011> ADDI x1(ra) = x1(ra) + 4294965931
+<current_instruction> pc = 800004dc
+<opcode = 0010011> ADDI x0(zero) = x0(zero) + 0
+<current_instruction> pc = 800004e0
+<opcode = 0010011> ADDI x0(zero) = x0(zero) + 0
+<current_instruction> pc = 800004e4
+<opcode = 0010111> Auipc: offset =  8192 current_pc = 800004e4 x2 = offset + current_pc = 800024e4
+<current_instruction> pc = 800004e8
+<opcode = 0010011> ADDI x2(sp) = x2(sp) + 4294966044
+<current_instruction> pc = 800004ec
+<opcode = 0100011> <current_instruction> pc = 800004f0
+<opcode = 0000011> <current_instruction> pc = 800004f4
+<opcode = 0110111> Lui: offset = 0xffffe000
+<current_instruction> pc = 800004f8
+<opcode = 0010011> ADDI x7(t2) = x7(t2) + 4294965931
+<current_instruction> pc = 800004fc
+<opcode = 1100011> x14(a4) != x7(t2)	condition is false
+<current_instruction> pc = 80000500
+<opcode = 0010011> ADDI x4(tp) = x4(tp) + 1
+<current_instruction> pc = 80000504
+<opcode = 0010011> ADDI x5(t0) = x0(zero) + 2
+<current_instruction> pc = 80000508
+<opcode = 1100011> x4(tp) != x5(t0)	condition is true: new instruction = 0x800004d4
+<current_instruction> pc = 800004d4
+<opcode = 0110111> Lui: offset = 0xffffe000
+<current_instruction> pc = 800004d8
+<opcode = 0010011> ADDI x1(ra) = x1(ra) + 4294965931
+<current_instruction> pc = 800004dc
+<opcode = 0010011> ADDI x0(zero) = x0(zero) + 0
+<current_instruction> pc = 800004e0
+<opcode = 0010011> ADDI x0(zero) = x0(zero) + 0
+<current_instruction> pc = 800004e4
+<opcode = 0010111> Auipc: offset =  8192 current_pc = 800004e4 x2 = offset + current_pc = 800024e4
+<current_instruction> pc = 800004e8
+<opcode = 0010011> ADDI x2(sp) = x2(sp) + 4294966044
+<current_instruction> pc = 800004ec
+<opcode = 0100011> <current_instruction> pc = 800004f0
+<opcode = 0000011> <current_instruction> pc = 800004f4
+<opcode = 0110111> Lui: offset = 0xffffe000
+<current_instruction> pc = 800004f8
+<opcode = 0010011> ADDI x7(t2) = x7(t2) + 4294965931
+<current_instruction> pc = 800004fc
+<opcode = 1100011> x14(a4) != x7(t2)	condition is false
+<current_instruction> pc = 80000500
+<opcode = 0010011> ADDI x4(tp) = x4(tp) + 1
+<current_instruction> pc = 80000504
+<opcode = 0010011> ADDI x5(t0) = x0(zero) + 2
+<current_instruction> pc = 80000508
+<opcode = 1100011> x4(tp) != x5(t0)	condition is false
+<current_instruction> pc = 8000050c
+<opcode = 0010011> ADDI x3(gp) = x0(zero) + 18
+<current_instruction> pc = 80000510
+<opcode = 0010011> ADDI x4(tp) = x0(zero) + 0
+<current_instruction> pc = 80000514
+<opcode = 0010111> Auipc: offset =  8192 current_pc = 80000514 x2 = offset + current_pc = 80002514
+<current_instruction> pc = 80000518
+<opcode = 0010011> ADDI x2(sp) = x2(sp) + 4294965996
+<current_instruction> pc = 8000051c
+<opcode = 0110111> Lui: offset = 0x2000
+<current_instruction> pc = 80000520
+<opcode = 0010011> ADDI x1(ra) = x1(ra) + 563
+<current_instruction> pc = 80000524
+<opcode = 0100011> <current_instruction> pc = 80000528
+<opcode = 0000011> <current_instruction> pc = 8000052c
+<opcode = 0110111> Lui: offset = 0x2000
+<current_instruction> pc = 80000530
+<opcode = 0010011> ADDI x7(t2) = x7(t2) + 563
+<current_instruction> pc = 80000534
+<opcode = 1100011> x14(a4) != x7(t2)	condition is false
+<current_instruction> pc = 80000538
+<opcode = 0010011> ADDI x4(tp) = x4(tp) + 1
+<current_instruction> pc = 8000053c
+<opcode = 0010011> ADDI x5(t0) = x0(zero) + 2
+<current_instruction> pc = 80000540
+<opcode = 1100011> x4(tp) != x5(t0)	condition is true: new instruction = 0x80000514
+<current_instruction> pc = 80000514
+<opcode = 0010111> Auipc: offset =  8192 current_pc = 80000514 x2 = offset + current_pc = 80002514
+<current_instruction> pc = 80000518
+<opcode = 0010011> ADDI x2(sp) = x2(sp) + 4294965996
+<current_instruction> pc = 8000051c
+<opcode = 0110111> Lui: offset = 0x2000
+<current_instruction> pc = 80000520
+<opcode = 0010011> ADDI x1(ra) = x1(ra) + 563
+<current_instruction> pc = 80000524
+<opcode = 0100011> <current_instruction> pc = 80000528
+<opcode = 0000011> <current_instruction> pc = 8000052c
+<opcode = 0110111> Lui: offset = 0x2000
+<current_instruction> pc = 80000530
+<opcode = 0010011> ADDI x7(t2) = x7(t2) + 563
+<current_instruction> pc = 80000534
+<opcode = 1100011> x14(a4) != x7(t2)	condition is false
+<current_instruction> pc = 80000538
+<opcode = 0010011> ADDI x4(tp) = x4(tp) + 1
+<current_instruction> pc = 8000053c
+<opcode = 0010011> ADDI x5(t0) = x0(zero) + 2
+<current_instruction> pc = 80000540
+<opcode = 1100011> x4(tp) != x5(t0)	condition is false
+<current_instruction> pc = 80000544
+<opcode = 0010011> ADDI x3(gp) = x0(zero) + 19
+<current_instruction> pc = 80000548
+<opcode = 0010011> ADDI x4(tp) = x0(zero) + 0
+<current_instruction> pc = 8000054c
+<opcode = 0010111> Auipc: offset =  8192 current_pc = 8000054c x2 = offset + current_pc = 8000254c
+<current_instruction> pc = 80000550
+<opcode = 0010011> ADDI x2(sp) = x2(sp) + 4294965940
+<current_instruction> pc = 80000554
+<opcode = 0110111> Lui: offset = 0x1000
+<current_instruction> pc = 80000558
+<opcode = 0010011> ADDI x1(ra) = x1(ra) + 547
+<current_instruction> pc = 8000055c
+<opcode = 0010011> ADDI x0(zero) = x0(zero) + 0
+<current_instruction> pc = 80000560
+<opcode = 0100011> <current_instruction> pc = 80000564
+<opcode = 0000011> <current_instruction> pc = 80000568
+<opcode = 0110111> Lui: offset = 0x1000
+<current_instruction> pc = 8000056c
+<opcode = 0010011> ADDI x7(t2) = x7(t2) + 547
+<current_instruction> pc = 80000570
+<opcode = 1100011> x14(a4) != x7(t2)	condition is false
+<current_instruction> pc = 80000574
+<opcode = 0010011> ADDI x4(tp) = x4(tp) + 1
+<current_instruction> pc = 80000578
+<opcode = 0010011> ADDI x5(t0) = x0(zero) + 2
+<current_instruction> pc = 8000057c
+<opcode = 1100011> x4(tp) != x5(t0)	condition is true: new instruction = 0x8000054c
+<current_instruction> pc = 8000054c
+<opcode = 0010111> Auipc: offset =  8192 current_pc = 8000054c x2 = offset + current_pc = 8000254c
+<current_instruction> pc = 80000550
+<opcode = 0010011> ADDI x2(sp) = x2(sp) + 4294965940
+<current_instruction> pc = 80000554
+<opcode = 0110111> Lui: offset = 0x1000
+<current_instruction> pc = 80000558
+<opcode = 0010011> ADDI x1(ra) = x1(ra) + 547
+<current_instruction> pc = 8000055c
+<opcode = 0010011> ADDI x0(zero) = x0(zero) + 0
+<current_instruction> pc = 80000560
+<opcode = 0100011> <current_instruction> pc = 80000564
+<opcode = 0000011> <current_instruction> pc = 80000568
+<opcode = 0110111> Lui: offset = 0x1000
+<current_instruction> pc = 8000056c
+<opcode = 0010011> ADDI x7(t2) = x7(t2) + 547
+<current_instruction> pc = 80000570
+<opcode = 1100011> x14(a4) != x7(t2)	condition is false
+<current_instruction> pc = 80000574
+<opcode = 0010011> ADDI x4(tp) = x4(tp) + 1
+<current_instruction> pc = 80000578
+<opcode = 0010011> ADDI x5(t0) = x0(zero) + 2
+<current_instruction> pc = 8000057c
+<opcode = 1100011> x4(tp) != x5(t0)	condition is false
+<current_instruction> pc = 80000580
+<opcode = 0010011> ADDI x3(gp) = x0(zero) + 20
+<current_instruction> pc = 80000584
+<opcode = 0010011> ADDI x4(tp) = x0(zero) + 0
+<current_instruction> pc = 80000588
+<opcode = 0010111> Auipc: offset =  8192 current_pc = 80000588 x2 = offset + current_pc = 80002588
+<current_instruction> pc = 8000058c
+<opcode = 0010011> ADDI x2(sp) = x2(sp) + 4294965880
+<current_instruction> pc = 80000590
+<opcode = 0110111> Lui: offset = 0x1000
+<current_instruction> pc = 80000594
+<opcode = 0010011> ADDI x1(ra) = x1(ra) + 290
+<current_instruction> pc = 80000598
+<opcode = 0010011> ADDI x0(zero) = x0(zero) + 0
+<current_instruction> pc = 8000059c
+<opcode = 0010011> ADDI x0(zero) = x0(zero) + 0
+<current_instruction> pc = 800005a0
+<opcode = 0100011> <current_instruction> pc = 800005a4
+<opcode = 0000011> <current_instruction> pc = 800005a8
+<opcode = 0110111> Lui: offset = 0x1000
+<current_instruction> pc = 800005ac
+<opcode = 0010011> ADDI x7(t2) = x7(t2) + 290
+<current_instruction> pc = 800005b0
+<opcode = 1100011> x14(a4) != x7(t2)	condition is false
+<current_instruction> pc = 800005b4
+<opcode = 0010011> ADDI x4(tp) = x4(tp) + 1
+<current_instruction> pc = 800005b8
+<opcode = 0010011> ADDI x5(t0) = x0(zero) + 2
+<current_instruction> pc = 800005bc
+<opcode = 1100011> x4(tp) != x5(t0)	condition is true: new instruction = 0x80000588
+<current_instruction> pc = 80000588
+<opcode = 0010111> Auipc: offset =  8192 current_pc = 80000588 x2 = offset + current_pc = 80002588
+<current_instruction> pc = 8000058c
+<opcode = 0010011> ADDI x2(sp) = x2(sp) + 4294965880
+<current_instruction> pc = 80000590
+<opcode = 0110111> Lui: offset = 0x1000
+<current_instruction> pc = 80000594
+<opcode = 0010011> ADDI x1(ra) = x1(ra) + 290
+<current_instruction> pc = 80000598
+<opcode = 0010011> ADDI x0(zero) = x0(zero) + 0
+<current_instruction> pc = 8000059c
+<opcode = 0010011> ADDI x0(zero) = x0(zero) + 0
+<current_instruction> pc = 800005a0
+<opcode = 0100011> <current_instruction> pc = 800005a4
+<opcode = 0000011> <current_instruction> pc = 800005a8
+<opcode = 0110111> Lui: offset = 0x1000
+<current_instruction> pc = 800005ac
+<opcode = 0010011> ADDI x7(t2) = x7(t2) + 290
+<current_instruction> pc = 800005b0
+<opcode = 1100011> x14(a4) != x7(t2)	condition is false
+<current_instruction> pc = 800005b4
+<opcode = 0010011> ADDI x4(tp) = x4(tp) + 1
+<current_instruction> pc = 800005b8
+<opcode = 0010011> ADDI x5(t0) = x0(zero) + 2
+<current_instruction> pc = 800005bc
+<opcode = 1100011> x4(tp) != x5(t0)	condition is false
+<current_instruction> pc = 800005c0
+<opcode = 0010011> ADDI x3(gp) = x0(zero) + 21
+<current_instruction> pc = 800005c4
+<opcode = 0010011> ADDI x4(tp) = x0(zero) + 0
+<current_instruction> pc = 800005c8
+<opcode = 0010111> Auipc: offset =  8192 current_pc = 800005c8 x2 = offset + current_pc = 800025c8
+<current_instruction> pc = 800005cc
+<opcode = 0010011> ADDI x2(sp) = x2(sp) + 4294965816
+<current_instruction> pc = 800005d0
+<opcode = 0010011> ADDI x0(zero) = x0(zero) + 0
+<current_instruction> pc = 800005d4
+<opcode = 0010011> ADDI x1(ra) = x0(zero) + 274
+<current_instruction> pc = 800005d8
+<opcode = 0100011> <current_instruction> pc = 800005dc
+<opcode = 0000011> <current_instruction> pc = 800005e0
+<opcode = 0010011> ADDI x7(t2) = x0(zero) + 274
+<current_instruction> pc = 800005e4
+<opcode = 1100011> x14(a4) != x7(t2)	condition is false
+<current_instruction> pc = 800005e8
+<opcode = 0010011> ADDI x4(tp) = x4(tp) + 1
+<current_instruction> pc = 800005ec
+<opcode = 0010011> ADDI x5(t0) = x0(zero) + 2
+<current_instruction> pc = 800005f0
+<opcode = 1100011> x4(tp) != x5(t0)	condition is true: new instruction = 0x800005c8
+<current_instruction> pc = 800005c8
+<opcode = 0010111> Auipc: offset =  8192 current_pc = 800005c8 x2 = offset + current_pc = 800025c8
+<current_instruction> pc = 800005cc
+<opcode = 0010011> ADDI x2(sp) = x2(sp) + 4294965816
+<current_instruction> pc = 800005d0
+<opcode = 0010011> ADDI x0(zero) = x0(zero) + 0
+<current_instruction> pc = 800005d4
+<opcode = 0010011> ADDI x1(ra) = x0(zero) + 274
+<current_instruction> pc = 800005d8
+<opcode = 0100011> <current_instruction> pc = 800005dc
+<opcode = 0000011> <current_instruction> pc = 800005e0
+<opcode = 0010011> ADDI x7(t2) = x0(zero) + 274
+<current_instruction> pc = 800005e4
+<opcode = 1100011> x14(a4) != x7(t2)	condition is false
+<current_instruction> pc = 800005e8
+<opcode = 0010011> ADDI x4(tp) = x4(tp) + 1
+<current_instruction> pc = 800005ec
+<opcode = 0010011> ADDI x5(t0) = x0(zero) + 2
+<current_instruction> pc = 800005f0
+<opcode = 1100011> x4(tp) != x5(t0)	condition is false
+<current_instruction> pc = 800005f4
+<opcode = 0010011> ADDI x3(gp) = x0(zero) + 22
+<current_instruction> pc = 800005f8
+<opcode = 0010011> ADDI x4(tp) = x0(zero) + 0
+<current_instruction> pc = 800005fc
+<opcode = 0010111> Auipc: offset =  8192 current_pc = 800005fc x2 = offset + current_pc = 800025fc
+<current_instruction> pc = 80000600
+<opcode = 0010011> ADDI x2(sp) = x2(sp) + 4294965764
+<current_instruction> pc = 80000604
+<opcode = 0010011> ADDI x0(zero) = x0(zero) + 0
+<current_instruction> pc = 80000608
+<opcode = 0010011> ADDI x1(ra) = x0(zero) + 17
+<current_instruction> pc = 8000060c
+<opcode = 0010011> ADDI x0(zero) = x0(zero) + 0
+<current_instruction> pc = 80000610
+<opcode = 0100011> <current_instruction> pc = 80000614
+<opcode = 0000011> <current_instruction> pc = 80000618
+<opcode = 0010011> ADDI x7(t2) = x0(zero) + 17
+<current_instruction> pc = 8000061c
+<opcode = 1100011> x14(a4) != x7(t2)	condition is false
+<current_instruction> pc = 80000620
+<opcode = 0010011> ADDI x4(tp) = x4(tp) + 1
+<current_instruction> pc = 80000624
+<opcode = 0010011> ADDI x5(t0) = x0(zero) + 2
+<current_instruction> pc = 80000628
+<opcode = 1100011> x4(tp) != x5(t0)	condition is true: new instruction = 0x800005fc
+<current_instruction> pc = 800005fc
+<opcode = 0010111> Auipc: offset =  8192 current_pc = 800005fc x2 = offset + current_pc = 800025fc
+<current_instruction> pc = 80000600
+<opcode = 0010011> ADDI x2(sp) = x2(sp) + 4294965764
+<current_instruction> pc = 80000604
+<opcode = 0010011> ADDI x0(zero) = x0(zero) + 0
+<current_instruction> pc = 80000608
+<opcode = 0010011> ADDI x1(ra) = x0(zero) + 17
+<current_instruction> pc = 8000060c
+<opcode = 0010011> ADDI x0(zero) = x0(zero) + 0
+<current_instruction> pc = 80000610
+<opcode = 0100011> <current_instruction> pc = 80000614
+<opcode = 0000011> <current_instruction> pc = 80000618
+<opcode = 0010011> ADDI x7(t2) = x0(zero) + 17
+<current_instruction> pc = 8000061c
+<opcode = 1100011> x14(a4) != x7(t2)	condition is false
+<current_instruction> pc = 80000620
+<opcode = 0010011> ADDI x4(tp) = x4(tp) + 1
+<current_instruction> pc = 80000624
+<opcode = 0010011> ADDI x5(t0) = x0(zero) + 2
+<current_instruction> pc = 80000628
+<opcode = 1100011> x4(tp) != x5(t0)	condition is false
+<current_instruction> pc = 8000062c
+<opcode = 0010011> ADDI x3(gp) = x0(zero) + 23
+<current_instruction> pc = 80000630
+<opcode = 0010011> ADDI x4(tp) = x0(zero) + 0
+<current_instruction> pc = 80000634
+<opcode = 0010111> Auipc: offset =  8192 current_pc = 80000634 x2 = offset + current_pc = 80002634
+<current_instruction> pc = 80000638
+<opcode = 0010011> ADDI x2(sp) = x2(sp) + 4294965708
+<current_instruction> pc = 8000063c
+<opcode = 0010011> ADDI x0(zero) = x0(zero) + 0
+<current_instruction> pc = 80000640
+<opcode = 0010011> ADDI x0(zero) = x0(zero) + 0
+<current_instruction> pc = 80000644
+<opcode = 0110111> Lui: offset = 0x3000
+<current_instruction> pc = 80000648
+<opcode = 0010011> ADDI x1(ra) = x1(ra) + 1
+<current_instruction> pc = 8000064c
+<opcode = 0100011> <current_instruction> pc = 80000650
+<opcode = 0000011> <current_instruction> pc = 80000654
+<opcode = 0110111> Lui: offset = 0x3000
+<current_instruction> pc = 80000658
+<opcode = 0010011> ADDI x7(t2) = x7(t2) + 1
+<current_instruction> pc = 8000065c
+<opcode = 1100011> x14(a4) != x7(t2)	condition is false
+<current_instruction> pc = 80000660
+<opcode = 0010011> ADDI x4(tp) = x4(tp) + 1
+<current_instruction> pc = 80000664
+<opcode = 0010011> ADDI x5(t0) = x0(zero) + 2
+<current_instruction> pc = 80000668
+<opcode = 1100011> x4(tp) != x5(t0)	condition is true: new instruction = 0x80000634
+<current_instruction> pc = 80000634
+<opcode = 0010111> Auipc: offset =  8192 current_pc = 80000634 x2 = offset + current_pc = 80002634
+<current_instruction> pc = 80000638
+<opcode = 0010011> ADDI x2(sp) = x2(sp) + 4294965708
+<current_instruction> pc = 8000063c
+<opcode = 0010011> ADDI x0(zero) = x0(zero) + 0
+<current_instruction> pc = 80000640
+<opcode = 0010011> ADDI x0(zero) = x0(zero) + 0
+<current_instruction> pc = 80000644
+<opcode = 0110111> Lui: offset = 0x3000
+<current_instruction> pc = 80000648
+<opcode = 0010011> ADDI x1(ra) = x1(ra) + 1
+<current_instruction> pc = 8000064c
+<opcode = 0100011> <current_instruction> pc = 80000650
+<opcode = 0000011> <current_instruction> pc = 80000654
+<opcode = 0110111> Lui: offset = 0x3000
+<current_instruction> pc = 80000658
+<opcode = 0010011> ADDI x7(t2) = x7(t2) + 1
+<current_instruction> pc = 8000065c
+<opcode = 1100011> x14(a4) != x7(t2)	condition is false
+<current_instruction> pc = 80000660
+<opcode = 0010011> ADDI x4(tp) = x4(tp) + 1
+<current_instruction> pc = 80000664
+<opcode = 0010011> ADDI x5(t0) = x0(zero) + 2
+<current_instruction> pc = 80000668
+<opcode = 1100011> x4(tp) != x5(t0)	condition is false
+<current_instruction> pc = 8000066c
+<opcode = 0110111> Lui: offset = 0xc000
+<current_instruction> pc = 80000670
+<opcode = 0010011> ADDI x10(a0) = x10(a0) + 4294967023
+<current_instruction> pc = 80000674
+<opcode = 0010111> Auipc: offset =  8192 current_pc = 80000674 xb = offset + current_pc = 80002674
+<current_instruction> pc = 80000678
+<opcode = 0010011> ADDI x11(a1) = x11(a1) + 4294965644
+<current_instruction> pc = 8000067c
+<opcode = 0100011> <current_instruction> pc = 80000680
+<opcode = 1100011> x0(zero) != x3(gp)	condition is true: new instruction = 0x800006a0
 <current_instruction> pc = 800006a0
 <opcode = 0001111> Fence instruction: synchronization
 <current_instruction> pc = 800006a4
