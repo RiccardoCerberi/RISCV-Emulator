@@ -15,7 +15,7 @@ void Store::accessMemory(SystemInterface& bus) {
         abort();
     }
     bus.writeData(m_ad_write, m_rs2, 
-       DataSize_t(1 << m_func3)
+       DataSize_t(1 << (m_func3))
     );
 }
 

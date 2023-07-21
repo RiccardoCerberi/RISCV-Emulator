@@ -18,6 +18,6 @@ void Load::accessMemory(SystemInterface& bus) {
     m_rd = bus.readData(m_ad_to_read, sz);
 
     if (m_func3 <= 2) {
-        m_rd = BitsManipulation::extendSign(m_rd, (2 << (m_func3 + 3)) - 1);
+        m_rd = BitsManipulation::extendSign(m_rd, (1 << (m_func3 + 3)) - 1);
     }
 }

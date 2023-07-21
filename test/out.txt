@@ -1,5 +1,5 @@
-File provided: bin_files/rv32ui-p-lb.bin
-Last instruction: 80002010
+File provided: test/bin_files/rv32ui-p-sh.bin
+Last instruction: 80002020
 <current_instruction> pc = 80000000
 <opcode = 1101111> x0(zero) = 2147483648 + 4
 Next_instruction  = 2147483648 + 80
@@ -130,38 +130,96 @@ Next_instruction  = 2147483648 + 80
 <current_instruction> pc = 8000018c
 <opcode = 0010011> ADDI x3(gp) = x0(zero) + 2
 <current_instruction> pc = 80000190
-<opcode = 0010011> ADDI x15(a5) = x0(zero) + 4294967295
+<opcode = 0010111> Auipc: offset =  8192 current_pc = 80000190 x1 = offset + current_pc = 80002190
 <current_instruction> pc = 80000194
-<opcode = 0010111> Auipc: offset =  8192 current_pc = 80000194 x1 = offset + current_pc = 80002194
+<opcode = 0010011> ADDI x1(ra) = x1(ra) + 4294966896
 <current_instruction> pc = 80000198
-<opcode = 0010011> ADDI x1(ra) = x1(ra) + 4294966892
+<opcode = 0010011> ADDI x2(sp) = x0(zero) + 170
 <current_instruction> pc = 8000019c
-<opcode = 0000011> <current_instruction> pc = 800001a0
-<opcode = 0010011> ADDI x7(t2) = x0(zero) + 4294967295
+<opcode = 0010111> Auipc: offset =  0 current_pc = 8000019c xf = offset + current_pc = 8000019c
+<current_instruction> pc = 800001a0
+<opcode = 0010011> ADDI x15(a5) = x15(a5) + 20
 <current_instruction> pc = 800001a4
-<opcode = 1100011> x14(a4) != x7(t2)	condition is true: new instruction = 0x800003f8
-<current_instruction> pc = 800003f8
+<opcode = 0100011> <current_instruction> pc = 800001a8
+<opcode = 0000011> <current_instruction> pc = 800001ac
+<opcode = 1101111> x0(zero) = 2147484076 + 4
+Next_instruction  = 2147484076 + 8
+<current_instruction> pc = 800001b4
+<opcode = 0010011> ADDI x7(t2) = x0(zero) + 170
+<current_instruction> pc = 800001b8
+<opcode = 1100011> x14(a4) != x7(t2)	condition is false
+<current_instruction> pc = 800001bc
+<opcode = 0010011> ADDI x3(gp) = x0(zero) + 3
+<current_instruction> pc = 800001c0
+<opcode = 0010111> Auipc: offset =  8192 current_pc = 800001c0 x1 = offset + current_pc = 800021c0
+<current_instruction> pc = 800001c4
+<opcode = 0010011> ADDI x1(ra) = x1(ra) + 4294966848
+<current_instruction> pc = 800001c8
+<opcode = 0110111> Lui: offset = 0xffffb000
+<current_instruction> pc = 800001cc
+<opcode = 0010011> ADDI x2(sp) = x2(sp) + 4294965760
+<current_instruction> pc = 800001d0
+<opcode = 0010111> Auipc: offset =  0 current_pc = 800001d0 xf = offset + current_pc = 800001d0
+<current_instruction> pc = 800001d4
+<opcode = 0010011> ADDI x15(a5) = x15(a5) + 20
+<current_instruction> pc = 800001d8
+<opcode = 0100011> <current_instruction> pc = 800001dc
+<opcode = 0000011> <current_instruction> pc = 800001e0
+<opcode = 1101111> x0(zero) = 2147484128 + 4
+Next_instruction  = 2147484128 + 8
+<current_instruction> pc = 800001e8
+<opcode = 0110111> Lui: offset = 0xffffb000
+<current_instruction> pc = 800001ec
+<opcode = 0010011> ADDI x7(t2) = x7(t2) + 4294965760
+<current_instruction> pc = 800001f0
+<opcode = 1100011> x14(a4) != x7(t2)	condition is false
+<current_instruction> pc = 800001f4
+<opcode = 0010011> ADDI x3(gp) = x0(zero) + 4
+<current_instruction> pc = 800001f8
+<opcode = 0010111> Auipc: offset =  8192 current_pc = 800001f8 x1 = offset + current_pc = 800021f8
+<current_instruction> pc = 800001fc
+<opcode = 0010011> ADDI x1(ra) = x1(ra) + 4294966792
+<current_instruction> pc = 80000200
+<opcode = 0110111> Lui: offset = 0xbeef1000
+<current_instruction> pc = 80000204
+<opcode = 0010011> ADDI x2(sp) = x2(sp) + 4294965920
+<current_instruction> pc = 80000208
+<opcode = 0010111> Auipc: offset =  0 current_pc = 80000208 xf = offset + current_pc = 80000208
+<current_instruction> pc = 8000020c
+<opcode = 0010011> ADDI x15(a5) = x15(a5) + 20
+<current_instruction> pc = 80000210
+<opcode = 0100011> <current_instruction> pc = 80000214
+<opcode = 0000011> <current_instruction> pc = 80000218
+<opcode = 1101111> x0(zero) = 2147484184 + 4
+Next_instruction  = 2147484184 + 8
+<current_instruction> pc = 80000220
+<opcode = 0110111> Lui: offset = 0xbeef1000
+<current_instruction> pc = 80000224
+<opcode = 0010011> ADDI x7(t2) = x7(t2) + 4294965920
+<current_instruction> pc = 80000228
+<opcode = 1100011> x14(a4) != x7(t2)	condition is true: new instruction = 0x80000684
+<current_instruction> pc = 80000684
 <opcode = 0001111> Fence instruction: synchronization
-<current_instruction> pc = 800003fc
+<current_instruction> pc = 80000688
 <opcode = 1100011> x3(gp) == x0(zero)	condition is false
-<current_instruction> pc = 80000400
+<current_instruction> pc = 8000068c
 <opcode = 0010011> SLLI x3(gp) = x3(gp) << 1
-<current_instruction> pc = 80000404
+<current_instruction> pc = 80000690
 <opcode = 0010011> ORI x3(gp) = x3(gp) | 1
-<current_instruction> pc = 80000408
+<current_instruction> pc = 80000694
 <opcode = 0010011> ADDI x17(a7) = x0(zero) + 93
-<current_instruction> pc = 8000040c
+<current_instruction> pc = 80000698
 <opcode = 0010011> ADDI x10(a0) = x3(gp) + 0
-<current_instruction> pc = 80000410
+<current_instruction> pc = 8000069c
 <opcode = 1110011> Calling to operative system
-<current_instruction> pc = 80000414
+<current_instruction> pc = 800006a0
 <opcode = 0001111> Fence instruction: synchronization
-<current_instruction> pc = 80000418
+<current_instruction> pc = 800006a4
 <opcode = 0010011> ADDI x3(gp) = x0(zero) + 1
-<current_instruction> pc = 8000041c
+<current_instruction> pc = 800006a8
 <opcode = 0010011> ADDI x17(a7) = x0(zero) + 93
-<current_instruction> pc = 80000420
+<current_instruction> pc = 800006ac
 <opcode = 0010011> ADDI x10(a0) = x0(zero) + 0
-<current_instruction> pc = 80000424
+<current_instruction> pc = 800006b0
 <opcode = 1110011> Calling to operative system
-<current_instruction> pc = 80000428
+<current_instruction> pc = 800006b4
