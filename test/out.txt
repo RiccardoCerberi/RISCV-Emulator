@@ -1,4 +1,4 @@
-File provided: test/bin_files/rv32ui-p-srai.bin
+File provided: bin_files/rv32ui-p-srai.bin
 Last instruction: 80001048
 <current_instruction> pc = 80000000
 <opcode = 1101111> x0(zero) = 2147483648 + 4
@@ -113,10 +113,12 @@ Next_instruction  = 2147483648 + 80
 <current_instruction> pc = 80000140
 <opcode = 0010011> SLLI x10(a0) = x10(a0) << 31
 <current_instruction> pc = 80000144
-<opcode = 1100011> x10(a0) < x0(zero)	condition is true: new instruction = 0x8000015c<current_instruction> pc = 8000015c
+<opcode = 1100011> x10(a0) < x0(zero)	condition is true: new instruction = 0x8000015c
+<current_instruction> pc = 8000015c
 <opcode = 0010011> ADDI x5(t0) = x0(zero) + 0
 <current_instruction> pc = 80000160
-<opcode = 1100011> x5(t0) == x0(zero)	condition is true: new instruction = 0x80000174<current_instruction> pc = 80000174
+<opcode = 1100011> x5(t0) == x0(zero)	condition is true: new instruction = 0x80000174
+<current_instruction> pc = 80000174
 <opcode = 1110011> <current_instruction> pc = 80000178
 <opcode = 0010111> Auipc: offset =  0 current_pc = 80000178 x5 = offset + current_pc = 80000178
 <current_instruction> pc = 8000017c
@@ -338,7 +340,8 @@ Next_instruction  = 2147483648 + 80
 <current_instruction> pc = 80000330
 <opcode = 0010011> ADDI x5(t0) = x0(zero) + 2
 <current_instruction> pc = 80000334
-<opcode = 1100011> x4(tp) != x5(t0)	condition is true: new instruction = 0x80000320<current_instruction> pc = 80000320
+<opcode = 1100011> x4(tp) != x5(t0)	condition is true: new instruction = 0x80000320
+<current_instruction> pc = 80000320
 <opcode = 0110111> Lui: offset = 0x80000000
 <current_instruction> pc = 80000324
 <opcode = 0010011> SRAI x14(a4) = x1(ra) >> 7
@@ -371,7 +374,8 @@ Next_instruction  = 2147483648 + 80
 <current_instruction> pc = 8000035c
 <opcode = 0010011> ADDI x5(t0) = x0(zero) + 2
 <current_instruction> pc = 80000360
-<opcode = 1100011> x4(tp) != x5(t0)	condition is true: new instruction = 0x80000348<current_instruction> pc = 80000348
+<opcode = 1100011> x4(tp) != x5(t0)	condition is true: new instruction = 0x80000348
+<current_instruction> pc = 80000348
 <opcode = 0110111> Lui: offset = 0x80000000
 <current_instruction> pc = 8000034c
 <opcode = 0010011> SRAI x14(a4) = x1(ra) >> 14
@@ -410,7 +414,8 @@ Next_instruction  = 2147483648 + 80
 <current_instruction> pc = 80000390
 <opcode = 0010011> ADDI x5(t0) = x0(zero) + 2
 <current_instruction> pc = 80000394
-<opcode = 1100011> x4(tp) != x5(t0)	condition is true: new instruction = 0x80000374<current_instruction> pc = 80000374
+<opcode = 1100011> x4(tp) != x5(t0)	condition is true: new instruction = 0x80000374
+<current_instruction> pc = 80000374
 <opcode = 0110111> Lui: offset = 0x80000000
 <current_instruction> pc = 80000378
 <opcode = 0010011> ADDI x1(ra) = x1(ra) + 1
@@ -445,7 +450,8 @@ Next_instruction  = 2147483648 + 80
 <current_instruction> pc = 800003b4
 <opcode = 0010011> ADDI x5(t0) = x0(zero) + 2
 <current_instruction> pc = 800003b8
-<opcode = 1100011> x4(tp) != x5(t0)	condition is true: new instruction = 0x800003a8<current_instruction> pc = 800003a8
+<opcode = 1100011> x4(tp) != x5(t0)	condition is true: new instruction = 0x800003a8
+<current_instruction> pc = 800003a8
 <opcode = 0110111> Lui: offset = 0x80000000
 <current_instruction> pc = 800003ac
 <opcode = 0010011> SRAI x14(a4) = x1(ra) >> 7
@@ -474,7 +480,8 @@ Next_instruction  = 2147483648 + 80
 <current_instruction> pc = 800003dc
 <opcode = 0010011> ADDI x5(t0) = x0(zero) + 2
 <current_instruction> pc = 800003e0
-<opcode = 1100011> x4(tp) != x5(t0)	condition is true: new instruction = 0x800003cc<current_instruction> pc = 800003cc
+<opcode = 1100011> x4(tp) != x5(t0)	condition is true: new instruction = 0x800003cc
+<current_instruction> pc = 800003cc
 <opcode = 0110111> Lui: offset = 0x80000000
 <current_instruction> pc = 800003d0
 <opcode = 0010011> ADDI x0(zero) = x0(zero) + 0
@@ -509,7 +516,8 @@ Next_instruction  = 2147483648 + 80
 <current_instruction> pc = 8000040c
 <opcode = 0010011> ADDI x5(t0) = x0(zero) + 2
 <current_instruction> pc = 80000410
-<opcode = 1100011> x4(tp) != x5(t0)	condition is true: new instruction = 0x800003f4<current_instruction> pc = 800003f4
+<opcode = 1100011> x4(tp) != x5(t0)	condition is true: new instruction = 0x800003f4
+<current_instruction> pc = 800003f4
 <opcode = 0110111> Lui: offset = 0x80000000
 <current_instruction> pc = 800003f8
 <opcode = 0010011> ADDI x1(ra) = x1(ra) + 1
@@ -548,7 +556,8 @@ Next_instruction  = 2147483648 + 80
 <current_instruction> pc = 8000043c
 <opcode = 1100011> x0(zero) != x7(t2)	condition is false
 <current_instruction> pc = 80000440
-<opcode = 1100011> x0(zero) != x3(gp)	condition is true: new instruction = 0x80000460<current_instruction> pc = 80000460
+<opcode = 1100011> x0(zero) != x3(gp)	condition is true: new instruction = 0x80000460
+<current_instruction> pc = 80000460
 <opcode = 0001111> Fence instruction: synchronization
 <current_instruction> pc = 80000464
 <opcode = 0010011> ADDI x3(gp) = x0(zero) + 1

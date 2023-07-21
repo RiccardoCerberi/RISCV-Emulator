@@ -30,14 +30,12 @@ if __name__ == '__main__':
                 ins_fail = findTargetInstruction(s, '<fail>:')
                 print(f'fail instruction: {ins_fail}')
                 ins_succ = findTargetInstruction(s, '<pass>:')
-                print(f'fail instruction: {ins_succ}')
-                if (out.read().find(ins_fail) == -1 
-                    and out.read().find(ins_succ) != -1):
-                    print('SUCESS')
-                else:
-                    print('FAILURE')
+                print(f'success instruction: {ins_succ}')
+                if out.read().rfind(ins_fail) != -1:
+                    print(f'FAILURE: {ins_fail} present')
                     break
-                if (out.read().find(fail_ins) != -1):
-                    print(f"FAILED on test {test_num}")
+                if out.read().rfind(ins_succ) == -1:
+                    print(f'FAILURE: {ins_succ} not found')
                     break
+                print('SUCCESS')
             test_num += 1

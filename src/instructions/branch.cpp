@@ -108,7 +108,7 @@ Address_t Branch::moveNextInstruction() {
         Address_t new_ins = m_curr_pc + m_offset;
         std::cout << "condition is true: "
                   << "new instruction = "
-                  << "0x" << std::hex << new_ins;
+                  << "0x" << std::hex << new_ins << std::dec << std::endl;
         return new_ins;
     }
     std::cout << "condition is false\n";
