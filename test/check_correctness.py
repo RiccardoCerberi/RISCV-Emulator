@@ -19,23 +19,22 @@ def findTargetInstruction(s, target):
 
 if __name__ == '__main__':
     test_num = 1
-    with open(OUT_FILE) as out:
-        for dump_f in glob.glob('dump_files/*.dump'):
-            print(f'Testing file: {dump_f}')
-            #remove dump_files and .dump from file passed to executeTest
-            #function
-            executeTest(dump_f[dump_f.find('/')+1:].replace('.dump', '.bin'))
-            with open(dump_f) as df:
-                s = df.read()
-                ins_fail = findTargetInstruction(s, '<fail>:')
-                print(f'fail instruction: {ins_fail}')
-                ins_succ = findTargetInstruction(s, '<pass>:')
-                print(f'success instruction: {ins_succ}')
-                if out.read().rfind(ins_fail) != -1:
-                    print(f'FAILURE: {ins_fail} present')
-                    break
-                if out.read().rfind(ins_succ) == -1:
-                    print(f'FAILURE: {ins_succ} not found')
-                    break
-                print('SUCCESS')
-            test_num += 1
+    for dump_f in glob.glob('dump_files/*.dump'):
+        print(f'Testing file: {dump_f}')
+        executeTest(dump_f[dump_f.find('/')+1:].replace('.dump', '.bin'))
+        with open(dump_f) as df, open(OUT_FILE) as out:
+            s = df.read()
+            output = out.read()
+            ins_fail = findTargetInstruction(s, '<fail>:')
+            print(f'fail instruction: {ins_fail}')
+            ins_succ = findTargetInstruction(s, '<pass>:')
+            print(f'success instruction: {ins_succ}')
+            if output.rfind(ins_fail) != -1:
+                print(f'FAILURE: {ins_fail} present')
+                break
+            if output.rfind(ins_succ) == -1:
+                print(f'FAILURE: {ins_succ} not found')
+                break
+            print('SUCCESS')
+        test_num += 1
+    print(f'Success = {test_num-1}')
