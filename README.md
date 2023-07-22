@@ -1,10 +1,8 @@
-The project aims to create a RISC-V emulator, which supports the unix operative system nv6. 
+# Presentation 
+This is an implementation in C++ of riscv emulator.
+It's a single cycle, thus every instruction is executed sequentially.
 
-# Goal: #
-Create a riscv emulator that is able to run nv6 unix system
-
-# Requirements: #
-## External tools: ##
+## Requirements: ##
    * Compiler to get c code that will be translated in a sequence of instructions following the riscv format that will be executed by the emulator. 
    * A serie of test for the riscv instructions
    Go to https://github.com/riscv/riscv-gnu-toolchain and install all required packages.
