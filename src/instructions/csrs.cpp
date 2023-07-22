@@ -1,4 +1,4 @@
-#include "../../include/instructions/csrs.hpp"
+#include "../../include/instructions/system.hpp"
 
 #include <cstdint>
 

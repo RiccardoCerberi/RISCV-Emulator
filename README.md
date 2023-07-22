@@ -90,3 +90,9 @@ The correctness of the registers is up to the compiler, the processor has only t
 
 
 
+
+## Compiler flags ##
+#set(ld_flags "-fsanitize=address")
+#add_link_options(
+#        "$<${gcc_like_cxx}:$<BUILD_INTERFACE:${ld_flags}>>"
+#        )

@@ -1,13 +1,6 @@
 project(${CMAKE_PROJECT_NAME} )
 
-#TODO: change target to avoid recompilation of all sources even if when they're untouched
-set(SRCS 
-bits-manipulation.cpp 
-emulator.cpp
-cpu.cpp
-registers.cpp
-csr_reg.cpp
-memory.cpp
+set(instructions 
 instructions/auipc.cpp
 instructions/branch.cpp
 instructions/csrs.cpp
@@ -25,12 +18,18 @@ instructions/system.cpp
 instructions/U-format.cpp
 )
 
-#testing building library
-add_library(
-    components
-    STATIC
-    ${SRCS}
+set(components 
+bits-manipulation.cpp 
+emulator.cpp
+cpu.cpp
+registers.cpp
+csr_reg.cpp
+memory.cpp
 )
 
-
-
+add_library(
+    emulator
+    STATIC
+    ${instructions}
+    ${components}
+)

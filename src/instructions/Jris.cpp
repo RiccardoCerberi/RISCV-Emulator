@@ -1,6 +1,4 @@
-#include"../../include/instructions/Jris.hpp"
-#include <cstdint>
-
+#include"../../include/instructions/I-format.hpp"
 
 // Jris
 void Jris::execution() {
