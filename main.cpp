@@ -1,6 +1,6 @@
-#include <iostream>
 #include <cstring>
-#include<vector>
+#include <iostream>
+#include <vector>
 
 #include "include/emulator.hpp"
 
@@ -15,7 +15,8 @@ int main(int argc, char **argv) {
     }
 
     if (std::strlen(argv[index_file]) > MAX_FILE_LENGTH) {
-        std::cerr << "Error: file length exceeds the limit: "<< MAX_FILE_LENGTH << std::endl;
+        std::cerr << "Error: file length exceeds the limit: " << MAX_FILE_LENGTH
+                  << std::endl;
         return -1;
     }
 
@@ -28,4 +29,3 @@ int main(int argc, char **argv) {
 
     return 0;
 }
-

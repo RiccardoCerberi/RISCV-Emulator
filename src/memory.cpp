@@ -51,11 +51,9 @@ std::ostream& operator<<(std::ostream& os, std::byte b) {
 }
 
 // signal to catch exception
-static bool   isAlign(Address_t ad, DataSize_t sz) { return ad % sz == 0; }
+static bool isAlign(Address_t ad, DataSize_t sz) { return ad % sz == 0; }
 
-static void handleAlignmentEx() {
-    std::cout << "Access to misaligned data\t";
-}
+static void handleAlignmentEx() { std::cout << "Access to misaligned data\t"; }
 
 RegisterSize_t readFromMemory(Mem_t& mem, Address_t base, Address_t read_from,
                               DataSize_t data_size) {
@@ -72,7 +70,7 @@ RegisterSize_t readFromMemory(Mem_t& mem, Address_t base, Address_t read_from,
 }
 
 bool SystemInterface::checkLimit(Address_t a) {
-    size_t indx = a - kdram_base; 
+    size_t indx = a - kdram_base;
     return (a >= kdram_base) && indx < kdram_size;
 }
 
@@ -97,7 +95,7 @@ void writeToMemory(Mem_t& mem, Address_t base, Address_t where_to_write,
 
 RegisterSize_t SystemInterface::readData(Address_t read_from, DataSize_t sz) {
     assert(checkLimit(read_from));
-    if (isAlign(read_from,sz) == false) {
+    if (isAlign(read_from, sz) == false) {
         handleAlignmentEx();
     }
     return m_memory.read(read_from, sz);
@@ -109,12 +107,15 @@ RegisterSize_t SystemInterface::readData(Address_t read_from, DataSize_t sz) {
     abort();
 }
 
-bool SystemInterface::validWrite(Address_t write_to) { return m_last_instruction <= write_to && write_to < (kdram_base + kdram_size);}
+bool SystemInterface::validWrite(Address_t write_to) {
+    return m_last_instruction <= write_to &&
+           write_to < (kdram_base + kdram_size);
+}
 
 void SystemInterface::writeData(Address_t write_to, RegisterSize_t what_write,
                                 DataSize_t sz) {
     assert(checkLimit(write_to));
-    if(isAlign(write_to, sz)==false) {
+    if (isAlign(write_to, sz) == false) {
         handleAlignmentEx();
     }
     return m_memory.write(write_to, what_write, sz);

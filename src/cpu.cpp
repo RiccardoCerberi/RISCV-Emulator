@@ -8,7 +8,6 @@ CPU::CPU(std::string const& file_name) : m_pc{kdram_base}, m_bus{file_name} {
 // processor works) this make the design easier, avoiding conflicts with jump
 // instructions. Instructions are divided in classes based on the instruction
 // format on riscv manual
-bool CPU::checkEndProgram() { return m_pc >= m_address_last_is; }
 void CPU::steps() {
     while (!checkEndProgram()) {
         uint32_t is = fetch();
