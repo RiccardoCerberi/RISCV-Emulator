@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import subprocess
+import matplotlib.pyplot as plt
 import glob
 import time
 
@@ -22,11 +23,15 @@ def findTargetInstruction(s, target):
 check_later = [ 'dump_files/rv32ui-p-simple.dump']
 
 if __name__ == '__main__':
+    x = []
+    y = []
+    test_label = []
     test_num = 1
     t = 0
     for dump_f in glob.glob('dump_files/*.dump'):
         if dump_f in check_later:
             continue
+        test_label.append(dump_f[dump_f.rfind('-')+1:dump_f.rfind('.')])
         print(f'Testing file: {dump_f}')
         start = time.time()
         executeTest(dump_f[dump_f.find('/')+1:].replace('.dump', '.bin'))
@@ -46,6 +51,18 @@ if __name__ == '__main__':
                 print(f'FAILURE: {ins_succ} not found')
                 break
             print(f'SUCCESS. Execution time: {t}')
+        x.append(test_num)
+        y.append(end-start)
         test_num += 1
     print(f'Success = {test_num-1}')
     print(f'Execution time (total): {t}')
+    plt.figure(figsize=(15,15))
+    plt.xticks(x, test_label, rotation = 'vertical')
+    plt.vlines(x, min(y) ,y, linestyle="dashed")
+    plt.xlim(0, test_num)
+    plt.ylim(min(y), max(y))
+    plt.xlabel('Tests')
+    plt.ylabel('Time')
+    plt.title(f'Execution time for all {test_num-1} tests')
+    plt.plot(x,y)
+    plt.show()
