@@ -5,7 +5,7 @@ It's a single cycle, thus every instruction is executed sequentially.
 ## Requirements:  ##
 - Cmake to configure the buildsystem which makes the executable file;
 - RISC-V gnu compiler:  go to https://github.com/riscv/riscv-gnu-toolchain and install all required packages. 
-Rememebr to edit $RISCV environment variable with value /opt/riscv and make riscv directory writable (chmod ugo+w).
+Rememebr to edit $RISCV environment variable with value /opt/riscv and make _riscv directory writable_ (chmod ugo+w).
 Then run  
     make && make linux 
 - A serie of test for the riscv instructions: https://github.com/riscv-software-src/riscv-tests
