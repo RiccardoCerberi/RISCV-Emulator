@@ -5,7 +5,7 @@ import subprocess
 DIR_PATH = 'riscv-tests/isa'
 BIN_FILES = 'bin_files'
 
-def main():
+if __name__ == '__main__':
     if not os.path.isdir(BIN_FILES):
         os.mkdir(BIN_FILES)
     for file in glob.glob(f'{DIR_PATH}/rv32ui-p-*'):
@@ -14,5 +14,3 @@ def main():
             print(f'Generating binary {bin_file} for executable {file}')
             subprocess.run(f'riscv64-unknown-elf-objcopy -O binary {file} \
                     {BIN_FILES}/{bin_file}', shell=True)
-
-main()
