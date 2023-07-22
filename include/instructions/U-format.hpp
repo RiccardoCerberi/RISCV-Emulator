@@ -33,3 +33,20 @@ class U : public InstructionFormat {
         RegisterSize_t m_rd;
 };
 
+
+class Auipc : public U {
+public:
+    Auipc(InstructionSize_t const is, Address_t const pc)
+        : U(is, pc)
+    {}
+    void execution() override;
+};
+
+
+class Lui : public U {
+public:
+    Lui(InstructionSize_t const is, Address_t const pc)
+     : U(is, pc)
+    {}
+    void execution() override;
+};

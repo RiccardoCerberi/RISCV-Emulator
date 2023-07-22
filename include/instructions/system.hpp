@@ -1,6 +1,7 @@
 #pragma once
 
 #include"instructions.hpp"
+#include "../bits-manipulation.hpp"
 #include <cstdint>
 #include <memory>
 
@@ -41,3 +42,43 @@ public:
 };
 
 
+// Ecall differs from Ebreak for the func12 bits
+class Ecall : public System {
+    public:
+        Ecall(InstructionSize_t const is, Address_t const pc)
+            : System(is, pc)
+        {}
+        // implementation beyond ui instructions
+        void execution() override {
+            std::cout << "Calling to operative system\n";
+        } 
+};
+
+/*
+ * Every instruction of this type consists in
+ * - Reading value from csrs
+ * - doing some operations, producing the result
+ * - swapping the result with register rd
+ */
+
+class CSR : public System {
+public:
+    CSR(InstructionSize_t const is, Address_t const pc);
+    void readRegister(Registers const &) override;
+    void readCSR(const CSRInterface &) override;
+    void execution() override;
+    void writeCsr(CSRInterface &) override;
+    void writeBack(Registers &) override;
+
+private:
+    CSRRegisterSize_t makeCSRResult();
+    bool              isWriteOp();
+
+private:
+    RegisterSize_t    m_second_operand;
+    CSRRegisterSize_t m_csr_rs;  // alias t in riscv instructions
+    CSRRegisterSize_t m_csr_rd;
+    RegisterSize_t    m_rd;
+    bool              write_to_reg;
+    bool              write_to_csrs;
+};
