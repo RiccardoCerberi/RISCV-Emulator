@@ -4,13 +4,6 @@ CPU::CPU(std::string const& file_name) : m_pc{kdram_base}, m_bus{file_name} {
     m_address_last_is = m_bus.getLastInstruction();
 }
 
-inline void CPU::setLastInstrAddress(Address_t const l_is) {
-    m_address_last_is = l_is;
-}
-
-uint32_t CPU::getCurrentInstruction() { return m_pc; }
-
-
 // The processor performs one operation per clock cycle (is not how modern
 // processor works) this make the design easier, avoiding conflicts with jump
 // instructions. Instructions are divided in classes based on the instruction
@@ -41,9 +34,6 @@ void CPU::steps() {
         } catch (const char* execute_exc) {
             std::cout << "Exception in excuting instruction: " << execute_exc
                       << std::endl;
-#ifdef DEBUG
-            abort();
-#endif
             break;
         }
         memoryAccess(is_format);
@@ -59,9 +49,8 @@ void CPU::steps() {
     }
 }
 
-InstructionSize_t CPU::fetch() {
-    return static_cast<InstructionSize_t>(m_bus.readData(m_pc, DataSize_t::kword));
-}
+// pipeline stages
+Address_t CPU::fetch() { return m_bus.readData(m_pc, DataSize_t::kword); }
 
 // decode function uses polymorphism, in order to know which instruction return
 // it needs to decode the first 8 bits.
@@ -108,7 +97,7 @@ std::unique_ptr<InstructionFormat> CPU::decode(InstructionSize_t const is) {
         case opcode_t::ksystem: {
             uint8_t func3 = BitsManipulation::takeBits(is, 12, 14);
             if (func3 == 0) {
-                is_format = std::make_unique<Ecall>(is,m_pc);
+                is_format = std::make_unique<Ecall>(is, m_pc);
             } else
                 is_format = std::make_unique<CSR>(is, m_pc);
             break;
