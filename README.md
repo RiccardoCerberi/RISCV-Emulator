@@ -2,91 +2,39 @@
 This is an implementation in C++ of riscv emulator.
 It's a single cycle, thus every instruction is executed sequentially.
 
-## Requirements: ##
-   * Compiler to get c code that will be translated in a sequence of instructions following the riscv format that will be executed by the emulator. 
-   * A serie of test for the riscv instructions
-   Go to https://github.com/riscv/riscv-gnu-toolchain and install all required packages.
-   Install gcc compiler for riscv run these commands: 
-  >  git clone https://github.com/riscv/riscv-gnu-toolchain
-  >   ./configure --prefix=/opt/riscv
-  >   make && make linux
-   Make sure riscv compiler environment variable is set by typing riscv64-unknown-elf-gcc -S test.c.
-   If riscv64-unknown-elf-gcc  is not recognized it means you have to edit the PATH environment variable: type export PATH=$PATH:/opt/riscv/bin/ in .bashrc file in home directory.
-   Riscv offers binary files to test the execution for any instructions.
-   These files can be found at https://github.com/riscv-software-src/riscv-tests.
-   To install them follow the instruction on the github repo.
-## Debug ##
-The repository contains a .vscode directory where is stored the launch.json file to set debug args in gdb.
-To debug with this settings click on the gdb icon and select  (gdb) launch.
-## Structure: ##
-The memory is formed by SRAM, DRAM, Disk. 
-SRAM and DRAM are grouped in RAM.
-SRAM is the cpu cache, which is the fastest access memory, but it has a problem: the size. 
-SRAM can contain megabyte of datas, therefore it's needed a bigger storage that  is provided by DRAM. 
-A program runs because the cpu is executing its instruction, whose format is specifically to the process itself. 
-The process uses the SRAM to store datas taken from the DRAM that will be used frequently during the execution process. 
-Let's say, a program A requires an array of 8 bytes to be stored, the datas are stored in DRAM and when it access to an element the entire block will be stored in SRAM because presumably it's going to access to the other elements. 
-This is the principle of locality.
-Our memory model will be formed by the cpu and within the cache, ROM, DRAM and I/O because the model is a memory mapped input output.
-    * Memory definition
-    * RAM, ROM and I/O
-    * Registers 
+## Requirements: 
+    - Cmake to configure the buildsystem which makes the executable file;
+    - Riscv gnu compiler:  go to https://github.com/riscv/riscv-gnu-toolchain and install all required packages. 
+    Rememebr to edit $RISCV environment variable with value /opt/riscv and make riscv directory writable (chmod ugo+w).
+    Then run  
 
-## Hierarchy ##
-emulator -> cpu -> bus -> dram
+    ```
+    make && make linux 
+    ```
 
-## How to interact with the Unix operative system? ##
-Every operative system interacts with the hardware through the device tree.
+    - A serie of test for the riscv instructions: https://github.com/riscv-software-src/riscv-tests
 
-## Implementation: ##
-# Big problems: #
-    * How to read an executable file in cpp, is that a binary? 
-Usefull link:
-https://superuser.com/questions/707873/do-emulators-parse-binary-code-within-files
-    2. How to create the memory model: RAM and disk. 
-            - A natural solution consists in using the RAM and disk just provided by the laptop.
-    3. Design the class.
+## Make the executable
+Make bin and build directory, both with Debug and Relase mode, by running
+    '''
+    mkdir build  bin
+    cd bin
+    mkdir Debug Release
+    cd ../build
+    mkdir Debug Release
+    '''
+Then choose a mode (either Debug or Release), let's suppose Debug,  and from there run
+    '''
+    cmake ../..
+    cmake --build -DCMAKE_BUILD_TYPE=Debug
+    '''
+This will generate the debug version of the executable in bin/Debug folder.
+VScode offers a Cmake extension which automatically generates a build folder for the Debug mode.
+To have the same result as the previous commands edit cmake.buildDirectory variable in setting.json file: cmake.buildDirectory = "build/Debug".
+Complete overview of all available options at https://github.com/microsoft/vscode-cmake-tools/blob/main/docs/cmake-settings.md#cmake-settings.
 
-## How to debug the program passing command line argument using vscode cmake-tools extension ##
-https://github.com/microsoft/vscode-cmake-tools/blob/main/docs/debug-launch.md
-.vscode folder stores my personal settings
-
-#SO#
-The processor can execute instructions in two modes: supervisor and user.
-All processes  run in user mode and only the kernel can run in supervisor mode, because it has to be able to  perform extra functionalities.
-Whenever a process wants to perform these extra functionalities has to call the operative system, for example to print out a string of characters.
-In this situation, the processor has to change its setup to let the kernel  perform the functionality required. 
-Interrupts and exceptions let the processor to safely alter its state.
-## Exceptions and interrupts##
-Exceptions are events that need to be processed by the kernel, usually caused by unexpected events.
-Exceptions usually refer to synchronous events generated by the process itself that attempts illegal instructions like divide-by-0. 
-Interrupts, on the other hand, refer to asynchronous events generated by I/O devices, like transferring characters from the keyboard. 
-The operative system handles both exceptions and interrupts.
-In RISCV both types of events are referred to as exceptions; when it's needed, synchronous events are specified to be synchronous exceptions. 
-### Privileged registers ###
-- mepc -> exception pc
-- mcause -> cause of the exception
-- mtvec -> address of the exception handler 
-- mstatus -> status bits
-### Privileged instructions ###
- - Csrr, csrw -> read and write CSRs (controll status registers)
- - mret to return from exception to the process
-### Handling exceptions ###
-- Stop the current process and complete all the earlier operations
-
-## System-callS ##
-The system calls are particoular instructions that lead exceptions. 
-In RISCV are called ecalls. 
-The behaviour of the kernel towards ecalls is defined in the ABI (Application Binary Interface). 
-In Linux the convention is similar to a function call:
- -  call number is stored in a7;
- -  other arguments are stored in registers a0-a6;
- -  the result is stored in a0-a1 (or in memory)
- -  all registers are preserved by the callee
-The correctness of the registers is up to the compiler, the processor has only to follow the actions established in the isa.
-
-
-
+### Debug ###
+The directory .vscode contains launch.json file to set the binary file to pass to the program, otherwise it will stop by returning an error
 
 ## Compiler flags ##
 #set(ld_flags "-fsanitize=address")
