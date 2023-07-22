@@ -47,11 +47,15 @@ void SystemInterface::loadCode(std::string const& file_name) {
 }
 
 std::ostream& operator<<(std::ostream& os, std::byte b) {
-    return os << std::bitset<8>(std::to_integer<int>(b));
+    return os << std::bitset<8>(std::to_integer<unsigned char>(b));
 }
 
 // signal to catch exception
-static bool   isAllign(Address_t ad, DataSize_t sz) { return ad % sz == 0; }
+static bool   isAlign(Address_t ad, DataSize_t sz) { return ad % sz == 0; }
+
+static void handleAlignmentEx() {
+    std::cout << "Access to misaligned data\t";
+}
 
 RegisterSize_t readFromMemory(Mem_t& mem, Address_t base, Address_t read_from,
                               DataSize_t data_size) {
@@ -68,8 +72,8 @@ RegisterSize_t readFromMemory(Mem_t& mem, Address_t base, Address_t read_from,
 }
 
 bool SystemInterface::checkLimit(Address_t a) {
-    int indx = a - kdram_base; 
-    return 0 <= indx && indx < kdram_size;
+    size_t indx = a - kdram_base; 
+    return (a >= kdram_base) && indx < kdram_size;
 }
 
 void writeToMemory(Mem_t& mem, Address_t base, Address_t where_to_write,
@@ -92,8 +96,10 @@ void writeToMemory(Mem_t& mem, Address_t base, Address_t where_to_write,
 }
 
 RegisterSize_t SystemInterface::readData(Address_t read_from, DataSize_t sz) {
-    assert(isAllign(read_from, sz));
     assert(checkLimit(read_from));
+    if (isAlign(read_from,sz) == false) {
+        handleAlignmentEx();
+    }
     return m_memory.read(read_from, sz);
 #if __GNUC__ >= 13
     throw(std::format("Try to read from invalid location {}\n", read_from));
@@ -107,9 +113,10 @@ bool SystemInterface::validWrite(Address_t write_to) { return m_last_instruction
 
 void SystemInterface::writeData(Address_t write_to, RegisterSize_t what_write,
                                 DataSize_t sz) {
-    assert(isAllign(write_to, sz));
     assert(checkLimit(write_to));
-   // assert(validWrite(write_to));
+    if(isAlign(write_to, sz)==false) {
+        handleAlignmentEx();
+    }
     return m_memory.write(write_to, what_write, sz);
 #if __GNUC__ >= 13
     throw(std::format("Try to write {} to invalid location {}\n", what_write,

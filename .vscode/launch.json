@@ -9,7 +9,7 @@
             "program": "${command:cmake.launchTargetPath}",
             "args": [
                 //"test/test.bin",
-                "test/bin_files/rv32ui-p-srl.bin",
+                "test/bin_files/rv32ui-p-simple.bin",
                 ">",
                 "test/out.txt"
             ],
