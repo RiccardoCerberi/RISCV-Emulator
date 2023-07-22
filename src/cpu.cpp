@@ -4,10 +4,6 @@ CPU::CPU(std::string const& file_name) : m_pc{kdram_base}, m_bus{file_name} {
     m_address_last_is = m_bus.getLastInstruction();
 }
 
-// The processor performs one operation per clock cycle (is not how modern
-// processor works) this make the design easier, avoiding conflicts with jump
-// instructions. Instructions are divided in classes based on the instruction
-// format on riscv manual
 void CPU::steps() {
     while (!checkEndProgram()) {
         uint32_t is = fetch();

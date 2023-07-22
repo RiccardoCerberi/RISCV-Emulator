@@ -6,14 +6,6 @@
 
 #include "instructions.hpp"
 
-/*
- * 7-11:  rd
- * 12-14: funct3
- * 15-19: rs1
- * 20-24: rs2
- * 25-31: funct7
- */
-
 class R : public InstructionFormat {
 public:
     void readRegister(Registers const&) override;
@@ -40,15 +32,15 @@ protected:
           m_id(takeId()) {}
 
 protected:
-    size_t   takeRegS1();
-    size_t   takeRegS2();
-    size_t   takeRegD();
-    id_t     takeId();
+    size_t takeRegS1();
+    size_t takeRegS2();
+    size_t takeRegD();
+    id_t takeId();
 
-    size_t   m_index_rs1;
-    size_t   m_index_rs2;
-    size_t   m_index_rd;
-    id_t     m_id; // fusion of func3 and the last two bits
+    size_t m_index_rs1;
+    size_t m_index_rs2;
+    size_t m_index_rd;
+    id_t m_id;  // fusion of func3 and the last two bits
 
     RegisterSize_t m_rs1;
     RegisterSize_t m_rs2;
@@ -56,22 +48,20 @@ protected:
 };
 
 class Op : public R {
-    public:
-        Op(InstructionSize_t const is, Address_t const pc)
-            : R(is,pc)
-        {}
-        void execution() override;
-    private:
-        void add();
-        void sub();
-        void sll();
-        void slt();
-        void sltu();
-        void xorop();
-        void srl();
-        void sra();
-        void orop();
-        void andop();
-        void printInstruction(std::string const& is_name, std::string const& op);
+public:
+    Op(InstructionSize_t const is, Address_t const pc) : R(is, pc) {}
+    void execution() override;
+
+private:
+    void add();
+    void sub();
+    void sll();
+    void slt();
+    void sltu();
+    void xorop();
+    void srl();
+    void sra();
+    void orop();
+    void andop();
+    void printInstruction(std::string const& is_name, std::string const& op);
 };
-    

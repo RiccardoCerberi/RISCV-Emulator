@@ -13,15 +13,15 @@
 #include "bits-manipulation.hpp"
 #include "constants.hpp"
 #include "csr_reg.hpp"
-#include "instructions/U-format.hpp"
 #include "instructions/I-format.hpp"
-#include "instructions/system.hpp"
 #include "instructions/Jis.hpp"
+#include "instructions/R-format.hpp"
+#include "instructions/U-format.hpp"
 #include "instructions/branch.hpp"
 #include "instructions/fence.hpp"
 #include "instructions/instructions.hpp"
-#include "instructions/op.hpp"
 #include "instructions/store.hpp"
+#include "instructions/system.hpp"
 #include "memory.hpp"
 #include "registers.hpp"
 
@@ -31,6 +31,7 @@ public:
     void steps();
     bool checkEndProgram() { return m_pc >= m_address_last_is; }
     uint32_t getCurrentInstruction() { return m_pc; }
+
 private:
     enum class opcode_t : uint8_t {
         klui    = 0b0110111,  // load upper immediate lui
@@ -54,7 +55,9 @@ private:
     SystemInterface m_bus;
 
 private:
-    void setLastInstrAddress(Address_t const last_ins) { m_address_last_is = last_ins; }
+    void setLastInstrAddress(Address_t const last_ins) {
+        m_address_last_is = last_ins;
+    }
     /*
      * 5-stages pipeline
      */

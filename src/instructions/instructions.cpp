@@ -1,15 +1,15 @@
 #include "../../include/instructions/instructions.hpp"
 
-// Default functions
-void      InstructionFormat::readRegister(const Registers&) {}
+// Default functions that each instruction format will override
+void InstructionFormat::readRegister(const Registers&) {}
 
-void      InstructionFormat::readCSR(CSRInterface const&) {}
+void InstructionFormat::readCSR(CSRInterface const&) {}
 
-void      InstructionFormat::accessMemory(SystemInterface&) {}
+void InstructionFormat::accessMemory(SystemInterface&) {}
 
-void      InstructionFormat::writeCsr(CSRInterface&) {}
+void InstructionFormat::writeCsr(CSRInterface&) {}
 
-void      InstructionFormat::writeBack(Registers&) {}
+void InstructionFormat::writeBack(Registers&) {}
 
 Address_t InstructionFormat::moveNextInstruction() {
     return m_curr_pc + DataSize_t::kword;

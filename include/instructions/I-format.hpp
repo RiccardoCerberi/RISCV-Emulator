@@ -1,14 +1,5 @@
 #pragma once
-
 #include "instructions.hpp"
-
-/*
- * I-format:
- * - rd => register that will store the result
- * - func3 => specifies the instruction variant (addi, slli, ...)
- * - rs1 => source register
- * - immediate
- */
 
 class I : public InstructionFormat {
 public:

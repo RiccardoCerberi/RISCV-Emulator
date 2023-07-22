@@ -5,10 +5,6 @@
 #include <cstdint>
 #include <memory>
 
-/*
- * Fence and CSRs are instructions that divided the string of bits in the same way, the only difference is the interpretation they give to the chuncks generated
- */
-
 class System : public InstructionFormat {
 public:
     System(InstructionSize_t const is, Address_t const pc)
