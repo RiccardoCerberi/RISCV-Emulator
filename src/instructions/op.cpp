@@ -59,7 +59,7 @@ void Op::xorop() {
 }
 
 void Op::srl() {
-    std::string op = ">>";
+    std::string op = ">>L";
 #ifdef DEBUG
     printInstruction("SRL", op);
 #endif
@@ -67,7 +67,7 @@ void Op::srl() {
 }
 
 void Op::sra() {
-    std::string op = ">>";
+    std::string op = ">>A";
 #ifdef DEBUG
     printInstruction("SRA", op);
 #endif

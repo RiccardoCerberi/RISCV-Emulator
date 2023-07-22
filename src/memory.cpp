@@ -50,7 +50,8 @@ std::ostream& operator<<(std::ostream& os, std::byte b) {
     return os << std::bitset<8>(std::to_integer<int>(b));
 }
 
-static bool    isAllign(Address_t ad, DataSize_t sz) { return ad % sz == 0; }
+// signal to catch exception
+static bool   isAllign(Address_t ad, DataSize_t sz) { return ad % sz == 0; }
 
 RegisterSize_t readFromMemory(Mem_t& mem, Address_t base, Address_t read_from,
                               DataSize_t data_size) {

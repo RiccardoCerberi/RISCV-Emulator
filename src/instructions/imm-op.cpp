@@ -1,10 +1,5 @@
 #include "../../include/instructions/imm-op.hpp"
 
-// TODO: remove from function
-static int32_t takeOffsetSigned(RegisterSize_t offset) {
-    return static_cast<int32_t>(BitsManipulation::extendSign(offset, 11));
-}
-
 void ImmOp::addi() {
     std::string op = "+";
 #ifdef DEBUG
@@ -17,8 +12,8 @@ void ImmOp::slti() {
 #ifdef DEBUG
     printInstruction("SLTI", "<");
 #endif
-// TODO: check order of operands
-    if (static_cast<RegisterSize_t>(m_rs) < takeOffsetSigned(m_offset) ) {
+    if (static_cast<int32_t>(m_rs) <
+        static_cast<int32_t>(BitsManipulation::extendSign(m_offset, 11))) {
         m_rd = 1;
     } else {
         m_rd = 0;
@@ -76,10 +71,9 @@ void ImmOp::slli() {
 }
 
 void ImmOp::srli() {
-    std::string    op    = ">>";
+    std::string    op    = ">>L";
     RegisterSize_t shamt = BitsManipulation::takeBits(m_instruction, 20, 24);
     m_rd                 = arith(m_rs, shamt, op);
-
 #ifdef DEBUG
     // takes only a part of the offset
     auto temp = m_offset;
@@ -90,9 +84,9 @@ void ImmOp::srli() {
 }
 
 void ImmOp::srai() {
-    std::string    op    = ">>";
+    std::string    op    = ">>A";
     RegisterSize_t shamt = BitsManipulation::takeBits(m_instruction, 20, 24);
-    m_rd = arith(m_rs, shamt, op);
+    m_rd                 = arith(m_rs, shamt, op);
 #ifdef DEBUG
     // takes only a part of the offset
     auto temp = m_offset;
