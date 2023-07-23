@@ -1,6 +1,5 @@
 #include <cstring>
 #include <iostream>
-#include <vector>
 
 #include "include/emulator.hpp"
 
