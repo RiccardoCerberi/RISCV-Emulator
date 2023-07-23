@@ -1,14 +1,14 @@
 # Presentation #
-This is an implementation in C++ of riscv emulator.
+This is an implementation in C++ of RISC-V emulator.
 It's a single cycle, thus every instruction is executed sequentially.
 
 ## Requirements:  ##
 - Cmake to configure the buildsystem which makes the executable file;
-- RISC-V gnu compiler:  go to https://github.com/riscv/riscv-gnu-toolchain and install all required packages. 
-Rememebr to edit $RISCV environment variable with value /opt/riscv and make _riscv directory writable_ (chmod ugo+w).
+- RISC-V gnu compiler:  go to https://github.com/RISC-V/RISC-V-gnu-toolchain and install all required packages. 
+Rememebr to edit $RISCV environment variable with value /opt/RISC-V and make _RISC-V directory writable_ (chmod ugo+w).
 Then run  
     make && make linux 
-- A serie of test for the riscv instructions: https://github.com/riscv-software-src/riscv-tests
+- A serie of test for the RISC-V instructions: https://github.com/RISC-V-software-src/RISC-V-tests
 
 ## Make the executable ##
 Make bin and build directory, both with Debug and Relase mode, by running
@@ -30,7 +30,7 @@ To have the same result as the previous commands edit cmake.buildDirectory varia
 Complete overview of all available options at https://github.com/microsoft/vscode-cmake-tools/blob/main/docs/cmake-settings.md#cmake-settings.
 To run the program go to bin/\<mode\> and launch the executable
 
-    riscv-emualtor ../../test/bin_files/\<name.bin\>
+    RISC-V-emualtor ../../test/bin_files/\<name.bin\>
 
 ### Debug ###
 The directory .vscode contains launch.json file to set the binary file to pass to the program, otherwise it will stop by returning an error
