@@ -7,7 +7,7 @@
 class Registers {
 public:
     static std::array<std::string, ktot_registers> abi_names;
-    static std::string                             printABIName(size_t indx);
+    static std::string printABIName(size_t indx);
 
 public:
     Registers() : m_registers{0} {
