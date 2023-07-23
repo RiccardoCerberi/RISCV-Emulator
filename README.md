@@ -32,5 +32,7 @@ To run the program go to bin/\<mode\> and launch the executable
 
     RISC-V-emualtor ../../test/bin_files/\<name.bin\>
 
+It's important to know that the exception in csrs' method (attempt to write read only register) is needed to terminate the execution of the program:
+it's an illegal instruction that causes exit.
 ### Debug ###
 The directory .vscode contains launch.json file to set the binary file to pass to the program, otherwise it will stop by returning an error

@@ -51,9 +51,9 @@ std::ostream& operator<<(std::ostream& os, std::byte b) {
 }
 
 // signal to catch exception
-static bool isAlign(Address_t ad, DataSize_t sz) { return ad % sz == 0; }
+inline bool isAlign(Address_t ad, DataSize_t sz) { return ad % sz == 0; }
 
-static void handleAlignmentEx() { std::cout << "Access to misaligned data\t"; }
+inline void handleAlignmentEx() { std::cout << "Access to misaligned data\t"; }
 
 RegisterSize_t readFromMemory(Mem_t& mem, Address_t base, Address_t read_from,
                               DataSize_t data_size) {
