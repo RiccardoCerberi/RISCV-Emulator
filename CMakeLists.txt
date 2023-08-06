@@ -34,11 +34,3 @@ target_link_libraries(
 set_target_properties(riscv-emulator
         PROPERTIES
         RUNTIME_OUTPUT_DIRECTORY "${PROJECT_SOURCE_DIR}/bin/$<CONFIG>")
-
-if (DEBUG)
-    message("DEBUG flag is set")
-    add_definitions(-DDEBUG=1)
-else()
-    message("No DEBUG flag")
-endif (DEBUG)
-
