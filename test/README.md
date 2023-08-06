@@ -1,6 +1,21 @@
 ## Python files 
 
-Gen_test.py to generate binary test from riscv tests repository, if it's not installed go to https://github.com/riscv-software-src/riscv-tests.
+### Get Tests
+Run the following commands to clone and build riscv-tests:
+    git clone https://github.com/riscv/riscv-tests
+    cd riscv-tests
+    git submodule update --init --recursive
+    autoconf
+    ./configure
+    make
+    make install
+    cd ..
+
+Run gen_test.py:
+    ./gen_test.py
+The command will generate all binary files to test the emulator.
+
+### Execute all
 Check_correctness.py runs the executable and checks that  \<pass\>  instruction address is present and \<fail\> is not.
 
 The makefile contains command to get the binary from test.s file, just to test basic operations.

@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import os
 import glob
 import subprocess
@@ -12,5 +14,4 @@ if __name__ == '__main__':
         if not file.endswith('.dump'):
             bin_file = file[file.find('rv32'):len(file)] + '.bin'
             print(f'Generating binary {bin_file} for executable {file}')
-            subprocess.run(f'riscv64-unknown-elf-objcopy -O binary {file} \
-                    {BIN_FILES}/{bin_file}', shell=True)
+            subprocess.run(f'riscv64-unknown-elf-objcopy -O binary {file} {BIN_FILES}/{bin_file}', shell=True)
