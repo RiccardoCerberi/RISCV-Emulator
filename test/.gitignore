@@ -1,5 +1,5 @@
 /bin_files/
 /dump_files/
-riscv-tests/
+/riscv-tests/
 /out.txt/
 /right_imp.py/
