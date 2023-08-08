@@ -1,7 +1,8 @@
 #pragma once
+#include<cassert>
+#include<iostream>
 
 #include"constants.hpp"
-#include<cassert>
 
 // CSRs registers: CSRs mode ([8,9]) and protection ([10,11])
 class CSRInterface{

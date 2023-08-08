@@ -3,6 +3,7 @@ import subprocess
 import matplotlib.pyplot as plt
 import glob
 import time
+import os
 
 # Enable test for emulator.
 # For each binaries it checks the presence of  jump instruction to <pass> and the absence of any jump to <fail>
@@ -46,10 +47,10 @@ if __name__ == '__main__':
             print(f'success instruction: {ins_succ}')
             if output.rfind(ins_fail) != -1:
                 print(f'FAILURE: {ins_fail} present')
-                break
+                os.abort()
             if output.rfind(ins_succ) == -1:
                 print(f'FAILURE: {ins_succ} not found')
-                break
+                os.abort()
             print(f'SUCCESS. Execution time: {t}')
         x.append(test_num)
         y.append(end-start)
