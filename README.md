@@ -1,6 +1,7 @@
 # Presentation #
 This is an implementation in C++ of RISC-V emulator.
 It's a single cycle, thus every instruction is executed sequentially.
+The current version supports rv32ui instructions, that is, user integer instructions on 32 bits registers.
 
 ## Requirements:  ##
 - Cmake to configure the buildsystem which makes the executable file;
@@ -21,25 +22,26 @@ Make bin and build directory, both with Debug and Relase mode, by running
 
 Then choose a mode (either Debug or Release), let's suppose Debug,  and from there run
 
-    cmake ../..
-    cmake --build -DCMAKE_BUILD_TYPE=Debug
+    cmake ../.. -DCMAKE_BUILD_TYPE=Debug
 
-This will generate the debug version of the executable in bin/Debug folder.
-VScode offers a Cmake extension which automatically generates a build folder for the Debug mode.
-To have the same result as the previous commands edit cmake.buildDirectory variable in setting.json file: cmake.buildDirectory = "build/Debug".
+This generates the executable in bin/Debug folder; the same for Release.
+
+VScode offers a Cmake extension which automatically builds file.
+Edit settings.json file by adding
+
+    "cmake.buildDirectory" : "${workspaceRoot}/build/${buildType}",
+
+The command stores build files in Debug or Release folder, based on the option passed to -DCMAKE_BUILD_TYPE.
 Complete overview of all available options at https://github.com/microsoft/vscode-cmake-tools/blob/main/docs/cmake-settings.md#cmake-settings.
-To run the program go to bin/\<mode\> and launch the executable
 
-    RISC-V-emualtor ../../test/bin_files/\<name.bin\>
+## Run emulator ##
+The emulator requires a binary file that contains instructions to be executed that are in test/bin_files/ folder.
+To launch the emulator
 
-It's important to know that the exception in csrs' method (attempt to write read only register) is needed to terminate the execution of the program:
-it's an illegal instruction that causes exit.
-### Debug ###
-The directory .vscode contains launch.json file to set the binary file to pass to the program, otherwise it will stop by returning an error
+    riscv-emulator ../../test/bin_files/\<name.bin\>
 
-## Input ##
-The emulator supports user-integer instructions on 32 bits registers.
-To run the emulator go to the executable location (either bin/Debug or big/Release) and type:
-    ./riscv-emulator <path_to_bin_file>/name_of_bin_file
+**NOTE** 
+Every test contains an invalid instruction that terminates the emulator (it gets aborted).
+To know wether the program terminates for this reason or not, use test/check_correctness.py.
+For more info see test/README
 
-Follow instructions in test/README.md to build all test binary files.

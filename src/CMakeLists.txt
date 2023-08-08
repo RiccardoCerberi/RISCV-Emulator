@@ -1,5 +1,3 @@
-project(${CMAKE_PROJECT_NAME} )
-
 set(instructions 
 instructions/auipc.cpp
 instructions/branch.cpp
@@ -32,4 +30,10 @@ add_library(
     STATIC
     ${instructions}
     ${components}
+)
+
+target_include_directories(
+    emulator
+    INTERFACE
+    ${CMAKE_CURRENT_SOURCE_DIR}
 )

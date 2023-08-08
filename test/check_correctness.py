@@ -6,8 +6,8 @@ import time
 import os
 
 # Enable test for emulator.
-# For each binaries it checks the presence of  jump instruction to <pass> and the absence of any jump to <fail>
-EXEC_PATH = '../bin/Debug/riscv-emulator'
+# For each binaries it checks the presence of a jump to instruction marked as <pass> and the absence of any jump to instruction marked as <fail> 
+EXEC_PATH = '../bin/Release/riscv-emulator'
 
 OUT_FILE = 'out.txt'
 

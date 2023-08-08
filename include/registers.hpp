@@ -22,8 +22,8 @@ public:
         if (reg_indx != register_index::kzero_register)
             m_registers[reg_indx] = what;
     }
-#ifdef DEB_REG
-    void printRegs();
+#ifdef DEB_REGS
+    void printRegs() const;
 #endif
     RegisterSize_t read(size_t reg_indx) const { return m_registers[reg_indx]; }
 

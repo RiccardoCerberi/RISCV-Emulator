@@ -5,7 +5,7 @@ std::string Registers::printABIName(size_t indx) {
     return abi_names[indx];
 }
 
-#ifdef DEB_REG
+#ifdef DEB_REGS
 void Registers::printRegs() const {
     size_t i = 0;
     std::cout << "Registers:\n";
