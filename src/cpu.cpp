@@ -12,7 +12,7 @@ void CPU::steps() {
                   << std::dec << std::endl;
 #endif
 #ifdef DEB_REGS
-        printRegs();
+        m_registers.printRegs();
 #endif
         std::unique_ptr<InstructionFormat> is_format = nullptr;
         try {

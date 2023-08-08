@@ -7,13 +7,13 @@
             "request": "launch",
             "program": "${command:cmake.launchTargetPath}",
             "args": [
-                "test/bin_files/rv32ui-p-simple.bin",
+                "test/bin_files/rv32ui-p-lui.bin",
                 ">",
                 "test/out.txt"
             ],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
-            "externalConsole": true,
+            //"externalConsole": true,
             "environment": [
                 {
                     "name": "PATH",
