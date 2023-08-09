@@ -41,7 +41,7 @@ To launch the emulator
     riscv-emulator ../../test/bin_files/\<name.bin\>
 
 **NOTE** 
-Every test contains an invalid instruction that terminates the emulator (it gets aborted).
+Every test contains an invalid instruction that terminates the emulator (it runs an exception (attempt to write read only location) and ends).
 To know wether the program terminates for this reason or not, use test/check_correctness.py.
-For more info see test/README
+For more info see test/README.md
 

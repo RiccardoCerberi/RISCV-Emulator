@@ -1,5 +1,7 @@
 build
+bin
 cmake-build-debug
 object
 .idea
 .cache
+callgrind.*
