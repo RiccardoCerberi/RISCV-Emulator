@@ -1,26 +1,27 @@
 #setup the cmake version
 cmake_minimum_required(VERSION 3.0.0 FATAL_ERROR)
 
-#maybe use Project var 
 project(riscv-emulator)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
+#set(CMAKE_CXX_STANDARD 20)
+
 add_subdirectory(include)
 add_subdirectory(src)
 
-add_executable(riscv-emulator main.cpp)
+add_executable(${PROJECT_NAME} main.cpp)
 
 target_link_libraries(
-        riscv-emulator emulator
+        ${PROJECT_NAME} emulator
 )
 
-set_target_properties(riscv-emulator
+set_target_properties(${PROJECT_NAME}
         PROPERTIES
         RUNTIME_OUTPUT_DIRECTORY "${PROJECT_SOURCE_DIR}/bin/$<CONFIG>")
 
-
-target_compile_features(riscv-emulator PUBLIC cxx_std_20)
+target_compile_features(${PROJECT_NAME} PUBLIC cxx_std_20)
+target_compile_features(emulator PUBLIC cxx_std_20)
 
 # add compiler warning flags just when building this project
 # via the BUILD_INTERFACE generator expression
@@ -32,7 +33,7 @@ set(gcc_flags "-Wall;-Wextra;-Wshadow;-Wshadow;-Wformat=2;$<$<CONFIG:Debug>:${de
 set(msvc_flags "-W3")
 
 
-target_compile_options(riscv-emulator PRIVATE
+target_compile_options(${PROJECT_NAME} PRIVATE
    "$<${gcc_like_cxx}:$<BUILD_INTERFACE:${gcc_flags}>>"
    "$<${msvc_cxx}: $<BUILD_INTERFACE:${msvc_flags}>>")
 
