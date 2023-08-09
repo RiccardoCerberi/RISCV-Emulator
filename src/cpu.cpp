@@ -11,6 +11,7 @@ void CPU::steps() {
         std::cout << "<current_instruction> pc = " << std::hex << m_pc
                   << std::dec << std::endl;
 #endif
+
 #ifdef DEB_REGS
         m_registers.printRegs();
 #endif
