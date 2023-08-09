@@ -48,10 +48,10 @@ def displayStat(x,y, test_num):
 
 if __name__ == '__main__':
     if len(sys.argv) < 2:
-        print('No mode specified: executable from Release, otherwise rerun \
-              script passing Debug')
+        print('No mode specified: executable from Release, otherwise rerun ' 
+              'script passing Debug')
     else:
-        EXEC_PATH = '../bin/{0}/riscv-emulator'.format(sys.argv[1])
+        EXEC_PATH = f'../bin/{sys.argv[1]}/riscv-emulator'
     x = []
     y = []
     test_label = []
