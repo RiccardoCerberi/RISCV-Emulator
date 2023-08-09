@@ -17,8 +17,8 @@ void CPU::steps() {
         std::unique_ptr<InstructionFormat> is_format = nullptr;
         try {
             is_format = decode(is);
-        } catch (const char* decode_exc) {
-            std::cout << "Exception in decoding instruction: " << decode_exc
+        } catch (const char* dec_exc) {
+            std::cout << "Exception in decoding stage: " << dec_exc
                       << "\n";
             break;
         }
@@ -26,18 +26,24 @@ void CPU::steps() {
 
         try {
             execute(is_format);
-        } catch (const char* execute_exc) {
-            std::cout << "Exception in excuting instruction: " << execute_exc
+        } catch (const char* exec_exc) {
+            std::cout << "Exception in execute stage: " << exec_exc
                       << std::endl;
             break;
         }
-        memoryAccess(is_format);
+
+        try {
+            memoryAccess(is_format);
+        } catch (const char* mem_exc) {
+            std::cout << "Exception in memory stage: " << mem_exc << std::endl;
+            break;
+        }
 
         writeBack(is_format);
         try {
             m_pc = moveNextInstruction(is_format);
-        } catch (char* const txt_exception) {
-            std::cout << "Exception: " << txt_exception << std::endl;
+        } catch (char* const wb_exception) {
+            std::cout << "Exception in write back stage: " << wb_exception << std::endl;
             break;
         }
         m_csrs.updateTimer();

@@ -60,5 +60,4 @@ Access to misaligned data	Access to misaligned data	condition is false
 condition is true: new instruction = 0x800006f4
 Fence instruction: synchronization
 Calling to operative system
-Attempt to access read only memory. If it's the last instruction it's correct (way to exit) otherwise something went wrong.
-Check wether the test is passed by running check_correctness.py
+Exception in memory stage: try to write read only location
