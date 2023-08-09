@@ -57,7 +57,7 @@ void ImmOp::andi() {
 }
 
 void ImmOp::slli() {
-    std::string    op    = "<<";
+    std::string op       = "<<";
     RegisterSize_t shamt = BitsManipulation::takeBits(m_instruction, 20, 24);
     m_rd                 = arith(m_rs, shamt, op);
 
@@ -71,7 +71,7 @@ void ImmOp::slli() {
 }
 
 void ImmOp::srli() {
-    std::string    op    = ">>L";
+    std::string op       = ">>L";
     RegisterSize_t shamt = BitsManipulation::takeBits(m_instruction, 20, 24);
     m_rd                 = arith(m_rs, shamt, op);
 #ifdef DEBUG
@@ -84,7 +84,7 @@ void ImmOp::srli() {
 }
 
 void ImmOp::srai() {
-    std::string    op    = ">>A";
+    std::string op       = ">>A";
     RegisterSize_t shamt = BitsManipulation::takeBits(m_instruction, 20, 24);
     m_rd                 = arith(m_rs, shamt, op);
 #ifdef DEBUG
