@@ -12,6 +12,7 @@ set(deb_flags "-DDEBUG=1")
 set(gcc_flags "-Wall;-Wextra;-Wshadow;-Wshadow;-Wformat=2;$<$<CONFIG:Debug>:${deb_flags}>")
 set(msvc_flags "-W3")
 
+add_subdirectory(include)
 add_subdirectory(src)
 
 add_executable(riscv-emulator main.cpp)

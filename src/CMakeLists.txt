@@ -32,8 +32,6 @@ add_library(
     ${components}
 )
 
-add_subdirectory(../include src)
-
 target_link_libraries(emulator PUBLIC emulator_headers)
 
 # compilation flags
