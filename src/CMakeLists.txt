@@ -37,8 +37,8 @@ list(APPEND include_path "${CMAKE_CURRENT_SOURCE_DIR}/../include" "${CMAKE_CURRE
 
 target_include_directories(emulator
   PUBLIC
-  "$<BUILD_INTERFACE:${include_path}"
-  "$<INSTALL_INTERFACE:${include_path}"
+    "$<BUILD_INTERFACE:${include_path}>"
+    "$<INSTALL_INTERFACE:${include_path}>"
   INTERFACE
     ${CMAKE_CURRENT_SOURCE_DIR}
 )

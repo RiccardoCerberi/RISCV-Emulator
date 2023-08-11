@@ -21,11 +21,11 @@ instructions/R-format.hpp
 instructions/system.hpp
 )
 
-#add_library(
-#    emulator_headers
-#    INTERFACE
-#    ${components_headers}
-#    ${instructions_headers}
-#)
+add_library(
+    emulator_headers
+    INTERFACE
+    ${components_headers}
+    ${instructions_headers}
+)
 
 
