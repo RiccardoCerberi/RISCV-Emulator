@@ -28,14 +28,14 @@ Choose a mode (either Debug or Release), let's suppose Debug,  and from there ru
 
 To specify the generator: 
 
-    cmake -G Makefile ../.. -DCMAKE_BUILD_TYPE=Debug
+    cmake -G "Unix Makefile" ../.. -DCMAKE_BUILD_TYPE=Debug
     
 These commands will generate the executable in bin/Debug folder; the same for Release.
 
 VScode offers a CMake extension  (https://github.com/microsoft/vscode-cmake-tools.git) that can be configured by editing settins.json file in .vscode directory.
 To change default build directory as well as the generator, write
 
-    "cmake.generator" : "Makefile"
+    "cmake.generator" : "Unix Makefile"
     "cmake.buildDirectory" : "${workspaceRoot}/build/${buildType}",
 
 Complete overview of all available options at https://github.com/microsoft/vscode-cmake-tools/blob/main/docs/cmake-settings.md#cmake-settings.

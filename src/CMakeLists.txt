@@ -32,13 +32,13 @@ add_library(
     ${components}
 )
 
+add_subdirectory(../include src)
 
-list(APPEND include_path "${CMAKE_CURRENT_SOURCE_DIR}/../include" "${CMAKE_CURRENT_SOURCE_DIR}/../include/instructions")
+target_link_libraries(emulator PUBLIC emulator_headers)
 
-target_include_directories(emulator
-  PUBLIC
-    "$<BUILD_INTERFACE:${include_path}>"
-    "$<INSTALL_INTERFACE:${include_path}>"
-  INTERFACE
-    ${CMAKE_CURRENT_SOURCE_DIR}
-)
+# compilation flags
+target_compile_features(emulator PUBLIC cxx_std_20)
+
+target_compile_options(emulator PRIVATE
+   "$<${gcc_like_cxx}:$<BUILD_INTERFACE:${gcc_flags}>>"
+   "$<${msvc_cxx}: $<BUILD_INTERFACE:${msvc_flags}>>")

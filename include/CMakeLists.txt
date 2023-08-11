@@ -21,11 +21,20 @@ instructions/R-format.hpp
 instructions/system.hpp
 )
 
+# To show up headers in IDE we need to make a target.
 add_library(
     emulator_headers
     INTERFACE
     ${components_headers}
     ${instructions_headers}
+)
+
+list(APPEND include_path "${CMAKE_CURRENT_SOURCE_DIR}" "${CMAKE_CURRENT_SOURCE_DIR}/instructions")
+
+target_include_directories(emulator_headers 
+    INTERFACE 
+    "$<BUILD_INTERFACE:${include_path}>"
+    "$<INSTALL_INTERFACE:${include_path}>"
 )
 
 
