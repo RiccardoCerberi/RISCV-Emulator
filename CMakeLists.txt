@@ -5,13 +5,12 @@ project(riscv-emulator)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-add_subdirectory(include)
 add_subdirectory(src)
 
 add_executable(${PROJECT_NAME} main.cpp)
 
 target_link_libraries(
-        ${PROJECT_NAME} emulator
+    ${PROJECT_NAME} emulator
 )
 
 set_target_properties(${PROJECT_NAME}

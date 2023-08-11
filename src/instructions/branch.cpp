@@ -1,4 +1,4 @@
-#include "../../include/instructions/branch.hpp"
+#include "branch.hpp"
 
 size_t Branch::takeRs1() {
     return BitsManipulation::takeBits(m_instruction, 15, 19);

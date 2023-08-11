@@ -1,4 +1,4 @@
-#include "../../include/instructions/Jis.hpp"
+#include "Jis.hpp"
 #include <cstdint>
 
 // Jump

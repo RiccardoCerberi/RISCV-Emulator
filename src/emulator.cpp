@@ -1,4 +1,4 @@
-#include "../include/emulator.hpp"
+#include "emulator.hpp"
 
 Emulator::Emulator(std::string const& file_name) : m_cpu(file_name) {}
 

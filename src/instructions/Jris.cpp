@@ -1,4 +1,4 @@
-#include"../../include/instructions/I-format.hpp"
+#include"I-format.hpp"
 
 // Jris
 void Jris::execution() {

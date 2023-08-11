@@ -1,4 +1,4 @@
-#include "../../include/instructions/instructions.hpp"
+#include "instructions.hpp"
 
 // Default functions that each instruction format will override
 void InstructionFormat::readRegister(const Registers&) {}

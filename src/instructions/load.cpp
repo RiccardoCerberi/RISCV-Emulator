@@ -1,4 +1,4 @@
-#include "../../include/instructions/I-format.hpp"
+#include "I-format.hpp"
 
 void Load::execution() { m_ad_to_read = m_rs + m_offset; }
 

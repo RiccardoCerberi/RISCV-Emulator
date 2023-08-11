@@ -1,4 +1,4 @@
-#include "../../include/instructions/I-format.hpp"
+#include "I-format.hpp"
 
 void ImmOp::addi() {
     std::string op = "+";

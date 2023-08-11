@@ -1,4 +1,4 @@
-#include "../../include/instructions/I-format.hpp"
+#include "I-format.hpp"
 
 size_t I::takeRegS() {
     return BitsManipulation::takeBits(m_instruction, 15, 19);

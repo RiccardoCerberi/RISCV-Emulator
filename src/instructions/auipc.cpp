@@ -1,4 +1,4 @@
-#include"../../include/instructions/U-format.hpp"
+#include"U-format.hpp"
 
 void Auipc::execution() {
     m_rd = m_offset + m_curr_pc;

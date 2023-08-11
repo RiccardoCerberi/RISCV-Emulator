@@ -1,4 +1,4 @@
-#include "../../include/instructions/U-format.hpp"
+#include "U-format.hpp"
 
 RegisterSize_t U::takeOffset() {
     return BitsManipulation::extendSign(

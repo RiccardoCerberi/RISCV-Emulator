@@ -1,4 +1,4 @@
-#include"../../include/instructions/U-format.hpp"
+#include"U-format.hpp"
 
 void Lui::execution() {
 #ifdef DEBUG

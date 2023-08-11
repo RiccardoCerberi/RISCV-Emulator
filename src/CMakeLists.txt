@@ -32,8 +32,13 @@ add_library(
     ${components}
 )
 
-target_include_directories(
-    emulator
-    INTERFACE
+
+list(APPEND include_path "${CMAKE_CURRENT_SOURCE_DIR}/../include" "${CMAKE_CURRENT_SOURCE_DIR}/../include/instructions")
+
+target_include_directories(emulator
+  PUBLIC
+  "$<BUILD_INTERFACE:${include_path}"
+  "$<INSTALL_INTERFACE:${include_path}"
+  INTERFACE
     ${CMAKE_CURRENT_SOURCE_DIR}
 )

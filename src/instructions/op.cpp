@@ -1,4 +1,4 @@
-#include"../../include/instructions/R-format.hpp"
+#include"R-format.hpp"
 
 
 void Op::add() {

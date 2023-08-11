@@ -1,4 +1,4 @@
-#include "../../include/instructions/system.hpp"
+#include "system.hpp"
 
 #include <cstdint>
 

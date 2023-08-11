@@ -1,4 +1,4 @@
-#include "../include/cpu.hpp"
+#include "cpu.hpp"
 
 CPU::CPU(std::string const& file_name) : m_pc{kdram_base}, m_bus{file_name} {
     m_address_last_is = m_bus.getLastInstruction();

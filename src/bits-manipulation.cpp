@@ -1,4 +1,4 @@
-#include "../include/bits-manipulation.hpp"
+#include "bits-manipulation.hpp"
 
 // bits are indexed from zero
 

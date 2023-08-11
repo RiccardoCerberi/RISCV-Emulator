@@ -1,7 +1,7 @@
 #pragma once
 
 #include"instructions.hpp"
-#include "../bits-manipulation.hpp"
+#include "bits-manipulation.hpp"
 #include <cstdint>
 #include <memory>
 

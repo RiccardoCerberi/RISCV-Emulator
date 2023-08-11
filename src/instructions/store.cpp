@@ -1,4 +1,4 @@
-#include "../../include/instructions/store.hpp"
+#include "store.hpp"
 
 void Store::readRegister(Registers const& reg) {
     m_rs1 = reg.read(m_index_rs1);

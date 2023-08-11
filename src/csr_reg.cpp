@@ -1,4 +1,4 @@
-#include"../include/csr_reg.hpp"
+#include"csr_reg.hpp"
 
 void CSRInterface::write(Address_t const write_to, RegisterSize_t const what) {
     assert(checkLimit(write_to));
