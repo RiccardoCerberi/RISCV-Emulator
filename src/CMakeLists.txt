@@ -1,15 +1,8 @@
 set(instructions 
-instructions/auipc.cpp
 instructions/branch.cpp
-instructions/csrs.cpp
 instructions/I-format.cpp
-instructions/imm-op.cpp
 instructions/instructions.cpp
 instructions/Jis.cpp
-instructions/Jris.cpp
-instructions/load.cpp
-instructions/lui.cpp
-instructions/op.cpp
 instructions/R-format.cpp
 instructions/store.cpp
 instructions/system.cpp
