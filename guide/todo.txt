@@ -1,4 +1,0 @@
-- Check imm op if works
-- FIX load and store instructions
--Test basic instructions: store, load, add shift, ...
--Change CmakeSrc to avoid unnecessary source file recompilation
