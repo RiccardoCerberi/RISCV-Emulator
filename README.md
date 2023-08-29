@@ -44,7 +44,7 @@ The emulator requires a binary file containing the instructions to execute.
 By default they're located at test/bin_files/ folder.
 To launch the emulator
 
-    riscv-emulator ../../test/bin_files/\<name.bin\>
+    riscv-emulator ../../test/bin_files/<name.bin>
 
 **NOTE** 
 Every test contains an invalid instruction that terminates the emulator (it runs an exception, attempt to write read only location).
