@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+
 import subprocess
 import matplotlib.pyplot as plt
 import glob
@@ -8,11 +9,15 @@ import sys
 
 OUT_FILE = 'out.txt'
 
-EXEC_PATH = '../bin/Release/riscv-emulator'
+EXEC_DIR = '../bin'
 
-def executeTest(bin_file):
-    subprocess.run(f'{EXEC_PATH} bin_files/{bin_file} > {OUT_FILE}',
-                   shell=True)
+EXEC_NAME = 'riscv-emulator'
+
+BIN_DIR = 'bin_files'
+
+def removeExtension(f):
+    return f[f.rfind('/') + 1 : f.rfind('.')] 
+
 
 def findTargetInstruction(s, target):
     beg_target = s.rfind(target)
@@ -20,7 +25,7 @@ def findTargetInstruction(s, target):
     return  s[beg_ins : beg_target-1]
 
 # the file doesn't have fail or pass
-non_test_file = [ 'dump_files/rv32ui-p-simple.dump']
+non_test_file = ['rv32ui-p-simple']
 
 def testPassed(dump_f):
     with open(dump_f) as df, open(OUT_FILE) as out:
@@ -42,37 +47,58 @@ def displayStat(x,y, test_num):
     plt.ylim(min(y), max(y))
     plt.xlabel('Tests')
     plt.ylabel('Time')
-    plt.title(f'Execution time for all {test_num-1} tests')
+    plt.title(f'Execution time for all {test_num} tests')
     plt.plot(x,y)
     plt.show()
 
+def getExecMode():
+    available_modes = ('Release', 'Debug')
+    mode = available_modes[0]
+    if len(sys.argv) >= 2:
+        if sys.argv[1] in available_modes:
+            mode = sys.argv[1]
+        else:
+            raise Exception('Invalid mode')
+    return mode
+
 if __name__ == '__main__':
-    if len(sys.argv) < 2:
-        print('No mode specified: executable from Release, otherwise rerun ' 
-              'script passing Debug')
-    else:
-        EXEC_PATH = f'../bin/{sys.argv[1]}/riscv-emulator'
+    if not os.path.isdir(BIN_DIR):
+        print(f'Directory {BIN_DIR} not found, please run get_test.py')
+        sys.exit(1)
+
+    try:
+        exec_path = EXEC_DIR + '/' + getExecMode() + '/' + EXEC_NAME
+    except Exception as e:
+        print('ERROR: ', e)
+        sys.exit(1)
+
     x = []
     y = []
     test_label = []
-    test_num = 1
+    test_num = 0
     t = 0
-    for dump_f in glob.glob('dump_files/*.dump'):
-        if dump_f in non_test_file:
+    for df in glob.glob('riscv-tests/isa/rv32ui-p-*'):
+        if not df.endswith('.dump'): # it's not a dump file
             continue
-        test_label.append(dump_f[dump_f.rfind('-')+1:dump_f.rfind('.')])
-        print(f'Testing file: {dump_f}')
+        fnoext = removeExtension(df)
+        if fnoext in non_test_file:
+            continue
+        bf = fnoext + '.bin'
+        test_label.append(fnoext)
+        print(f'Testing file: {bf}')
         start = time.time()
-        executeTest(dump_f[dump_f.find('/')+1:].replace('.dump', '.bin'))
+        subprocess.run(f'{exec_path} {BIN_DIR}/{bf} > {OUT_FILE}', shell=True)
         end = time.time()
         t += end - start
         try:
-            testPassed(dump_f)
+            testPassed(df)
         except Exception as e:
-            print('ERROR: ', e)
+            print(f'Test number {test_num + 1} not passed, error: ', e)
+            print(f'Test passed {test_num}')
             sys.exit(1)
         x.append(test_num)
         y.append(end-start)
         test_num += 1
-    print('SUCCESS: the emulator has passed all tests')
+
+    print(f'SUCCESS: the emulator passed {test_num} tests')
     displayStat(x,y, test_num)
