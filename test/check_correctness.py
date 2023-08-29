@@ -9,15 +9,14 @@ import sys
 
 OUT_FILE = 'out.txt'
 
-EXEC_DIR = '../bin'
+EXEC_DIR = os.path.join('..','bin')
 
 EXEC_NAME = 'riscv-emulator'
 
 BIN_DIR = 'bin_files'
 
 def removeExtension(f):
-    return f[f.rfind('/') + 1 : f.rfind('.')] 
-
+    return os.path.basename(f)
 
 def findTargetInstruction(s, target):
     beg_target = s.rfind(target)
@@ -67,7 +66,7 @@ if __name__ == '__main__':
         sys.exit(1)
 
     try:
-        exec_path = EXEC_DIR + '/' + getExecMode() + '/' + EXEC_NAME
+        exec_path = os.path.join(EXEC_DIR, getExecMode(), EXEC_NAME)
     except Exception as e:
         print('ERROR: ', e)
         sys.exit(1)
@@ -77,7 +76,7 @@ if __name__ == '__main__':
     test_label = []
     test_num = 0
     t = 0
-    for df in glob.glob('riscv-tests/isa/rv32ui-p-*'):
+    for df in glob.glob(os.path.join('riscv-tests', 'isa', 'rv32ui-p-*')):
         if not df.endswith('.dump'): # it's not a dump file
             continue
         fnoext = removeExtension(df)
@@ -87,7 +86,8 @@ if __name__ == '__main__':
         test_label.append(fnoext)
         print(f'Testing file: {bf}')
         start = time.time()
-        subprocess.run(f'{exec_path} {BIN_DIR}/{bf} > {OUT_FILE}', shell=True)
+        bin_path = os.path.join(BIN_DIR, bf)
+        subprocess.run(f'{exec_path} {bin_path} > {OUT_FILE}', shell=True)
         end = time.time()
         t += end - start
         try:
