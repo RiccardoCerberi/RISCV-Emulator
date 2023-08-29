@@ -16,7 +16,8 @@ EXEC_NAME = 'riscv-emulator'
 BIN_DIR = 'bin_files'
 
 def removeExtension(f):
-    return os.path.basename(f)
+    f_nodir =  os.path.basename(f)
+    return os.path.splitext(f_nodir)[0]
 
 def findTargetInstruction(s, target):
     beg_target = s.rfind(target)
@@ -30,7 +31,7 @@ def testPassed(dump_f):
     with open(dump_f) as df, open(OUT_FILE) as out:
         s = df.read()
         output = out.read()
-        ins_fail = findTargetInstruction(s, '<fail>:')
+        ins_fail = findTargetInstruction(s, 'fail>:')
         ins_succ = findTargetInstruction(s, '<pass>:')
         if output.rfind(ins_fail) != -1:
             raise Exception(f'<fail> instruction at {ins_fail} is reached.')
