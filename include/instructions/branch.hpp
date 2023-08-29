@@ -13,9 +13,9 @@ public:
           m_offset(takeOffset()),
           m_func3(takeFunc3()),
           m_jump(false) {}
-    void      readRegister(Registers const&) override;
+    void readRegister(Registers const&) override;
 
-    void      execution() override;
+    void execution() override;
     Address_t moveNextInstruction() override;
 
 private:
@@ -28,24 +28,24 @@ private:
         kbgeu = 0b111
     };
 
-    size_t         takeRs1();
-    size_t         takeRs2();
-    Address_t      takeOffset();
-    func3_t        takeFunc3();
+    size_t takeRs1();
+    size_t takeRs2();
+    Address_t takeOffset();
+    func3_t takeFunc3();
 
-    size_t         m_index_rs1;
-    size_t         m_index_rs2;
-    Address_t      m_offset;
-    func3_t        m_func3;
+    size_t m_index_rs1;
+    size_t m_index_rs2;
+    Address_t m_offset;
+    func3_t m_func3;
 
     RegisterSize_t m_rs1;
     RegisterSize_t m_rs2;
-    bool           m_jump;
+    bool m_jump;
 
-    bool           beq();
-    bool           bne();
-    bool           blt();
-    bool           bge();
-    bool           bltu();
-    bool           bgeu();
+    bool beq();
+    bool bne();
+    bool blt();
+    bool bge();
+    bool bltu();
+    bool bgeu();
 };

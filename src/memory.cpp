@@ -50,7 +50,6 @@ std::ostream& operator<<(std::ostream& os, std::byte b) {
     return os << std::bitset<8>(std::to_integer<unsigned char>(b));
 }
 
-// signal to catch exception
 inline bool isAlign(Address_t ad, DataSize_t sz) { return ad % sz == 0; }
 
 inline void handleAlignmentEx() { std::cout << "Access to misaligned data\t"; }

@@ -58,9 +58,7 @@ private:
     void setLastInstrAddress(Address_t const last_ins) {
         m_address_last_is = last_ins;
     }
-    /*
-     * 5-stages pipeline
-     */
+    // 5-stages pipeline
     Address_t fetch();
     std::unique_ptr<InstructionFormat> decode(InstructionSize_t);
     void execute(std::unique_ptr<InstructionFormat> const&);

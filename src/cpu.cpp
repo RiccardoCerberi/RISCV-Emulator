@@ -19,8 +19,7 @@ void CPU::steps() {
         try {
             is_format = decode(is);
         } catch (const char* dec_exc) {
-            std::cout << "Exception in decoding stage: " << dec_exc
-                      << "\n";
+            std::cout << "Exception in decoding stage: " << dec_exc << "\n";
             break;
         }
         assert(is_format != nullptr);
@@ -44,7 +43,8 @@ void CPU::steps() {
         try {
             m_pc = moveNextInstruction(is_format);
         } catch (char* const wb_exception) {
-            std::cout << "Exception in write back stage: " << wb_exception << std::endl;
+            std::cout << "Exception in write back stage: " << wb_exception
+                      << std::endl;
             break;
         }
         m_csrs.updateTimer();
@@ -52,19 +52,20 @@ void CPU::steps() {
 }
 
 // pipeline stages
+
 Address_t CPU::fetch() { return m_bus.readData(m_pc, DataSize_t::kword); }
 
-// decode function uses polymorphism, in order to know which instruction return
-// it needs to decode the first 8 bits.
+// decode function uses polymorphism, in order to know which instruction to
+// return
 std::unique_ptr<InstructionFormat> CPU::decode(InstructionSize_t const is) {
     std::unique_ptr<InstructionFormat> is_format = nullptr;
-#ifdef DEBUG
     uint8_t opcode = BitsManipulation::takeBits(is, 0, klast_opcode_digit);
+
+#ifdef DEBUG
     std::cout << "<opcode = " << std::bitset<kopcode_len>(opcode) << "> ";
 #endif
 
-    auto op = opcode_t(static_cast<uint8_t>(
-        BitsManipulation::takeBits(is, 0, klast_opcode_digit)));
+    auto op = static_cast<opcode_t>(opcode);
     switch (op) {
         case opcode_t::klui:
             is_format = std::make_unique<Lui>(is, m_pc);

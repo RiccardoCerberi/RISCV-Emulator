@@ -7,15 +7,15 @@ public:
         : InstructionFormat(is, pc),
           m_offset(takeOffset()),
           m_index_rd(takeIndexRd()) {}
-    void      execution() override;
-    void      writeBack(Registers&) override;
+    void execution() override;
+    void writeBack(Registers&) override;
     Address_t moveNextInstruction() override;
     ~Jis() = default;
 
 private:
     Address_t takeOffset();
-    size_t    takeIndexRd();
+    size_t takeIndexRd();
 
     Address_t m_offset;
-    size_t    m_index_rd;
+    size_t m_index_rd;
 };
