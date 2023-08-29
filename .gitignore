@@ -8,3 +8,4 @@ callgrind.*
 .vscode
 guide
 reference
+/compile_commands.json
