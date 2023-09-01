@@ -3,7 +3,7 @@
 
 #include "include/emulator.hpp"
 
-#define MAX_FILE_LENGTH 100
+constexpr size_t MAX_FILE_LENGTH = 100;
 
 int main(int argc, char **argv) {
     int index_file = 1;
