@@ -14,7 +14,7 @@ def makeDir(dir_name):
         os.mkdir(dir_name)
 
 def generateBinFiles():
-    for f in glob.glob(os.path.join(DIR_PATH,'rv32ui-p-*')):
+    for f in glob.glob(os.path.join(DIR_PATH,'rv32ui-p-*')): #only 32 integers user instructions
         if not f.endswith('.dump'):
             bf = os.path.split(f)[1] + '.bin' # get file without dirs
             bin_path = os.path.join(BIN_FILES, bf)
