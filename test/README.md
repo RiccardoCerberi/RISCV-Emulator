@@ -1,5 +1,10 @@
 ## Generate Tests ##
-Run the following commands to clone and build riscv-tests:
+
+Riscv tests are available from the repository  https://github.com/riscv/riscv-tests.
+
+### Linux ###
+
+Clone the repository and compile the files with the gnu riscv compiler, resources at https://github.com/riscv-collab/riscv-gnu-toolchain.git.
 
     git clone https://github.com/riscv/riscv-tests
     cd riscv-tests
@@ -10,13 +15,12 @@ Run the following commands to clone and build riscv-tests:
     make install
     cd ..
 
-Run gen\_test.py:
+The directory contains executable and .dump files in order to make the binaries needed to run the emulator execute the gen\_test.py script:
 
     ./gen_test.py
 
-That command will generate all binary files to test the emulator.
-
-To generate your own tests, the directory contains a makefile to turn assembly instructions into a binary file that the emulator can accept.
+### Windows ###
+So far (01/09/2023) there's no gnu toolchain for Windows, therefore the only available binaries are the ones precompiled in bin\_files.
 
 ## Execution ##
 
