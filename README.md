@@ -19,17 +19,28 @@ Make bin and build directory, both with Debug and Relase mode, by running
     cd ../build
     mkdir Debug Release
 
-Optionally, you can specify which generator cmake will use by the flag -G followed by the generator name. By default in Linux is Make and in Windows Visual Studio.  
+Optionally, you can specify which generator cmake will use by the flag -G followed by the generator name, by default in Linux is Make and in Windows Visual Studio.  
 
-Choose a mode (either Debug or Release), let's suppose Debug,  and from there run
+
+Choose a mode (either Debug or Release), let's suppose Debug, and based on the generator choosen run one of the following commands:
+
+### Make-like generators ###
+
+The mode can be specified in the generate step:
 
     cmake ../.. -DCMAKE_BUILD_TYPE=Debug
 
-To specify the generator: 
+### IDE generators ###
 
-    cmake -G "Unix Makefile" ../.. -DCMAKE_BUILD_TYPE=Debug
+First generate the project:
+
+    cmake -G "Unix Makefile" ../.. 
+
+Then, in the build step, write
+
+    cmake --build . --config Debug
     
-These commands will generate the executable in bin/Debug folder; the same for the Release option.
+For Release mode substitute Debug with Release.
 
 VScode offers a CMake extension  (https://github.com/microsoft/vscode-cmake-tools.git) that can be configured by editing settins.json file in .vscode directory.
 To change default build directory as well as the generator, write

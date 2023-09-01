@@ -21,6 +21,7 @@ The directory contains executable and .dump files in order to make the binaries 
 
 ### Windows ###
 So far (01/09/2023) there's no gnu toolchain for Windows, therefore the only available binaries are the ones precompiled in bin\_files.
+For the same reason the dump\_files directory contains the dump files needed by check\_correctness script.
 
 ## Execution ##
 

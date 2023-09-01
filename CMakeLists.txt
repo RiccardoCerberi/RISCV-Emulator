@@ -10,7 +10,7 @@ set(msvc_cxx "$<COMPILE_LANG_AND_ID:CXX,MSVC>")
 
 set(deb_flags "-DDEBUG=1")
 set(gcc_flags "-Wall;-Wextra;-Wshadow;-Wshadow;-Wformat=2;$<$<CONFIG:Debug>:${deb_flags}>")
-set(msvc_flags "-W3")
+set(msvc_flags "-W3;$<$<CONFIG:Debug>:${deb_flags}>")
 
 add_subdirectory(include)
 add_subdirectory(src)
