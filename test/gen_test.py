@@ -12,6 +12,8 @@ OUT_FILE = 'out.txt'
 def makeDir(dir_name):
     if not os.path.isdir(dir_name):
         os.mkdir(dir_name)
+        return True
+    return False
 
 def generateBinFiles():
     for f in glob.glob(os.path.join(DIR_PATH,'rv32ui-p-*')): #only 32 integers user instructions
@@ -21,5 +23,5 @@ def generateBinFiles():
             subprocess.run(f'riscv64-unknown-elf-objcopy -O binary {f} {bin_path}', shell=True)
 
 if __name__ == '__main__':
-    makeDir(BIN_FILES)
-    generateBinFiles()
+    if (makeDir(BIN_FILES)):
+        generateBinFiles()
