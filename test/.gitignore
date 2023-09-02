@@ -1,4 +1,3 @@
-dump_files
 /riscv-tests/
 out.txt
 right_imp.py

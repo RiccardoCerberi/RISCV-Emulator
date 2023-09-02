@@ -61,6 +61,20 @@ def getExecMode():
             raise Exception('Invalid mode')
     return mode
 
+def getDumpDir():
+    dump_dir = ''
+    riscvtest_dir = os.path.join('riscv-tests', 'isa') 
+    def_dir = 'dump_files'
+
+    if os.path.isdir(riscvtest_dir):
+        dump_dir = riscvtest_dir
+    elif os.path.isdir(def_dir):
+        dump_dir = def_dir 
+    else:
+        raise Exception('No dump files directory, please create one')
+    return dump_dir
+    
+
 if __name__ == '__main__':
     if not os.path.isdir(BIN_DIR):
         print(f'Directory {BIN_DIR} not found, please run get_test.py')
@@ -72,12 +86,20 @@ if __name__ == '__main__':
         print('ERROR: ', e)
         sys.exit(1)
 
+    try:
+        dump_dir = getDumpDir()
+    except Exception as e:
+        print('ERROR: ', e)
+        sys.exit(1)
+
     x = []
     y = []
     test_label = []
     test_num = 0
     t = 0
-    for df in glob.glob(os.path.join('riscv-tests', 'isa', 'rv32ui-p-*')):
+
+    instructions_prefix = 'rv32ui-p-*.dump' # change to test new instructions 
+    for df in glob.glob(os.path.join(dump_dir, instructions_prefix)):
         if not df.endswith('.dump'): # it's not a dump file
             continue
         fnoext = removeExtension(df)
