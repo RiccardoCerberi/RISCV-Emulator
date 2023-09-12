@@ -31,7 +31,7 @@ def testPassed(dump_f):
     with open(dump_f) as df, open(OUT_FILE) as out:
         s = df.read()
         output = out.read()
-        ins_fail = findTargetInstruction(s, 'fail>:')
+        ins_fail = findTargetInstruction(s, '<fail>:')
         ins_succ = findTargetInstruction(s, '<pass>:')
         if output.rfind(ins_fail) != -1:
             raise Exception(f'<fail> instruction at {ins_fail} is reached.')
