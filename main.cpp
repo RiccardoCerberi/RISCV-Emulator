@@ -10,13 +10,13 @@ int main(int argc, char **argv) {
 
     if (argc < 2) {
         std::cerr << "Error: no file provided\n";
-        return -1;
+        return EXIT_FAILURE;
     }
 
     if (std::strlen(argv[index_file]) > max_len) {
         std::cerr << "Error: file length exceeds the limit: " << max_len
                   << std::endl;
-        return -1;
+        return EXIT_FAILURE;
     }
 
     std::string bin_file{argv[index_file]};
@@ -26,5 +26,5 @@ int main(int argc, char **argv) {
 
     riscv_emulator.runEmulator();
 
-    return 0;
+    return EXIT_SUCCESS;
 }
