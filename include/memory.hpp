@@ -3,7 +3,7 @@
 #include <bitset>
 
 #if __GNUC__ >= 13
-#include<format>
+#include <format>
 #endif
 #include <cassert>
 #include <cmath>
@@ -17,22 +17,19 @@
 #include "bits-manipulation.hpp"
 #include "constants.hpp"
 
-/*
-write means a direct access to memory location where load means a sequential
-access. RAM supports the first operation, ROM only the second one.
-*/
 using Mem_t = std::vector<std::byte>;
 
-// maybe inline, test later
 RegisterSize_t readFromMemory(Mem_t &, RegisterSize_t, Address_t, DataSize_t);
-void writeToMemory(Mem_t &, Address_t base, Address_t, RegisterSize_t, DataSize_t);
-std::ostream& operator<<(std::ostream& os, std::byte b);
+void writeToMemory(Mem_t &, Address_t base, Address_t, RegisterSize_t,
+                   DataSize_t);
+std::ostream &operator<<(std::ostream &os, std::byte b);
 
 class DRAM {
 public:
     DRAM() : m_dram{kdram_size, std::byte{0}} {}
     void write(Address_t, RegisterSize_t, DataSize_t);
     RegisterSize_t read(Address_t, DataSize_t);
+
 private:
     Mem_t m_dram;
 };
@@ -48,9 +45,10 @@ private:
     void printCode();
 #endif
 private:
-    void loadCode(std::string const&);
+    void loadCode(std::string const &);
     bool checkLimit(Address_t);
     bool validWrite(Address_t);
+
 private:
     DRAM m_memory;
     Address_t m_last_instruction;

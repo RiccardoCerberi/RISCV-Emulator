@@ -6,10 +6,9 @@ The current version supports rv32ui instructions, that is, user integer instruct
 ## Requirements:  ##
 - Cmake to configure the buildsystem which makes the executable file;
 - RISC-V gnu compiler:  go to https://github.com/riscv-collab/riscv-gnu-toolchain and install all required packages. 
-Rememeber to edit $RISCV environment variable with value /opt/RISC-V and make _RISC-V directory writable_ (chmod ugo+w).
+Rememeber to edit $RISCV environment variable with value /opt/riscv and make it  _writable_ (chmod ugo+w).
 Then run make && make linux 
-- A serie of test for the RISC-V instructions: see test/README.md or 
-https://github.com/riscv/riscv-tests
+- Executables to test the emulator: https://github.com/RISC-V-software-src/RISC-V-tests 
 
 ## Make the executable ##
 Make bin and build directory, both with Debug and Relase mode, by running
@@ -20,17 +19,28 @@ Make bin and build directory, both with Debug and Relase mode, by running
     cd ../build
     mkdir Debug Release
 
-Optionally, you can specify which generator cmake will use by the flag -G followed by the generator name. By default in Linux is Make and in Windows Visual Studio.  
+Optionally, you can specify which generator cmake will use by the flag -G followed by the generator name, by default in Linux is Make and in Windows Visual Studio.  
 
-Choose a mode (either Debug or Release), let's suppose Debug,  and from there run
+
+Choose a mode (either Debug or Release), let's suppose Debug, and based on the generator choosen run one of the following commands:
+
+### Make-like generators ###
+
+The mode can be specified in the generate step:
 
     cmake ../.. -DCMAKE_BUILD_TYPE=Debug
 
-To specify the generator: 
+### IDE generators ###
 
-    cmake -G "Unix Makefile" ../.. -DCMAKE_BUILD_TYPE=Debug
+First generate the project:
+
+    cmake -G "Unix Makefile" ../.. 
+
+Then, in the build step, write
+
+    cmake --build . --config Debug
     
-These commands will generate the executable in bin/Debug folder; the same for Release.
+For Release mode substitute Debug with Release.
 
 VScode offers a CMake extension  (https://github.com/microsoft/vscode-cmake-tools.git) that can be configured by editing settins.json file in .vscode directory.
 To change default build directory as well as the generator, write
@@ -41,13 +51,14 @@ To change default build directory as well as the generator, write
 Complete overview of all available options at https://github.com/microsoft/vscode-cmake-tools/blob/main/docs/cmake-settings.md#cmake-settings.
 
 ## Run emulator ##
-The emulator requires a binary file that contains instructions to be executed that are in test/bin_files/ folder.
+The emulator requires a binary file containing the instructions to execute.
+By default they're located at test/bin_files/ folder.
 To launch the emulator
 
-    riscv-emulator ../../test/bin_files/\<name.bin\>
+    riscv-emulator ../../test/bin_files/<name.bin>
 
 **NOTE** 
-Every test contains an invalid instruction that terminates the emulator (it runs an exception (attempt to write read only location) and ends).
-To know wether the program terminates for this reason or not, use test/check_correctness.py.
+Every test contains an invalid instruction that terminates the emulator (it runs an exception, attempt to write read only location).
+To know whether the program terminates for this reason or not, use test/check\_correctness.py.
 For more info see test/README.md
 

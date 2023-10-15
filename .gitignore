@@ -3,6 +3,10 @@ bin
 cmake-build-debug
 object
 .idea
+.vs
 .cache
 callgrind.*
 .vscode
+guide
+reference
+compile_commands.json

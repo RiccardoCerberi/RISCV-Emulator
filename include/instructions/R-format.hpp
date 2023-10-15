@@ -40,7 +40,9 @@ protected:
     size_t m_index_rs1;
     size_t m_index_rs2;
     size_t m_index_rd;
-    id_t m_id;  // fusion of func3 and the last two bits
+    id_t m_id;  // fusion of func3 and the last two bits. Not all immediate
+                // instructions have this properties so for I-format has not
+                // been defined.
 
     RegisterSize_t m_rs1;
     RegisterSize_t m_rs2;
