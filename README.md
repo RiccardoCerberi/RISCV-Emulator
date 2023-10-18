@@ -1,17 +1,29 @@
-# Presentation #
-This is an implementation in C++ of RISC-V emulator.
-It's a single cycle, thus every instruction is executed sequentially.
-The current version supports rv32ui instructions, that is, user integer instructions on 32 bits registers.
+# Presentation 
 
-## Requirements:  ##
-- CMake to configure the buildsystem that makes the executable;
-- RISC-V gnu compiler toolchain: https://github.com/RISC-V/RISC-V-gnu-toolchain.
-Rememeber to edit $RISCV environment variable with value /opt/riscv and make it  _writable_ (chmod ugo+w).
-Then run make && make linux;
-- Executables to test the emulator: https://github.com/RISC-V-software-src/RISC-V-tests 
+This is an implementation of RISC-V emulator written in C++.
+It's a single cycle processor, thus every instruction is executed sequentially.
+The emulator reads binary files that contain RISC-V instructions only.
 
-## Make the executable ##
-Make bin and build directory, both with Debug and Relase mode, by running
+The current version supports user integer instructions on 32 bits registers (rv32ui), that is, the set of instructions for common operations like add, load and store.
+
+## Requirements
+
+- C++ compiler;
+- CMake to configure the buildsystem that would eventually make the executable.
+
+<!-- 
+### Make your own bin files ###
+
+The directory test/bin_files contains a set of binary files downloaded from https://github.com/riscv/riscv-tests, the official repository.
+It's possible to add new files made by yourself.
+All you need is to install the gcc version for RISC-V processors; 
+instructions in the repository https://github.com/RISC-V/RISC-V-gnu-toolchain.
+To work properly remember to edit the $RISCV environment variable with value /opt/riscv and make it  _writable_ (chmod ugo+w).
+-->
+
+## Build the project
+
+Make bin and build directories, both with Debug and Release mode, by running
 
     mkdir build  bin
     cd bin
@@ -20,7 +32,6 @@ Make bin and build directory, both with Debug and Relase mode, by running
     mkdir Debug Release
 
 Optionally, you can specify which generator cmake will use by the flag -G followed by the generator name, by default in Linux is Make and in Windows Visual Studio.  
-
 
 Choose a mode (either Debug or Release), let's suppose Debug, and based on the generator choosen run one of the following commands:
 
@@ -42,7 +53,7 @@ Then, in the build step, write
     
 For Release mode substitute Debug with Release.
 
-VScode offers a CMake extension  (https://github.com/microsoft/vscode-cmake-tools.git) that can be configured by editing settins.json file in .vscode directory.
+VSCode offers a CMake extension  (https://github.com/microsoft/vscode-cmake-tools.git) that can be configured by editing settins.json file in .vscode directory.
 To change default build directory as well as the generator, write
 
     "cmake.generator" : "Unix Makefile"
@@ -50,15 +61,17 @@ To change default build directory as well as the generator, write
 
 Complete overview of all available options at https://github.com/microsoft/vscode-cmake-tools/blob/main/docs/cmake-settings.md#cmake-settings.
 
-## Run emulator ##
+## Run the emulator ##
+
 The emulator requires a binary file containing the instructions to execute.
-By default they're located at test/bin_files/ folder.
+By default, they're located at test/bin_files/ folder.
 To launch the emulator
 
     riscv-emulator ../../test/bin_files/<name.bin>
 
 **NOTE** 
-Every test contains an invalid instruction that terminates the emulator (it runs an exception, attempt to write read only location).
-To know whether the program terminates for this reason or not, use test/check\_correctness.py.
+Every test contains an invalid instruction to terminate the emulator, otherwise it will never end.
+The illegal instruction runs an exception: attempt to write read only location.
+To know whether the program terminates for this reason or not, use test/check_correctness.py.
 For more info see test/README.md
 

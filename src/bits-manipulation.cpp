@@ -1,5 +1,6 @@
 #include "bits-manipulation.hpp"
 
+
 // NOTE: bits are indexed from zero
 
 constexpr uint8_t BitsManipulation::lastIndxRegData() {
