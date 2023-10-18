@@ -9,7 +9,7 @@ The current version supports user integer instructions on 32 bits registers (rv3
 ## Requirements
 
 - C++ compiler;
-- CMake to configure the buildsystem that would eventually make the executable.
+- CMake to configure the build-system that would eventually make the executable.
 
 <!-- 
 ### Make your own bin files ###
