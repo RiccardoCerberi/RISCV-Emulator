@@ -1,8 +1,6 @@
 # Presentation 
 
-This is an implementation of RISC-V emulator written in C++.
-It's a single cycle processor, thus every instruction is executed sequentially.
-The emulator reads binary files that contain RISC-V instructions only.
+This is an implementation of RISC-V emulator written in C++. It's a single cycle processor, thus every instruction is executed sequentially.
 
 The current version supports user integer instructions on 32 bits registers (rv32ui), that is, the set of instructions for common operations like add, load and store.
 
