@@ -8,8 +8,9 @@ The current version supports user integer instructions on 32 bits registers (rv3
 
 ## Requirements
 
-- C++ compiler;
-- CMake to configure the build-system that would eventually make the executable.
+- C++ compiler
+- CMake 
+- Python3
 
 <!-- 
 ### Make your own bin files ###
@@ -31,7 +32,7 @@ Make bin and build directories, both with Debug and Release mode, by running
     cd ../build
     mkdir Debug Release
 
-Optionally, you can specify which generator cmake will use by the flag -G followed by the generator name, by default in Linux is Make and in Windows Visual Studio.  
+Optionally, you can specify which generator you want cmake to use by the flag -G followed by the generator name. By default in Linux is Make and in Windows Visual Studio.  
 
 Choose a mode (either Debug or Release), let's suppose Debug, and based on the generator choosen run one of the following commands:
 
@@ -70,8 +71,8 @@ To launch the emulator
     riscv-emulator ../../test/bin_files/<name.bin>
 
 **NOTE** 
-Every test contains an invalid instruction to terminate the emulator, otherwise it will never end.
-The illegal instruction runs an exception: attempt to write read only location.
+Every test contains an invalid instruction to terminate the emulator, otherwise it would never end. 
+The illegal instruction causes an exception "attempt to write read only location".
 To know whether the program terminates for this reason or not, use test/check_correctness.py.
 For more info see test/README.md
 
