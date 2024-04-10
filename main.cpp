@@ -9,7 +9,7 @@ int main(int argc, char **argv) {
     int index_file = 1;
 
     if (argc < 2) {
-        std::cerr << "Error: no file provided\n";
+        std::cerr << "Error: no binary file provided. \nYou should run the program like\t riscv-emulator <bin_file>\n";
         return EXIT_FAILURE;
     }
 
