@@ -32,18 +32,19 @@ Make bin and build directories, both with Debug and Release mode, by running
 
 Optionally, you can specify which generator you want cmake to use by the flag -G followed by the generator name. By default in Linux is Make and in Windows Visual Studio.  
 
-Choose a mode (either Debug or Release), let's suppose Debug, and based on the generator choosen run one of the following commands:
+Choose a mode (either Debug or Release) and go to the specific build directory; from there based on the generator chosen run one of the following commands.
 
 ### Make-like generators ###
 
-The mode can be specified in the generate step:
-
+    cd build/Debug 
     cmake ../.. -DCMAKE_BUILD_TYPE=Debug
+    make
 
 ### IDE generators ###
 
 First generate the project:
 
+    cd build/Debug 
     cmake -G "Unix Makefile" ../.. 
 
 Then, in the build step, write
